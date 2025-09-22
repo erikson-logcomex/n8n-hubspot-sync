@@ -4,6 +4,22 @@
 .env.development
 .env.production
 
+# Secrets and sensitive data
+**/secrets/
+**/credentials/
+**/*secret*
+**/*password*
+**/*token*
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
 # Python
 __pycache__/
 *.py[cod]
@@ -26,15 +42,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Logs
-*.log
-logs/
-
-# Temporary files
-temp/
-*.tmp
-*.temp
-
 # IDE
 .vscode/
 .idea/
@@ -45,16 +52,12 @@ temp/
 .DS_Store
 Thumbs.db
 
-# Kubernetes secrets (não enviar secrets reais)
-*secret*.yaml
-*secret*.yml
+# Kubernetes secrets
+**/postgres-secret.yaml
+**/n8n-secret.yaml
+**/redis-auth.yaml
+**/n8n-encryption.yaml
 
 # Backup files
 *.bak
 *.backup
-
-# Node modules (se houver)
-node_modules/
-
-# n8n specific
-.n8n/
