@@ -32,11 +32,16 @@ n8n/
 │   ├── n8n-worker-deployment.yaml
 │   ├── redis-service-patch.yaml
 │   └── [outras configurações...]
-├── 📋 final/                       # Workflows e tabelas finais
+├── 🗄️ database/                    # Tabelas SQL do PostgreSQL
 │   ├── hubspot_contacts_table_PADRAO_CORRETO.sql
 │   ├── hubspot_companies_table.sql
-│   ├── n8n_workflow_hubspot_*.json
-│   └── workflows/
+│   └── monitoring_table.sql
+├── ⚙️ workflows/                   # Workflows n8n
+│   ├── n8n_workflow_hubspot_contacts_SQL_FINAL.json
+│   ├── n8n_workflow_hubspot_companies_sync.json
+│   ├── n8n_workflow_hubspot_sync_PADRAO_CORRETO.json
+│   ├── contacts_sync_final.json
+│   └── contacts_sync_incremental_with_delay.json
 ├── 📦 archive/                     # Arquivos antigos e versões
 │   ├── hubspot_contacts_table_*.sql    # Versões antigas tabelas contatos
 │   ├── n8n_workflow_hubspot_*.json     # Workflows antigos/versões
@@ -71,11 +76,16 @@ n8n/
 - `n8n-kubernetes-hosting/n8n-ssl-certificate.yaml` - Certificados SSL
 - `n8n-kubernetes-hosting/storage.yaml` - Configuração de armazenamento
 
-### **📋 Workflows e Tabelas**
-- `final/hubspot_contacts_table_PADRAO_CORRETO.sql` - **Tabela de contatos**
-- `final/hubspot_companies_table.sql` - **Tabela de empresas**
-- `final/n8n_workflow_hubspot_contacts_SQL_FINAL.json` - **Workflow contatos**
-- `final/n8n_workflow_hubspot_companies_sync.json` - **Workflow empresas**
+### **🗄️ Tabelas de Banco de Dados**
+- `database/hubspot_contacts_table_PADRAO_CORRETO.sql` - **Tabela de contatos**
+- `database/hubspot_companies_table.sql` - **Tabela de empresas**
+- `database/monitoring_table.sql` - **Tabela de monitoramento**
+
+### **⚙️ Workflows n8n**
+- `workflows/n8n_workflow_hubspot_contacts_SQL_FINAL.json` - **Workflow contatos**
+- `workflows/n8n_workflow_hubspot_companies_sync.json` - **Workflow empresas**
+- `workflows/contacts_sync_final.json` - **Workflow contatos final**
+- `workflows/contacts_sync_incremental_with_delay.json` - **Workflow incremental**
 
 ### **📚 Documentação Técnica**
 - `docs/DOCUMENTACAO_TECNICA_WORKFLOW.md` - **Documentação técnica**
@@ -111,28 +121,37 @@ n8n/
 
 ## 🚀 **COMO USAR**
 
-### **1. Primeira Carga de Dados**
+### **1. Configuração do Banco de Dados**
+```powershell
+cd database
+# Execute as tabelas SQL no PostgreSQL
+psql -h your_host -U your_user -d your_database -f hubspot_contacts_table_PADRAO_CORRETO.sql
+psql -h your_host -U your_user -d your_database -f hubspot_companies_table.sql
+```
+
+### **2. Primeira Carga de Dados**
 ```powershell
 cd scripts
 python primeira_carga_hubspot_final.py
 ```
 
-### **2. Deploy do Cluster n8n**
+### **3. Deploy do Cluster n8n**
 ```powershell
 cd n8n-kubernetes-hosting
 kubectl apply -f n8n-config-consolidated.yaml
 ```
 
-### **3. Verificação de Saúde**
+### **4. Importar Workflows n8n**
+```powershell
+# Importe os workflows JSON no n8n
+# workflows/n8n_workflow_hubspot_contacts_SQL_FINAL.json
+# workflows/n8n_workflow_hubspot_companies_sync.json
+```
+
+### **5. Verificação de Saúde**
 ```powershell
 cd scripts
 .\health-check.ps1
-```
-
-### **4. Deploy com Correções**
-```powershell
-cd scripts
-.\deploy-fixed.ps1
 ```
 
 ## 📊 **FUNCIONALIDADES**

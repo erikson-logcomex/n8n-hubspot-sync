@@ -11,11 +11,21 @@ if (-not (Test-Path "hubspot_contacts_table_PADRAO_CORRETO.sql")) {
 }
 
 # Credenciais do banco hubspot-sync
-$env:PGHOST = "35.239.64.56"
-$env:PGPORT = "5432"
-$env:PGDATABASE = "hubspot-sync"
-$env:PGUSER = "meetrox_user"
-$env:PGPASSWORD = ":NZ%A{%Yi$3\p=mC"
+# Carregar variáveis de ambiente do .env
+$envFile = ".env"
+if (Test-Path $envFile) {
+    Get-Content $envFile | ForEach-Object {
+        if ($_ -match "^([^=]+)=(.*)$") {
+            [Environment]::SetEnvironmentVariable($matches[1], $matches[2])
+        }
+    }
+}
+
+$env:PGHOST = $env:PG_HOST
+$env:PGPORT = $env:PG_PORT
+$env:PGDATABASE = $env:PG_DATABASE
+$env:PGUSER = $env:PG_USER
+$env:PGPASSWORD = $env:PG_PASSWORD
 
 Write-Host "🐘 Conectando ao banco hubspot-sync..." -ForegroundColor Yellow
 Write-Host "   Host: $env:PGHOST" -ForegroundColor Gray

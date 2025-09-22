@@ -42,7 +42,7 @@ Nossa primeira análise estava **INCORRETA** porque a API do HubSpot **não reto
 .\deploy_hubspot_table.ps1
 
 # Opção 2: Manual
-psql -h 35.239.64.56 -p 5432 -d hubspot-sync -U meetrox_user -f hubspot_contacts_table_REAL_FINAL.sql
+psql -h [CONFIGURADO_NO_ENV] -p 5432 -d hubspot-sync -U [CONFIGURADO_NO_ENV] -f hubspot_contacts_table_REAL_FINAL.sql
 ```
 
 ### 2. **Importar Workflow n8n**

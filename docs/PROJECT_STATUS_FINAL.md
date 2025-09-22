@@ -210,7 +210,7 @@ FROM (
 ```sql
 Tabela: contacts
 Database: hubspot-sync  
-Host: 35.239.64.56
+Host: [CONFIGURADO_NO_ENV]
 Usuário: n8n-user-integrations (com permissões corretas)
 ```
 

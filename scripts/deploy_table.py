@@ -4,13 +4,18 @@ Deploy da tabela contacts usando Python
 """
 
 import psycopg2
+import os
+from dotenv import load_dotenv
 
-# Credenciais diretas (do .env)
-PG_HOST = "35.239.64.56"
-PG_PORT = "5432"
-PG_DATABASE = "hubspot-sync"
-PG_USER = "meetrox_user"
-PG_PASSWORD = ":NZ%A{%Yi$3\p=mC"
+# Carregar variáveis de ambiente
+load_dotenv()
+
+# Credenciais do .env
+PG_HOST = os.getenv('PG_HOST')
+PG_PORT = os.getenv('PG_PORT', '5432')
+PG_DATABASE = os.getenv('PG_DATABASE')
+PG_USER = os.getenv('PG_USER')
+PG_PASSWORD = os.getenv('PG_PASSWORD')
 
 def deploy_table():
     print("🚀 CRIANDO TABELA CONTACTS NO BANCO HUBSPOT-SYNC")

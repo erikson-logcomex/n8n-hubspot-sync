@@ -50,7 +50,7 @@ python test_hubspot_sync_db.py
 .\deploy_hubspot_table.ps1
 
 # Opção 2: Manual  
-psql -h 35.239.64.56 -p 5432 -d hubspot-sync -U meetrox_user -f hubspot_contacts_table_PADRAO_CORRETO.sql
+psql -h [CONFIGURADO_NO_ENV] -p 5432 -d hubspot-sync -U [CONFIGURADO_NO_ENV] -f hubspot_contacts_table_PADRAO_CORRETO.sql
 ```
 
 ### 3. **Importar Workflow n8n**
