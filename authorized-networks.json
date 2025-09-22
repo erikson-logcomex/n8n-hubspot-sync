@@ -1,0 +1,26 @@
+[
+  {
+    "name": "vpn logcomex",
+    "value": "15.229.107.199/32"
+  },
+  {
+    "name": "casa-erikson", 
+    "value": "187.52.219.232/32"
+  },
+  {
+    "name": "n8n",
+    "value": "34.95.247.159/32"
+  },
+  {
+    "name": "logcomex-curitiba",
+    "value": "168.90.50.50/32"
+  },
+  {
+    "name": "logcomex-tech",
+    "value": "200.169.65.38/32"
+  },
+  {
+    "name": "cloud-run-metabase",
+    "value": "35.247.192.0/18"
+  }
+]

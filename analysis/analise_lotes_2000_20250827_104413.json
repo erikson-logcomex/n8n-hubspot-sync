@@ -1,0 +1,4966 @@
+{
+  "timestamp": "2025-08-27T10:44:13.617579",
+  "amostra_size": 2000,
+  "propriedades_analisadas": 549,
+  "lotes_utilizados": 11,
+  "propriedades_por_lote": 50,
+  "resultados": [
+    {
+      "propriedade": "contagem_de_demonstracoes",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "0"
+      ]
+    },
+    {
+      "propriedade": "createdate",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2019-05-29T04:49:26.114Z",
+        "2019-05-14T16:51:59.443Z",
+        "2019-03-13T19:07:18.041Z",
+        "2019-03-12T15:04:30.628Z",
+        "2019-03-12T15:04:28.185Z"
+      ]
+    },
+    {
+      "propriedade": "currentlyinworkflow",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "propriedade": "hs_all_contact_vids",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "285151;1265701;12825201;12825901;27605651",
+        "35003;131801",
+        "157101;1365751;1263051",
+        "328101",
+        "57455;6297351"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_average_page_views",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "1",
+        "2",
+        "6",
+        "0",
+        "5"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_first_timestamp",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2019-04-25T13:07:56.777Z",
+        "2019-03-29T23:09:22.271Z",
+        "2019-03-20T14:32:38.252Z",
+        "2019-03-13T19:07:18.041Z",
+        "2019-04-16T14:14:05.709Z"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_num_event_completions",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_num_page_views",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "85",
+        "89",
+        "1290",
+        "183",
+        "2352"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_num_visits",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2478",
+        "987",
+        "183",
+        "957",
+        "401"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_revenue",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "0.0"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_source",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "ORGANIC_SEARCH",
+        "PAID_SOCIAL",
+        "SOCIAL_MEDIA",
+        "EMAIL_MARKETING",
+        "DIRECT_TRAFFIC"
+      ]
+    },
+    {
+      "propriedade": "hs_full_name_or_email",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "Erica Turci",
+        "Moises Maylson De Oliveira Maylson",
+        "Helena De Melo",
+        "Cristianne Milli Da Silva Milli Da Silva",
+        "Sanches Sanches"
+      ]
+    },
+    {
+      "propriedade": "hs_is_contact",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_is_unworked",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "false",
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_source",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "ORGANIC_SEARCH",
+        "PAID_SEARCH",
+        "PAID_SOCIAL",
+        "SOCIAL_MEDIA",
+        "EMAIL_MARKETING"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_source_data_1",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "canal de suez",
+        "mkt | inbound mkt - black november - desconhe/outr",
+        "blog.logcomex.com/parametrizacao-na-importacao",
+        "mkt | inbound | dia do consumidor 2024",
+        "mkt | inbound | intermodal 2024"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_source_timestamp",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2019-05-22T17:42:05.520Z",
+        "2020-01-13T11:14:29.037Z",
+        "2019-05-23T17:30:35.425Z",
+        "2019-03-26T20:24:30.032Z",
+        "2019-03-23T18:01:36.524Z"
+      ]
+    },
+    {
+      "propriedade": "hs_legal_basis",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "Legitimate interest – existing customer",
+        "Not applicable",
+        "Legitimate interest – prospect/lead;Not applicable",
+        "Freely given consent from contact;Legitimate inter",
+        "Freely given consent from contact;Not applicable"
+      ]
+    },
+    {
+      "propriedade": "hs_marketable_status",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "false",
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_marketable_until_renewal",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "false"
+      ]
+    },
+    {
+      "propriedade": "hs_object_id",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "171173",
+        "328101",
+        "33926",
+        "37019",
+        "36739"
+      ]
+    },
+    {
+      "propriedade": "hs_pipeline",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "contacts-lifecycle-pipeline"
+      ]
+    },
+    {
+      "propriedade": "hs_predictivescoringtier",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "tier_2",
+        "tier_3",
+        "closed_won",
+        "tier_1",
+        "tier_4"
+      ]
+    },
+    {
+      "propriedade": "hs_registered_member",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_social_facebook_clicks",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "0",
+        "10"
+      ]
+    },
+    {
+      "propriedade": "hs_social_google_plus_clicks",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_social_linkedin_clicks",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "3",
+        "0",
+        "11"
+      ]
+    },
+    {
+      "propriedade": "hs_social_num_broadcast_clicks",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_social_twitter_clicks",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_updated_by_user_id",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "81501353",
+        "70728258",
+        "78947563",
+        "44616615",
+        "13099503"
+      ]
+    },
+    {
+      "propriedade": "hs_was_imported",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hubspotscore",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "60",
+        "70",
+        "10",
+        "35",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "last_phone_update__ic_",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2025-02-04",
+        "2025-03-13",
+        "2024-07-31",
+        "2023-08-08",
+        "2023-08-07"
+      ]
+    },
+    {
+      "propriedade": "lastmodifieddate",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2025-08-21T14:18:13.483Z",
+        "2025-08-12T19:00:41.478Z",
+        "2025-08-12T19:01:00.426Z",
+        "2025-08-15T20:47:53.255Z",
+        "2025-08-15T20:42:55.754Z"
+      ]
+    },
+    {
+      "propriedade": "mkt_business_unit",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "intel",
+        "supply"
+      ]
+    },
+    {
+      "propriedade": "mkt_em_negociacao",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "Não",
+        "Sim"
+      ]
+    },
+    {
+      "propriedade": "mkt_estrategia",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "Inbound"
+      ]
+    },
+    {
+      "propriedade": "mkt_lifecycle_stage",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "lead",
+        "customer",
+        "mql"
+      ]
+    },
+    {
+      "propriedade": "num_conversion_events",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "66",
+        "10",
+        "6",
+        "34",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "num_unique_conversion_events",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "10",
+        "6",
+        "0",
+        "11",
+        "14"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_source_data_1",
+      "total_preenchidos": 1999,
+      "percentual": 99.95,
+      "amostras": [
+        "LinkedIn",
+        "blog.logcomex.com/4-tipos-de-fretes-internacionais",
+        "CONTACTS",
+        "INTEGRATION",
+        "conteudo.logcomex.com/infografico-marco-2019"
+      ]
+    },
+    {
+      "propriedade": "hs_v2_date_entered_subscriber",
+      "total_preenchidos": 1995,
+      "percentual": 99.75,
+      "amostras": [
+        "2023-06-28T12:19:51.887Z",
+        "2023-06-28T12:19:50.767Z",
+        "2023-06-28T12:19:50.952Z",
+        "2023-06-28T12:19:51.512Z",
+        "2023-06-28T12:19:51.286Z"
+      ]
+    },
+    {
+      "propriedade": "limite_de_pontuacao_de_adequacao_12_08_2025",
+      "total_preenchidos": 1995,
+      "percentual": 99.75,
+      "amostras": [
+        "Baixa",
+        "Alta",
+        "Média"
+      ]
+    },
+    {
+      "propriedade": "pontuacao_de_adequacao_12_08_2025",
+      "total_preenchidos": 1995,
+      "percentual": 99.75,
+      "amostras": [
+        "3",
+        "2",
+        "4"
+      ]
+    },
+    {
+      "propriedade": "phone",
+      "total_preenchidos": 1993,
+      "percentual": 99.65,
+      "amostras": [
+        "+41999775010",
+        "+555432314700",
+        "+5513991758801",
+        "5511969053498",
+        "+5531991931949"
+      ]
+    },
+    {
+      "propriedade": "lifecyclestage",
+      "total_preenchidos": 1991,
+      "percentual": 99.55000000000001,
+      "amostras": [
+        "salesqualifiedlead",
+        "marketingqualifiedlead",
+        "86032658",
+        "43688110",
+        "lead"
+      ]
+    },
+    {
+      "propriedade": "govcs_i_phone_number",
+      "total_preenchidos": 1986,
+      "percentual": 99.3,
+      "amostras": [
+        "+554130887409",
+        "+41999775010",
+        "+555432314700",
+        "+5513991758801",
+        "+5531991931949"
+      ]
+    },
+    {
+      "propriedade": "company",
+      "total_preenchidos": 1975,
+      "percentual": 98.75,
+      "amostras": [
+        "TW Transportes",
+        "FR. MEYER'S SOHN LOGISTICA BRASIL LTDA.",
+        "Cargofast Logistics",
+        "BORAQUIMICA LTDA",
+        "SAVINO DEL BENE DO BRASIL LTDA."
+      ]
+    },
+    {
+      "propriedade": "ops___ativa_no_pipeline___ctt___teste_",
+      "total_preenchidos": 1974,
+      "percentual": 98.7,
+      "amostras": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "propriedade": "status_da_empresa",
+      "total_preenchidos": 1969,
+      "percentual": 98.45,
+      "amostras": [
+        "Cliente Inativo",
+        "Recém-criada",
+        "Cliente Ativo",
+        "Lead Perdido",
+        "Faturamento Dividido"
+      ]
+    },
+    {
+      "propriedade": "website",
+      "total_preenchidos": 1962,
+      "percentual": 98.1,
+      "amostras": [
+        "http://shemag.com.br",
+        "http://coscoshipping.com",
+        "http://romi.com",
+        "http://sandvik.com",
+        "http://costalog.com.br"
+      ]
+    },
+    {
+      "propriedade": "firstname",
+      "total_preenchidos": 1953,
+      "percentual": 97.65,
+      "amostras": [
+        "Marjonice Calazans",
+        "Richard Dias",
+        "COMERCIAL INTERNO",
+        "Erica Turci",
+        "Rose"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_source_data_2",
+      "total_preenchidos": 1948,
+      "percentual": 97.39999999999999,
+      "amostras": [
+        "SIDEKICK",
+        "BCC_TO_CRM",
+        "website visits - may 14, 2019",
+        "5207420",
+        "5189461"
+      ]
+    },
+    {
+      "propriedade": "associatedcompanyid",
+      "total_preenchidos": 1910,
+      "percentual": 95.5,
+      "amostras": [
+        "1731957477",
+        "1731780723",
+        "9016447314",
+        "1720108583",
+        "7083895095"
+      ]
+    },
+    {
+      "propriedade": "email",
+      "total_preenchidos": 1899,
+      "percentual": 94.95,
+      "amostras": [
+        "melissa@embassybr.com.br",
+        "importacao@dlcargo.com.br",
+        "alexandre.ortunes@ojipapeis.com.br",
+        "adriana.lima@peraltaatacadista.com.br",
+        "mvanderwielen@nvoconsolidation.com"
+      ]
+    },
+    {
+      "propriedade": "hs_email_domain",
+      "total_preenchidos": 1899,
+      "percentual": 94.95,
+      "amostras": [
+        "kpmlogistica.com.br",
+        "airproducts.com",
+        "big.com.br",
+        "ffingredients.com.ar",
+        "lonza.com"
+      ]
+    },
+    {
+      "propriedade": "hs_email_last_email_name",
+      "total_preenchidos": 1895,
+      "percentual": 94.75,
+      "amostras": [
+        "5 Razões para usar o Search no comex",
+        "[Webinar #02] Dados de exportação: a tecnologia pa",
+        "[Suporte] Primeira Resposta - Suporte",
+        "[Blog] Como o tracking aduaneiro ajuda a reduzir c",
+        "MKT | Inbound | Expansão - LogConnect CCT - client"
+      ]
+    },
+    {
+      "propriedade": "hs_email_sends_since_last_engagement",
+      "total_preenchidos": 1895,
+      "percentual": 94.75,
+      "amostras": [
+        "66",
+        "128",
+        "93",
+        "127",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_all_owner_ids",
+      "total_preenchidos": 1872,
+      "percentual": 93.60000000000001,
+      "amostras": [
+        "50054000;679790705;989511905",
+        "51605713;127544117;1234893163",
+        "100171045;110560354",
+        "50954987;679790705",
+        "78822531;200586254"
+      ]
+    },
+    {
+      "propriedade": "hs_user_ids_of_all_owners",
+      "total_preenchidos": 1872,
+      "percentual": 93.60000000000001,
+      "amostras": [
+        "67964625",
+        "9046491",
+        "11929356;50526212",
+        "62594782;66086959",
+        "45831667;57606048"
+      ]
+    },
+    {
+      "propriedade": "hs_count_is_unworked",
+      "total_preenchidos": 1867,
+      "percentual": 93.35,
+      "amostras": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_count_is_worked",
+      "total_preenchidos": 1867,
+      "percentual": 93.35,
+      "amostras": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hubspot_owner_assigneddate",
+      "total_preenchidos": 1867,
+      "percentual": 93.35,
+      "amostras": [
+        "2023-12-05T11:01:13.526Z",
+        "2025-08-08T12:01:31.068Z",
+        "2025-08-08T12:02:51.211Z",
+        "2025-07-18T12:01:42.067Z",
+        "2019-10-22T13:53:28.632Z"
+      ]
+    },
+    {
+      "propriedade": "hubspot_owner_id",
+      "total_preenchidos": 1867,
+      "percentual": 93.35,
+      "amostras": [
+        "384150865",
+        "44022275",
+        "1049258084",
+        "1157473236",
+        "41594870"
+      ]
+    },
+    {
+      "propriedade": "hs_all_accessible_team_ids",
+      "total_preenchidos": 1836,
+      "percentual": 91.8,
+      "amostras": [
+        "13488080;14576087;16048819;33962216;43829632;46029",
+        "13488018;13488080;14576087;33962216;43829632;46029",
+        "13488080;14576087;46029107",
+        "13317647;13488019;13488037;13488080;46029107;46315",
+        "13488018;13488037;13488063;13488080;14576087;46029"
+      ]
+    },
+    {
+      "propriedade": "hs_all_team_ids",
+      "total_preenchidos": 1836,
+      "percentual": 91.8,
+      "amostras": [
+        "13488018;13488037",
+        "13317647;13488019",
+        "13488018;13488037;16048818",
+        "14576087;16048819;33962216",
+        "13488018;38221247"
+      ]
+    },
+    {
+      "propriedade": "hs_email_delivered",
+      "total_preenchidos": 1822,
+      "percentual": 91.10000000000001,
+      "amostras": [
+        "127",
+        "85",
+        "322",
+        "89",
+        "183"
+      ]
+    },
+    {
+      "propriedade": "hs_email_last_send_date",
+      "total_preenchidos": 1822,
+      "percentual": 91.10000000000001,
+      "amostras": [
+        "2025-08-15T12:25:36.647Z",
+        "2025-08-15T12:25:26.284Z",
+        "2025-08-12T20:29:18.274Z",
+        "2020-02-06T11:36:50Z",
+        "2024-12-03T19:38:42.488Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_first_send_date",
+      "total_preenchidos": 1821,
+      "percentual": 91.05,
+      "amostras": [
+        "2019-12-26T23:18:25Z",
+        "2019-03-15T12:09:29.122Z",
+        "2019-12-26T23:11:49.020Z",
+        "2019-12-26T23:18:13Z",
+        "2019-03-15T12:09:21.666Z"
+      ]
+    },
+    {
+      "propriedade": "hubspot_team_id",
+      "total_preenchidos": 1815,
+      "percentual": 90.75,
+      "amostras": [
+        "62288698",
+        "57320741",
+        "45100637",
+        "16048823",
+        "13488018"
+      ]
+    },
+    {
+      "propriedade": "hs_v2_date_entered_opportunity",
+      "total_preenchidos": 1745,
+      "percentual": 87.25,
+      "amostras": [
+        "2019-04-29T19:46:39.152Z",
+        "2023-06-28T14:09:36.373Z",
+        "2019-04-08T19:25:59.289Z",
+        "2019-08-15T13:46:23.721Z",
+        "2023-06-28T14:09:36.118Z"
+      ]
+    },
+    {
+      "propriedade": "segmento_de_atuacao_",
+      "total_preenchidos": 1740,
+      "percentual": 87.0,
+      "amostras": [
+        "Consultoria de Comex",
+        "Despacho Aduaneiro",
+        "Portos ou Armazém",
+        "Trading",
+        "Exportação"
+      ]
+    },
+    {
+      "propriedade": "num_associated_deals",
+      "total_preenchidos": 1722,
+      "percentual": 86.1,
+      "amostras": [
+        "10",
+        "6",
+        "11",
+        "19",
+        "14"
+      ]
+    },
+    {
+      "propriedade": "first_deal_created_date",
+      "total_preenchidos": 1721,
+      "percentual": 86.05000000000001,
+      "amostras": [
+        "2019-05-24T20:06:18.959Z",
+        "2017-08-29T03:00:00Z",
+        "2018-01-08T19:16:11Z",
+        "2019-03-28T16:59:14.302Z",
+        "2019-04-18T14:19:59.675Z"
+      ]
+    },
+    {
+      "propriedade": "hs_time_between_contact_creation_and_deal_creation",
+      "total_preenchidos": 1721,
+      "percentual": 86.05000000000001,
+      "amostras": [
+        "21612259373",
+        "47602217871",
+        "4991198091",
+        "13041414078",
+        "31095510075"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_source_data_2",
+      "total_preenchidos": 1703,
+      "percentual": 85.15,
+      "amostras": [
+        "228515618",
+        "79621283",
+        "biexportacao.logcomex.io/",
+        "296452650",
+        "72010757"
+      ]
+    },
+    {
+      "propriedade": "setor",
+      "total_preenchidos": 1696,
+      "percentual": 84.8,
+      "amostras": [
+        "Expansão SMB",
+        "NMRR",
+        "Catálogo de Produtos",
+        "Coordenação",
+        "Reativação"
+      ]
+    },
+    {
+      "propriedade": "num_notes",
+      "total_preenchidos": 1671,
+      "percentual": 83.55,
+      "amostras": [
+        "66",
+        "241",
+        "249",
+        "127",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "num_contacted_notes",
+      "total_preenchidos": 1662,
+      "percentual": 83.1,
+      "amostras": [
+        "66",
+        "128",
+        "241",
+        "93",
+        "127"
+      ]
+    },
+    {
+      "propriedade": "contato__nome_do_negocio",
+      "total_preenchidos": 1652,
+      "percentual": 82.6,
+      "amostras": [
+        "Nutrimilho",
+        "CS - QUANTUM LOGISTICA LTDA",
+        "[RENOV] 01-24 - MULTILOG S/A",
+        "[INBOUND] - CS - TRANSCONTINENTAL LOGISTICA S/A - ",
+        "[INBOUND] CS - CRAFT MULTIMODAL LTDA"
+      ]
+    },
+    {
+      "propriedade": "hs_notes_last_activity",
+      "total_preenchidos": 1630,
+      "percentual": 81.5,
+      "amostras": [
+        "0-46-79000779441",
+        "0-48-22906824463",
+        "0-27-86679193196",
+        "0-48-22759279413",
+        "0-49-2022400602"
+      ]
+    },
+    {
+      "propriedade": "notes_last_updated",
+      "total_preenchidos": 1627,
+      "percentual": 81.35,
+      "amostras": [
+        "2025-08-06T19:23:46.034Z",
+        "2023-10-19T18:15:59.729Z",
+        "2025-02-20T19:43:33.833Z",
+        "2025-04-15T19:52:38.980Z",
+        "2021-05-11T20:00:00Z"
+      ]
+    },
+    {
+      "propriedade": "hs_v2_date_entered_lead",
+      "total_preenchidos": 1608,
+      "percentual": 80.4,
+      "amostras": [
+        "2023-06-28T14:03:06.105Z",
+        "2019-03-29T23:09:22.271Z",
+        "2023-06-28T14:26:39.209Z",
+        "2023-09-15T16:51:41.618Z",
+        "2023-09-15T16:51:40.691Z"
+      ]
+    },
+    {
+      "propriedade": "hs_first_outreach_date",
+      "total_preenchidos": 1536,
+      "percentual": 76.8,
+      "amostras": [
+        "2020-11-16T14:37:52Z",
+        "2019-05-07T20:54:13.725Z",
+        "2021-02-24T18:00:00Z",
+        "2020-10-02T13:36:03Z",
+        "2019-04-17T18:50:25.188Z"
+      ]
+    },
+    {
+      "propriedade": "notes_last_contacted",
+      "total_preenchidos": 1533,
+      "percentual": 76.64999999999999,
+      "amostras": [
+        "2024-08-12T14:03:56.169Z",
+        "2025-04-03T13:41:40.200Z",
+        "2023-10-19T18:15:59.729Z",
+        "2025-04-15T19:52:38.980Z",
+        "2025-05-19T18:44:23.837Z"
+      ]
+    },
+    {
+      "propriedade": "hs_ip_timezone",
+      "total_preenchidos": 1459,
+      "percentual": 72.95,
+      "amostras": [
+        "europe_slash_rome",
+        "america_slash_detroit",
+        "america_slash_montevideo",
+        "europe_slash_madrid",
+        "america_slash_recife"
+      ]
+    },
+    {
+      "propriedade": "hs_timezone",
+      "total_preenchidos": 1459,
+      "percentual": 72.95,
+      "amostras": [
+        "europe_slash_rome",
+        "america_slash_detroit",
+        "america_slash_montevideo",
+        "europe_slash_madrid",
+        "america_slash_recife"
+      ]
+    },
+    {
+      "propriedade": "ip_country",
+      "total_preenchidos": 1459,
+      "percentual": 72.95,
+      "amostras": [
+        "portugal",
+        "finland",
+        "italy",
+        "netherlands",
+        "united states"
+      ]
+    },
+    {
+      "propriedade": "ip_country_code",
+      "total_preenchidos": 1459,
+      "percentual": 72.95,
+      "amostras": [
+        "br",
+        "nl",
+        "ar",
+        "nz",
+        "es"
+      ]
+    },
+    {
+      "propriedade": "hs_email_last_open_date",
+      "total_preenchidos": 1437,
+      "percentual": 71.85000000000001,
+      "amostras": [
+        "2019-05-14T22:30:58.629Z",
+        "2021-08-23T18:57:42.660Z",
+        "2021-12-08T15:16:50.021Z",
+        "2020-03-18T14:23:06.655Z",
+        "2019-03-15T13:42:36.612Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_open",
+      "total_preenchidos": 1437,
+      "percentual": 71.85000000000001,
+      "amostras": [
+        "66",
+        "241",
+        "128",
+        "93",
+        "127"
+      ]
+    },
+    {
+      "propriedade": "finops__customer_id",
+      "total_preenchidos": 1434,
+      "percentual": 71.7,
+      "amostras": [
+        "998",
+        "127",
+        "85",
+        "11993",
+        "89"
+      ]
+    },
+    {
+      "propriedade": "hs_email_first_open_date",
+      "total_preenchidos": 1431,
+      "percentual": 71.55,
+      "amostras": [
+        "2020-01-06T10:24:03.132Z",
+        "2020-01-14T16:16:31.910Z",
+        "2019-05-14T22:30:58.629Z",
+        "2020-01-15T20:51:07.728Z",
+        "2020-01-15T22:06:41.688Z"
+      ]
+    },
+    {
+      "propriedade": "ip_state",
+      "total_preenchidos": 1415,
+      "percentual": 70.75,
+      "amostras": [
+        "new jersey",
+        "shandong sheng",
+        "minas gerais",
+        "braga",
+        "zhejiang sheng"
+      ]
+    },
+    {
+      "propriedade": "ip_state_code",
+      "total_preenchidos": 1409,
+      "percentual": 70.45,
+      "amostras": [
+        "qld",
+        "az",
+        "ge",
+        "11",
+        "am"
+      ]
+    },
+    {
+      "propriedade": "whatsapp_api",
+      "total_preenchidos": 1400,
+      "percentual": 70.0,
+      "amostras": [
+        "+41999775010",
+        "+5511988139069",
+        "+555432314700",
+        "+5513991758801",
+        "+5531991931949"
+      ]
+    },
+    {
+      "propriedade": "hs_searchable_calculated_phone_number",
+      "total_preenchidos": 1359,
+      "percentual": 67.95,
+      "amostras": [
+        "5511969053498",
+        "19981986418",
+        "5515974027078",
+        "11998722105",
+        "5511940094794"
+      ]
+    },
+    {
+      "propriedade": "full_name",
+      "total_preenchidos": 1336,
+      "percentual": 66.8,
+      "amostras": [
+        "Franklin  Carraco Couras",
+        "Moises Maylson De Oliveira Maylson",
+        "Denise Magalães ",
+        "Sanches Sanches",
+        "Rafael Dorneles Dorneles"
+      ]
+    },
+    {
+      "propriedade": "hs_marketable_reason_id",
+      "total_preenchidos": 1305,
+      "percentual": 65.25,
+      "amostras": [
+        "565135432",
+        "1663829763",
+        "1637832292",
+        "1614483489",
+        "621915648"
+      ]
+    },
+    {
+      "propriedade": "hs_marketable_reason_type",
+      "total_preenchidos": 1305,
+      "percentual": 65.25,
+      "amostras": [
+        "FEEDBACK_SUBMISSION",
+        "CONTACT_IMPORT",
+        "USER_SET",
+        "FORM_SUBMISSION",
+        "WORKFLOW"
+      ]
+    },
+    {
+      "propriedade": "jobtitle",
+      "total_preenchidos": 1262,
+      "percentual": 63.1,
+      "amostras": [
+        "Responsável por importação.",
+        "CEO",
+        "DIRETOR",
+        "Despachante/Socia ",
+        "Supervisor/Coordenador de Logística"
+      ]
+    },
+    {
+      "propriedade": "hs_predictivecontactscore_v2",
+      "total_preenchidos": 1248,
+      "percentual": 62.4,
+      "amostras": [
+        "2.08",
+        "2.58",
+        "0.5",
+        "1.76",
+        "2.95"
+      ]
+    },
+    {
+      "propriedade": "hs_last_sales_activity_date",
+      "total_preenchidos": 1223,
+      "percentual": 61.150000000000006,
+      "amostras": [
+        "1970-01-19T20:14:55.170Z",
+        "1970-01-21T03:28:15.477Z",
+        "1970-01-20T15:35:57.927Z",
+        "1970-01-20T15:32:34.105Z",
+        "1970-01-20T06:51:13.884Z"
+      ]
+    },
+    {
+      "propriedade": "lastname",
+      "total_preenchidos": 1219,
+      "percentual": 60.95,
+      "amostras": [
+        "Haantjes",
+        "Galbe",
+        "Tejeria",
+        "Santos Maniga",
+        "Saroli"
+      ]
+    },
+    {
+      "propriedade": "hs_v2_date_entered_marketingqualifiedlead",
+      "total_preenchidos": 1194,
+      "percentual": 59.699999999999996,
+      "amostras": [
+        "2023-09-15T16:53:22.400Z",
+        "2022-11-10T18:58:07.966Z",
+        "2023-06-28T14:04:11.027Z",
+        "2024-08-23T10:42:25.959Z",
+        "2023-06-28T14:21:48.279Z"
+      ]
+    },
+    {
+      "propriedade": "guardiao",
+      "total_preenchidos": 1187,
+      "percentual": 59.35,
+      "amostras": [
+        "165437457",
+        "1703973779",
+        "96918657",
+        "Valeria Antunes",
+        "Jessica Steinheusen"
+      ]
+    },
+    {
+      "propriedade": "ip_city",
+      "total_preenchidos": 1163,
+      "percentual": 58.15,
+      "amostras": [
+        "belo horizonte",
+        "lamim",
+        "manaus",
+        "braga",
+        "mountain view"
+      ]
+    },
+    {
+      "propriedade": "codigo_do_voucher",
+      "total_preenchidos": 1152,
+      "percentual": 57.599999999999994,
+      "amostras": [
+        "FERES100",
+        "FOLGUERAL100",
+        "CAPELARI50",
+        "TYSZKA100",
+        "CAPELARI100"
+      ]
+    },
+    {
+      "propriedade": "guardiao__cs_",
+      "total_preenchidos": 1152,
+      "percentual": 57.599999999999994,
+      "amostras": [
+        "165437457",
+        "1703973779",
+        "96918657",
+        "36609767",
+        "39912756"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number",
+      "total_preenchidos": 1150,
+      "percentual": 57.49999999999999,
+      "amostras": [
+        "+555132010300",
+        "+551239084167",
+        "+5541996800393",
+        "+41999775010",
+        "+555130666562"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_country_code",
+      "total_preenchidos": 1147,
+      "percentual": 57.35,
+      "amostras": [
+        "GT",
+        "CN",
+        "US",
+        "CH",
+        "NO"
+      ]
+    },
+    {
+      "propriedade": "cargo_",
+      "total_preenchidos": 1109,
+      "percentual": 55.45,
+      "amostras": [
+        "Gerente",
+        "Supervisor/Coordenador",
+        "Analista/Assistente",
+        "Sócio/CEO/Proprietário",
+        "Outro"
+      ]
+    },
+    {
+      "propriedade": "departamento",
+      "total_preenchidos": 1085,
+      "percentual": 54.25,
+      "amostras": [
+        "Supply Chain",
+        "BI",
+        "Compras",
+        "Financeiro",
+        "Operações"
+      ]
+    },
+    {
+      "propriedade": "hs_last_sales_activity_timestamp",
+      "total_preenchidos": 1053,
+      "percentual": 52.65,
+      "amostras": [
+        "2022-10-31T19:28:12.763Z",
+        "2021-10-21T20:28:02.464Z",
+        "2025-08-12T01:28:17.202Z",
+        "2020-01-13T11:14:29.037Z",
+        "2023-03-10T19:34:18.412Z"
+      ]
+    },
+    {
+      "propriedade": "hs_messaging_engagement_score",
+      "total_preenchidos": 1037,
+      "percentual": 51.849999999999994,
+      "amostras": [
+        "0.15852219",
+        "0.024143241",
+        "0.037106354",
+        "0.3399201",
+        "0.0323129"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_last_visit_timestamp",
+      "total_preenchidos": 998,
+      "percentual": 49.9,
+      "amostras": [
+        "2020-01-13T11:14:29.037Z",
+        "2025-01-23T10:39:00Z",
+        "2024-03-04T17:54:01.341Z",
+        "2021-06-26T05:56:28.345Z",
+        "2025-02-20T20:05:00Z"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_first_visit_timestamp",
+      "total_preenchidos": 996,
+      "percentual": 49.8,
+      "amostras": [
+        "2020-03-02T08:42:08.607Z",
+        "2019-06-24T19:58:00Z",
+        "2019-12-30T14:17:38.111Z",
+        "2020-01-13T11:14:29.037Z",
+        "2019-07-02T18:31:36.048Z"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_last_timestamp",
+      "total_preenchidos": 996,
+      "percentual": 49.8,
+      "amostras": [
+        "2020-01-13T11:14:29.037Z",
+        "2025-01-23T10:39:00Z",
+        "2024-03-04T17:54:01.341Z",
+        "2021-06-26T05:56:28.345Z",
+        "2022-07-25T18:28:39Z"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_last_url",
+      "total_preenchidos": 996,
+      "percentual": 49.8,
+      "amostras": [
+        "https://www.logcomex.com/eventos/logcomex-summit-2",
+        "https://www.logcomex.com/?utm_campaign=MKT%20%7C%2",
+        "https://plataforma.logcomex.io/",
+        "https://meetings.hubspot.com/luisa-salomao",
+        "https://ncm.logcomex.com/35069120-adesivos-a-base-"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_first_url",
+      "total_preenchidos": 992,
+      "percentual": 49.6,
+      "amostras": [
+        "https://www.logcomex.com/eventos/logcomex-summit-2",
+        "https://plataforma.logcomex.io/",
+        "https://www.logcomex.com/?utm_campaign=MKT%20%7C%2",
+        "https://meetings.hubspot.com/luisa-salomao",
+        "https://www.logcomex.com/campanhas/infograficos-cp"
+      ]
+    },
+    {
+      "propriedade": "hs_v2_date_entered_customer",
+      "total_preenchidos": 991,
+      "percentual": 49.55,
+      "amostras": [
+        "2023-06-28T14:10:42.097Z",
+        "2023-06-28T14:35:16.649Z",
+        "2023-06-28T14:26:58.037Z",
+        "2019-04-12T14:55:14.307Z",
+        "2019-04-25T21:04:13.075Z"
+      ]
+    },
+    {
+      "propriedade": "hs_sales_email_last_replied",
+      "total_preenchidos": 984,
+      "percentual": 49.2,
+      "amostras": [
+        "2025-04-30T14:17:32Z",
+        "2019-06-11T14:50:16Z",
+        "2019-10-18T19:13:41Z",
+        "2024-08-14T14:30:58Z",
+        "2020-06-10T16:55:31Z"
+      ]
+    },
+    {
+      "propriedade": "recent_deal_close_date",
+      "total_preenchidos": 963,
+      "percentual": 48.15,
+      "amostras": [
+        "2020-12-22T03:00:00Z",
+        "2018-11-06T18:46:25Z",
+        "2025-06-17T20:12:11.044Z",
+        "2024-08-09T16:53:48.323Z",
+        "2025-03-03T14:20:32.281Z"
+      ]
+    },
+    {
+      "propriedade": "hs_v2_date_entered_salesqualifiedlead",
+      "total_preenchidos": 962,
+      "percentual": 48.1,
+      "amostras": [
+        "2023-06-28T14:05:01.412Z",
+        "2023-06-28T14:05:16.260Z",
+        "2023-06-28T14:22:49.852Z",
+        "2023-06-28T14:05:16.695Z",
+        "2023-06-28T14:22:51.791Z"
+      ]
+    },
+    {
+      "propriedade": "whatsapp_error_spread_chat",
+      "total_preenchidos": 953,
+      "percentual": 47.65,
+      "amostras": [
+        "Spam Rate limit hit",
+        "User's number is part of an experiment",
+        "Message undeliverable",
+        "This message was not delivered to maintain healthy"
+      ]
+    },
+    {
+      "propriedade": "total_revenue",
+      "total_preenchidos": 946,
+      "percentual": 47.3,
+      "amostras": [
+        "8938.590",
+        "3162.5",
+        "61965.340",
+        "28526.0",
+        "5675.00"
+      ]
+    },
+    {
+      "propriedade": "recent_deal_amount",
+      "total_preenchidos": 890,
+      "percentual": 44.5,
+      "amostras": [
+        "684.500",
+        "4611.11",
+        "133.460",
+        "116.400",
+        "3162.5"
+      ]
+    },
+    {
+      "propriedade": "cs_score_2",
+      "total_preenchidos": 864,
+      "percentual": 43.2,
+      "amostras": [
+        "10",
+        "6",
+        "34",
+        "0",
+        "11"
+      ]
+    },
+    {
+      "propriedade": "cs_score_threshold",
+      "total_preenchidos": 864,
+      "percentual": 43.2,
+      "amostras": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    {
+      "propriedade": "hs_email_last_click_date",
+      "total_preenchidos": 804,
+      "percentual": 40.2,
+      "amostras": [
+        "2025-08-18T15:20:52.497Z",
+        "2023-07-22T15:15:42.721Z",
+        "2022-01-28T16:50:21.054Z",
+        "2024-03-04T17:50:49.752Z",
+        "2020-01-20T23:34:18.823Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_click",
+      "total_preenchidos": 802,
+      "percentual": 40.1,
+      "amostras": [
+        "10",
+        "93",
+        "6",
+        "34",
+        "11"
+      ]
+    },
+    {
+      "propriedade": "hs_email_first_click_date",
+      "total_preenchidos": 798,
+      "percentual": 39.900000000000006,
+      "amostras": [
+        "2019-04-29T20:18:44.945Z",
+        "2020-02-28T14:20:41.724Z",
+        "2022-09-01T17:05:01.784Z",
+        "2020-01-20T23:34:18.823Z",
+        "2019-06-25T18:39:47.384Z"
+      ]
+    },
+    {
+      "propriedade": "contato__ncm_mais_importada",
+      "total_preenchidos": 786,
+      "percentual": 39.300000000000004,
+      "amostras": [
+        "Outras partes de aparelhos telefônicos, incluindo ",
+        "Móveis, mobiliário médico-cirúrgico, colchões, alm",
+        "Outros veículos automóveis, sem dispositivo de ele",
+        "6907.21.00",
+        "Ésteres de dioctila do ácido tereftálico"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_last_referrer",
+      "total_preenchidos": 766,
+      "percentual": 38.3,
+      "amostras": [
+        "https://www.logcomex.com/eventos/logcomex-summit-2",
+        "https://plataforma.logcomex.io/",
+        "https://www.logcomex.com/?utm_campaign=MKT%20%7C%2",
+        "android-app://com.linkedin.android/",
+        "https://blog.logcomex.com/year-to-date-no-comercio"
+      ]
+    },
+    {
+      "propriedade": "closedate",
+      "total_preenchidos": 752,
+      "percentual": 37.6,
+      "amostras": [
+        "2019-11-19T13:12:19.859Z",
+        "2020-09-23T18:52:21.025Z",
+        "2019-04-12T14:55:14.307Z",
+        "2019-04-25T21:04:13.075Z",
+        "2020-01-17T11:17:24.194Z"
+      ]
+    },
+    {
+      "propriedade": "days_to_close",
+      "total_preenchidos": 752,
+      "percentual": 37.6,
+      "amostras": [
+        "938",
+        "987",
+        "322",
+        "183",
+        "178"
+      ]
+    },
+    {
+      "propriedade": "hs_time_between_contact_creation_and_deal_close",
+      "total_preenchidos": 733,
+      "percentual": 36.65,
+      "amostras": [
+        "132950548591",
+        "128998877601",
+        "131742539708",
+        "128916240142",
+        "135559562541"
+      ]
+    },
+    {
+      "propriedade": "hs_time_to_move_from_lead_to_customer",
+      "total_preenchidos": 733,
+      "percentual": 36.65,
+      "amostras": [
+        "410517",
+        "494856",
+        "475351",
+        "394378",
+        "329917"
+      ]
+    },
+    {
+      "propriedade": "hs_associated_target_accounts",
+      "total_preenchidos": 730,
+      "percentual": 36.5,
+      "amostras": [
+        "1",
+        "0",
+        "2"
+      ]
+    },
+    {
+      "propriedade": "hs_time_to_move_from_subscriber_to_customer",
+      "total_preenchidos": 728,
+      "percentual": 36.4,
+      "amostras": [
+        "8117677",
+        "48526065158",
+        "7573325",
+        "8060321",
+        "9795214886"
+      ]
+    },
+    {
+      "propriedade": "govc_i_filas_twillio_contact",
+      "total_preenchidos": 725,
+      "percentual": 36.25,
+      "amostras": [
+        "key-account-analytics",
+        "smb-visibility",
+        "onboarding",
+        "smb-1-analytics",
+        "retencao"
+      ]
+    },
+    {
+      "propriedade": "hs_time_to_move_from_marketingqualifiedlead_to_customer",
+      "total_preenchidos": 725,
+      "percentual": 36.25,
+      "amostras": [
+        "253243",
+        "544381414",
+        "353822",
+        "1712028881",
+        "282134"
+      ]
+    },
+    {
+      "propriedade": "hs_time_to_move_from_opportunity_to_customer",
+      "total_preenchidos": 721,
+      "percentual": 36.05,
+      "amostras": [
+        "62735",
+        "62214",
+        "62807",
+        "65121",
+        "63278"
+      ]
+    },
+    {
+      "propriedade": "hs_time_to_move_from_salesqualifiedlead_to_customer",
+      "total_preenchidos": 717,
+      "percentual": 35.85,
+      "amostras": [
+        "187889",
+        "198131",
+        "195923",
+        "343059",
+        "304493"
+      ]
+    },
+    {
+      "propriedade": "hs_sales_email_last_opened",
+      "total_preenchidos": 693,
+      "percentual": 34.65,
+      "amostras": [
+        "2022-10-31T19:28:12.763Z",
+        "2022-02-09T01:25:10.959Z",
+        "2025-04-29T09:58:19.039Z",
+        "2023-03-10T19:34:18.412Z",
+        "2025-08-08T17:51:27.603Z"
+      ]
+    },
+    {
+      "propriedade": "n6__etapa_cliente_ativo",
+      "total_preenchidos": 691,
+      "percentual": 34.55,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "first_conversion_date",
+      "total_preenchidos": 690,
+      "percentual": 34.5,
+      "amostras": [
+        "2024-03-04T17:54:01.341Z",
+        "2019-03-15T18:46:00.752Z",
+        "2020-11-16T12:47:39.436Z",
+        "2021-02-04T13:56:27.160Z",
+        "2022-04-19T21:12:40.819Z"
+      ]
+    },
+    {
+      "propriedade": "first_conversion_event_name",
+      "total_preenchidos": 690,
+      "percentual": 34.5,
+      "amostras": [
+        "Meetings Link: jhonatan-araujo",
+        "Meetings Link: waleska-kaudy",
+        "Internal - Document Viewer Communication Consent F",
+        "Webinar - Importações x Benefícios fiscais: Webina",
+        "Webinar - Linha do tempo: o papel da tecnologia pa"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_form_submissions",
+      "total_preenchidos": 690,
+      "percentual": 34.5,
+      "amostras": [
+        "0f4c7ebe-a72d-496f-be04-af2e6826d24b::175390589949",
+        "2907a6c8-352e-44e4-896b-014ecd518b61::162267054105",
+        "75c36ed9-1776-4f8d-989a-4e7b5042ec65::155974324552",
+        "4dcf7b9f-6cfd-49d6-88b5-98840377cc81::164374159729",
+        "7df14a47-f720-425d-8c73-55158a6f9360::155915975574"
+      ]
+    },
+    {
+      "propriedade": "recent_conversion_date",
+      "total_preenchidos": 690,
+      "percentual": 34.5,
+      "amostras": [
+        "2025-08-12T01:28:17.202Z",
+        "2024-03-04T17:54:01.341Z",
+        "2021-06-26T05:56:28.345Z",
+        "2020-11-16T12:47:39.436Z",
+        "2021-02-04T13:56:27.160Z"
+      ]
+    },
+    {
+      "propriedade": "recent_conversion_event_name",
+      "total_preenchidos": 690,
+      "percentual": 34.5,
+      "amostras": [
+        "Meetings Link: jhonatan-araujo",
+        "Meetings Link: waleska-kaudy",
+        "Internal - Document Viewer Communication Consent F",
+        "Webinar - Importações x Benefícios fiscais: Webina",
+        "MKT | Solicitações de Demonstração via Chat Suport"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_meeting_activity",
+      "total_preenchidos": 681,
+      "percentual": 34.050000000000004,
+      "amostras": [
+        "2025-04-15T19:00:00Z",
+        "2022-02-16T18:00:00Z",
+        "2024-11-27T17:30:00Z",
+        "2024-10-02T17:00:00Z",
+        "2025-06-03T16:30:00Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_bounce",
+      "total_preenchidos": 665,
+      "percentual": 33.25,
+      "amostras": [
+        "10",
+        "6",
+        "0",
+        "11",
+        "30"
+      ]
+    },
+    {
+      "propriedade": "hs_email_recipient_fatigue_recovery_time",
+      "total_preenchidos": 637,
+      "percentual": 31.85,
+      "amostras": [
+        "2025-09-01T12:24:57.699Z",
+        "2025-09-01T12:18:18.298Z",
+        "2025-09-01T12:05:36.372Z",
+        "2025-09-01T12:09:52.113Z",
+        "2024-07-25T18:01:21.391Z"
+      ]
+    },
+    {
+      "propriedade": "city",
+      "total_preenchidos": 635,
+      "percentual": 31.75,
+      "amostras": [
+        "Ortigueira",
+        "Qingdao",
+        "Maringá",
+        "Barcelona",
+        "Caxias do Sul"
+      ]
+    },
+    {
+      "propriedade": "squad_cs",
+      "total_preenchidos": 626,
+      "percentual": 31.3,
+      "amostras": [
+        "Agente de Carga",
+        "SMB",
+        "Enterprise",
+        "Tracking",
+        "KA"
+      ]
+    },
+    {
+      "propriedade": "classificacao_do_cliente",
+      "total_preenchidos": 607,
+      "percentual": 30.349999999999998,
+      "amostras": [
+        "Analytics",
+        "High",
+        "Visibility",
+        "Mid",
+        "Tracking"
+      ]
+    },
+    {
+      "propriedade": "hs_sequences_actively_enrolled_count",
+      "total_preenchidos": 581,
+      "percentual": 29.049999999999997,
+      "amostras": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_email_hard_bounce_reason_enum",
+      "total_preenchidos": 580,
+      "percentual": 28.999999999999996,
+      "amostras": [
+        "UNKNOWN_USER",
+        "SPAM",
+        "MAILBOX_FULL",
+        "POLICY",
+        "OTHER"
+      ]
+    },
+    {
+      "propriedade": "hs_persona",
+      "total_preenchidos": 577,
+      "percentual": 28.849999999999998,
+      "amostras": [
+        "persona_5",
+        "persona_13",
+        "persona_8",
+        "persona_11",
+        "persona_6"
+      ]
+    },
+    {
+      "propriedade": "mobilephone",
+      "total_preenchidos": 577,
+      "percentual": 28.849999999999998,
+      "amostras": [
+        "+8613863998529",
+        "+5541991549750",
+        "+5511988139069",
+        "+5547988510282",
+        "+55 47 999163650"
+      ]
+    },
+    {
+      "propriedade": "hs_searchable_calculated_mobile_number",
+      "total_preenchidos": 571,
+      "percentual": 28.549999999999997,
+      "amostras": [
+        "1332798100",
+        "15974027078",
+        "31999816359",
+        "11962689860",
+        "21964669400"
+      ]
+    },
+    {
+      "propriedade": "hs_last_sales_activity_type",
+      "total_preenchidos": 554,
+      "percentual": 27.700000000000003,
+      "amostras": [
+        "EMAIL_REPLY",
+        "FORM_SUBMITTED",
+        "PRESENTATION_REVISIT",
+        "EMAIL_OPEN",
+        "HUBSPOT_REVISIT"
+      ]
+    },
+    {
+      "propriedade": "last_form_submitted__ic_",
+      "total_preenchidos": 552,
+      "percentual": 27.6,
+      "amostras": [
+        "2021-03-12",
+        "2022-10-31",
+        "2021-01-20",
+        "2024-01-08",
+        "2024-08-27"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_mobile_number",
+      "total_preenchidos": 543,
+      "percentual": 27.150000000000002,
+      "amostras": [
+        "+8613863998529",
+        "+5541991549750",
+        "+5511988139069",
+        "+5547988510282",
+        "+5541997977157"
+      ]
+    },
+    {
+      "propriedade": "country",
+      "total_preenchidos": 517,
+      "percentual": 25.85,
+      "amostras": [
+        "United States",
+        "United Arab Emirates",
+        "Colombia",
+        "Spain",
+        "Brazil"
+      ]
+    },
+    {
+      "propriedade": "state",
+      "total_preenchidos": 501,
+      "percentual": 25.05,
+      "amostras": [
+        "New South Wales",
+        "Sao Paulo",
+        "Rio Grande do Sul",
+        "Amazonas",
+        "Rio de Janeiro"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_sequence_ended_date",
+      "total_preenchidos": 457,
+      "percentual": 22.85,
+      "amostras": [
+        "2019-07-04T18:38:35.877Z",
+        "2023-01-23T16:50:21.502Z",
+        "2019-07-30T02:00:03.506Z",
+        "2019-07-10T17:59:04.261Z",
+        "2021-05-26T00:53:32.399Z"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_sequence_enrolled",
+      "total_preenchidos": 457,
+      "percentual": 22.85,
+      "amostras": [
+        "1734647",
+        "36987144",
+        "37523029",
+        "92229698",
+        "67747357"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_sequence_enrolled_date",
+      "total_preenchidos": 457,
+      "percentual": 22.85,
+      "amostras": [
+        "2021-07-05T13:32:34.296Z",
+        "2021-10-14T17:23:59.319Z",
+        "2020-11-09T17:44:53.656Z",
+        "2024-10-30T12:47:56.696Z",
+        "2021-07-07T17:27:04.231Z"
+      ]
+    },
+    {
+      "propriedade": "hs_sequences_enrolled_count",
+      "total_preenchidos": 457,
+      "percentual": 22.85,
+      "amostras": [
+        "1",
+        "2",
+        "6",
+        "5",
+        "4"
+      ]
+    },
+    {
+      "propriedade": "hs_sequences_is_enrolled",
+      "total_preenchidos": 457,
+      "percentual": 22.85,
+      "amostras": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "propriedade": "ldr_estrategia",
+      "total_preenchidos": 450,
+      "percentual": 22.5,
+      "amostras": [
+        "[IC] Encontro Soluções Técnologicas - Logístico Po",
+        "Reativação mar/25",
+        "Expansão - NCM Intel Fev 25",
+        "BDRs Julho 2024",
+        "Ação heatmap EVs - Jun 25"
+      ]
+    },
+    {
+      "propriedade": "cnpj",
+      "total_preenchidos": 419,
+      "percentual": 20.95,
+      "amostras": [
+        "711083000127",
+        "4799090000183",
+        "8241850000193",
+        "43823079000163",
+        "25232115000132"
+      ]
+    },
+    {
+      "propriedade": "hs_currently_enrolled_in_prospecting_agent",
+      "total_preenchidos": 391,
+      "percentual": 19.55,
+      "amostras": [
+        "false"
+      ]
+    },
+    {
+      "propriedade": "contato__total_de_provaveis_importadores",
+      "total_preenchidos": 343,
+      "percentual": 17.150000000000002,
+      "amostras": [
+        "66",
+        "128",
+        "MAR - 34 | AER - 36",
+        "249",
+        "390"
+      ]
+    },
+    {
+      "propriedade": "contato__exportador_mais_utilizado",
+      "total_preenchidos": 323,
+      "percentual": 16.150000000000002,
+      "amostras": [
+        "The Dow Chemical Company",
+        "WEST NORWAY AS",
+        "Mendoza Exports",
+        "0",
+        "BADER INTERNATIONAL SUCURSAL URUGUAY"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_first_referrer",
+      "total_preenchidos": 312,
+      "percentual": 15.6,
+      "amostras": [
+        "https://plataforma.logcomex.io/",
+        "android-app://com.linkedin.android/",
+        "https://www.linkedin.com/?originalSubdomain=br",
+        "https://sistema.logcomex.io/",
+        "http://instagram.com/"
+      ]
+    },
+    {
+      "propriedade": "contato__ranking_cliente",
+      "total_preenchidos": 309,
+      "percentual": 15.45,
+      "amostras": [
+        "207",
+        "128",
+        "10",
+        "93",
+        "37"
+      ]
+    },
+    {
+      "propriedade": "decline_created_at",
+      "total_preenchidos": 307,
+      "percentual": 15.35,
+      "amostras": [
+        "2025-08-27T11:53:00Z",
+        "2025-07-01T23:16:51Z",
+        "2024-11-07T17:35:55Z",
+        "2025-08-11T17:14:13Z",
+        "2022-06-29T19:31:20Z"
+      ]
+    },
+    {
+      "propriedade": "user__implementador",
+      "total_preenchidos": 307,
+      "percentual": 15.35,
+      "amostras": [
+        "39664813",
+        "200586254",
+        "230097754",
+        "679790705",
+        "50954987"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_sequence_finished_date",
+      "total_preenchidos": 304,
+      "percentual": 15.2,
+      "amostras": [
+        "2022-09-09T03:00:55.964Z",
+        "2021-01-27T19:49:20.968Z",
+        "2019-07-04T18:38:35.877Z",
+        "2021-05-20T20:30:39.750Z",
+        "2025-04-01T15:32:07.951Z"
+      ]
+    },
+    {
+      "propriedade": "utm_source",
+      "total_preenchidos": 304,
+      "percentual": 15.2,
+      "amostras": [
+        "mail",
+        "adwords",
+        "linkedin",
+        "optinmonster",
+        "blog"
+      ]
+    },
+    {
+      "propriedade": "utm_medium",
+      "total_preenchidos": 303,
+      "percentual": 15.15,
+      "amostras": [
+        "mail",
+        "linkedin",
+        "banner-blog",
+        "paid-facebook",
+        "blog"
+      ]
+    },
+    {
+      "propriedade": "utm_campaign",
+      "total_preenchidos": 300,
+      "percentual": 15.0,
+      "amostras": [
+        "semana-agentes-de-carga-publico-lista-alvo",
+        "13482364-MKT | Inbound - Talks Guerra Tarifas - 02",
+        "GA_IMP_SEA_TOPO_Relatório de Importação",
+        "duimp",
+        "talks-2022-maino"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optimal_send_time_of_day",
+      "total_preenchidos": 290,
+      "percentual": 14.499999999999998,
+      "amostras": [
+        "16:22",
+        "19:02",
+        "18:15",
+        "17:47",
+        "14:45"
+      ]
+    },
+    {
+      "propriedade": "hs_membership_has_accessed_private_content",
+      "total_preenchidos": 281,
+      "percentual": 14.05,
+      "amostras": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "work_email",
+      "total_preenchidos": 277,
+      "percentual": 13.850000000000001,
+      "amostras": [
+        "thiago.burbela@grupocasco.com.br",
+        "ricardo@dtctoys.com.br",
+        "tiago.carvalho@brasiliense.com.br",
+        "carolina.urzi@overseasbrasil.com.br",
+        "morgana.scholl@randon.com.br"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_merged_vids",
+      "total_preenchidos": 269,
+      "percentual": 13.450000000000001,
+      "amostras": [
+        "1286551:1579194339795",
+        "467501:1579195567489;487051:1579194676136;1126556:",
+        "870801:1579193084808",
+        "1249853:1579195863126",
+        "37253:1579195836443"
+      ]
+    },
+    {
+      "propriedade": "hs_merged_object_ids",
+      "total_preenchidos": 269,
+      "percentual": 13.450000000000001,
+      "amostras": [
+        "32951",
+        "37513",
+        "581101",
+        "33105",
+        "35007"
+      ]
+    },
+    {
+      "propriedade": "mkt_touch_date",
+      "total_preenchidos": 252,
+      "percentual": 12.6,
+      "amostras": [
+        "2025-03-06",
+        "2025-03-13",
+        "2025-08-22",
+        "2025-03-19",
+        "2025-04-11"
+      ]
+    },
+    {
+      "propriedade": "mkt_touch_type",
+      "total_preenchidos": 252,
+      "percentual": 12.6,
+      "amostras": [
+        "page_view",
+        "form_submission",
+        "email_click",
+        "Download"
+      ]
+    },
+    {
+      "propriedade": "hs_latest_sequence_unenrolled_date",
+      "total_preenchidos": 242,
+      "percentual": 12.1,
+      "amostras": [
+        "2022-04-13T20:09:47.972Z",
+        "2022-06-17T13:04:09.404Z",
+        "2025-03-12T18:14:46.770Z",
+        "2019-11-19T17:48:39.826Z",
+        "2021-10-08T23:44:53.834Z"
+      ]
+    },
+    {
+      "propriedade": "origem_do_contato",
+      "total_preenchidos": 239,
+      "percentual": 11.95,
+      "amostras": [
+        "+5511947519844",
+        "Customer Success",
+        "+551137915309",
+        "+551332195050",
+        "+551132389788"
+      ]
+    },
+    {
+      "propriedade": "nome_fantasia",
+      "total_preenchidos": 238,
+      "percentual": 11.899999999999999,
+      "amostras": [
+        "Reichhold",
+        "MANIBOM ALIMENTOS LTDA",
+        "MELHORAMENTOS CMPC LTDA",
+        "0",
+        "INEOS Styrolution "
+      ]
+    },
+    {
+      "propriedade": "utm_content",
+      "total_preenchidos": 233,
+      "percentual": 11.65,
+      "amostras": [
+        "228515618",
+        "326304619",
+        "210314196",
+        "334697961",
+        "165010769"
+      ]
+    },
+    {
+      "propriedade": "hs_sales_email_last_clicked",
+      "total_preenchidos": 230,
+      "percentual": 11.5,
+      "amostras": [
+        "2019-12-13T12:29:51.744Z",
+        "2020-05-19T17:55:05.203Z",
+        "2025-03-26T17:40:56.780Z",
+        "2024-04-22T19:13:38.482Z",
+        "2019-12-13T17:18:16.163Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_6183638",
+      "total_preenchidos": 227,
+      "percentual": 11.35,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optimal_send_day_of_week",
+      "total_preenchidos": 222,
+      "percentual": 11.1,
+      "amostras": [
+        "FRIDAY",
+        "WEDNESDAY",
+        "SATURDAY",
+        "THURSDAY",
+        "TUESDAY"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_5892036",
+      "total_preenchidos": 219,
+      "percentual": 10.95,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_7758561",
+      "total_preenchidos": 218,
+      "percentual": 10.9,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_23770493",
+      "total_preenchidos": 216,
+      "percentual": 10.8,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_23190672",
+      "total_preenchidos": 215,
+      "percentual": 10.75,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_6125017",
+      "total_preenchidos": 215,
+      "percentual": 10.75,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_google_click_id",
+      "total_preenchidos": 212,
+      "percentual": 10.6,
+      "amostras": [
+        "CjwKCAjw3MSHBhB3EiwAxcaEu8c9071NBc8GSumFLTzhYpWUCw",
+        "Cj0KCQiAraSPBhDuARIsAM3Js4qM20uPiCQy_Xu09GsbEaPcEN",
+        "CjwKCAiA75itBhA6EiwAkho9e3aj4uG2fpTfa2JE4KcnOjV3NK",
+        "EAIaIQobChMIpIGOvY2M6gIVjoKRCh2e6wuSEAAYASAAEgJO6f",
+        "CjwKCAjw--K_BhB5EiwAuwYoyk29AxL1I8lYjCQ4hgW2y3_DLu"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout",
+      "total_preenchidos": 211,
+      "percentual": 10.549999999999999,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "nps_created_at",
+      "total_preenchidos": 202,
+      "percentual": 10.100000000000001,
+      "amostras": [
+        "2022-10-21T18:51:25Z",
+        "2025-04-04T11:42:48Z",
+        "2024-09-19T18:14:14Z",
+        "2023-03-02T13:24:30Z",
+        "2025-05-05T14:00:08Z"
+      ]
+    },
+    {
+      "propriedade": "nps_score",
+      "total_preenchidos": 202,
+      "percentual": 10.100000000000001,
+      "amostras": [
+        "1",
+        "10",
+        "2",
+        "9",
+        "6"
+      ]
+    },
+    {
+      "propriedade": "hs_email_optout_6992999",
+      "total_preenchidos": 197,
+      "percentual": 9.85,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "canal_de_aquisicao_do_contato",
+      "total_preenchidos": 184,
+      "percentual": 9.2,
+      "amostras": [
+        "Inbound",
+        "Outbound"
+      ]
+    },
+    {
+      "propriedade": "guardiao_secundario",
+      "total_preenchidos": 182,
+      "percentual": 9.1,
+      "amostras": [
+        "76390239",
+        "271014914",
+        "233153143",
+        "679790705",
+        "77256111"
+      ]
+    },
+    {
+      "propriedade": "link_do_linkedin",
+      "total_preenchidos": 182,
+      "percentual": 9.1,
+      "amostras": [
+        "https://www.linkedin.com/in/bruna-palhares-2089b64",
+        "https://www.linkedin.com/in/f%C3%A1bio-bordin-b600",
+        "http://www.linkedin.com/in/luciana-hauy-a34108b1",
+        "http://www.linkedin.com/in/lucas-oliveira-de-lima",
+        "http://www.linkedin.com/in/monique-cossetin-b35948"
+      ]
+    },
+    {
+      "propriedade": "n7__etapa_cliente_inativo",
+      "total_preenchidos": 161,
+      "percentual": 8.05,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "tipo_de_contato",
+      "total_preenchidos": 155,
+      "percentual": 7.75,
+      "amostras": [
+        "Principal",
+        "financeiro",
+        "Financeiro e Principal"
+      ]
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked",
+      "total_preenchidos": 153,
+      "percentual": 7.6499999999999995,
+      "amostras": [
+        "2021-06-25T13:30:00Z",
+        "2021-10-04T17:00:00Z",
+        "2023-07-18T17:30:00Z",
+        "2021-09-22T13:00:00Z",
+        "2023-12-14T20:00:00Z"
+      ]
+    },
+    {
+      "propriedade": "hs_additional_emails",
+      "total_preenchidos": 140,
+      "percentual": 7.000000000000001,
+      "amostras": [
+        "bruna.vicente@gmail.com",
+        "jorge.rodrigues@ineos.com",
+        "araujo@saaduaneiros.com.br",
+        "sergioandrade@hotmail.com",
+        "fernando@slstradingcorp.com"
+      ]
+    },
+    {
+      "propriedade": "classificacao_ravena",
+      "total_preenchidos": 131,
+      "percentual": 6.550000000000001,
+      "amostras": [
+        "Agendado",
+        "Persona incorreta",
+        "Linha Muda",
+        "Não atende / Só chama",
+        "Indicou outra pessoa"
+      ]
+    },
+    {
+      "propriedade": "classificacao_ravena_em__data_",
+      "total_preenchidos": 130,
+      "percentual": 6.5,
+      "amostras": [
+        "2025-03-06",
+        "2025-07-16",
+        "2025-07-15",
+        "2025-06-18",
+        "2025-03-19"
+      ]
+    },
+    {
+      "propriedade": "telefone_ravena_classificado__revops_",
+      "total_preenchidos": 130,
+      "percentual": 6.5,
+      "amostras": [
+        "5547999239469",
+        "5527999463651",
+        "551932650643",
+        "5511988124032",
+        "551132220455"
+      ]
+    },
+    {
+      "propriedade": "hs_first_engagement_object_id",
+      "total_preenchidos": 121,
+      "percentual": 6.05,
+      "amostras": [
+        "59151339934",
+        "77000598147",
+        "2153451413",
+        "70308045692",
+        "76215163789"
+      ]
+    },
+    {
+      "propriedade": "hs_sa_first_engagement_date",
+      "total_preenchidos": 121,
+      "percentual": 6.05,
+      "amostras": [
+        "2025-01-29T18:12:55.183Z",
+        "2019-03-27T18:56:44Z",
+        "2025-08-11T13:54:21.839Z",
+        "2024-03-12T19:00:03.018Z",
+        "2025-07-01T20:00:14.603Z"
+      ]
+    },
+    {
+      "propriedade": "hs_sa_first_engagement_descr",
+      "total_preenchidos": 121,
+      "percentual": 6.05,
+      "amostras": [
+        "SENT",
+        "NO_ANSWER",
+        "CANCELED",
+        "FAILED",
+        "SCHEDULED"
+      ]
+    },
+    {
+      "propriedade": "hs_sa_first_engagement_object_type",
+      "total_preenchidos": 121,
+      "percentual": 6.05,
+      "amostras": [
+        "CALL",
+        "TASK",
+        "EMAIL",
+        "MEETING_EVENT"
+      ]
+    },
+    {
+      "propriedade": "hs_time_to_first_engagement",
+      "total_preenchidos": 121,
+      "percentual": 6.05,
+      "amostras": [
+        "3659346987",
+        "528195239",
+        "21980444025",
+        "1357547582",
+        "9195917"
+      ]
+    },
+    {
+      "propriedade": "address",
+      "total_preenchidos": 118,
+      "percentual": 5.8999999999999995,
+      "amostras": [
+        "Rua Jandyr Ferreira Filho, 120 - Imperial",
+        "Rua Arquiteto Olavo Redig de Campos 105, 25 andar",
+        "Av. Dr. Chucri Zaidan 80 Bloco C 9 Andar 04583-909",
+        "8305 NW 27th Street Unit 108",
+        "Avenida das N 14171 3 Andar"
+      ]
+    },
+    {
+      "propriedade": "mkt_produto_de_intencao",
+      "total_preenchidos": 117,
+      "percentual": 5.8500000000000005,
+      "amostras": [
+        "LogOS",
+        "NCM Intel",
+        "Shipment Intel",
+        "Sem produto",
+        "Export Intel"
+      ]
+    },
+    {
+      "propriedade": "hs_prospecting_agent_actively_enrolled_count",
+      "total_preenchidos": 105,
+      "percentual": 5.25,
+      "amostras": [
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_lastmodifieddate",
+      "total_preenchidos": 100,
+      "percentual": 5.0,
+      "amostras": [
+        "2025-07-11T18:03:01.234Z",
+        "2025-07-11T18:01:43.598Z",
+        "2025-07-11T18:02:59.874Z",
+        "2025-07-11T18:02:12.656Z",
+        "2025-07-11T18:01:20.190Z"
+      ]
+    },
+    {
+      "propriedade": "zip",
+      "total_preenchidos": 98,
+      "percentual": 4.9,
+      "amostras": [
+        "09891-350",
+        "Conj.1507-1508",
+        "03058-060",
+        "18103-139",
+        "Telefone"
+      ]
+    },
+    {
+      "propriedade": "informacoes_pendentes_de_negocio",
+      "total_preenchidos": 88,
+      "percentual": 4.3999999999999995,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "became_an_demonstracao",
+      "total_preenchidos": 76,
+      "percentual": 3.8,
+      "amostras": [
+        "2024-02-15",
+        "2024-08-29",
+        "2024-01-17",
+        "2024-11-26",
+        "2023-08-02"
+      ]
+    },
+    {
+      "propriedade": "became_an_onboard",
+      "total_preenchidos": 74,
+      "percentual": 3.6999999999999997,
+      "amostras": [
+        "2023-11-30",
+        "2024-01-17",
+        "2024-12-23",
+        "2023-08-21",
+        "2023-08-02"
+      ]
+    },
+    {
+      "propriedade": "criado_por__ic_",
+      "total_preenchidos": 72,
+      "percentual": 3.5999999999999996,
+      "amostras": [
+        "384150865",
+        "565990070",
+        "271014914",
+        "165413810",
+        "41594870"
+      ]
+    },
+    {
+      "propriedade": "disparo_de_e_mail",
+      "total_preenchidos": 71,
+      "percentual": 3.55,
+      "amostras": [
+        "Aviso de padronização dos campos numéricos API"
+      ]
+    },
+    {
+      "propriedade": "mkt_influence_date",
+      "total_preenchidos": 70,
+      "percentual": 3.5000000000000004,
+      "amostras": [
+        "2025-05-29",
+        "2025-08-05",
+        "2025-07-02",
+        "2025-02-26",
+        "2025-04-25"
+      ]
+    },
+    {
+      "propriedade": "mkt_influence_type",
+      "total_preenchidos": 70,
+      "percentual": 3.5000000000000004,
+      "amostras": [
+        "plg",
+        "event_presence",
+        "form_submission",
+        "email_click"
+      ]
+    },
+    {
+      "propriedade": "empresa_internacional",
+      "total_preenchidos": 67,
+      "percentual": 3.35,
+      "amostras": [
+        "false",
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_feedback_last_csat_survey_date",
+      "total_preenchidos": 67,
+      "percentual": 3.35,
+      "amostras": [
+        "2021-02-25T18:35:24.529Z",
+        "2021-02-18T20:48:11.607Z",
+        "2021-02-18T14:33:56.181Z",
+        "2023-03-21T14:01:57.393Z",
+        "2024-08-07T18:33:11.804Z"
+      ]
+    },
+    {
+      "propriedade": "hs_feedback_last_csat_survey_rating",
+      "total_preenchidos": 67,
+      "percentual": 3.35,
+      "amostras": [
+        "1",
+        "0",
+        "2"
+      ]
+    },
+    {
+      "propriedade": "views_buscador_de_ncm",
+      "total_preenchidos": 67,
+      "percentual": 3.35,
+      "amostras": [
+        "1"
+      ]
+    },
+    {
+      "propriedade": "hs_email_quarantined",
+      "total_preenchidos": 65,
+      "percentual": 3.25,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_quarantined_reason",
+      "total_preenchidos": 65,
+      "percentual": 3.25,
+      "amostras": [
+        "MICROSOFT_UNDELIVERABLE",
+        "UNDELIVERABLE_ADDRESS"
+      ]
+    },
+    {
+      "propriedade": "hs_quarantined_emails",
+      "total_preenchidos": 65,
+      "percentual": 3.25,
+      "amostras": [
+        "jose.sanches@hexion.com - HubSpot\nReason: Undelive",
+        "tiagoclaro@paclog.com.br - HubSpot\nReason: Microso",
+        "nicholas.lopez@kerrylogistics.com - HubSpot\nReason",
+        "eliel.silva@localfrio.com.br - HubSpot\nReason: Mic",
+        "aborges@drew-marine.com - HubSpot\nReason: Undelive"
+      ]
+    },
+    {
+      "propriedade": "hs_facebook_click_id",
+      "total_preenchidos": 63,
+      "percentual": 3.15,
+      "amostras": [
+        "PAAaZ940z9YxjKVpB16X5qLtvZoUaLys4s8H8jcwQpgsTPhmpp",
+        "PAAaa6pN2kaMzndAFYD7Ji30bkLjIXDYkGbYmg61WWshMIUxUH",
+        "PAZXh0bgNhZW0BMABhZGlkAasYlKpZrK4BpgKIj5ChfIM2G0g5",
+        "IwAR0fi3MQb6uPzY6xbIVIKBzgcEdyyWkW4btKWLfOgOK5ROpS",
+        "PAAaYjkVNvbq3SiOQR7J3jMDHx-QT_Pk8HzE_GNElUYEesuMui"
+      ]
+    },
+    {
+      "propriedade": "became_an_cliente_inativo",
+      "total_preenchidos": 62,
+      "percentual": 3.1,
+      "amostras": [
+        "2023-11-30",
+        "2024-11-26",
+        "2023-10-18",
+        "2023-08-21",
+        "2025-01-17"
+      ]
+    },
+    {
+      "propriedade": "n1__etapa_sql",
+      "total_preenchidos": 62,
+      "percentual": 3.1,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "date_of_last_ncm_page_view",
+      "total_preenchidos": 61,
+      "percentual": 3.05,
+      "amostras": [
+        "2025-05-29",
+        "2025-05-27",
+        "2025-01-08",
+        "2025-07-02",
+        "2025-03-06"
+      ]
+    },
+    {
+      "propriedade": "hs_feedback_last_nps_rating",
+      "total_preenchidos": 61,
+      "percentual": 3.05,
+      "amostras": [
+        "1",
+        "10",
+        "9",
+        "6",
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_feedback_last_survey_date",
+      "total_preenchidos": 61,
+      "percentual": 3.05,
+      "amostras": [
+        "2021-03-10T16:21:00.124Z",
+        "2021-11-26T20:33:07.380Z",
+        "2021-11-23T16:49:45.223Z",
+        "2021-11-19T12:22:41.175Z",
+        "2021-03-12T16:23:18.128Z"
+      ]
+    },
+    {
+      "propriedade": "became_an_cliente_ativo",
+      "total_preenchidos": 56,
+      "percentual": 2.8000000000000003,
+      "amostras": [
+        "2023-10-04",
+        "2025-01-02",
+        "2023-08-07",
+        "2023-08-02",
+        "2023-11-27"
+      ]
+    },
+    {
+      "propriedade": "hs_facebook_ad_clicked",
+      "total_preenchidos": 55,
+      "percentual": 2.75,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "fonte_do_contato",
+      "total_preenchidos": 52,
+      "percentual": 2.6,
+      "amostras": [
+        "Gerador de Personas",
+        "Lemit",
+        "Apollo",
+        "Assertiva",
+        "Evento / Feira"
+      ]
+    },
+    {
+      "propriedade": "utm_term",
+      "total_preenchidos": 49,
+      "percentual": 2.45,
+      "amostras": [
+        "talks_despachantes_2_edicao",
+        "imagem-feed",
+        "text",
+        "consulta di siscomex",
+        "logcomex"
+      ]
+    },
+    {
+      "propriedade": "n4__etapa_novo_cliente",
+      "total_preenchidos": 47,
+      "percentual": 2.35,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_email_first_reply_date",
+      "total_preenchidos": 46,
+      "percentual": 2.3,
+      "amostras": [
+        "2022-01-29T18:49:57Z",
+        "2019-12-23T23:00:09Z",
+        "2020-01-08T22:47:06Z",
+        "2020-01-08T22:46:45Z",
+        "2019-12-23T22:59:39Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_last_reply_date",
+      "total_preenchidos": 46,
+      "percentual": 2.3,
+      "amostras": [
+        "2022-01-29T18:49:57Z",
+        "2021-10-13T14:07:58Z",
+        "2020-01-08T22:47:06Z",
+        "2020-01-08T22:46:45Z",
+        "2024-12-04T19:47:49.538Z"
+      ]
+    },
+    {
+      "propriedade": "hs_email_replied",
+      "total_preenchidos": 46,
+      "percentual": 2.3,
+      "amostras": [
+        "1",
+        "2",
+        "9",
+        "4",
+        "3"
+      ]
+    },
+    {
+      "propriedade": "ultima_mensagem_disparada",
+      "total_preenchidos": 43,
+      "percentual": 2.15,
+      "amostras": [
+        "3/3/2023 10:59:43 - Olá Leo!! Tudo bem??\nAqui é o ",
+        "4/7/2023 11:58:3 - Olá Gublio!! Tudo bem??\nQueria ",
+        "2/6/2023 10:3:42 - Olá Valdinei!! Tudo bem??\nTe ag",
+        "Oi, tudo bem?\nSou responsável pela sua jornada de ",
+        "Oi, tudo bem?\nAqui quem fala é Victoria da Logcome"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_last_touch_converting_campaign",
+      "total_preenchidos": 42,
+      "percentual": 2.1,
+      "amostras": [
+        "6dee5957-5582-449e-b116-9491ac108fe1",
+        "42f2444e-0060-4c00-83a4-402efff197a3"
+      ]
+    },
+    {
+      "propriedade": "atendimento_ativo_por",
+      "total_preenchidos": 39,
+      "percentual": 1.95,
+      "amostras": [
+        "+5511996017180",
+        "beatriz.camilo@logcomex.com",
+        "paulo.tomiato@logcomex.com",
+        "+5531975376925",
+        "+557121061522"
+      ]
+    },
+    {
+      "propriedade": "certificate",
+      "total_preenchidos": 39,
+      "percentual": 1.95,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "date_of_last_blog_page_view",
+      "total_preenchidos": 39,
+      "percentual": 1.95,
+      "amostras": [
+        "2022-10-10",
+        "2025-03-13",
+        "2023-05-15",
+        "2023-08-08",
+        "2025-07-11"
+      ]
+    },
+    {
+      "propriedade": "visitas_ao_blog",
+      "total_preenchidos": 39,
+      "percentual": 1.95,
+      "amostras": [
+        "1"
+      ]
+    },
+    {
+      "propriedade": "status_ravena",
+      "total_preenchidos": 36,
+      "percentual": 1.7999999999999998,
+      "amostras": [
+        "Falha - Chamada não atendida",
+        "Caixa postal",
+        "Chamada atendida",
+        "Chamada cancelada ou timeout",
+        "Mensagem de operadora"
+      ]
+    },
+    {
+      "propriedade": "user__executivo_de_vendas_expansao",
+      "total_preenchidos": 33,
+      "percentual": 1.6500000000000001,
+      "amostras": [
+        "212802849",
+        "210727317",
+        "135346811",
+        "35970025",
+        "655495336"
+      ]
+    },
+    {
+      "propriedade": "n0__etapa_mql",
+      "total_preenchidos": 32,
+      "percentual": 1.6,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "o_que_procura_",
+      "total_preenchidos": 32,
+      "percentual": 1.6,
+      "amostras": [
+        "Soluções para quem é Agentes de Cargas",
+        "Serviço de um Agente de Carga"
+      ]
+    },
+    {
+      "propriedade": "message",
+      "total_preenchidos": 29,
+      "percentual": 1.4500000000000002,
+      "amostras": [
+        "Gostaria de testar a ferramenta e receber uma prop",
+        "Olá!\r\nGostaria de saber preço para uso da platafor",
+        "Helmut, boa tarde! Tudo bem? Gostaria de saber sob",
+        "Boa tarde,\r\nGostaria de saber mais sobre o sistema",
+        "Bom dia\r\n\r\nGostaria de receber informações a respe"
+      ]
+    },
+    {
+      "propriedade": "tag_ops___usuarios",
+      "total_preenchidos": 29,
+      "percentual": 1.4500000000000002,
+      "amostras": [
+        "ENVIAR EMAIL"
+      ]
+    },
+    {
+      "propriedade": "n2__etapa_demonstracao",
+      "total_preenchidos": 27,
+      "percentual": 1.35,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_analytics_first_touch_converting_campaign",
+      "total_preenchidos": 25,
+      "percentual": 1.25,
+      "amostras": [
+        "42f2444e-0060-4c00-83a4-402efff197a3"
+      ]
+    },
+    {
+      "propriedade": "cupom_desconto_ctf25_normal",
+      "total_preenchidos": 22,
+      "percentual": 1.0999999999999999,
+      "amostras": [
+        "h12u106",
+        "h12u86",
+        "ctf25-free-mar7838",
+        "h12u118",
+        "h12u125"
+      ]
+    },
+    {
+      "propriedade": "hs_feedback_last_csat_survey_follow_up",
+      "total_preenchidos": 22,
+      "percentual": 1.0999999999999999,
+      "amostras": [
+        "Fui bem atendida e minha questão foi resolvida",
+        "rapido atendimento ",
+        "Gostei da oportunidade do treinamento sobre CCT",
+        "Excelente atendimento do Guilherme Alves, super rá",
+        "O treinamento foi muito bem conduzido.\nA equipe fi"
+      ]
+    },
+    {
+      "propriedade": "fax",
+      "total_preenchidos": 21,
+      "percentual": 1.05,
+      "amostras": [
+        "+55 (13) 3234.8030",
+        "+55 (47) 2013-9215",
+        "55 19 3201 6701",
+        "+55-11-5083 6492",
+        "+55-11-3813-1008"
+      ]
+    },
+    {
+      "propriedade": "hs_object_source",
+      "total_preenchidos": 21,
+      "percentual": 1.05,
+      "amostras": [
+        "EXTENSION",
+        "CONVERSATIONS"
+      ]
+    },
+    {
+      "propriedade": "hs_object_source_id",
+      "total_preenchidos": 21,
+      "percentual": 1.05,
+      "amostras": [
+        "userId:46076118",
+        "addMessageUser"
+      ]
+    },
+    {
+      "propriedade": "mensagem_",
+      "total_preenchidos": 21,
+      "percentual": 1.05,
+      "amostras": [
+        "por favor me enviar uma proposta para o sistema de",
+        "Gostaria de uma proposta para os serviços.",
+        "Somos clientes de vocês e daqui alguns meses vence",
+        "Gostaria de saber mais sobre essa plataforma de an",
+        "Por favor, pode me enviar os valores para 2024, va"
+      ]
+    },
+    {
+      "propriedade": "cupom_desconto_ctf25_vip",
+      "total_preenchidos": 20,
+      "percentual": 1.0,
+      "amostras": [
+        "h12u94vip",
+        "h12u117vip",
+        "h12u88vip",
+        "h12u123vip",
+        "h12u66vip"
+      ]
+    },
+    {
+      "propriedade": "hs_object_source_label",
+      "total_preenchidos": 15,
+      "percentual": 0.75,
+      "amostras": [
+        "CONVERSATIONS"
+      ]
+    },
+    {
+      "propriedade": "hs_user_ids_of_all_notification_unfollowers",
+      "total_preenchidos": 14,
+      "percentual": 0.7000000000000001,
+      "amostras": [
+        "9046491",
+        "9982901",
+        "7373645",
+        "11620534",
+        "9578616"
+      ]
+    },
+    {
+      "propriedade": "user__sdr",
+      "total_preenchidos": 14,
+      "percentual": 0.7000000000000001,
+      "amostras": [
+        "1234893163",
+        "77892897",
+        "1236255023",
+        "165413810",
+        "503738719"
+      ]
+    },
+    {
+      "propriedade": "hs_feedback_last_nps_follow_up",
+      "total_preenchidos": 13,
+      "percentual": 0.65,
+      "amostras": [
+        "informaçao",
+        "Muitos erros de atualização dos embarques.",
+        "boas estatisticas",
+        "Informação atualizada e organizada",
+        "Mai dados sobre exportação aérea."
+      ]
+    },
+    {
+      "propriedade": "hs_user_ids_of_all_notification_followers",
+      "total_preenchidos": 12,
+      "percentual": 0.6,
+      "amostras": [
+        "7373645",
+        "26033061",
+        "4541818",
+        "7373646",
+        "7953309"
+      ]
+    },
+    {
+      "propriedade": "ob__realizou_onboarding___cs",
+      "total_preenchidos": 12,
+      "percentual": 0.6,
+      "amostras": [
+        "sim",
+        "nao"
+      ]
+    },
+    {
+      "propriedade": "registered",
+      "total_preenchidos": 12,
+      "percentual": 0.6,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "date_of_birth",
+      "total_preenchidos": 11,
+      "percentual": 0.5499999999999999,
+      "amostras": [
+        "19/06/1980",
+        "18/03/1975",
+        "29/09/1987",
+        "29/07/1983",
+        "19/06/1979"
+      ]
+    },
+    {
+      "propriedade": "horario_preferido",
+      "total_preenchidos": 11,
+      "percentual": 0.5499999999999999,
+      "amostras": [
+        "Tarde",
+        "Manha"
+      ]
+    },
+    {
+      "propriedade": "nps_text",
+      "total_preenchidos": 10,
+      "percentual": 0.5,
+      "amostras": [
+        "otimo para pesquisas",
+        "ótima ferramenta",
+        "about this",
+        "OK",
+        "excelente qualidade do material e facilidade de ac"
+      ]
+    },
+    {
+      "propriedade": "prd___solicitacao_logmanager",
+      "total_preenchidos": 10,
+      "percentual": 0.5,
+      "amostras": [
+        "Compra LogManager",
+        "Up/Cross LogManager"
+      ]
+    },
+    {
+      "propriedade": "csat_created_at",
+      "total_preenchidos": 9,
+      "percentual": 0.44999999999999996,
+      "amostras": [
+        "2022-12-29T21:54:47Z",
+        "2023-03-31T20:56:53Z",
+        "2023-08-30T17:20:00Z",
+        "2023-12-18T18:26:11Z",
+        "2023-05-16T17:01:15Z"
+      ]
+    },
+    {
+      "propriedade": "csat_score",
+      "total_preenchidos": 9,
+      "percentual": 0.44999999999999996,
+      "amostras": [
+        "5"
+      ]
+    },
+    {
+      "propriedade": "o_que_voce_busca_como_despachante_",
+      "total_preenchidos": 9,
+      "percentual": 0.44999999999999996,
+      "amostras": [
+        "Procuro serviços de despacho aduaneiro",
+        "Solução para despachante aduaneiro"
+      ]
+    },
+    {
+      "propriedade": "business_unit",
+      "total_preenchidos": 8,
+      "percentual": 0.4,
+      "amostras": [
+        "Analytics",
+        "Visibility"
+      ]
+    },
+    {
+      "propriedade": "csat_text",
+      "total_preenchidos": 8,
+      "percentual": 0.4,
+      "amostras": [
+        "atendimento detalhado e atencioso e sempre a dispo",
+        "Agilidade no retorno e respostas claras.",
+        "A Keren é muito profissional e dedicada. ",
+        "Ótimo atendimento, desde o inicio ao fim, Keren fo",
+        "Super didático e intuitivo"
+      ]
+    },
+    {
+      "propriedade": "hs_pinned_engagement_id",
+      "total_preenchidos": 8,
+      "percentual": 0.4,
+      "amostras": [
+        "59958389091",
+        "79474650972",
+        "85152710034",
+        "56582450465",
+        "54662528937"
+      ]
+    },
+    {
+      "propriedade": "company_size",
+      "total_preenchidos": 7,
+      "percentual": 0.35000000000000003,
+      "amostras": [
+        "Pequena",
+        "Média",
+        "Grande"
+      ]
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked_medium",
+      "total_preenchidos": 6,
+      "percentual": 0.3,
+      "amostras": [
+        "Intermodal-2023",
+        "email"
+      ]
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked_source",
+      "total_preenchidos": 6,
+      "percentual": 0.3,
+      "amostras": [
+        "hs_email",
+        "hs_automation",
+        "hub-agenda-cs"
+      ]
+    },
+    {
+      "propriedade": "n5__etapa_onboard",
+      "total_preenchidos": 6,
+      "percentual": 0.3,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "cobertura__ic_",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "0.0179",
+        "0.0108",
+        "0.0089",
+        "0.0902",
+        "0.09"
+      ]
+    },
+    {
+      "propriedade": "contato_e_internacional",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "Sim"
+      ]
+    },
+    {
+      "propriedade": "departamento_do_logger",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "Desativados",
+        "#N/A",
+        "Vendas",
+        "Financeiro - Team Financeiro",
+        "Tech - Team Visibility"
+      ]
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked_campaign",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "[mkt] Webinar - Dados de exportação: a tecnologia ",
+        "MKT | Farmer Search",
+        "[Comercial] Campanha Perdidos 18/19",
+        "[CS] Implementação"
+      ]
+    },
+    {
+      "propriedade": "enviar_lead_",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "Estoque"
+      ]
+    },
+    {
+      "propriedade": "hs_linkedin_ad_clicked",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "logger_ativo_",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "NÃO",
+        "SIM"
+      ]
+    },
+    {
+      "propriedade": "ob_reenviar_csat",
+      "total_preenchidos": 5,
+      "percentual": 0.25,
+      "amostras": [
+        "sim",
+        "sim;"
+      ]
+    },
+    {
+      "propriedade": "aircall_last_call_at",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "2024-02-28T18:02:30Z",
+        "2024-03-15T16:50:03Z",
+        "2024-02-21T19:24:51Z",
+        "2024-03-04T18:07:00Z"
+      ]
+    },
+    {
+      "propriedade": "celular1_gerador_de_personas",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "+5555996993336",
+        "+5511947462840",
+        "+5581999688487",
+        "+5549991472813"
+      ]
+    },
+    {
+      "propriedade": "hs_all_assigned_business_unit_ids",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "0"
+      ]
+    },
+    {
+      "propriedade": "hs_content_membership_notes",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "Olá! \n\nEste contato veio de Inbound mas já possui "
+      ]
+    },
+    {
+      "propriedade": "hs_created_by_user_id",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "26853631",
+        "26081330",
+        "46304219",
+        "46076118"
+      ]
+    },
+    {
+      "propriedade": "hs_social_last_engagement",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "2021-04-01T21:08:35.077Z",
+        "2020-08-07T01:05:43.565Z",
+        "2021-06-25T19:51:01.547Z",
+        "2021-06-19T12:52:56.992Z"
+      ]
+    },
+    {
+      "propriedade": "n0_00_lead",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "sales__canal_de_aquisicao",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "Outbound"
+      ]
+    },
+    {
+      "propriedade": "celular2_gerador_de_personas",
+      "total_preenchidos": 3,
+      "percentual": 0.15,
+      "amostras": [
+        "+5555999427000",
+        "+5547991148818",
+        "+5511986853443"
+      ]
+    },
+    {
+      "propriedade": "hs_lead_status",
+      "total_preenchidos": 3,
+      "percentual": 0.15,
+      "amostras": [
+        "CONNECTED",
+        "ATTEMPTED_TO_CONTACT",
+        "IN_PROGRESS"
+      ]
+    },
+    {
+      "propriedade": "mkt_idioma",
+      "total_preenchidos": 3,
+      "percentual": 0.15,
+      "amostras": [
+        "Português"
+      ]
+    },
+    {
+      "propriedade": "n3__etapa_oportunidade",
+      "total_preenchidos": 3,
+      "percentual": 0.15,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "cnpj_da_empresa_pesquisada",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "+551332234770",
+        "361.883.018-15"
+      ]
+    },
+    {
+      "propriedade": "cupom_desconto_50__ctf25_normal",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "ctf25-meio-com7155",
+        "ctf25-meio-mar6301"
+      ]
+    },
+    {
+      "propriedade": "hs_avatar_filemanager_key",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "hubfs/2459647/defaults/contact.png",
+        "hubfs/5455473/4a7396ce-5556-468f-9d83-9850e7a2e9eb"
+      ]
+    },
+    {
+      "propriedade": "hs_content_membership_email",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "laryssa@logcomex.com",
+        "paulo.franco@pibernat.com.br"
+      ]
+    },
+    {
+      "propriedade": "hs_content_membership_registered_at",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "2022-11-23T12:13:35.595Z",
+        "2023-09-14T12:22:00.208Z"
+      ]
+    },
+    {
+      "propriedade": "hs_notes_next_activity",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "0-47-87265181347",
+        "0-47-87153868185"
+      ]
+    },
+    {
+      "propriedade": "hs_notes_next_activity_type",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "MEETING"
+      ]
+    },
+    {
+      "propriedade": "hs_registration_method",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "Self Registration"
+      ]
+    },
+    {
+      "propriedade": "link_cupom_50__ctf25",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "https://www.blueticket.com.br/evento/36896/?c=ctf2"
+      ]
+    },
+    {
+      "propriedade": "link_para_resgate_100__gratuito",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "https://www.blueticket.com.br/evento/36896/?c=ctf2"
+      ]
+    },
+    {
+      "propriedade": "new_ou_expansao___provisorio_",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "Novo Lead"
+      ]
+    },
+    {
+      "propriedade": "notes_next_activity_date",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "2025-08-27T19:00:00Z",
+        "2025-09-02T13:00:00Z"
+      ]
+    },
+    {
+      "propriedade": "pops_turma_de_ingles",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "prop_temp_tag",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "ctt que envio lp intermodal 23"
+      ]
+    },
+    {
+      "propriedade": "aceite_funcionalidade_teste",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "cargo",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "sales"
+      ]
+    },
+    {
+      "propriedade": "cpf",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "00226731057"
+      ]
+    },
+    {
+      "propriedade": "data_csat",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "2025-01-06"
+      ]
+    },
+    {
+      "propriedade": "hs_created_by_conversations",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "hs_membership_last_private_content_access_date",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "2025-08-21T18:19:38.040Z"
+      ]
+    },
+    {
+      "propriedade": "hs_object_source_user_id",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "46076118"
+      ]
+    },
+    {
+      "propriedade": "indicacao_time_suporte_sales_",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "Giovana Yukawa"
+      ]
+    },
+    {
+      "propriedade": "nome_da_empresa_decisor",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "INDUSTRIA E COMERCIO DE MALHAS PEMGIR"
+      ]
+    },
+    {
+      "propriedade": "resposta_csat",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "Fiquei surpreso com a capacidade das pessoas sobre"
+      ]
+    },
+    {
+      "propriedade": "sales__feedback_do_contato",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "Numero Errado"
+      ]
+    },
+    {
+      "propriedade": "sentimento_csat",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "Happy"
+      ]
+    },
+    {
+      "propriedade": "user__executivo_de_vendas",
+      "total_preenchidos": 1,
+      "percentual": 0.05,
+      "amostras": [
+        "158825782"
+      ]
+    },
+    {
+      "propriedade": "agendado_por_ia_em",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "aircall_last_sms_at",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "annualrevenue",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "associatedcompanylastupdated",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "association_last_update",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "blog_default_hubspot_blog_8032300436_subscription",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "buscador_ncm",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "como_as_dificuldades_listadas_afetam_sua_operacao_ou_estrategia_de_negocio_se_nao_forem_resolvidas_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "como_realizam_o_acompanhamento_hoje_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contatado_por_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato_por_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "criado_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cs__contatou_novo_contato_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cs_suporte_premium",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "degree",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_follow_ups",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_received",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_sent",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_you_got",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_you_sent",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_total_messages",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "empresa_excluida_por_manutencao",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "empresa_que_indicou_o_contato",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "es__segmento___internacional",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "estagio_da_conversa__exclusivo_intermodal_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "etapa_do_pipeline_atual",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "faixa_fob_impo_usd_contato",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "field_of_study",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "followercount",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "gender",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "gostaria_de_receber_um_resumo_dos_resultados_desta_pesquisa__se_sim__informe_seu_e_mail_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "graduation_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ha_alguma_outra_necessidade_ou_desafio_especifico_na_gestao_de_comercio_exterior_que_voce_gostaria_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_buying_role",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_area_code",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_region_code",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_clicked_linkedin_ad",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_contact_creation_legal_basis_source_instance_id",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_contact_enrichment_opt_out",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_contact_enrichment_opt_out_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_email_confirmed",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_follow_up_enqueued_at",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_registration_domain_sent_to",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_registration_email_sent_at",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_status",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_conversations_visitor_email",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_country_region_code",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_createdate",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_cross_sell_opportunity",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_customer_agent_lead_status",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_data_privacy_ads_consent",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_238101571",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_238371973",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_43688110",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_85999939",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_86009407",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_86031774",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_86032658",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_238101571",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_238371973",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_43688110",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_85999939",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_86009407",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_86031774",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_86032658",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_document_last_revisited",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_bad_address",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_customer_quarantined_reason",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_hard_bounce_reason",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_is_ineligible",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_emailconfirmationstatus",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_employment_change_detected_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_enriched_email_bounce_detected",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_facebookid",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_show_nps_web_survey",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_closed_order_id",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_order_closed_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_subscription_create_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_googleplusid",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_gps_error",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_gps_latitude",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_gps_longitude",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_has_active_subscription",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_inferred_language_codes",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_intent_paid_up_to_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_intent_signals_enabled",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_is_enriched",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_job_change_detected_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_journey_stage",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_language",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_metered_enrichment_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sms_send_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sms_send_name",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_disqualified_lead_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_open_lead_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_qualified_lead_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_subscription_create_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latitude",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_linkedin_url",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_linkedinid",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_live_enrichment_deadline",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_longitude",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_mobile_sdk_push_tokens",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_detail_1",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_detail_2",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_detail_3",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_owning_teams",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_predictivecontactscore",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_predictivecontactscorebucket",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_prospecting_agent_last_enrolled",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_prospecting_agent_total_enrolled_count",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_read_only",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_recent_closed_order_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_returning_to_office_detected_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_role",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_searchable_calculated_international_mobile_number",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_searchable_calculated_international_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_seniority",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_shared_team_ids",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_shared_user_ids",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_source_object_id",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_source_portal_id",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_state_code",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sub_role",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_support_workflows_april_2021",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_testpurge",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_testrollback",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_238101571",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_238371973",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_43688110",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_85999939",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_86009407",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_86031774",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_86032658",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_twitterid",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_unique_creation_key",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_whatsapp_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ic__bu_do_sdr_solicitante",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ic__quantidade_de_deals_solicitados_por_sdr_para_lgen",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "id_do_indicador_logpartner",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "id_logpartner",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "idioma",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "industry",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "industry_en",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_latlon",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_zipcode",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "job_function",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "kloutscoregeneral",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "linkedin_profile_link",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "linkedinbio",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "linkedinconnections",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "log_embaixadores_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "marital_status",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "military_status",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_campanha",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_canal",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_logos_casos_uso",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_spreadchat_atendente",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_spreadchat_coordenacao",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_spreadchat_observation",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_trafego",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_trafego_agrupado",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n000_etapa_assinante",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ncm_mais_usada",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "numemployees",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "objetivo__beneficios_encontrados_com_a_utilizacao_dos_dados",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "owneremail",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ownername",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "pas_regio_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "persona_agendada",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "photo",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "porte_da_empresa_onde_voce_atua_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "prd___cantact_details_pt",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "produto_de_inteno",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "quais_sistemas_ou_ferramentas_sua_empresa_utiliza_para_gerenciar_as_operacoes_de_comercio_exterior_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "qualificacao_de_inteligencia_comercial",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "quantidade_de_embarques",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "relationship_status",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "responsavel_pela_oportunidade__exclusivo_intermodal_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "salutation",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "school",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "segmentacao_do_importador_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "selecione_um_plano_adicional",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "seniority",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "start_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "sua_empresa_ja_utiliza_solucoes_de_ia_ou_automacao_em_algum_processo_de_comercio_exterior_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "surveymonkeyeventlastupdated",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "timing_budget",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "twitterbio",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "twitterhandle",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "twitterprofilephoto",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "user__inteligencia_comercial",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utiliza_alguma_ferramenta_similar_a_nossa_solucao__sim__qual_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utilizam_ferramentas_de_inteligencia_de_comercio_exterior__sim__qual__nao",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "vips",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "webinareventlastupdated",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "website_url__ic___provisorio_",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whastapp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_out",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_out_agent",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_out_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_synced_date",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_synced_full",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    }
+  ]
+}

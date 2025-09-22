@@ -1,0 +1,409 @@
+{
+  "name": "HubSpot → PostgreSQL - Sincronização Incremental",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Cron Trigger - A cada 2h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "query": "SELECT COALESCE(MAX(lastmodifieddate), '1970-01-01'::timestamp) as last_sync_timestamp FROM hubspot_contacts WHERE sync_status = 'active'"
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+      "name": "PostgreSQL - Buscar Último Sync",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 300],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Prepara filtro de data para buscar apenas contatos modificados\nconst lastSync = $json.last_sync_timestamp;\nconst lastSyncDate = new Date(lastSync);\n\n// Subtrai 5 minutos para garantir que não perdemos nenhum registro\nlastSyncDate.setMinutes(lastSyncDate.getMinutes() - 5);\n\nconst filterTimestamp = Math.floor(lastSyncDate.getTime());\n\nconsole.log(`Buscando contatos modificados após: ${lastSyncDate.toISOString()}`);\n\nreturn [\n  {\n    json: {\n      lastmodifieddate_filter: filterTimestamp,\n      lastmodifieddate_iso: lastSyncDate.toISOString()\n    }\n  }\n];"
+      },
+      "id": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+      "name": "Calcular Filtro de Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 100,
+        "filters": {
+          "filterGroupsUi": {
+            "filterGroupsValues": [
+              {
+                "filtersUi": {
+                  "filterValues": [
+                    {
+                      "propertyName": "lastmodifieddate",
+                      "operator": "GT",
+                      "value": "={{ $json.lastmodifieddate_filter }}"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "additionalFields": {
+          "properties": [
+            "email",
+            "firstname", 
+            "lastname",
+            "phone",
+            "company",
+            "jobtitle",
+            "website",
+            "address",
+            "city",
+            "state", 
+            "zip",
+            "country",
+            "industry",
+            "num_employees",
+            "annualrevenue",
+            "hs_lead_status",
+            "lifecyclestage",
+            "createdate",
+            "lastmodifieddate",
+            "closedate",
+            "hs_lead_source",
+            "hs_original_source",
+            "hs_original_source_data_1",
+            "hs_original_source_data_2",
+            "hubspot_owner_id",
+            "hs_analytics_source",
+            "hs_analytics_source_data_1"
+          ]
+        }
+      },
+      "id": "d4e5f6a7-b8c9-0123-def4-56789012345a",
+      "name": "HubSpot - Buscar Contatos Modificados",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [900, 300],
+      "credentials": {
+        "hubspotApi": {
+          "id": "seu_hubspot_credential_id", 
+          "name": "HubSpot API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.length }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "e5f6a7b8-c9d0-1234-ef56-789012345abc",
+      "name": "IF - Tem Contatos Novos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Processa contatos modificados para inserção/atualização no PostgreSQL\nconst items = $input.all();\nconst processedItems = [];\n\nfor (const item of items) {\n  const contact = item.json;\n  \n  // Mapeia dados do HubSpot para estrutura do PostgreSQL\n  const processedContact = {\n    id: contact.id,\n    hubspot_object_id: contact.id,\n    email: contact.properties?.email || null,\n    firstname: contact.properties?.firstname || null,\n    lastname: contact.properties?.lastname || null,\n    phone: contact.properties?.phone || null,\n    company: contact.properties?.company || null,\n    jobtitle: contact.properties?.jobtitle || null,\n    website: contact.properties?.website || null,\n    address: contact.properties?.address || null,\n    city: contact.properties?.city || null,\n    state: contact.properties?.state || null,\n    zip: contact.properties?.zip || null,\n    country: contact.properties?.country || null,\n    industry: contact.properties?.industry || null,\n    num_employees: contact.properties?.num_employees ? parseInt(contact.properties.num_employees) : null,\n    annual_revenue: contact.properties?.annualrevenue ? parseFloat(contact.properties.annualrevenue) : null,\n    lead_status: contact.properties?.hs_lead_status || null,\n    lifecycle_stage: contact.properties?.lifecyclestage || null,\n    createdate: contact.properties?.createdate ? new Date(contact.properties.createdate).toISOString() : null,\n    lastmodifieddate: contact.properties?.lastmodifieddate ? new Date(contact.properties.lastmodifieddate).toISOString() : null,\n    closedate: contact.properties?.closedate ? new Date(contact.properties.closedate).toISOString() : null,\n    hs_lead_source: contact.properties?.hs_lead_source || null,\n    hs_original_source: contact.properties?.hs_original_source || null,\n    hs_original_source_data_1: contact.properties?.hs_original_source_data_1 || null,\n    hs_original_source_data_2: contact.properties?.hs_original_source_data_2 || null,\n    hubspot_owner_id: contact.properties?.hubspot_owner_id ? parseInt(contact.properties.hubspot_owner_id) : null,\n    hs_analytics_source: contact.properties?.hs_analytics_source || null,\n    hs_analytics_source_data_1: contact.properties?.hs_analytics_source_data_1 || null,\n    last_sync_date: new Date().toISOString(),\n    sync_status: 'active',\n    hubspot_raw_data: JSON.stringify(contact)\n  };\n  \n  processedItems.push({ json: processedContact });\n}\n\nconsole.log(`Processando ${processedItems.length} contatos modificados`);\nreturn processedItems;"
+      },
+      "id": "f6a7b8c9-d0e1-2345-f678-90123456789d",
+      "name": "Processar Dados Modificados",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "table": "hubspot_contacts",
+        "columnToMatchOn": "id",
+        "columnsUi": {
+          "columnToMatchOnCaseSensitive": false,
+          "valueColumnsUi": {
+            "values": [
+              {
+                "column": "id",
+                "value": "={{ $json.id }}"
+              },
+              {
+                "column": "hubspot_object_id", 
+                "value": "={{ $json.hubspot_object_id }}"
+              },
+              {
+                "column": "email",
+                "value": "={{ $json.email }}"
+              },
+              {
+                "column": "firstname",
+                "value": "={{ $json.firstname }}"
+              },
+              {
+                "column": "lastname", 
+                "value": "={{ $json.lastname }}"
+              },
+              {
+                "column": "phone",
+                "value": "={{ $json.phone }}"
+              },
+              {
+                "column": "company",
+                "value": "={{ $json.company }}"
+              },
+              {
+                "column": "jobtitle",
+                "value": "={{ $json.jobtitle }}"
+              },
+              {
+                "column": "website",
+                "value": "={{ $json.website }}"
+              },
+              {
+                "column": "address",
+                "value": "={{ $json.address }}"
+              },
+              {
+                "column": "city",
+                "value": "={{ $json.city }}"
+              },
+              {
+                "column": "state",
+                "value": "={{ $json.state }}"
+              },
+              {
+                "column": "zip",
+                "value": "={{ $json.zip }}"
+              },
+              {
+                "column": "country",
+                "value": "={{ $json.country }}"
+              },
+              {
+                "column": "industry",
+                "value": "={{ $json.industry }}"
+              },
+              {
+                "column": "num_employees",
+                "value": "={{ $json.num_employees }}"
+              },
+              {
+                "column": "annual_revenue",
+                "value": "={{ $json.annual_revenue }}"
+              },
+              {
+                "column": "lead_status",
+                "value": "={{ $json.lead_status }}"
+              },
+              {
+                "column": "lifecycle_stage", 
+                "value": "={{ $json.lifecycle_stage }}"
+              },
+              {
+                "column": "createdate",
+                "value": "={{ $json.createdate }}"
+              },
+              {
+                "column": "lastmodifieddate",
+                "value": "={{ $json.lastmodifieddate }}"
+              },
+              {
+                "column": "closedate",
+                "value": "={{ $json.closedate }}"
+              },
+              {
+                "column": "hs_lead_source",
+                "value": "={{ $json.hs_lead_source }}"
+              },
+              {
+                "column": "hs_original_source",
+                "value": "={{ $json.hs_original_source }}"
+              },
+              {
+                "column": "hs_original_source_data_1",
+                "value": "={{ $json.hs_original_source_data_1 }}"
+              },
+              {
+                "column": "hs_original_source_data_2",
+                "value": "={{ $json.hs_original_source_data_2 }}"
+              },
+              {
+                "column": "hubspot_owner_id",
+                "value": "={{ $json.hubspot_owner_id }}"
+              },
+              {
+                "column": "hs_analytics_source",
+                "value": "={{ $json.hs_analytics_source }}"
+              },
+              {
+                "column": "hs_analytics_source_data_1",
+                "value": "={{ $json.hs_analytics_source_data_1 }}"
+              },
+              {
+                "column": "last_sync_date",
+                "value": "={{ $json.last_sync_date }}"
+              },
+              {
+                "column": "sync_status",
+                "value": "={{ $json.sync_status }}"
+              },
+              {
+                "column": "hubspot_raw_data",
+                "value": "={{ $json.hubspot_raw_data }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a7b8c9d0-e1f2-3456-a789-012345678901",
+      "name": "PostgreSQL - Upsert Contatos",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [1560, 200],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log de resultado da sincronização incremental\nconst items = $input.all();\nconst successCount = items.length;\nconst timestamp = new Date().toISOString();\n\nconsole.log(`[${timestamp}] Sincronização incremental concluída: ${successCount} contatos atualizados`);\n\nreturn [{\n  json: {\n    sync_type: 'incremental',\n    timestamp: timestamp,\n    contacts_processed: successCount,\n    status: 'success'\n  }\n}];"
+      },
+      "id": "b8c9d0e1-f2a3-4567-b890-123456789012",
+      "name": "Log Sucesso",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1780, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log quando não há contatos para atualizar\nconst timestamp = new Date().toISOString();\n\nconsole.log(`[${timestamp}] Sincronização incremental: Nenhum contato novo/modificado encontrado`);\n\nreturn [{\n  json: {\n    sync_type: 'incremental',\n    timestamp: timestamp,\n    contacts_processed: 0,\n    status: 'no_changes'\n  }\n}];"
+      },
+      "id": "c9d0e1f2-a3b4-5678-c901-234567890123",
+      "name": "Log Sem Mudanças",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 400]
+    }
+  ],
+  "connections": {
+    "Cron Trigger - A cada 2h": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Buscar Último Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Buscar Último Sync": {
+      "main": [
+        [
+          {
+            "node": "Calcular Filtro de Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular Filtro de Data": {
+      "main": [
+        [
+          {
+            "node": "HubSpot - Buscar Contatos Modificados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot - Buscar Contatos Modificados": {
+      "main": [
+        [
+          {
+            "node": "IF - Tem Contatos Novos?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Tem Contatos Novos?": {
+      "main": [
+        [
+          {
+            "node": "Processar Dados Modificados",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Sem Mudanças",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar Dados Modificados": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Upsert Contatos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Upsert Contatos": {
+      "main": [
+        [
+          {
+            "node": "Log Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["hubspot", "postgresql", "sync", "contacts", "incremental"],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T10:30:00.000Z",
+  "versionId": "1"
+}

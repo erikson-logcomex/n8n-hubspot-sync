@@ -1,0 +1,388 @@
+{
+  "timestamp": "2025-08-27T09:57:42.573083",
+  "amostra_size": 2000,
+  "propriedades_analisadas": 35,
+  "resultados": [
+    {
+      "propriedade": "createdate",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2019-05-30T14:08:04.065Z",
+        "2019-03-12T15:04:30.031Z",
+        "2019-03-12T15:04:27.181Z",
+        "2019-03-16T20:49:26.870Z",
+        "2019-03-09T19:18:27.975Z"
+      ]
+    },
+    {
+      "propriedade": "lastmodifieddate",
+      "total_preenchidos": 2000,
+      "percentual": 100.0,
+      "amostras": [
+        "2025-08-15T20:53:33.976Z",
+        "2025-08-15T19:53:51.659Z",
+        "2025-08-27T12:03:00.792Z",
+        "2025-08-15T20:31:41.525Z",
+        "2025-08-21T15:04:27.485Z"
+      ]
+    },
+    {
+      "propriedade": "phone",
+      "total_preenchidos": 1993,
+      "percentual": 99.65,
+      "amostras": [
+        "+554732470031",
+        "+553133294190",
+        "+5516997166871",
+        "5541998001677",
+        "5511987270363"
+      ]
+    },
+    {
+      "propriedade": "lifecyclestage",
+      "total_preenchidos": 1991,
+      "percentual": 99.55000000000001,
+      "amostras": [
+        "86031774",
+        "86009407",
+        "85999939",
+        "subscriber",
+        "customer"
+      ]
+    },
+    {
+      "propriedade": "govcs_i_phone_number",
+      "total_preenchidos": 1986,
+      "percentual": 99.3,
+      "amostras": [
+        "+554732470031",
+        "+5516997166871",
+        "+5513992083373",
+        "+554732498700",
+        "+5548984053484"
+      ]
+    },
+    {
+      "propriedade": "company",
+      "total_preenchidos": 1975,
+      "percentual": 98.75,
+      "amostras": [
+        "AKZO NOBEL LTDA",
+        "Deloitte Touche Tohmatsu Limited",
+        "REBELA COMERCIAL EXPORTADORA LTDA",
+        "PALSGAARD CANDON S/A",
+        "ROSENBERGER DOMEX TELECOMUNICACOES LTDA"
+      ]
+    },
+    {
+      "propriedade": "website",
+      "total_preenchidos": 1962,
+      "percentual": 98.1,
+      "amostras": [
+        "http://hublogistics.com.br",
+        "http://interoceanica.com.br",
+        "http://delfa.com.br",
+        "http://panalpina.com",
+        "http://reconflex.com.br"
+      ]
+    },
+    {
+      "propriedade": "firstname",
+      "total_preenchidos": 1953,
+      "percentual": 97.65,
+      "amostras": [
+        "Jack",
+        "Walaci",
+        "ANGELITA JUSTINO - CWB",
+        "Glauco",
+        "Sherlaine"
+      ]
+    },
+    {
+      "propriedade": "email",
+      "total_preenchidos": 1899,
+      "percentual": 94.95,
+      "amostras": [
+        "mario@independentbrazil.com",
+        "salesbue@hellmann.com",
+        "contato@aurora.com.br",
+        "pedro.carita@tecnoval.com.br",
+        "roberta.leismann@gett.com.br"
+      ]
+    },
+    {
+      "propriedade": "hubspot_owner_id",
+      "total_preenchidos": 1867,
+      "percentual": 93.35,
+      "amostras": [
+        "141107228",
+        "79224672",
+        "2083298457",
+        "174741769",
+        "902739816"
+      ]
+    },
+    {
+      "propriedade": "whatsapp_api",
+      "total_preenchidos": 1400,
+      "percentual": 70.0,
+      "amostras": [
+        "+554732470031",
+        "+553133294190",
+        "+5516997166871",
+        "+5516921118000",
+        "+5513992083373"
+      ]
+    },
+    {
+      "propriedade": "jobtitle",
+      "total_preenchidos": 1262,
+      "percentual": 63.1,
+      "amostras": [
+        "Procurement Coordinator",
+        "Consultor Comercial",
+        "Gerente de Operações",
+        "COMERCIAL",
+        "Supervisor/Coordenador de Compras"
+      ]
+    },
+    {
+      "propriedade": "lastname",
+      "total_preenchidos": 1219,
+      "percentual": 60.95,
+      "amostras": [
+        "Felix",
+        "Macedo",
+        "Fontes",
+        "Aparecido Gomes",
+        "Palermo Neto"
+      ]
+    },
+    {
+      "propriedade": "codigo_do_voucher",
+      "total_preenchidos": 1152,
+      "percentual": 57.599999999999994,
+      "amostras": [
+        "SANDIM100",
+        "FERES100",
+        "MACHADO100",
+        "LORUSSO100",
+        "CONDE100"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number",
+      "total_preenchidos": 1150,
+      "percentual": 57.49999999999999,
+      "amostras": [
+        "+554732470031",
+        "+553133294190",
+        "+5511999038758",
+        "+5516997166871",
+        "+551533300465"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_country_code",
+      "total_preenchidos": 1147,
+      "percentual": 57.35,
+      "amostras": [
+        "DE",
+        "AR",
+        "BR",
+        "US",
+        "IT"
+      ]
+    },
+    {
+      "propriedade": "whatsapp_error_spread_chat",
+      "total_preenchidos": 953,
+      "percentual": 47.65,
+      "amostras": [
+        "User's number is part of an experiment",
+        "Spam Rate limit hit",
+        "Message undeliverable",
+        "This message was not delivered to maintain healthy"
+      ]
+    },
+    {
+      "propriedade": "city",
+      "total_preenchidos": 635,
+      "percentual": 31.75,
+      "amostras": [
+        "Votorantim",
+        "Ribeirão Preto",
+        "Piracicaba",
+        "Gravataí",
+        "Jardinopolis"
+      ]
+    },
+    {
+      "propriedade": "mobilephone",
+      "total_preenchidos": 577,
+      "percentual": 28.849999999999998,
+      "amostras": [
+        "+5516997166871",
+        "+551130164685",
+        "+5511985489446",
+        "5547992285132",
+        "55 71 99233 5460"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_mobile_number",
+      "total_preenchidos": 543,
+      "percentual": 27.150000000000002,
+      "amostras": [
+        "+5516997166871",
+        "+551130164685",
+        "+5511985489446",
+        "+5513991550316",
+        "+554799220180"
+      ]
+    },
+    {
+      "propriedade": "country",
+      "total_preenchidos": 517,
+      "percentual": 25.85,
+      "amostras": [
+        "Italy",
+        "United States",
+        "China",
+        "Brasil",
+        "Portugal"
+      ]
+    },
+    {
+      "propriedade": "state",
+      "total_preenchidos": 501,
+      "percentual": 25.05,
+      "amostras": [
+        "Texas",
+        "SP - Paulo",
+        "Pernambuco",
+        "Kowloon City",
+        "Espirito Santo"
+      ]
+    },
+    {
+      "propriedade": "telefone_ravena_classificado__revops_",
+      "total_preenchidos": 130,
+      "percentual": 6.5,
+      "amostras": [
+        "5541988014858",
+        "551130173092",
+        "5531996364146",
+        "551129905200",
+        "5541992083888"
+      ]
+    },
+    {
+      "propriedade": "address",
+      "total_preenchidos": 118,
+      "percentual": 5.8999999999999995,
+      "amostras": [
+        "Av. Irai 438",
+        "ALAMEDA DOUTOR CARLOS DE CARVALHO",
+        "Rua Vilela, n 652 CJ 807",
+        "Rua Joaquim Floriano 960 - 5 Andar",
+        "Rua Dr. Geraldo Campos Moreira 240 – 10 andar Cida"
+      ]
+    },
+    {
+      "propriedade": "zip",
+      "total_preenchidos": 98,
+      "percentual": 4.9,
+      "amostras": [
+        "CEP 80050-370",
+        "04569-011",
+        "CEP 04569-011",
+        "93352-004",
+        "90440-011"
+      ]
+    },
+    {
+      "propriedade": "atendimento_ativo_por",
+      "total_preenchidos": 39,
+      "percentual": 1.95,
+      "amostras": [
+        "luana.paes@logcomex.com",
+        "+5531975376925",
+        "murilo.marcossi@logcomex.com",
+        "laura.oratz@logcomex.com",
+        "martin.bordasch@logcomex.com"
+      ]
+    },
+    {
+      "propriedade": "celular1_gerador_de_personas",
+      "total_preenchidos": 4,
+      "percentual": 0.2,
+      "amostras": [
+        "+5555996993336",
+        "+5549991472813",
+        "+5581999688487",
+        "+5511947462840"
+      ]
+    },
+    {
+      "propriedade": "hs_lead_status",
+      "total_preenchidos": 3,
+      "percentual": 0.15,
+      "amostras": [
+        "ATTEMPTED_TO_CONTACT",
+        "IN_PROGRESS",
+        "CONNECTED"
+      ]
+    },
+    {
+      "propriedade": "celular2_gerador_de_personas",
+      "total_preenchidos": 3,
+      "percentual": 0.15,
+      "amostras": [
+        "+5555999427000",
+        "+5547991148818",
+        "+5511986853443"
+      ]
+    },
+    {
+      "propriedade": "cnpj_da_empresa_pesquisada",
+      "total_preenchidos": 2,
+      "percentual": 0.1,
+      "amostras": [
+        "+551332234770",
+        "361.883.018-15"
+      ]
+    },
+    {
+      "propriedade": "hs_whatsapp_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_area_code",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "buscador_ncm",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato_por_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "criado_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    }
+  ]
+}

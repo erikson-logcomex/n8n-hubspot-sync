@@ -1,0 +1,3303 @@
+{
+  "timestamp": "2025-08-27T10:37:31.523864",
+  "amostra_size": 0,
+  "propriedades_analisadas": 549,
+  "tempo_total_minutos": 0.05505537192026774,
+  "velocidade_contatos_por_minuto": 0.0,
+  "resultados": [
+    {
+      "propriedade": "aceite_funcionalidade_teste",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "address",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "agendado_por_ia_em",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "aircall_last_call_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "aircall_last_sms_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "annualrevenue",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "associatedcompanyid",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "associatedcompanylastupdated",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "association_last_update",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "atendimento_ativo_por",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "became_an_cliente_ativo",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "became_an_cliente_inativo",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "became_an_demonstracao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "became_an_onboard",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "blog_default_hubspot_blog_8032300436_subscription",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "buscador_ncm",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "business_unit",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "canal_de_aquisicao_do_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cargo",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cargo_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "celular1_gerador_de_personas",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "celular2_gerador_de_personas",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "certificate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "city",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "classificacao_do_cliente",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "classificacao_ravena",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "classificacao_ravena_em__data_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "closedate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cnpj",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cnpj_da_empresa_pesquisada",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cobertura__ic_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "codigo_do_voucher",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "como_as_dificuldades_listadas_afetam_sua_operacao_ou_estrategia_de_negocio_se_nao_forem_resolvidas_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "como_realizam_o_acompanhamento_hoje_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "company",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "company_size",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contagem_de_demonstracoes",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contatado_por_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato__exportador_mais_utilizado",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato__ncm_mais_importada",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato__nome_do_negocio",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato__ranking_cliente",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato__total_de_provaveis_importadores",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato_e_internacional",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "contato_por_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "country",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cpf",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "createdate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "criado_por__ic_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "criado_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cs__contatou_novo_contato_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cs_score_2",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cs_score_threshold",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cs_suporte_premium",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "csat_created_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "csat_score",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "csat_text",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cupom_desconto_50__ctf25_normal",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cupom_desconto_ctf25_normal",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "cupom_desconto_ctf25_vip",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "currentlyinworkflow",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "data_csat",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "date_of_birth",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "date_of_last_blog_page_view",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "date_of_last_ncm_page_view",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "days_to_close",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "decline_created_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "degree",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "departamento",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "departamento_do_logger",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "disparo_de_e_mail",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_follow_ups",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_received",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_sent",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_you_got",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_messages_you_sent",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "eazybe_total_messages",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "email",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "empresa_excluida_por_manutencao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "empresa_internacional",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "empresa_que_indicou_o_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked_campaign",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked_medium",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "engagements_last_meeting_booked_source",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "enviar_lead_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "es__segmento___internacional",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "estagio_da_conversa__exclusivo_intermodal_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "etapa_do_pipeline_atual",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "faixa_fob_impo_usd_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "fax",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "field_of_study",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "finops__customer_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "first_conversion_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "first_conversion_event_name",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "first_deal_created_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "firstname",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "followercount",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "fonte_do_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "full_name",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "gender",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "gostaria_de_receber_um_resumo_dos_resultados_desta_pesquisa__se_sim__informe_seu_e_mail_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "govc_i_filas_twillio_contact",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "govcs_i_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "graduation_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "guardiao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "guardiao__cs_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "guardiao_secundario",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ha_alguma_outra_necessidade_ou_desafio_especifico_na_gestao_de_comercio_exterior_que_voce_gostaria_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "horario_preferido",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_additional_emails",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_all_accessible_team_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_all_assigned_business_unit_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_all_contact_vids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_all_owner_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_all_team_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_average_page_views",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_first_referrer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_first_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_first_touch_converting_campaign",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_first_url",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_first_visit_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_last_referrer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_last_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_last_touch_converting_campaign",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_last_url",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_last_visit_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_num_event_completions",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_num_page_views",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_num_visits",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_revenue",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_source",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_source_data_1",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_analytics_source_data_2",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_associated_target_accounts",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_avatar_filemanager_key",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_buying_role",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_form_submissions",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_merged_vids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_mobile_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_area_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_country_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_region_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_clicked_linkedin_ad",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_contact_creation_legal_basis_source_instance_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_contact_enrichment_opt_out",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_contact_enrichment_opt_out_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_email",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_email_confirmed",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_follow_up_enqueued_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_notes",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_registered_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_registration_domain_sent_to",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_registration_email_sent_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_content_membership_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_conversations_visitor_email",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_count_is_unworked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_count_is_worked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_country_region_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_created_by_conversations",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_created_by_user_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_createdate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_cross_sell_opportunity",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_currently_enrolled_in_prospecting_agent",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_customer_agent_lead_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_data_privacy_ads_consent",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_238101571",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_238371973",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_43688110",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_85999939",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_86009407",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_86031774",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_entered_86032658",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_238101571",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_238371973",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_43688110",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_85999939",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_86009407",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_86031774",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_date_exited_86032658",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_document_last_revisited",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_bad_address",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_bounce",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_click",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_customer_quarantined_reason",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_delivered",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_domain",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_first_click_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_first_open_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_first_reply_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_first_send_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_hard_bounce_reason",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_hard_bounce_reason_enum",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_is_ineligible",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_last_click_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_last_email_name",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_last_open_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_last_reply_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_last_send_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_open",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optimal_send_day_of_week",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optimal_send_time_of_day",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_23190672",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_23770493",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_5892036",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_6125017",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_6183638",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_6992999",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_optout_7758561",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_quarantined",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_quarantined_reason",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_recipient_fatigue_recovery_time",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_replied",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_email_sends_since_last_engagement",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_emailconfirmationstatus",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_employment_change_detected_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_enriched_email_bounce_detected",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_facebook_ad_clicked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_facebook_click_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_facebookid",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_last_csat_survey_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_last_csat_survey_follow_up",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_last_csat_survey_rating",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_last_nps_follow_up",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_last_nps_rating",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_last_survey_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_feedback_show_nps_web_survey",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_closed_order_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_engagement_object_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_order_closed_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_outreach_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_first_subscription_create_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_full_name_or_email",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_google_click_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_googleplusid",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_gps_error",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_gps_latitude",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_gps_longitude",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_has_active_subscription",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_inferred_language_codes",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_intent_paid_up_to_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_intent_signals_enabled",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_ip_timezone",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_is_contact",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_is_enriched",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_is_unworked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_job_change_detected_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_journey_stage",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_language",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_metered_enrichment_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sales_activity_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sales_activity_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sales_activity_type",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sms_send_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_last_sms_send_name",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_lastmodifieddate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_disqualified_lead_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_meeting_activity",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_open_lead_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_qualified_lead_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_sequence_ended_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_sequence_enrolled",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_sequence_enrolled_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_sequence_finished_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_sequence_unenrolled_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_source",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_source_data_1",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_source_data_2",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_source_timestamp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latest_subscription_create_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_latitude",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_lead_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_legal_basis",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_linkedin_ad_clicked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_linkedin_url",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_linkedinid",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_live_enrichment_deadline",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_longitude",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_marketable_reason_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_marketable_reason_type",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_marketable_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_marketable_until_renewal",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_membership_has_accessed_private_content",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_membership_last_private_content_access_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_merged_object_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_messaging_engagement_score",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_mobile_sdk_push_tokens",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_notes_last_activity",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_notes_next_activity",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_notes_next_activity_type",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_detail_1",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_detail_2",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_detail_3",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_label",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_object_source_user_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_owning_teams",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_persona",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_pinned_engagement_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_pipeline",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_predictivecontactscore",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_predictivecontactscore_v2",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_predictivecontactscorebucket",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_predictivescoringtier",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_prospecting_agent_actively_enrolled_count",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_prospecting_agent_last_enrolled",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_prospecting_agent_total_enrolled_count",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_quarantined_emails",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_read_only",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_recent_closed_order_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_registered_member",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_registration_method",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_returning_to_office_detected_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_role",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sa_first_engagement_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sa_first_engagement_descr",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sa_first_engagement_object_type",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sales_email_last_clicked",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sales_email_last_opened",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sales_email_last_replied",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_searchable_calculated_international_mobile_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_searchable_calculated_international_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_searchable_calculated_mobile_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_searchable_calculated_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_seniority",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sequences_actively_enrolled_count",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sequences_enrolled_count",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sequences_is_enrolled",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_shared_team_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_shared_user_ids",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_social_facebook_clicks",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_social_google_plus_clicks",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_social_last_engagement",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_social_linkedin_clicks",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_social_num_broadcast_clicks",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_social_twitter_clicks",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_source_object_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_source_portal_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_state_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_sub_role",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_support_workflows_april_2021",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_testpurge",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_testrollback",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_between_contact_creation_and_deal_close",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_between_contact_creation_and_deal_creation",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_238101571",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_238371973",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_43688110",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_85999939",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_86009407",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_86031774",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_in_86032658",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_to_first_engagement",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_to_move_from_lead_to_customer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_to_move_from_marketingqualifiedlead_to_customer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_to_move_from_opportunity_to_customer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_to_move_from_salesqualifiedlead_to_customer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_time_to_move_from_subscriber_to_customer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_timezone",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_twitterid",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_unique_creation_key",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_updated_by_user_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_user_ids_of_all_notification_followers",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_user_ids_of_all_notification_unfollowers",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_user_ids_of_all_owners",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_v2_date_entered_customer",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_v2_date_entered_lead",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_v2_date_entered_marketingqualifiedlead",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_v2_date_entered_opportunity",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_v2_date_entered_salesqualifiedlead",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_v2_date_entered_subscriber",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_was_imported",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hs_whatsapp_phone_number",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hubspot_owner_assigneddate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hubspot_owner_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hubspot_team_id",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "hubspotscore",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ic__bu_do_sdr_solicitante",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ic__quantidade_de_deals_solicitados_por_sdr_para_lgen",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "id_do_indicador_logpartner",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "id_logpartner",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "idioma",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "indicacao_time_suporte_sales_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "industry",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "industry_en",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "informacoes_pendentes_de_negocio",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_city",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_country",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_country_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_latlon",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_state",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_state_code",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ip_zipcode",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "job_function",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "jobtitle",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "kloutscoregeneral",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "last_form_submitted__ic_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "last_phone_update__ic_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "lastmodifieddate",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "lastname",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ldr_estrategia",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "lifecyclestage",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "limite_de_pontuacao_de_adequacao_12_08_2025",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "link_cupom_50__ctf25",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "link_do_linkedin",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "link_para_resgate_100__gratuito",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "linkedin_profile_link",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "linkedinbio",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "linkedinconnections",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "log_embaixadores_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "logger_ativo_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "marital_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mensagem_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "message",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "military_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_business_unit",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_campanha",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_canal",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_em_negociacao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_estrategia",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_idioma",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_influence_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_influence_type",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_lifecycle_stage",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_logos_casos_uso",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_produto_de_intencao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_spreadchat_atendente",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_spreadchat_coordenacao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_spreadchat_observation",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_touch_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_touch_type",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_trafego",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mkt_trafego_agrupado",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "mobilephone",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n000_etapa_assinante",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n0_00_lead",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n0__etapa_mql",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n1__etapa_sql",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n2__etapa_demonstracao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n3__etapa_oportunidade",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n4__etapa_novo_cliente",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n5__etapa_onboard",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n6__etapa_cliente_ativo",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "n7__etapa_cliente_inativo",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ncm_mais_usada",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "new_ou_expansao___provisorio_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "nome_da_empresa_decisor",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "nome_fantasia",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "notes_last_contacted",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "notes_last_updated",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "notes_next_activity_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "nps_created_at",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "nps_score",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "nps_text",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "num_associated_deals",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "num_contacted_notes",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "num_conversion_events",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "num_notes",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "num_unique_conversion_events",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "numemployees",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "o_que_procura_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "o_que_voce_busca_como_despachante_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ob__realizou_onboarding___cs",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ob_reenviar_csat",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "objetivo__beneficios_encontrados_com_a_utilizacao_dos_dados",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ops___ativa_no_pipeline___ctt___teste_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "origem_do_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "owneremail",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ownername",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "pas_regio_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "persona_agendada",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "phone",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "photo",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "pontuacao_de_adequacao_12_08_2025",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "pops_turma_de_ingles",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "porte_da_empresa_onde_voce_atua_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "prd___cantact_details_pt",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "prd___solicitacao_logmanager",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "produto_de_inteno",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "prop_temp_tag",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "quais_sistemas_ou_ferramentas_sua_empresa_utiliza_para_gerenciar_as_operacoes_de_comercio_exterior_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "qualificacao_de_inteligencia_comercial",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "quantidade_de_embarques",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "recent_conversion_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "recent_conversion_event_name",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "recent_deal_amount",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "recent_deal_close_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "registered",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "relationship_status",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "responsavel_pela_oportunidade__exclusivo_intermodal_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "resposta_csat",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "sales__canal_de_aquisicao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "sales__feedback_do_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "salutation",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "school",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "segmentacao_do_importador_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "segmento_de_atuacao_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "selecione_um_plano_adicional",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "seniority",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "sentimento_csat",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "setor",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "squad_cs",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "start_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "state",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "status_da_empresa",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "status_ravena",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "sua_empresa_ja_utiliza_solucoes_de_ia_ou_automacao_em_algum_processo_de_comercio_exterior_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "surveymonkeyeventlastupdated",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "tag_ops___usuarios",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "telefone_ravena_classificado__revops_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "timing_budget",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "tipo_de_contato",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "total_revenue",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "twitterbio",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "twitterhandle",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "twitterprofilephoto",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "ultima_mensagem_disparada",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "user__executivo_de_vendas",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "user__executivo_de_vendas_expansao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "user__implementador",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "user__inteligencia_comercial",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "user__sdr",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utiliza_alguma_ferramenta_similar_a_nossa_solucao__sim__qual_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utilizam_ferramentas_de_inteligencia_de_comercio_exterior__sim__qual__nao",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utm_campaign",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utm_content",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utm_medium",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utm_source",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "utm_term",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "views_buscador_de_ncm",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "vips",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "visitas_ao_blog",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "webinareventlastupdated",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "website",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "website_url__ic___provisorio_",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whastapp",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_out",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_out_agent",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_out_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_synced_date",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whathub_last_message_synced_full",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whatsapp_api",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "whatsapp_error_spread_chat",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "work_email",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    },
+    {
+      "propriedade": "zip",
+      "total_preenchidos": 0,
+      "percentual": 0,
+      "amostras": []
+    }
+  ]
+}

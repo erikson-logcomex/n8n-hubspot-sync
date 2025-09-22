@@ -1,0 +1,277 @@
+{
+  "name": "HubSpot → PostgreSQL - Sincronização Contacts",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "contacts-cron-trigger-001",
+      "name": "Cron Trigger - A cada 2h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "query": "SELECT COALESCE(MAX(lastmodifieddate), '1970-01-01'::timestamp) as last_sync_timestamp FROM contacts WHERE sync_status = 'active'"
+      },
+      "id": "contacts-postgres-lastsync-002",
+      "name": "PostgreSQL - Buscar Último Sync",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 300],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL HubSpot-Sync"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Preparar filtro para buscar contatos modificados recentemente\nconst lastSync = $json.last_sync_timestamp;\nconst lastSyncDate = new Date(lastSync);\n\n// Subtrair 5 minutos para garantir que não perdemos registros\nlastSyncDate.setMinutes(lastSyncDate.getMinutes() - 5);\n\nconst filterTimestamp = Math.floor(lastSyncDate.getTime());\n\nconsole.log(`[CONTACTS SYNC] Buscando contatos modificados após: ${lastSyncDate.toISOString()}`);\n\nreturn [{\n  json: {\n    lastmodifieddate_filter: filterTimestamp,\n    lastmodifieddate_iso: lastSyncDate.toISOString()\n  }\n}];"
+      },
+      "id": "contacts-calc-filter-003",
+      "name": "Calcular Filtro de Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 100,
+        "filters": {
+          "filterGroupsUi": {
+            "filterGroupsValues": [
+              {
+                "filtersUi": {
+                  "filterValues": [
+                    {
+                      "propertyName": "lastmodifieddate",
+                      "operator": "GT",
+                      "value": "={{ $json.lastmodifieddate_filter }}"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "additionalFields": {
+          "properties": [
+            "email",
+            "firstname", 
+            "lastname",
+            "company",
+            "jobtitle",
+            "website",
+            "phone",
+            "mobilephone",
+            "hs_whatsapp_phone_number",
+            "govcs_i_phone_number",
+            "lifecyclestage",
+            "hs_lead_status",
+            "codigo_do_voucher",
+            "atendimento_ativo_por",
+            "buscador_ncm",
+            "cnpj_da_empresa_pesquisada",
+            "contato_por_whatsapp",
+            "criado_whatsapp",
+            "whatsapp_api",
+            "whatsapp_error_spread_chat",
+            "hs_calculated_phone_number",
+            "hs_calculated_mobile_number",
+            "hs_calculated_phone_number_country_code",
+            "hs_calculated_phone_number_area_code",
+            "telefone_ravena_classificado__revops_",
+            "celular1_gerador_de_personas",
+            "celular2_gerador_de_personas",
+            "address",
+            "city",
+            "state",
+            "zip",
+            "country",
+            "createdate",
+            "lastmodifieddate",
+            "closedate",
+            "hs_lead_source",
+            "hs_original_source",
+            "hs_original_source_data_1",
+            "hs_original_source_data_2",
+            "hubspot_owner_id"
+          ]
+        }
+      },
+      "id": "contacts-hubspot-004",
+      "name": "HubSpot - Buscar Contatos",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [900, 300],
+      "credentials": {
+        "hubspotApi": {
+          "id": "seu_hubspot_credential_id", 
+          "name": "HubSpot API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.length }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "contacts-if-hascontacts-005",
+      "name": "IF - Tem Contatos Novos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Processar contatos seguindo padrão das outras tabelas (companies, deals, owners)\nconst items = $input.all();\nconst processedItems = [];\n\nfor (const item of items) {\n  const contact = item.json;\n  const props = contact.properties || {};\n  \n  // Helper para converter data\n  const convertDate = (dateStr) => {\n    if (!dateStr) return null;\n    try {\n      return new Date(dateStr).toISOString();\n    } catch (e) {\n      return null;\n    }\n  };\n  \n  // Helper para converter número\n  const convertNumber = (numStr) => {\n    if (!numStr) return null;\n    const num = parseInt(numStr);\n    return isNaN(num) ? null : num;\n  };\n  \n  // Mapear TODAS as propriedades para tabela contacts\n  const processedContact = {\n    // IDs\n    id: contact.id,\n    hs_object_id: convertNumber(props.hs_object_id) || contact.id,\n    \n    // Básicos\n    email: props.email || null,\n    firstname: props.firstname || null,\n    lastname: props.lastname || null,\n    \n    // Profissionais (CONFIRMADO com dados!)\n    company: props.company || null,\n    jobtitle: props.jobtitle || null,\n    website: props.website || null,\n    \n    // Telefones (MÚLTIPLOS tipos confirmados!)\n    phone: props.phone || null,\n    mobilephone: props.mobilephone || null,\n    hs_whatsapp_phone_number: props.hs_whatsapp_phone_number || null,\n    govcs_i_phone_number: props.govcs_i_phone_number || null,\n    \n    // Status (CONFIRMADO!)\n    lifecyclestage: props.lifecyclestage || null,\n    hs_lead_status: props.hs_lead_status || null,\n    hubspot_owner_id: convertNumber(props.hubspot_owner_id),\n    \n    // Específicos Logcomex (CONFIRMADO em uso!)\n    codigo_do_voucher: props.codigo_do_voucher || null,\n    atendimento_ativo_por: props.atendimento_ativo_por || null,\n    buscador_ncm: props.buscador_ncm || null,\n    cnpj_da_empresa_pesquisada: props.cnpj_da_empresa_pesquisada || null,\n    \n    // WhatsApp específicos\n    contato_por_whatsapp: props.contato_por_whatsapp || null,\n    criado_whatsapp: props.criado_whatsapp || null,\n    whatsapp_api: props.whatsapp_api || null,\n    whatsapp_error_spread_chat: props.whatsapp_error_spread_chat || null,\n    \n    // Telefones calculados HubSpot\n    hs_calculated_phone_number: props.hs_calculated_phone_number || null,\n    hs_calculated_mobile_number: props.hs_calculated_mobile_number || null,\n    hs_calculated_phone_number_country_code: props.hs_calculated_phone_number_country_code || null,\n    hs_calculated_phone_number_area_code: props.hs_calculated_phone_number_area_code || null,\n    \n    // Ravena/RevOps\n    telefone_ravena_classificado__revops_: props.telefone_ravena_classificado__revops_ || null,\n    \n    // Personas\n    celular1_gerador_de_personas: props.celular1_gerador_de_personas || null,\n    celular2_gerador_de_personas: props.celular2_gerador_de_personas || null,\n    \n    // Endereço\n    address: props.address || null,\n    city: props.city || null,\n    state: props.state || null,\n    zip: props.zip || null,\n    country: props.country || null,\n    \n    // Datas\n    createdate: convertDate(props.createdate),\n    lastmodifieddate: convertDate(props.lastmodifieddate),\n    closedate: convertDate(props.closedate),\n    \n    // Origem\n    hs_lead_source: props.hs_lead_source || null,\n    hs_original_source: props.hs_original_source || null,\n    hs_original_source_data_1: props.hs_original_source_data_1 || null,\n    hs_original_source_data_2: props.hs_original_source_data_2 || null,\n    \n    // Metadados\n    last_sync_date: new Date().toISOString(),\n    sync_status: 'active',\n    hubspot_raw_data: JSON.stringify(contact)\n  };\n  \n  processedItems.push({ json: processedContact });\n}\n\nconsole.log(`[CONTACTS SYNC] Processando ${processedItems.length} contatos na tabela contacts`);\nreturn processedItems;"
+      },
+      "id": "contacts-process-data-006",
+      "name": "Processar Dados para Contacts",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "table": "contacts",
+        "columnToMatchOn": "id",
+        "columnsUi": {
+          "columnToMatchOnCaseSensitive": false,
+          "valueColumnsUi": {
+            "values": [
+              {"column": "id", "value": "={{ $json.id }}"},
+              {"column": "hs_object_id", "value": "={{ $json.hs_object_id }}"},
+              {"column": "email", "value": "={{ $json.email }}"},
+              {"column": "firstname", "value": "={{ $json.firstname }}"},
+              {"column": "lastname", "value": "={{ $json.lastname }}"},
+              {"column": "company", "value": "={{ $json.company }}"},
+              {"column": "jobtitle", "value": "={{ $json.jobtitle }}"},
+              {"column": "website", "value": "={{ $json.website }}"},
+              {"column": "phone", "value": "={{ $json.phone }}"},
+              {"column": "mobilephone", "value": "={{ $json.mobilephone }}"},
+              {"column": "hs_whatsapp_phone_number", "value": "={{ $json.hs_whatsapp_phone_number }}"},
+              {"column": "govcs_i_phone_number", "value": "={{ $json.govcs_i_phone_number }}"},
+              {"column": "lifecyclestage", "value": "={{ $json.lifecyclestage }}"},
+              {"column": "hs_lead_status", "value": "={{ $json.hs_lead_status }}"},
+              {"column": "hubspot_owner_id", "value": "={{ $json.hubspot_owner_id }}"},
+              {"column": "codigo_do_voucher", "value": "={{ $json.codigo_do_voucher }}"},
+              {"column": "atendimento_ativo_por", "value": "={{ $json.atendimento_ativo_por }}"},
+              {"column": "buscador_ncm", "value": "={{ $json.buscador_ncm }}"},
+              {"column": "cnpj_da_empresa_pesquisada", "value": "={{ $json.cnpj_da_empresa_pesquisada }}"},
+              {"column": "contato_por_whatsapp", "value": "={{ $json.contato_por_whatsapp }}"},
+              {"column": "criado_whatsapp", "value": "={{ $json.criado_whatsapp }}"},
+              {"column": "whatsapp_api", "value": "={{ $json.whatsapp_api }}"},
+              {"column": "whatsapp_error_spread_chat", "value": "={{ $json.whatsapp_error_spread_chat }}"},
+              {"column": "hs_calculated_phone_number", "value": "={{ $json.hs_calculated_phone_number }}"},
+              {"column": "hs_calculated_mobile_number", "value": "={{ $json.hs_calculated_mobile_number }}"},
+              {"column": "hs_calculated_phone_number_country_code", "value": "={{ $json.hs_calculated_phone_number_country_code }}"},
+              {"column": "hs_calculated_phone_number_area_code", "value": "={{ $json.hs_calculated_phone_number_area_code }}"},
+              {"column": "telefone_ravena_classificado__revops_", "value": "={{ $json.telefone_ravena_classificado__revops_ }}"},
+              {"column": "celular1_gerador_de_personas", "value": "={{ $json.celular1_gerador_de_personas }}"},
+              {"column": "celular2_gerador_de_personas", "value": "={{ $json.celular2_gerador_de_personas }}"},
+              {"column": "address", "value": "={{ $json.address }}"},
+              {"column": "city", "value": "={{ $json.city }}"},
+              {"column": "state", "value": "={{ $json.state }}"},
+              {"column": "zip", "value": "={{ $json.zip }}"},
+              {"column": "country", "value": "={{ $json.country }}"},
+              {"column": "createdate", "value": "={{ $json.createdate }}"},
+              {"column": "lastmodifieddate", "value": "={{ $json.lastmodifieddate }}"},
+              {"column": "closedate", "value": "={{ $json.closedate }}"},
+              {"column": "hs_lead_source", "value": "={{ $json.hs_lead_source }}"},
+              {"column": "hs_original_source", "value": "={{ $json.hs_original_source }}"},
+              {"column": "hs_original_source_data_1", "value": "={{ $json.hs_original_source_data_1 }}"},
+              {"column": "hs_original_source_data_2", "value": "={{ $json.hs_original_source_data_2 }}"},
+              {"column": "last_sync_date", "value": "={{ $json.last_sync_date }}"},
+              {"column": "sync_status", "value": "={{ $json.sync_status }}"},
+              {"column": "hubspot_raw_data", "value": "={{ $json.hubspot_raw_data }}"}
+            ]
+          }
+        }
+      },
+      "id": "contacts-postgres-upsert-007",
+      "name": "PostgreSQL - Upsert Contacts",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [1560, 200],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL HubSpot-Sync"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log de sucesso seguindo padrão das outras tabelas\nconst items = $input.all();\nconst successCount = items.length;\nconst timestamp = new Date().toISOString();\n\n// Contar quantos têm dados importantes\nlet withEmail = 0, withPhone = 0, withCompany = 0, withVoucher = 0;\n\nfor (const item of items) {\n  const data = item.json;\n  if (data.email) withEmail++;\n  if (data.phone || data.mobilephone) withPhone++;\n  if (data.company) withCompany++;\n  if (data.codigo_do_voucher) withVoucher++;\n}\n\nconsole.log(`[CONTACTS SYNC] Sincronização da tabela contacts concluída:`);\nconsole.log(`  • ${successCount} contatos processados`);\nconsole.log(`  • ${withEmail} com email`);\nconsole.log(`  • ${withPhone} com telefone`);\nconsole.log(`  • ${withCompany} com empresa`);\nconsole.log(`  • ${withVoucher} com voucher`);\n\nreturn [{\n  json: {\n    sync_type: 'contacts_table',\n    timestamp: timestamp,\n    contacts_processed: successCount,\n    with_email: withEmail,\n    with_phone: withPhone,\n    with_company: withCompany,\n    with_voucher: withVoucher,\n    status: 'success'\n  }\n}];"
+      },
+      "id": "contacts-log-success-008",
+      "name": "Log Sucesso Contacts",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1780, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log quando não há contatos modificados\nconst timestamp = new Date().toISOString();\n\nconsole.log(`[CONTACTS SYNC] Nenhum contato modificado encontrado`);\n\nreturn [{\n  json: {\n    sync_type: 'contacts_table',\n    timestamp: timestamp,\n    contacts_processed: 0,\n    status: 'no_changes'\n  }\n}];"
+      },
+      "id": "contacts-log-nochanges-009",
+      "name": "Log Sem Mudanças",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 400]
+    }
+  ],
+  "connections": {
+    "Cron Trigger - A cada 2h": {
+      "main": [[{"node": "PostgreSQL - Buscar Último Sync", "type": "main", "index": 0}]]
+    },
+    "PostgreSQL - Buscar Último Sync": {
+      "main": [[{"node": "Calcular Filtro de Data", "type": "main", "index": 0}]]
+    },
+    "Calcular Filtro de Data": {
+      "main": [[{"node": "HubSpot - Buscar Contatos", "type": "main", "index": 0}]]
+    },
+    "HubSpot - Buscar Contatos": {
+      "main": [[{"node": "IF - Tem Contatos Novos?", "type": "main", "index": 0}]]
+    },
+    "IF - Tem Contatos Novos?": {
+      "main": [
+        [{"node": "Processar Dados para Contacts", "type": "main", "index": 0}],
+        [{"node": "Log Sem Mudanças", "type": "main", "index": 0}]
+      ]
+    },
+    "Processar Dados para Contacts": {
+      "main": [[{"node": "PostgreSQL - Upsert Contacts", "type": "main", "index": 0}]]
+    },
+    "PostgreSQL - Upsert Contacts": {
+      "main": [[{"node": "Log Sucesso Contacts", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {"executionOrder": "v1"},
+  "staticData": null,
+  "tags": ["hubspot", "postgresql", "sync", "contacts"],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T14:00:00.000Z",
+  "versionId": "1"
+}

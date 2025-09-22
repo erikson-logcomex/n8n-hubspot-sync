@@ -1,0 +1,290 @@
+{
+  "name": "HubSpot → PostgreSQL - Sincronização Inicial",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f8d4c5e7-abc1-4def-9876-543210fedcba",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 100,
+        "additionalFields": {
+          "properties": [
+            "email",
+            "firstname", 
+            "lastname",
+            "phone",
+            "company",
+            "jobtitle",
+            "website",
+            "address",
+            "city",
+            "state", 
+            "zip",
+            "country",
+            "industry",
+            "num_employees",
+            "annualrevenue",
+            "hs_lead_status",
+            "lifecyclestage",
+            "createdate",
+            "lastmodifieddate",
+            "closedate",
+            "hs_lead_source",
+            "hs_original_source",
+            "hs_original_source_data_1",
+            "hs_original_source_data_2",
+            "hubspot_owner_id",
+            "hs_analytics_source",
+            "hs_analytics_source_data_1"
+          ]
+        }
+      },
+      "id": "12345678-1234-5678-9abc-def012345678",
+      "name": "HubSpot - Buscar Contatos",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [460, 300],
+      "credentials": {
+        "hubspotApi": {
+          "id": "seu_hubspot_credential_id",
+          "name": "HubSpot API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Processa cada contato do HubSpot para inserção no PostgreSQL\nconst items = $input.all();\nconst processedItems = [];\n\nfor (const item of items) {\n  const contact = item.json;\n  \n  // Mapeia dados do HubSpot para estrutura do PostgreSQL\n  const processedContact = {\n    id: contact.id,\n    hubspot_object_id: contact.id,\n    email: contact.properties?.email || null,\n    firstname: contact.properties?.firstname || null,\n    lastname: contact.properties?.lastname || null,\n    phone: contact.properties?.phone || null,\n    company: contact.properties?.company || null,\n    jobtitle: contact.properties?.jobtitle || null,\n    website: contact.properties?.website || null,\n    address: contact.properties?.address || null,\n    city: contact.properties?.city || null,\n    state: contact.properties?.state || null,\n    zip: contact.properties?.zip || null,\n    country: contact.properties?.country || null,\n    industry: contact.properties?.industry || null,\n    num_employees: contact.properties?.num_employees ? parseInt(contact.properties.num_employees) : null,\n    annual_revenue: contact.properties?.annualrevenue ? parseFloat(contact.properties.annualrevenue) : null,\n    lead_status: contact.properties?.hs_lead_status || null,\n    lifecycle_stage: contact.properties?.lifecyclestage || null,\n    createdate: contact.properties?.createdate ? new Date(contact.properties.createdate).toISOString() : null,\n    lastmodifieddate: contact.properties?.lastmodifieddate ? new Date(contact.properties.lastmodifieddate).toISOString() : null,\n    closedate: contact.properties?.closedate ? new Date(contact.properties.closedate).toISOString() : null,\n    hs_lead_source: contact.properties?.hs_lead_source || null,\n    hs_original_source: contact.properties?.hs_original_source || null,\n    hs_original_source_data_1: contact.properties?.hs_original_source_data_1 || null,\n    hs_original_source_data_2: contact.properties?.hs_original_source_data_2 || null,\n    hubspot_owner_id: contact.properties?.hubspot_owner_id ? parseInt(contact.properties.hubspot_owner_id) : null,\n    hs_analytics_source: contact.properties?.hs_analytics_source || null,\n    hs_analytics_source_data_1: contact.properties?.hs_analytics_source_data_1 || null,\n    last_sync_date: new Date().toISOString(),\n    sync_status: 'active',\n    hubspot_raw_data: JSON.stringify(contact)\n  };\n  \n  processedItems.push({ json: processedContact });\n}\n\nreturn processedItems;"
+      },
+      "id": "23456789-2345-6789-abcd-ef0123456789",
+      "name": "Processar Dados",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "table": "hubspot_contacts",
+        "columnToMatchOn": "id",
+        "columnsUi": {
+          "columnToMatchOnCaseSensitive": false,
+          "valueColumnsUi": {
+            "values": [
+              {
+                "column": "id",
+                "value": "={{ $json.id }}"
+              },
+              {
+                "column": "hubspot_object_id", 
+                "value": "={{ $json.hubspot_object_id }}"
+              },
+              {
+                "column": "email",
+                "value": "={{ $json.email }}"
+              },
+              {
+                "column": "firstname",
+                "value": "={{ $json.firstname }}"
+              },
+              {
+                "column": "lastname", 
+                "value": "={{ $json.lastname }}"
+              },
+              {
+                "column": "phone",
+                "value": "={{ $json.phone }}"
+              },
+              {
+                "column": "company",
+                "value": "={{ $json.company }}"
+              },
+              {
+                "column": "jobtitle",
+                "value": "={{ $json.jobtitle }}"
+              },
+              {
+                "column": "website",
+                "value": "={{ $json.website }}"
+              },
+              {
+                "column": "address",
+                "value": "={{ $json.address }}"
+              },
+              {
+                "column": "city",
+                "value": "={{ $json.city }}"
+              },
+              {
+                "column": "state",
+                "value": "={{ $json.state }}"
+              },
+              {
+                "column": "zip",
+                "value": "={{ $json.zip }}"
+              },
+              {
+                "column": "country",
+                "value": "={{ $json.country }}"
+              },
+              {
+                "column": "industry",
+                "value": "={{ $json.industry }}"
+              },
+              {
+                "column": "num_employees",
+                "value": "={{ $json.num_employees }}"
+              },
+              {
+                "column": "annual_revenue",
+                "value": "={{ $json.annual_revenue }}"
+              },
+              {
+                "column": "lead_status",
+                "value": "={{ $json.lead_status }}"
+              },
+              {
+                "column": "lifecycle_stage", 
+                "value": "={{ $json.lifecycle_stage }}"
+              },
+              {
+                "column": "createdate",
+                "value": "={{ $json.createdate }}"
+              },
+              {
+                "column": "lastmodifieddate",
+                "value": "={{ $json.lastmodifieddate }}"
+              },
+              {
+                "column": "closedate",
+                "value": "={{ $json.closedate }}"
+              },
+              {
+                "column": "hs_lead_source",
+                "value": "={{ $json.hs_lead_source }}"
+              },
+              {
+                "column": "hs_original_source",
+                "value": "={{ $json.hs_original_source }}"
+              },
+              {
+                "column": "hs_original_source_data_1",
+                "value": "={{ $json.hs_original_source_data_1 }}"
+              },
+              {
+                "column": "hs_original_source_data_2",
+                "value": "={{ $json.hs_original_source_data_2 }}"
+              },
+              {
+                "column": "hubspot_owner_id",
+                "value": "={{ $json.hubspot_owner_id }}"
+              },
+              {
+                "column": "hs_analytics_source",
+                "value": "={{ $json.hs_analytics_source }}"
+              },
+              {
+                "column": "hs_analytics_source_data_1",
+                "value": "={{ $json.hs_analytics_source_data_1 }}"
+              },
+              {
+                "column": "last_sync_date",
+                "value": "={{ $json.last_sync_date }}"
+              },
+              {
+                "column": "sync_status",
+                "value": "={{ $json.sync_status }}"
+              },
+              {
+                "column": "hubspot_raw_data",
+                "value": "={{ $json.hubspot_raw_data }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "34567890-3456-7890-bcde-f01234567890",
+      "name": "PostgreSQL - Inserir/Atualizar",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [900, 300],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log de resultado da sincronização\nconst items = $input.all();\nconst successCount = items.length;\nconst timestamp = new Date().toISOString();\n\nconsole.log(`[${timestamp}] Sincronização inicial concluída: ${successCount} contatos processados`);\n\nreturn [{\n  json: {\n    sync_type: 'inicial',\n    timestamp: timestamp,\n    contacts_processed: successCount,\n    status: 'success'\n  }\n}];"
+      },
+      "id": "45678901-4567-8901-cdef-012345678901",
+      "name": "Log Resultado",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "HubSpot - Buscar Contatos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot - Buscar Contatos": {
+      "main": [
+        [
+          {
+            "node": "Processar Dados",
+            "type": "main", 
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Processar Dados": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Inserir/Atualizar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Inserir/Atualizar": {
+      "main": [
+        [
+          {
+            "node": "Log Resultado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["hubspot", "postgresql", "sync", "contacts"],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T10:00:00.000Z",
+  "versionId": "1"
+}

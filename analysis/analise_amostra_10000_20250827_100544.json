@@ -1,0 +1,401 @@
+{
+  "timestamp": "2025-08-27T10:05:44.544512",
+  "amostra_size": 10000,
+  "propriedades_analisadas": 35,
+  "tempo_total_minutos": 3.377156551678975,
+  "velocidade_contatos_por_minuto": 2961.070902984475,
+  "resultados": [
+    {
+      "propriedade": "createdate",
+      "total_preenchidos": 10000,
+      "percentual": 100.0,
+      "amostras": [
+        "2020-09-30T20:44:35.274Z",
+        "2019-11-06T14:16:17.854Z",
+        "2019-05-23T13:47:48.842Z",
+        "2019-03-13T14:36:34.696Z",
+        "2019-07-10T12:33:29.432Z"
+      ]
+    },
+    {
+      "propriedade": "lastmodifieddate",
+      "total_preenchidos": 10000,
+      "percentual": 100.0,
+      "amostras": [
+        "2025-08-15T20:06:46.113Z",
+        "2025-08-19T12:14:35.873Z",
+        "2025-08-12T19:00:31.432Z",
+        "2025-08-12T18:59:47.585Z",
+        "2025-08-15T19:16:37.343Z"
+      ]
+    },
+    {
+      "propriedade": "lifecyclestage",
+      "total_preenchidos": 9955,
+      "percentual": 99.55000000000001,
+      "amostras": [
+        "85999939",
+        "86031774",
+        "subscriber",
+        "salesqualifiedlead",
+        "customer"
+      ]
+    },
+    {
+      "propriedade": "phone",
+      "total_preenchidos": 9946,
+      "percentual": 99.46000000000001,
+      "amostras": [
+        "+554734424102",
+        "5511970608338",
+        "+551130582809",
+        "+559233072325",
+        "+55 (91) 99154-4038"
+      ]
+    },
+    {
+      "propriedade": "govcs_i_phone_number",
+      "total_preenchidos": 9914,
+      "percentual": 99.14,
+      "amostras": [
+        "+5541999205655",
+        "+554734424102",
+        "+551130582809",
+        "+559233072325",
+        "+55 (91) 99154-4038"
+      ]
+    },
+    {
+      "propriedade": "company",
+      "total_preenchidos": 9800,
+      "percentual": 98.0,
+      "amostras": [
+        "Freight",
+        "KARINA INDUSTRIA E COMERCIO DE PLASTICOS LTDA",
+        "Fotoimagem",
+        "BEARDOW ADAMS DO BRASIL ADESIVOS LTDA",
+        "SYM TRADE COMERCIO IMPORTACAO E EXPORTACAO LTDA"
+      ]
+    },
+    {
+      "propriedade": "website",
+      "total_preenchidos": 9743,
+      "percentual": 97.43,
+      "amostras": [
+        "http://openmarket.com.br",
+        "http://gett.com.br",
+        "http://allmundi.com.br",
+        "http://lexu4g.com",
+        "http://sondeq.com.br"
+      ]
+    },
+    {
+      "propriedade": "email",
+      "total_preenchidos": 9697,
+      "percentual": 96.97,
+      "amostras": [
+        "eliane.hanorio@grupocraft.com.br",
+        "hallanamachado@axisshipping.com.br",
+        "monica.marques@allseasglobal.com.br",
+        "gabriel.ferraz@br.steinweg.com",
+        "evandro@nextshipping.com.br"
+      ]
+    },
+    {
+      "propriedade": "firstname",
+      "total_preenchidos": 9644,
+      "percentual": 96.44,
+      "amostras": [
+        "Giuliano",
+        "Jacinto Andrés",
+        "Renan",
+        "Giuseppe",
+        "DIONE"
+      ]
+    },
+    {
+      "propriedade": "hubspot_owner_id",
+      "total_preenchidos": 9509,
+      "percentual": 95.09,
+      "amostras": [
+        "37669355",
+        "96242467",
+        "66487332",
+        "39664813",
+        "36609767"
+      ]
+    },
+    {
+      "propriedade": "jobtitle",
+      "total_preenchidos": 7277,
+      "percentual": 72.77,
+      "amostras": [
+        "Executivo de contas",
+        "Outros",
+        "PRESIDENTE / VICE-PRESIDENTE / CEO",
+        "Diretora de Novos Negócios",
+        "Especialista em Exportação/Importação"
+      ]
+    },
+    {
+      "propriedade": "whatsapp_api",
+      "total_preenchidos": 6976,
+      "percentual": 69.76,
+      "amostras": [
+        "+5541999205655",
+        "+554734424102",
+        "+554799900085",
+        "+551130582809",
+        "+559233072325"
+      ]
+    },
+    {
+      "propriedade": "lastname",
+      "total_preenchidos": 6883,
+      "percentual": 68.83,
+      "amostras": [
+        "SILBERBERG",
+        "Sansigolo",
+        "Paulo Giacomolli",
+        "Pagliari",
+        "Neder"
+      ]
+    },
+    {
+      "propriedade": "codigo_do_voucher",
+      "total_preenchidos": 6020,
+      "percentual": 60.199999999999996,
+      "amostras": [
+        "KAUDY100",
+        "VALVES100",
+        "TOMIATO50",
+        "https://drive.google.com/file/d/1EbU7IGBz53Q456nds",
+        "ANERY100"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number",
+      "total_preenchidos": 5752,
+      "percentual": 57.52,
+      "amostras": [
+        "+554734424102",
+        "+551130582809",
+        "+559233072325",
+        "+5551984173040",
+        "+554735318800"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_country_code",
+      "total_preenchidos": 5735,
+      "percentual": 57.35,
+      "amostras": [
+        "GB",
+        "NL",
+        "IT",
+        "JP",
+        "DE"
+      ]
+    },
+    {
+      "propriedade": "whatsapp_error_spread_chat",
+      "total_preenchidos": 4631,
+      "percentual": 46.31,
+      "amostras": [
+        "Message undeliverable",
+        "User's number is part of an experiment",
+        "This message was not delivered to maintain healthy",
+        "Spam Rate limit hit"
+      ]
+    },
+    {
+      "propriedade": "city",
+      "total_preenchidos": 3109,
+      "percentual": 31.09,
+      "amostras": [
+        "Pelotas",
+        "Guaratinguetá",
+        "Piedade",
+        "Santa Barbara d'Oeste",
+        "Jaú"
+      ]
+    },
+    {
+      "propriedade": "country",
+      "total_preenchidos": 2703,
+      "percentual": 27.029999999999998,
+      "amostras": [
+        "Singapore",
+        "USA",
+        "Uruguay",
+        "Korea, Republic of",
+        "Hong Kong"
+      ]
+    },
+    {
+      "propriedade": "mobilephone",
+      "total_preenchidos": 2683,
+      "percentual": 26.83,
+      "amostras": [
+        "+5541991085060",
+        "+5585999225595",
+        "5.51194E+12",
+        "+5547999649000",
+        "+559236145550"
+      ]
+    },
+    {
+      "propriedade": "state",
+      "total_preenchidos": 2619,
+      "percentual": 26.19,
+      "amostras": [
+        "Amazonas",
+        "Rio Grande do Sul",
+        "Kowloon City",
+        "CM",
+        "Buenos Aires F.D."
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_mobile_number",
+      "total_preenchidos": 2499,
+      "percentual": 24.990000000000002,
+      "amostras": [
+        "+5541991085060",
+        "+5585999225595",
+        "+5547999649000",
+        "+559236145550",
+        "+551155420664"
+      ]
+    },
+    {
+      "propriedade": "telefone_ravena_classificado__revops_",
+      "total_preenchidos": 620,
+      "percentual": 6.2,
+      "amostras": [
+        "5511970608338",
+        "554733416300",
+        "5551998101120",
+        "5518998047458",
+        "551931144700"
+      ]
+    },
+    {
+      "propriedade": "address",
+      "total_preenchidos": 574,
+      "percentual": 5.74,
+      "amostras": [
+        "Rua José de Resende Meirelles, 3895 - Vinhedo",
+        "Av. Edmundo Doubrawa 1001",
+        "101 KM 163",
+        "GOMES DE CAERVALHO 1666",
+        "Avenida Marechal Floriano Peixoto - de 180/181 a 9"
+      ]
+    },
+    {
+      "propriedade": "zip",
+      "total_preenchidos": 452,
+      "percentual": 4.52,
+      "amostras": [
+        "77056",
+        "03058-060",
+        "24110-200",
+        "CEP 13413-096",
+        "90480-004"
+      ]
+    },
+    {
+      "propriedade": "atendimento_ativo_por",
+      "total_preenchidos": 160,
+      "percentual": 1.6,
+      "amostras": [
+        "waleska.kaudy@logcomex.com",
+        "taise.machado@logcomex.com",
+        "gabriel.souza@logcomex.com",
+        "pablo.pereira@logcomex.com",
+        "+555121219987"
+      ]
+    },
+    {
+      "propriedade": "celular1_gerador_de_personas",
+      "total_preenchidos": 26,
+      "percentual": 0.26,
+      "amostras": [
+        "+554131344418",
+        "+5511989281663",
+        "+5541998764466",
+        "+5547996367331",
+        "+5547999227407"
+      ]
+    },
+    {
+      "propriedade": "celular2_gerador_de_personas",
+      "total_preenchidos": 18,
+      "percentual": 0.18,
+      "amostras": [
+        "+5541999236630",
+        "+5555999427000",
+        "+5515996805541",
+        "+5541991088923",
+        "+5511992223898"
+      ]
+    },
+    {
+      "propriedade": "hs_lead_status",
+      "total_preenchidos": 10,
+      "percentual": 0.1,
+      "amostras": [
+        "CONNECTED",
+        "IN_PROGRESS",
+        "ATTEMPTED_TO_CONTACT"
+      ]
+    },
+    {
+      "propriedade": "contato_por_whatsapp",
+      "total_preenchidos": 5,
+      "percentual": 0.05,
+      "amostras": [
+        "true"
+      ]
+    },
+    {
+      "propriedade": "cnpj_da_empresa_pesquisada",
+      "total_preenchidos": 4,
+      "percentual": 0.04,
+      "amostras": [
+        "+551332234770",
+        "+551145098888",
+        "361.883.018-15",
+        "+5511987842048"
+      ]
+    },
+    {
+      "propriedade": "hs_whatsapp_phone_number",
+      "total_preenchidos": 1,
+      "percentual": 0.01,
+      "amostras": [
+        "+5513981154951"
+      ]
+    },
+    {
+      "propriedade": "buscador_ncm",
+      "total_preenchidos": 1,
+      "percentual": 0.01,
+      "amostras": [
+        "NCM 4002.91.00 — Latex de outras borrachas sintéti"
+      ]
+    },
+    {
+      "propriedade": "hs_calculated_phone_number_area_code",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    },
+    {
+      "propriedade": "criado_whatsapp",
+      "total_preenchidos": 0,
+      "percentual": 0.0,
+      "amostras": []
+    }
+  ]
+}

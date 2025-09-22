@@ -1,0 +1,267 @@
+{
+  "name": "HubSpot → PostgreSQL - Contacts (FINAL ROBUST)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 80],
+      "id": "contacts-trigger-001",
+      "name": "Schedule Trigger - A cada 30min"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COALESCE(MAX(lastmodifieddate), '1970-01-01'::timestamp) as last_sync_timestamp FROM contacts WHERE sync_status = 'active'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [220, 80],
+      "id": "contacts-lastsync-002",
+      "name": "Get Last Sync",
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hubapi.com/crm/v3/objects/contacts?limit=100{{ $json.aftertoken ? '&after=' + $json.aftertoken : '' }}{{ $('Get Last Sync').item.json.last_sync_timestamp && $('Get Last Sync').item.json.last_sync_timestamp !== '1970-01-01T00:00:00' ? '&filterGroups[0][filters][0][propertyName]=lastmodifieddate&filterGroups[0][filters][0][operator]=GTE&filterGroups[0][filters][0][value]=' + new Date($('Get Last Sync').item.json.last_sync_timestamp).getTime() : '' }}&properties=email,firstname,lastname,company,jobtitle,website,phone,mobilephone,hs_whatsapp_phone_number,govcs_i_phone_number,lifecyclestage,hs_lead_status,codigo_do_voucher,atendimento_ativo_por,buscador_ncm,cnpj_da_empresa_pesquisada,contato_por_whatsapp,criado_whatsapp,whatsapp_api,whatsapp_error_spread_chat,hs_calculated_phone_number,hs_calculated_mobile_number,hs_calculated_phone_number_country_code,hs_calculated_phone_number_area_code,telefone_ravena_classificado__revops_,celular1_gerador_de_personas,celular2_gerador_de_personas,address,city,state,zip,country,createdate,lastmodifieddate,closedate,hs_lead_source,hs_original_source,hs_original_source_data_1,hs_original_source_data_2,hubspot_owner_id",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "sendQuery": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 80],
+      "id": "contacts-hubspot-003",
+      "name": "HTTP Request - HubSpot Contacts",
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "YwRTwETOCgfX3IpP",
+          "name": "HubSpot App Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-results",
+              "leftValue": "={{ $json.results && Array.isArray($json.results) && $json.results.length > 0 }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [660, 80],
+      "id": "contacts-if-004",
+      "name": "If - Has Contacts?"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import json\nimport re\nfrom datetime import datetime\nfrom collections.abc import Mapping, Sequence\n\nquery_base = \"\"\"\nINSERT INTO contacts (\n  id, hs_object_id, email, firstname, lastname, company, jobtitle, website,\n  phone, mobilephone, hs_whatsapp_phone_number, govcs_i_phone_number,\n  lifecyclestage, hs_lead_status, hubspot_owner_id,\n  codigo_do_voucher, atendimento_ativo_por, buscador_ncm, cnpj_da_empresa_pesquisada,\n  contato_por_whatsapp, criado_whatsapp, whatsapp_api, whatsapp_error_spread_chat,\n  hs_calculated_phone_number, hs_calculated_mobile_number, \n  hs_calculated_phone_number_country_code, hs_calculated_phone_number_area_code,\n  telefone_ravena_classificado__revops_, celular1_gerador_de_personas, celular2_gerador_de_personas,\n  address, city, state, zip, country,\n  createdate, lastmodifieddate, closedate,\n  hs_lead_source, hs_original_source, hs_original_source_data_1, hs_original_source_data_2,\n  last_sync_date, sync_status, hubspot_raw_data\n)\nVALUES\\n\"\"\"\n\nconflict = \"\"\"\nON CONFLICT (id) DO UPDATE SET\n  hs_object_id = EXCLUDED.hs_object_id,\n  email = EXCLUDED.email,\n  firstname = EXCLUDED.firstname,\n  lastname = EXCLUDED.lastname,\n  company = EXCLUDED.company,\n  jobtitle = EXCLUDED.jobtitle,\n  website = EXCLUDED.website,\n  phone = EXCLUDED.phone,\n  mobilephone = EXCLUDED.mobilephone,\n  hs_whatsapp_phone_number = EXCLUDED.hs_whatsapp_phone_number,\n  govcs_i_phone_number = EXCLUDED.govcs_i_phone_number,\n  lifecyclestage = EXCLUDED.lifecyclestage,\n  hs_lead_status = EXCLUDED.hs_lead_status,\n  hubspot_owner_id = EXCLUDED.hubspot_owner_id,\n  codigo_do_voucher = EXCLUDED.codigo_do_voucher,\n  atendimento_ativo_por = EXCLUDED.atendimento_ativo_por,\n  buscador_ncm = EXCLUDED.buscador_ncm,\n  cnpj_da_empresa_pesquisada = EXCLUDED.cnpj_da_empresa_pesquisada,\n  contato_por_whatsapp = EXCLUDED.contato_por_whatsapp,\n  criado_whatsapp = EXCLUDED.criado_whatsapp,\n  whatsapp_api = EXCLUDED.whatsapp_api,\n  whatsapp_error_spread_chat = EXCLUDED.whatsapp_error_spread_chat,\n  hs_calculated_phone_number = EXCLUDED.hs_calculated_phone_number,\n  hs_calculated_mobile_number = EXCLUDED.hs_calculated_mobile_number,\n  hs_calculated_phone_number_country_code = EXCLUDED.hs_calculated_phone_number_country_code,\n  hs_calculated_phone_number_area_code = EXCLUDED.hs_calculated_phone_number_area_code,\n  telefone_ravena_classificado__revops_ = EXCLUDED.telefone_ravena_classificado__revops_,\n  celular1_gerador_de_personas = EXCLUDED.celular1_gerador_de_personas,\n  celular2_gerador_de_personas = EXCLUDED.celular2_gerador_de_personas,\n  address = EXCLUDED.address,\n  city = EXCLUDED.city,\n  state = EXCLUDED.state,\n  zip = EXCLUDED.zip,\n  country = EXCLUDED.country,\n  createdate = EXCLUDED.createdate,\n  lastmodifieddate = EXCLUDED.lastmodifieddate,\n  closedate = EXCLUDED.closedate,\n  hs_lead_source = EXCLUDED.hs_lead_source,\n  hs_original_source = EXCLUDED.hs_original_source,\n  hs_original_source_data_1 = EXCLUDED.hs_original_source_data_1,\n  hs_original_source_data_2 = EXCLUDED.hs_original_source_data_2,\n  last_sync_date = EXCLUDED.last_sync_date,\n  sync_status = EXCLUDED.sync_status,\n  hubspot_raw_data = EXCLUDED.hubspot_raw_data;\n\"\"\"\n\ndef jsproxy_to_python(obj):\n    \"\"\"Convert JavaScript objects to native Python objects\"\"\"\n    obj_type_str = str(type(obj))\n    \n    # Handle JavaScript null and undefined\n    if 'JsNull' in obj_type_str or 'JsUndefined' in obj_type_str:\n        return None\n    \n    # Handle JavaScript objects\n    if hasattr(obj, '__class__') and ('JsProxy' in obj_type_str or 'Js' in obj_type_str):\n        try:\n            if isinstance(obj, Mapping):\n                return {k: jsproxy_to_python(v) for k, v in obj.items()}\n            elif isinstance(obj, Sequence) and not isinstance(obj, str):\n                return [jsproxy_to_python(v) for v in obj]\n            else:\n                return str(obj) if obj is not None else None\n        except:\n            return str(obj) if obj is not None else None\n    \n    # Handle regular Python objects\n    if isinstance(obj, Mapping):\n        return {k: jsproxy_to_python(v) for k, v in obj.items()}\n    elif isinstance(obj, Sequence) and not isinstance(obj, str):\n        return [jsproxy_to_python(v) for v in obj]\n    else:\n        return obj\n\ndef clean_email(email):\n    \"\"\"Clean and validate email format\"\"\"\n    if not email or email == '':\n        return None\n    \n    email_str = str(email).strip()\n    \n    # Remove obviously invalid patterns\n    if email_str in ['null', 'undefined', 'none', '0']:\n        return None\n    \n    # Basic cleanup\n    email_str = email_str.lower()\n    \n    # If it doesn't contain @, it's not an email\n    if '@' not in email_str:\n        return None\n        \n    # Very basic validation - just check if it has @ and a dot after @\n    parts = email_str.split('@')\n    if len(parts) != 2:\n        return None\n        \n    local, domain = parts\n    if not local or not domain or '.' not in domain:\n        return None\n        \n    return email_str\n\ndef safe_sql_value(value, max_length=None, is_email=False):\n    \"\"\"Safely escape SQL values with optional truncation and email cleaning\"\"\"\n    if value is None or value == '' or str(value).strip() == '':\n        return 'NULL'\n    \n    # Special handling for emails\n    if is_email:\n        cleaned_email = clean_email(value)\n        if cleaned_email is None:\n            return 'NULL'\n        value = cleaned_email\n    \n    str_value = str(value)\n    \n    # Truncate if max_length specified\n    if max_length and len(str_value) > max_length:\n        str_value = str_value[:max_length-3] + '...'\n        print(f\"⚠️ Truncated long value to {max_length} chars\")\n    \n    # Escape single quotes for SQL\n    return \"'\" + str_value.replace(\"'\", \"''\") + \"'\"\n\ndef safe_numeric(value):\n    \"\"\"Handle numeric fields safely\"\"\"\n    if value is None or value == '' or str(value).strip() == '':\n        return 'NULL'\n    try:\n        # Try to validate numeric\n        if '.' in str(value):\n            float(value)\n        else:\n            int(value)\n        return str(value)\n    except:\n        return 'NULL'\n\ndef safe_timestamp(ts):\n    \"\"\"Handle timestamps safely\"\"\"\n    if not ts or ts is None or ts == '':\n        return 'NULL'\n    try:\n        ts_str = str(ts).strip()\n        if not ts_str:\n            return 'NULL'\n        if ts_str.isdigit():\n            dt = datetime.fromtimestamp(int(ts_str) / 1000)\n        else:\n            dt = datetime.fromisoformat(ts_str.replace('Z', '+00:00'))\n        return f\"'{dt.isoformat()}'\"\n    except:\n        return 'NULL'\n\n# Process data\nvalues_list = []\ndata = _input.all()[0]['json']\nresults = data.get('results', [])\ncurrent_time = datetime.now().isoformat()\n\nprint(f\"🔄 Processing {len(results)} contacts from HubSpot\")\n\nfor contact in results:\n    try:\n        # Convert JS objects safely\n        contact_py = jsproxy_to_python(contact)\n        props = contact_py.get('properties', {}) if contact_py else {}\n        \n        # Get contact ID\n        contact_id = contact_py.get('id') if contact_py else None\n        if not contact_id:\n            print(f\"⚠️ Skipping contact without ID\")\n            continue\n        \n        # Build values with ULTIMATE ROBUSTNESS\n        values = [\n            safe_sql_value(contact_id),\n            safe_sql_value(props.get('hs_object_id', contact_id)),\n            safe_sql_value(props.get('email'), 255, is_email=True),  # EMAIL CLEANING!\n            safe_sql_value(props.get('firstname'), 300),\n            safe_sql_value(props.get('lastname'), 300),\n            safe_sql_value(props.get('company'), 500),\n            safe_sql_value(props.get('jobtitle'), 500),\n            safe_sql_value(props.get('website'), 500),\n            safe_sql_value(props.get('phone'), 100),\n            safe_sql_value(props.get('mobilephone'), 100),\n            safe_sql_value(props.get('hs_whatsapp_phone_number'), 100),\n            safe_sql_value(props.get('govcs_i_phone_number'), 100),\n            safe_sql_value(props.get('lifecyclestage'), 100),\n            safe_sql_value(props.get('hs_lead_status'), 100),\n            safe_numeric(props.get('hubspot_owner_id')),\n            safe_sql_value(props.get('codigo_do_voucher'), 200),\n            safe_sql_value(props.get('atendimento_ativo_por'), 500),\n            safe_sql_value(props.get('buscador_ncm'), 200),\n            safe_sql_value(props.get('cnpj_da_empresa_pesquisada'), 50),\n            safe_sql_value(props.get('contato_por_whatsapp'), 100),\n            safe_sql_value(props.get('criado_whatsapp'), 100),\n            safe_sql_value(props.get('whatsapp_api'), 200),\n            safe_sql_value(props.get('whatsapp_error_spread_chat')),  # TEXT field - no limit\n            safe_sql_value(props.get('hs_calculated_phone_number'), 100),\n            safe_sql_value(props.get('hs_calculated_mobile_number'), 100),\n            safe_sql_value(props.get('hs_calculated_phone_number_country_code'), 10),\n            safe_sql_value(props.get('hs_calculated_phone_number_area_code'), 10),\n            safe_sql_value(props.get('telefone_ravena_classificado__revops_'), 100),\n            safe_sql_value(props.get('celular1_gerador_de_personas'), 100),\n            safe_sql_value(props.get('celular2_gerador_de_personas'), 100),\n            safe_sql_value(props.get('address'), 500),\n            safe_sql_value(props.get('city'), 200),\n            safe_sql_value(props.get('state'), 200),\n            safe_sql_value(props.get('zip'), 50),\n            safe_sql_value(props.get('country'), 200),\n            safe_timestamp(props.get('createdate')),\n            safe_timestamp(props.get('lastmodifieddate')),\n            safe_timestamp(props.get('closedate')),\n            safe_sql_value(props.get('hs_lead_source'), 200),\n            safe_sql_value(props.get('hs_original_source'), 200),\n            safe_sql_value(props.get('hs_original_source_data_1'), 500),\n            safe_sql_value(props.get('hs_original_source_data_2'), 500),\n            f\"'{current_time}'\",\n            \"'active'\",\n            safe_sql_value(json.dumps(contact_py)) if contact_py else 'NULL'\n        ]\n        \n        value_str = f\"({', '.join(values)})\"\n        values_list.append(value_str)\n        \n    except Exception as e:\n        print(f\"⚠️ Error processing contact {contact.get('id', 'unknown')}: {e}\")\n        continue\n\nif values_list:\n    final_query = query_base + \",\\n\".join(values_list) + \"\\n\" + conflict\n    print(f\"✅ Generated SQL for {len(values_list)} contacts\")\nelse:\n    final_query = \"SELECT 'No contacts to process' as result;\"\n    print(\"⚠️ No contacts to process\")\n\nreturn [{\"json\": {\"query\": final_query, \"contacts_count\": len(values_list)}}]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 80],
+      "id": "contacts-code-005",
+      "name": "Generate SQL"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ $json.query }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [1100, 80],
+      "id": "contacts-execute-006",
+      "name": "Execute SQL",
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-next",
+              "leftValue": "={{ $('HTTP Request - HubSpot Contacts').item.json.paging?.next?.after }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1320, 80],
+      "id": "contacts-if-next-007",
+      "name": "If - Has Next Page?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aftertoken",
+              "name": "aftertoken",
+              "value": "={{ $('HTTP Request - HubSpot Contacts').item.json.paging.next.after }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1540, 160],
+      "id": "contacts-set-token-008",
+      "name": "Set Next Token"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger - A cada 30min": {
+      "main": [
+        [
+          {
+            "node": "Get Last Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Last Sync": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - HubSpot Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request - HubSpot Contacts": {
+      "main": [
+        [
+          {
+            "node": "If - Has Contacts?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If - Has Contacts?": {
+      "main": [
+        [
+          {
+            "node": "Generate SQL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Generate SQL": {
+      "main": [
+        [
+          {
+            "node": "Execute SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute SQL": {
+      "main": [
+        [
+          {
+            "node": "If - Has Next Page?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If - Has Next Page?": {
+      "main": [
+        [
+          {
+            "node": "Set Next Token",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Set Next Token": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - HubSpot Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": ["hubspot", "postgresql", "contacts", "final", "bulletproof"]
+}

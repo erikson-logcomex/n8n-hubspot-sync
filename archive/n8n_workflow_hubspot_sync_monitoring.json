@@ -1,0 +1,228 @@
+{
+  "name": "HubSpot Sync - Monitoramento e Alertas",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "monitor-trigger-1234",
+      "name": "Cron Trigger - A cada 6h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "query": "SELECT \n  COUNT(*) as total_contatos,\n  COUNT(CASE WHEN sync_status = 'active' THEN 1 END) as contatos_ativos,\n  COUNT(CASE WHEN sync_status = 'error' THEN 1 END) as contatos_erro,\n  MAX(last_sync_date) as ultima_sincronizacao,\n  COUNT(CASE WHEN last_sync_date > NOW() - INTERVAL '24 hours' THEN 1 END) as sincronizados_24h\nFROM hubspot_contacts"
+      },
+      "id": "postgres-stats-5678",
+      "name": "PostgreSQL - Estatísticas Gerais",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 300],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "query": "SELECT \n  id,\n  email,\n  firstname,\n  lastname,\n  company,\n  sync_status,\n  last_sync_date,\n  LEFT(hubspot_raw_data::text, 200) as erro_detalhes\nFROM hubspot_contacts \nWHERE sync_status = 'error' \nAND last_sync_date > NOW() - INTERVAL '24 hours'\nORDER BY last_sync_date DESC\nLIMIT 20"
+      },
+      "id": "postgres-errors-9012",
+      "name": "PostgreSQL - Contatos com Erro",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 500],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Analisa estatísticas e determina se há problemas\nconst stats = $('PostgreSQL - Estatísticas Gerais').first().json;\nconst errors = $('PostgreSQL - Contatos com Erro').all();\n\nconst now = new Date();\nconst ultimaSync = new Date(stats.ultima_sincronizacao);\nconst horasDesdeUltimaSync = (now - ultimaSync) / (1000 * 60 * 60);\n\n// Determinar nível de alerta\nlet alertLevel = 'info';\nlet alertas = [];\n\n// Verificar se última sincronização foi há muito tempo\nif (horasDesdeUltimaSync > 6) {\n  alertLevel = 'warning';\n  alertas.push(`⚠️ Última sincronização há ${horasDesdeUltimaSync.toFixed(1)} horas`);\n}\n\nif (horasDesdeUltimaSync > 12) {\n  alertLevel = 'critical';\n  alertas.push(`🚨 CRÍTICO: Última sincronização há ${horasDesdeUltimaSync.toFixed(1)} horas`);\n}\n\n// Verificar erros\nconst percentualErro = (stats.contatos_erro / stats.total_contatos) * 100;\nif (percentualErro > 5) {\n  alertLevel = 'warning';\n  alertas.push(`⚠️ ${percentualErro.toFixed(1)}% dos contatos com erro`);\n}\n\nif (percentualErro > 10) {\n  alertLevel = 'critical';\n  alertas.push(`🚨 CRÍTICO: ${percentualErro.toFixed(1)}% dos contatos com erro`);\n}\n\n// Verificar se houve sincronizações recentes\nif (stats.sincronizados_24h === 0) {\n  alertLevel = 'warning';\n  alertas.push('⚠️ Nenhuma sincronização nas últimas 24 horas');\n}\n\n// Compilar relatório\nconst relatorio = {\n  timestamp: now.toISOString(),\n  alert_level: alertLevel,\n  alertas: alertas,\n  estatisticas: {\n    total_contatos: stats.total_contatos,\n    contatos_ativos: stats.contatos_ativos,\n    contatos_erro: stats.contatos_erro,\n    percentual_erro: percentualErro.toFixed(2),\n    ultima_sincronizacao: stats.ultima_sincronizacao,\n    horas_desde_ultima_sync: horasDesdeUltimaSync.toFixed(1),\n    sincronizados_24h: stats.sincronizados_24h\n  },\n  contatos_com_erro: errors.map(item => item.json).slice(0, 10), // Top 10 erros\n  deve_notificar: alertLevel !== 'info'\n};\n\nconsole.log(`[MONITORAMENTO] Alert Level: ${alertLevel}, Alertas: ${alertas.length}`);\n\nreturn [{ json: relatorio }];"
+      },
+      "id": "analyze-data-3456",
+      "name": "Analisar Dados e Gerar Alertas",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.deve_notificar }}",
+              "value2": "true"
+            }
+          ]
+        }
+      },
+      "id": "if-should-notify-7890",
+      "name": "IF - Deve Notificar?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Formatar mensagem de alerta para envio\nconst data = $json;\n\nconst titulo = data.alert_level === 'critical' ? \n  '🚨 ALERTA CRÍTICO - Sincronização HubSpot' : \n  '⚠️ AVISO - Sincronização HubSpot';\n\nlet mensagem = `${titulo}\\n\\n`;\nmensagem += `📊 **Estatísticas:**\\n`;\nmensagem += `• Total de contatos: ${data.estatisticas.total_contatos}\\n`;\nmensagem += `• Contatos ativos: ${data.estatisticas.contatos_ativos}\\n`;\nmensagem += `• Contatos com erro: ${data.estatisticas.contatos_erro} (${data.estatisticas.percentual_erro}%)\\n`;\nmensagem += `• Última sincronização: ${data.estatisticas.horas_desde_ultima_sync}h atrás\\n`;\nmensagem += `• Sincronizados 24h: ${data.estatisticas.sincronizados_24h}\\n\\n`;\n\nif (data.alertas.length > 0) {\n  mensagem += `🚨 **Alertas:**\\n`;\n  data.alertas.forEach(alerta => {\n    mensagem += `• ${alerta}\\n`;\n  });\n  mensagem += '\\n';\n}\n\nif (data.contatos_com_erro.length > 0) {\n  mensagem += `❌ **Contatos com Erro (Top 5):**\\n`;\n  data.contatos_com_erro.slice(0, 5).forEach(contato => {\n    mensagem += `• ${contato.email || 'Sem email'} (${contato.company || 'Sem empresa'})\\n`;\n  });\n  mensagem += '\\n';\n}\n\nmensagem += `🔗 **Ações:**\\n`;\nmensagem += `• Verificar logs no n8n: https://n8n-logcomex.34-8-101-220.nip.io\\n`;\nmensagem += `• Executar sincronização manual se necessário\\n`;\nmensagem += `• Verificar credenciais do HubSpot e PostgreSQL\\n\\n`;\nmensagem += `⏰ Relatório gerado em: ${new Date(data.timestamp).toLocaleString('pt-BR')}\\n`;\n\nreturn [{\n  json: {\n    subject: titulo,\n    message: mensagem,\n    alert_level: data.alert_level,\n    timestamp: data.timestamp\n  }\n}];"
+      },
+      "id": "format-alert-1234",
+      "name": "Formatar Mensagem de Alerta",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "subject": "={{ $json.subject }}",
+        "message": "={{ $json.message }}",
+        "options": {}
+      },
+      "id": "send-email-5678",
+      "name": "Enviar Email de Alerta",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1340, 300],
+      "credentials": {
+        "smtp": {
+          "id": "seu_email_credential_id",
+          "name": "Email SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "query": "INSERT INTO sync_monitoring_log (timestamp, alert_level, total_contatos, contatos_erro, ultima_sincronizacao, alertas, created_at) VALUES ('{{ $json.timestamp }}', '{{ $json.alert_level }}', {{ $json.estatisticas.total_contatos }}, {{ $json.estatisticas.contatos_erro }}, '{{ $json.estatisticas.ultima_sincronizacao }}', '{{ JSON.stringify($json.alertas) }}', NOW()) ON CONFLICT DO NOTHING"
+      },
+      "id": "log-monitoring-9012",
+      "name": "Salvar Log de Monitoramento",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [1120, 500],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log simples quando não há alertas\nconst data = $json;\n\nconsole.log(`[MONITORAMENTO] Sistema funcionando normalmente:`);\nconsole.log(`• Total contatos: ${data.estatisticas.total_contatos}`);\nconsole.log(`• Última sync: ${data.estatisticas.horas_desde_ultima_sync}h atrás`);\nconsole.log(`• Taxa de erro: ${data.estatisticas.percentual_erro}%`);\n\nreturn [{ json: { status: 'healthy', timestamp: data.timestamp } }];"
+      },
+      "id": "log-healthy-3456",
+      "name": "Log Sistema Saudável",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 600]
+    }
+  ],
+  "connections": {
+    "Cron Trigger - A cada 6h": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Estatísticas Gerais",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "PostgreSQL - Contatos com Erro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Estatísticas Gerais": {
+      "main": [
+        [
+          {
+            "node": "Analisar Dados e Gerar Alertas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Contatos com Erro": {
+      "main": [
+        [
+          {
+            "node": "Analisar Dados e Gerar Alertas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar Dados e Gerar Alertas": {
+      "main": [
+        [
+          {
+            "node": "IF - Deve Notificar?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Salvar Log de Monitoramento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Deve Notificar?": {
+      "main": [
+        [
+          {
+            "node": "Formatar Mensagem de Alerta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Sistema Saudável",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar Mensagem de Alerta": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email de Alerta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["hubspot", "monitoring", "alerts", "postgresql"],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T11:00:00.000Z",
+  "versionId": "1"
+}

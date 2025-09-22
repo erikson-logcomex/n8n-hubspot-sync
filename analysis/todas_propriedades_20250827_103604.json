@@ -1,0 +1,3858 @@
+{
+  "timestamp": "2025-08-27T10:36:04.961623",
+  "schema_properties": [
+    {
+      "name": "aceite_funcionalidade_teste",
+      "label": "Aceite funcionalidade teste ",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "address",
+      "label": "Street Address",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's street address, including apartment or unit #"
+    },
+    {
+      "name": "agendado_por_ia_em",
+      "label": "Agendado por IA em",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "aircall_last_call_at",
+      "label": "Last Aircall call timestamp",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "Date and time of last Aircall call"
+    },
+    {
+      "name": "aircall_last_sms_at",
+      "label": "Last Aircall SMS timestamp",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "Date and time of last Aircall sms"
+    },
+    {
+      "name": "annualrevenue",
+      "label": "Annual Revenue",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Annual company revenue"
+    },
+    {
+      "name": "associatedcompanyid",
+      "label": "Primary Associated Company ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "HubSpot defined ID of a contact's primary associated company in HubSpot."
+    },
+    {
+      "name": "associatedcompanylastupdated",
+      "label": "Associated Company Last Updated",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "This field is meaningless on its own, and is solely used for triggering dynamic list updates when a company is updated"
+    },
+    {
+      "name": "association_last_update",
+      "label": "Association Last Update",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "atendimento_ativo_por",
+      "label": "atendimento ativo por",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "E-mail do agente que disparou uma mensagem pelo Flex da Twilio"
+    },
+    {
+      "name": "became_an_cliente_ativo",
+      "label": "Became an Cliente Ativo",
+      "type": "date",
+      "groupName": "revops",
+      "description": "The date when a contact's lifecycle stage changed to Cliente Ativo. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "became_an_cliente_inativo",
+      "label": "Became an Cliente Inativo",
+      "type": "date",
+      "groupName": "revops",
+      "description": "The date when a contact's lifecycle stage changed to Cliente Inativo. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "became_an_demonstracao",
+      "label": "Became an Demonstração",
+      "type": "date",
+      "groupName": "revops",
+      "description": "The date when a contact's lifecycle stage changed to Demonstração. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "became_an_onboard",
+      "label": "Became an Onboard",
+      "type": "date",
+      "groupName": "revops",
+      "description": "The date when a contact's lifecycle stage changed to Onboard. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "blog_default_hubspot_blog_8032300436_subscription",
+      "label": "Default HubSpot Blog Email Subscription",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "buscador_ncm",
+      "label": "buscador-ncm",
+      "type": "string",
+      "groupName": "revops",
+      "description": "NCM buscada na hora da conversão"
+    },
+    {
+      "name": "business_unit",
+      "label": "Business Unit",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade de marketing que ajuda a identificar de qual BU o contato realizou a conversão em conteúdos e páginas que não possuem produto. "
+    },
+    {
+      "name": "canal_de_aquisicao_do_contato",
+      "label": "Canal de Aquisição do Contato",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "cargo",
+      "label": "Cargo",
+      "type": "string",
+      "groupName": "lead_ads",
+      "description": "Lead Ad Properties"
+    },
+    {
+      "name": "cargo_",
+      "label": "MKT | Cargo",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Identifica o Cargo do contato, via opções de menu suspenso. Divididas por poder de decisão, e frequência de resposta. ATENÇÃO! Qualquer edição, pode impactar nas automações de Marketing e Produto. Procure os responsáveis antes de qualquer ajuste."
+    },
+    {
+      "name": "celular1_gerador_de_personas",
+      "label": "Celular1 Gerador de Personas",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "celular2_gerador_de_personas",
+      "label": "Celular2 Gerador de Personas",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "certificate",
+      "label": "Prod - certificate",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "city",
+      "label": "City",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's city of residence"
+    },
+    {
+      "name": "classificacao_do_cliente",
+      "label": "Classificação do cliente",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "classificacao_ravena",
+      "label": "Classificação Ravena",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Classificação Ravena - Status da última chamada com o Ravena, classificada manualmente pelo Logger"
+    },
+    {
+      "name": "classificacao_ravena_em__data_",
+      "label": "Classificação Ravena em [data]",
+      "type": "date",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "closedate",
+      "label": "Close Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date that a contact became a customer. This property is set automatically by HubSpot when a deal or opportunity is marked as closed-won. It can also be set manually or programmatically."
+    },
+    {
+      "name": "cnpj",
+      "label": "CNPJ",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "CNPJ da Empresa"
+    },
+    {
+      "name": "cnpj_da_empresa_pesquisada",
+      "label": "PRD | CNPJ da empresa pesquisada",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Não mexer, propriedade de produto (procurar Cleber ou Erika)"
+    },
+    {
+      "name": "cobertura__ic_",
+      "label": "Cobertura [IC]",
+      "type": "number",
+      "groupName": "revops",
+      "description": "Propriedade usada por Lead Gen para identificar a cobertura do Despachante (CPF)"
+    },
+    {
+      "name": "codigo_do_voucher",
+      "label": "Código do Voucher",
+      "type": "string",
+      "groupName": "people_ops",
+      "description": "Propriedade para guardar sempre o voucher promocional que será enviado para os loggers"
+    },
+    {
+      "name": "como_as_dificuldades_listadas_afetam_sua_operacao_ou_estrategia_de_negocio_se_nao_forem_resolvidas_",
+      "label": "Como as dificuldades listadas afetam sua operação ou estratégia de negócio se não forem resolvidas?",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "como_realizam_o_acompanhamento_hoje_",
+      "label": "Como realizam o acompanhamento hoje?",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "company",
+      "label": "Company Name",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The name of the contact's company. This is separate from the Name property of the contact's associated company and can be set independently."
+    },
+    {
+      "name": "company_size",
+      "label": "Company size",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's company size. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "contagem_de_demonstracoes",
+      "label": "Contagem de Demonstrações",
+      "type": "number",
+      "groupName": "conversioninformation",
+      "description": "Contagem de demonstrações a partir de [ETAPA] Data de demonstrações."
+    },
+    {
+      "name": "contatado_por_",
+      "label": "Contatado por:",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato__exportador_mais_utilizado",
+      "label": "[Contato] Exportador mais utilizado",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato__ncm_mais_importada",
+      "label": "[Contato] NCM mais importada",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato__nome_do_negocio",
+      "label": "[Contato] Nome do negócio",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato__ranking_cliente",
+      "label": "[Contato] Ranking cliente",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato__total_de_provaveis_importadores",
+      "label": "[Contato] Total de Prováveis Importadores",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato_e_internacional",
+      "label": "Contato Internacional",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "contato_por_whatsapp",
+      "label": "Contato por WhatsApp",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Contato aceita ser contatado por WhatsApp"
+    },
+    {
+      "name": "country",
+      "label": "Country/Region",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's country/region of residence. This might be set via import, form, or integration."
+    },
+    {
+      "name": "cpf",
+      "label": "CPF",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "CPF do contato"
+    },
+    {
+      "name": "createdate",
+      "label": "Create Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date that a contact entered the system"
+    },
+    {
+      "name": "criado_por__ic_",
+      "label": "Criado por [IC]",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "criado_whatsapp",
+      "label": "Contato criado pelo whatsapp",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "cs__contatou_novo_contato_",
+      "label": "[CS] Contatou novo contato? ",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade de uso do CS para indicar se o guardião já contactou o novo contato de uma empresa cliente que chegou via integração do produto da Log. "
+    },
+    {
+      "name": "cs_score_2",
+      "label": "CS Score",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "cs_score_threshold",
+      "label": "CS Score threshold",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "cs_suporte_premium",
+      "label": "[CS] Suporte Premium",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Informa se esse contato possui o Suporte Premium contratado. "
+    },
+    {
+      "name": "csat_created_at",
+      "label": "CSAT Response Date",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "CSAT Response Date"
+    },
+    {
+      "name": "csat_score",
+      "label": "Customer Satisfaction Score (CSAT)",
+      "type": "number",
+      "groupName": "revops",
+      "description": "Customer Satisfaction Score (CSAT)"
+    },
+    {
+      "name": "csat_text",
+      "label": "CSAT Feedback",
+      "type": "string",
+      "groupName": "revops",
+      "description": "CSAT Feedback"
+    },
+    {
+      "name": "cupom_desconto_50__ctf25_normal",
+      "label": "Cupom Desconto 50% CTF25 Normal",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "cupom_desconto_ctf25_normal",
+      "label": "Cupom desconto CTF25 Normal",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "cupom_desconto_ctf25_vip",
+      "label": "Cupom desconto CTF25 VIP",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "currentlyinworkflow",
+      "label": "Currently in workflow (discontinued)",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "If the contact is currently enrolled in any workflow"
+    },
+    {
+      "name": "data_csat",
+      "label": "Data CSAT",
+      "type": "date",
+      "groupName": "client_success",
+      "description": "Data CSAT"
+    },
+    {
+      "name": "date_of_birth",
+      "label": "Date of birth",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's date of birth. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "date_of_last_blog_page_view",
+      "label": "Date of last Blog Page view ",
+      "type": "date",
+      "groupName": "analyticsinformation",
+      "description": ""
+    },
+    {
+      "name": "date_of_last_ncm_page_view",
+      "label": "Date of last NCM Page view",
+      "type": "date",
+      "groupName": "analyticsinformation",
+      "description": ""
+    },
+    {
+      "name": "days_to_close",
+      "label": "Days To Close",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The days that elapsed from when a contact was created until they closed as a customer. This is set automatically by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "decline_created_at",
+      "label": "Last Declined Survey Date",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "Last Declined Survey Date"
+    },
+    {
+      "name": "degree",
+      "label": "Degree",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's degree. This property is required for the Facebook Ads Integration. This property will be automatically synced to via Lead Ads tool"
+    },
+    {
+      "name": "departamento",
+      "label": "MKT | Departamento",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Qual seu departamento?"
+    },
+    {
+      "name": "departamento_do_logger",
+      "label": "Departamento do Logger",
+      "type": "string",
+      "groupName": "people_ops",
+      "description": "Propriedade criada para mostrar qual time que o Logger trabalha. É uma propriedade exclusiva para RH."
+    },
+    {
+      "name": "disparo_de_e_mail",
+      "label": "Disparo de e-mail",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "eazybe_follow_ups",
+      "label": "Follow-ups",
+      "type": "number",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "eazybe_messages_received",
+      "label": "Messages Received",
+      "type": "number",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "eazybe_messages_sent",
+      "label": "Messages Sent",
+      "type": "number",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "eazybe_messages_you_got",
+      "label": "Messages you got",
+      "type": "number",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "eazybe_messages_you_sent",
+      "label": "Messages you sent",
+      "type": "number",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "eazybe_total_messages",
+      "label": "Total Messages",
+      "type": "number",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "email",
+      "label": "Email",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's email address"
+    },
+    {
+      "name": "empresa_excluida_por_manutencao",
+      "label": "Empresa Excluida por Manutenção",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade que indica se a empresa associada ao contato foi excluída por motivos de manutenção. "
+    },
+    {
+      "name": "empresa_internacional",
+      "label": "Empresa Internacional",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade para marcar os contatos que são de empresas ou negociações internacionais - a princípio, é provisória para uma ação do time internacional"
+    },
+    {
+      "name": "empresa_que_indicou_o_contato",
+      "label": "Empresa que indicou o contato",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Quando alguma pessoa entra em contato com os Loggers e indica falarmos com uma empresa, esse campo é criado para mostrar qual empresa essa primeira pessoa pertence."
+    },
+    {
+      "name": "engagements_last_meeting_booked",
+      "label": "Date of last meeting booked in meetings tool",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the last meeting that has been scheduled by a contact through the meetings tool. If multiple meetings have been scheduled, the date of the last chronological meeting in the timeline is shown."
+    },
+    {
+      "name": "engagements_last_meeting_booked_campaign",
+      "label": "Campaign of last booking in meetings tool",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "This UTM parameter shows which marketing campaign (e.g. a specific email) referred the contact to the meetings tool for their most recent booking. This property is only populated when you add tracking parameters to your meeting link."
+    },
+    {
+      "name": "engagements_last_meeting_booked_medium",
+      "label": "Medium of last booking in meetings tool",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "This UTM parameter shows which channel (e.g. email) referred the contact to the meetings tool for their most recent booking. This property is only populated when you add tracking parameters to your meeting link."
+    },
+    {
+      "name": "engagements_last_meeting_booked_source",
+      "label": "Source of last booking in meetings tool",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "This UTM parameter shows which site (e.g. Twitter) referred the contact to the meetings tool for their most recent booking. This property is only populated when you add tracking parameters to your meeting link."
+    },
+    {
+      "name": "enviar_lead_",
+      "label": "Sales Contact Status",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "es__segmento___internacional",
+      "label": "MKT | Segment | Spanish",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Propriedade que usamos para qualificar o contato exclusiva para a operação internacional no idioma Espanhol."
+    },
+    {
+      "name": "estagio_da_conversa__exclusivo_intermodal_",
+      "label": "Estágio da conversa (exclusivo intermodal)",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Objetivo de identificar até qual passo do processo comercial o lead chegou durante a intermodal 2023"
+    },
+    {
+      "name": "etapa_do_pipeline_atual",
+      "label": "Etapa do Pipeline Atual",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória e de uso exclusivo do time de Revenue Operations para rodar a Fase do Ciclo de Vida do Lead até finalizar o mapeamento das propriedades. "
+    },
+    {
+      "name": "faixa_fob_impo_usd_contato",
+      "label": "Faixa FOB Impo (USD) | Contato",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Propriedade que mostra a faixa de valores em dólares do FOB em importações das empresas."
+    },
+    {
+      "name": "fax",
+      "label": "Fax Number",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's primary fax number"
+    },
+    {
+      "name": "field_of_study",
+      "label": "Field of study",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's field of study. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "finops__customer_id",
+      "label": "[FinOps] Customer ID",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Propriedade que ajuda o time do Financeiro a fazer as comissões com base na informação do Customer ID que vem do sistema CS. Preenchemos essa informação dentro das empresas e depois enviamos a mesma informação para contatos e negócios associados a essa empresa."
+    },
+    {
+      "name": "first_conversion_date",
+      "label": "First Conversion Date",
+      "type": "datetime",
+      "groupName": "conversioninformation",
+      "description": "The date this contact first submitted a form"
+    },
+    {
+      "name": "first_conversion_event_name",
+      "label": "First Conversion",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The first form this contact submitted"
+    },
+    {
+      "name": "first_deal_created_date",
+      "label": "First Deal Created Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date the first deal for a contact was created. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "firstname",
+      "label": "First Name",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's first name"
+    },
+    {
+      "name": "followercount",
+      "label": "Follower Count",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "The number of Twitter followers a contact has"
+    },
+    {
+      "name": "fonte_do_contato",
+      "label": "Fonte do contato",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "O contato foi enriquecido por qual ferramenta"
+    },
+    {
+      "name": "full_name",
+      "label": "Nome Completo",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Propriedade para sinalizar o nome completo do Contato "
+    },
+    {
+      "name": "gender",
+      "label": "Gender",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "gostaria_de_receber_um_resumo_dos_resultados_desta_pesquisa__se_sim__informe_seu_e_mail_",
+      "label": "Gostaria de receber um resumo dos resultados desta pesquisa? Se sim, informe seu e-mail:",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "govc_i_filas_twillio_contact",
+      "label": "[GovCS-I] Filas Twillio - Contato",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade para indicar para o software da Twillio, qual fila pertence ao contato. "
+    },
+    {
+      "name": "govcs_i_phone_number",
+      "label": "[GovCs-I] Phone Number",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Propriedade adaptada para a integração do número de telefone para o software da Twillio sem precisar ajustar no campo Phone do contato (padrão da HubSpot)"
+    },
+    {
+      "name": "graduation_date",
+      "label": "Graduation date",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's graduation date. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "guardiao",
+      "label": "Guardião",
+      "type": "string",
+      "groupName": "emailinformation",
+      "description": ""
+    },
+    {
+      "name": "guardiao__cs_",
+      "label": "[USER] Guardião",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Guardião do negócio atrelado a esse contato"
+    },
+    {
+      "name": "guardiao_secundario",
+      "label": "[USER] Guardião secundário",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Indicar qual o guardião referente a BU secundário do Cliente. Caso o cliente possua apenas uma BU, esta opção deverá permanecer vazia. \n\nIMPORTANTE: nos casos os quais o cliente possui duas BUs sugere-se indicar como BU SECUNDÁRIA E GUARDIÃO SECUNDÁRIO a BU OPERATIONAL. Dessa forma, fica padronizado que o campo [USER] guardião irá refletir o guardião e BU referente a BU INTELLIGENCE. "
+    },
+    {
+      "name": "ha_alguma_outra_necessidade_ou_desafio_especifico_na_gestao_de_comercio_exterior_que_voce_gostaria_",
+      "label": "Há alguma outra necessidade ou desafio específico na gestão de comércio exterior que você gostaria de destacar?",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "horario_preferido",
+      "label": "PRD | Horário preferido",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_additional_emails",
+      "label": "Additional email addresses",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "A set of additional email addresses for a contact"
+    },
+    {
+      "name": "hs_all_accessible_team_ids",
+      "label": "All teams",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The team IDs, including the team hierarchy, of all default and custom owner properties for this record."
+    },
+    {
+      "name": "hs_all_assigned_business_unit_ids",
+      "label": "Brands",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The brands this record is assigned to."
+    },
+    {
+      "name": "hs_all_contact_vids",
+      "label": "All vids for a contact",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "A set of all vids, canonical or otherwise, for a contact"
+    },
+    {
+      "name": "hs_all_owner_ids",
+      "label": "All owner IDs",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Values of all default and custom owner properties for this record."
+    },
+    {
+      "name": "hs_all_team_ids",
+      "label": "All team IDs",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The team IDs of all default and custom owner properties for this record."
+    },
+    {
+      "name": "hs_analytics_average_page_views",
+      "label": "Average Pageviews",
+      "type": "number",
+      "groupName": "analyticsinformation",
+      "description": "The average number of pages a contact sees. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_first_referrer",
+      "label": "First Referring Site",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "The first website that referred a contact to your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_first_timestamp",
+      "label": "Time First Seen",
+      "type": "datetime",
+      "groupName": "analyticsinformation",
+      "description": "The first time a contact has been seen. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_first_touch_converting_campaign",
+      "label": "First Touch Converting Campaign",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "The campaign responsible for the first touch creation of this contact"
+    },
+    {
+      "name": "hs_analytics_first_url",
+      "label": "First Page Seen",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "The first page a contact saw on your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_first_visit_timestamp",
+      "label": "Time of First Session",
+      "type": "datetime",
+      "groupName": "analyticsinformation",
+      "description": "The first time a contact visited your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_last_referrer",
+      "label": "Last Referring Site",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "The last website that referred a contact to your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_last_timestamp",
+      "label": "Time Last Seen",
+      "type": "datetime",
+      "groupName": "analyticsinformation",
+      "description": "The last time and date a contact has viewed a page on your website."
+    },
+    {
+      "name": "hs_analytics_last_touch_converting_campaign",
+      "label": "Last Touch Converting Campaign",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "The campaign responsible for the last touch creation of this contact"
+    },
+    {
+      "name": "hs_analytics_last_url",
+      "label": "Last Page Seen",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "The last page a contact saw on your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_last_visit_timestamp",
+      "label": "Time of Last Session",
+      "type": "datetime",
+      "groupName": "analyticsinformation",
+      "description": "The last time and date a contact visited your website."
+    },
+    {
+      "name": "hs_analytics_num_event_completions",
+      "label": "Number of event completions",
+      "type": "number",
+      "groupName": "analyticsinformation",
+      "description": "The sum of all events a contact has experienced. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_num_page_views",
+      "label": "Number of Pageviews",
+      "type": "number",
+      "groupName": "analyticsinformation",
+      "description": "The sum of all pages a contact has seen on your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_num_visits",
+      "label": "Number of Sessions",
+      "type": "number",
+      "groupName": "analyticsinformation",
+      "description": "The sum of all sessions a contact has made to your website. This is automatically set by HubSpot for each contact."
+    },
+    {
+      "name": "hs_analytics_revenue",
+      "label": "Event Revenue",
+      "type": "number",
+      "groupName": "analyticsinformation",
+      "description": "Event revenue can be set on a contact though HubSpot's enterprise Events. http://help.hubspot.com/articles/KCS_Article/Reports/How-do-I-create-Events-in-HubSpot"
+    },
+    {
+      "name": "hs_analytics_source",
+      "label": "Original Source",
+      "type": "enumeration",
+      "groupName": "analyticsinformation",
+      "description": "First known source the contact used to find your website. Set automatically, but may be updated manually."
+    },
+    {
+      "name": "hs_analytics_source_data_1",
+      "label": "Original Source Drill-Down 1",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "Additional information about the source through which a contact first found your website. This property is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_analytics_source_data_2",
+      "label": "Original Source Drill-Down 2",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "Additional information about the source through which a contact first found your website. This property is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_associated_target_accounts",
+      "label": "Associated Target Accounts",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of target accounts associated with this contact"
+    },
+    {
+      "name": "hs_avatar_filemanager_key",
+      "label": "Avatar FileManager key",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The path in the FileManager CDN for this contact's avatar override image. Automatically set by HubSpot."
+    },
+    {
+      "name": "hs_buying_role",
+      "label": "Buying Role",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The role that a contact plays during the sales process. Contacts can have more than one role, and they can share the same role with another contact."
+    },
+    {
+      "name": "hs_calculated_form_submissions",
+      "label": "The 800 most recent form submissions for a contact",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The 800 most recent form submissions for a contact"
+    },
+    {
+      "name": "hs_calculated_merged_vids",
+      "label": "Merged vids with timestamps of a contact",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Merged vids with timestamps of a contact"
+    },
+    {
+      "name": "hs_calculated_mobile_number",
+      "label": "Calculated Mobile Number in International Format",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Mobile number in international format"
+    },
+    {
+      "name": "hs_calculated_phone_number",
+      "label": "Calculated Phone Number in International Format",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Phone number in international format"
+    },
+    {
+      "name": "hs_calculated_phone_number_area_code",
+      "label": "Calculated Phone Number Area Code",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Area Code of the calculated phone number"
+    },
+    {
+      "name": "hs_calculated_phone_number_country_code",
+      "label": "Calculated Phone Number Country Code",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Country code of the calculated phone number"
+    },
+    {
+      "name": "hs_calculated_phone_number_region_code",
+      "label": "Calculated Phone Number Region",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "ISO2 Country code for the derived phone number"
+    },
+    {
+      "name": "hs_clicked_linkedin_ad",
+      "label": "Clicked on a LinkedIn Ad",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": "Whether contact has clicked on a LinkedIn Ad"
+    },
+    {
+      "name": "hs_contact_creation_legal_basis_source_instance_id",
+      "label": "Contact creation legal basis source instance ID",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The source instance responsible for creating this contact and determining the legal basis for processing"
+    },
+    {
+      "name": "hs_contact_enrichment_opt_out",
+      "label": "Enrichment opt out",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_contact_enrichment_opt_out_timestamp",
+      "label": "Enrichment opt out timestamp",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "Timestamp of when the contact opted out of being included in the HubSpot Enrichment database"
+    },
+    {
+      "name": "hs_content_membership_email",
+      "label": "Member email",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Email used to send private content information to members"
+    },
+    {
+      "name": "hs_content_membership_email_confirmed",
+      "label": "Email Confirmed",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Email Confirmation status of user of Content Membership"
+    },
+    {
+      "name": "hs_content_membership_follow_up_enqueued_at",
+      "label": "Time enrolled in registration follow up emails",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The time when the contact was first enrolled in the registration follow up email flow"
+    },
+    {
+      "name": "hs_content_membership_notes",
+      "label": "Membership Notes",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The notes relating to the contact's content membership."
+    },
+    {
+      "name": "hs_content_membership_registered_at",
+      "label": "Registered At",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "Datetime at which this user was set up for Content Membership"
+    },
+    {
+      "name": "hs_content_membership_registration_domain_sent_to",
+      "label": "Domain to which registration email was sent",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Domain to which the registration invitation email for Content Membership was sent to"
+    },
+    {
+      "name": "hs_content_membership_registration_email_sent_at",
+      "label": "Time registration email was sent",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "Datetime at which this user was sent a registration invitation email for Content Membership"
+    },
+    {
+      "name": "hs_content_membership_status",
+      "label": "Status",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The status of the contact's content membership."
+    },
+    {
+      "name": "hs_conversations_visitor_email",
+      "label": "Conversations visitor email",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A Conversations visitor's email address"
+    },
+    {
+      "name": "hs_count_is_unworked",
+      "label": "Count of unengaged contacts",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "if contact is assigned and unworked, set to 1. if contact is assigned and worked, set to 0."
+    },
+    {
+      "name": "hs_count_is_worked",
+      "label": "Count of engaged contacts",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "if contact is assigned and worked, set to 1. if contact is assigned and unworked, set to 0."
+    },
+    {
+      "name": "hs_country_region_code",
+      "label": "Country/Region Code",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's two-letter country code."
+    },
+    {
+      "name": "hs_created_by_conversations",
+      "label": "Created By Conversations",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Flag indicating this contact was created by the Conversations API"
+    },
+    {
+      "name": "hs_created_by_user_id",
+      "label": "Created by user ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The user who created this record. This value is set automatically by HubSpot."
+    },
+    {
+      "name": "hs_createdate",
+      "label": "Object create date/time",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time at which this object was created. This value is automatically set by HubSpot and may not be modified."
+    },
+    {
+      "name": "hs_cross_sell_opportunity",
+      "label": "Cross-sell Opportunity",
+      "type": "bool",
+      "groupName": "multiaccountmanagement",
+      "description": "Identify a contact as a good candidate for cross-selling programs."
+    },
+    {
+      "name": "hs_currently_enrolled_in_prospecting_agent",
+      "label": "Currently Enrolled in Prospecting Agent",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Indicates whether or not the contact has an active prospecting agent enrollment"
+    },
+    {
+      "name": "hs_customer_agent_lead_status",
+      "label": "Customer Agent Lead Status",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The lead status determined by Customer Agent. This also indicates the level of qualification."
+    },
+    {
+      "name": "hs_data_privacy_ads_consent",
+      "label": "Ads Consent from Forms",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "This property captures ads consents from forms and is used by consentmanager to create / update associated data privacy consent objects"
+    },
+    {
+      "name": "hs_date_entered_238101571",
+      "label": "Date entered 'Cliente Ativo - Contrato Suspenso (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "order_information",
+      "description": "The date and time when the contact entered the 'Cliente Ativo - Contrato Suspenso' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_entered_238371973",
+      "label": "Date entered 'Cliente Inativo - Inadimplente (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "order_information",
+      "description": "The date and time when the contact entered the 'Cliente Inativo - Inadimplente' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_entered_43688110",
+      "label": "Date entered 'Logger (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact entered the 'Logger' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_entered_85999939",
+      "label": "Date entered 'Onboarding (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact entered the 'Onboarding' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_entered_86009407",
+      "label": "Date entered 'Cliente Inativo (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact entered the 'Cliente Inativo' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_entered_86031774",
+      "label": "Date entered 'Cliente Ativo (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact entered the 'Cliente Ativo' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_entered_86032658",
+      "label": "Date entered 'Demonstração (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact entered the 'Demonstração' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_238101571",
+      "label": "Date exited 'Cliente Ativo - Contrato Suspenso (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "order_information",
+      "description": "The date and time when the contact exited the 'Cliente Ativo - Contrato Suspenso' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_238371973",
+      "label": "Date exited 'Cliente Inativo - Inadimplente (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "order_information",
+      "description": "The date and time when the contact exited the 'Cliente Inativo - Inadimplente' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_43688110",
+      "label": "Date exited 'Logger (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact exited the 'Logger' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_85999939",
+      "label": "Date exited 'Onboarding (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact exited the 'Onboarding' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_86009407",
+      "label": "Date exited 'Cliente Inativo (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact exited the 'Cliente Inativo' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_86031774",
+      "label": "Date exited 'Cliente Ativo (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact exited the 'Cliente Ativo' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_date_exited_86032658",
+      "label": "Date exited 'Demonstração (Pipeline da fase do ciclo de vida)'",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date and time when the contact exited the 'Demonstração' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_document_last_revisited",
+      "label": "Recent Document Revisit Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time a shared document (presentation) was accessed by this contact"
+    },
+    {
+      "name": "hs_email_bad_address",
+      "label": "Invalid email address",
+      "type": "bool",
+      "groupName": "emailinformation",
+      "description": "The email address associated with this contact is invalid."
+    },
+    {
+      "name": "hs_email_bounce",
+      "label": "Marketing emails bounced",
+      "type": "number",
+      "groupName": "mkt_|_analytics",
+      "description": "The number of marketing emails that bounced for the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_click",
+      "label": "Marketing emails clicked",
+      "type": "number",
+      "groupName": "mkt_|_analytics",
+      "description": "The number of marketing emails which have had link clicks for the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_customer_quarantined_reason",
+      "label": "Email address quarantine reason",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "The reason why the email address has been quarantined."
+    },
+    {
+      "name": "hs_email_delivered",
+      "label": "Marketing emails delivered",
+      "type": "number",
+      "groupName": "mkt_|_analytics",
+      "description": "The number of marketing emails delivered for the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_domain",
+      "label": "Email Domain",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's email address domain"
+    },
+    {
+      "name": "hs_email_first_click_date",
+      "label": "First marketing email click date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the earliest link click for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_first_open_date",
+      "label": "First marketing email open date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the earliest open for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_first_reply_date",
+      "label": "First marketing email reply date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the earliest reply for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_first_send_date",
+      "label": "First marketing email send date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the earliest delivery for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_hard_bounce_reason",
+      "label": "Email hard bounce reason",
+      "type": "string",
+      "groupName": "emailinformation",
+      "description": "The issue that caused a contact to hard bounce from your emails. If this is an error or a temporary issue, you can unbounce this contact from the contact record."
+    },
+    {
+      "name": "hs_email_hard_bounce_reason_enum",
+      "label": "Email hard bounce reason",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "The issue that caused a contact to hard bounce from your emails. If this is an error or a temporary issue, you can unbounce this contact from the contact record."
+    },
+    {
+      "name": "hs_email_is_ineligible",
+      "label": "Is globally ineligible",
+      "type": "bool",
+      "groupName": "emailinformation",
+      "description": "Indicates the contact is globally ineligible for email."
+    },
+    {
+      "name": "hs_email_last_click_date",
+      "label": "Last marketing email click date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the most recent link click for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_last_email_name",
+      "label": "Last marketing email name",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": "The name of the last marketing email sent to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_last_open_date",
+      "label": "Last marketing email open date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the most recent open for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_last_reply_date",
+      "label": "Last marketing email reply date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the latest reply for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_last_send_date",
+      "label": "Last marketing email send date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The date of the most recent delivery for any marketing email to the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_open",
+      "label": "Marketing emails opened",
+      "type": "number",
+      "groupName": "mkt_|_analytics",
+      "description": "The number of marketing emails opened for the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_optimal_send_day_of_week",
+      "label": "Optimal Marketing Email Send Day of Week",
+      "type": "string",
+      "groupName": "emailinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_email_optimal_send_time_of_day",
+      "label": "Optimal Marketing Email Send Time of Day ",
+      "type": "string",
+      "groupName": "emailinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_email_optout",
+      "label": "Unsubscribed from all email",
+      "type": "bool",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of all email."
+    },
+    {
+      "name": "hs_email_optout_23190672",
+      "label": "Opted out of email: Clientes LogComex",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_optout_23770493",
+      "label": "Opted out of email: Atualização sobre a sua jornada dentro da logcomex.",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_optout_5892036",
+      "label": "Opted out of email: Cadência ",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_optout_6125017",
+      "label": "Opted out of email: Inscrição na Newsletter - Blog ",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_optout_6183638",
+      "label": "Opted out of email: Logcomex",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_optout_6992999",
+      "label": "Opted out of email: Informações de Marketing",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_optout_7758561",
+      "label": "Opted out of email: Customer Service Communication",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has opted out of this email type."
+    },
+    {
+      "name": "hs_email_quarantined",
+      "label": "Email Address Quarantined",
+      "type": "bool",
+      "groupName": "emailinformation",
+      "description": "Indicates that the current email address has been quarantined for anti-abuse reasons and any marketing email sends to it will be blocked. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_quarantined_reason",
+      "label": "Email address automated quarantine reason",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "The automated reason why the email address has been quarantined."
+    },
+    {
+      "name": "hs_email_recipient_fatigue_recovery_time",
+      "label": "Email Address Recipient Fatigue Next Available Sending Time",
+      "type": "datetime",
+      "groupName": "emailinformation",
+      "description": "When this recipient has reached the limit of email sends per time period, this property indicates the next available time to send. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_replied",
+      "label": "Marketing emails replied",
+      "type": "number",
+      "groupName": "mkt_|_analytics",
+      "description": "The number of marketing emails replied to by the current email address. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_email_sends_since_last_engagement",
+      "label": "Sends Since Last Engagement",
+      "type": "number",
+      "groupName": "emailinformation",
+      "description": "The number of marketing emails that have been sent to the current email address since the last engagement (open or link click). This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_emailconfirmationstatus",
+      "label": "Marketing email confirmation status",
+      "type": "enumeration",
+      "groupName": "emailinformation",
+      "description": "The status of a contact's eligibility to receive marketing email. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_employment_change_detected_date",
+      "label": "Employment change detected date",
+      "type": "date",
+      "groupName": "emailinformation",
+      "description": "Date contact confirmed no longer employed at current company"
+    },
+    {
+      "name": "hs_enriched_email_bounce_detected",
+      "label": "Enriched Email Bounce Detected",
+      "type": "bool",
+      "groupName": "emailinformation",
+      "description": "Bounce Detected attribute is populated when Hubspot & it’s partners identify the email may not be deliverable or is no longer valid for that contact."
+    },
+    {
+      "name": "hs_facebook_ad_clicked",
+      "label": "Clicked Facebook ad",
+      "type": "bool",
+      "groupName": "conversioninformation",
+      "description": "Whether contact has clicked a Facebook ad"
+    },
+    {
+      "name": "hs_facebook_click_id",
+      "label": "Facebook click id",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "hs_facebookid",
+      "label": "Facebook ID",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "A contact's facebook id"
+    },
+    {
+      "name": "hs_feedback_last_csat_survey_date",
+      "label": "Last CSAT survey date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The time that this contact last submitted a CSAT survey response. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_feedback_last_csat_survey_follow_up",
+      "label": "Last CSAT survey comment",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Last CSAT survey comment from this contact."
+    },
+    {
+      "name": "hs_feedback_last_csat_survey_rating",
+      "label": "Last CSAT survey rating",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "Last CSAT survey rating from this contact."
+    },
+    {
+      "name": "hs_feedback_last_nps_follow_up",
+      "label": "Last NPS survey comment",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Last NPS survey comment that this contact gave"
+    },
+    {
+      "name": "hs_feedback_last_nps_rating",
+      "label": "Last NPS survey rating",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Last NPS survey rating that this contact gave"
+    },
+    {
+      "name": "hs_feedback_last_survey_date",
+      "label": "Last NPS survey date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The time that this contact last submitted a NPS survey response. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_feedback_show_nps_web_survey",
+      "label": "Should be shown an NPS web survey",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Whether or not a contact should be shown an NPS web survey. This is automatically set by HubSpot."
+    },
+    {
+      "name": "hs_first_closed_order_id",
+      "label": "First Closed Order ID",
+      "type": "number",
+      "groupName": "order_information",
+      "description": "The id of the associated order that was first to be closed"
+    },
+    {
+      "name": "hs_first_engagement_object_id",
+      "label": "ID of first engagement",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The object id of the current contact owner's first engagement with the contact."
+    },
+    {
+      "name": "hs_first_order_closed_date",
+      "label": "First Order Closed Date",
+      "type": "datetime",
+      "groupName": "order_information",
+      "description": "Date first order was closed. Set Automatically"
+    },
+    {
+      "name": "hs_first_outreach_date",
+      "label": "First outreach date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date of the first outreach (call, email, meeting or other communication) from a sales rep to the contact."
+    },
+    {
+      "name": "hs_first_subscription_create_date",
+      "label": "First subscription create date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The create date of the first subscription by the contact."
+    },
+    {
+      "name": "hs_full_name_or_email",
+      "label": "Full name or email",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's full name, formatting first name and last name by I18n/utils/formatName, fall back to email."
+    },
+    {
+      "name": "hs_google_click_id",
+      "label": "Google ad click id",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "hs_googleplusid",
+      "label": "googleplus ID",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "A contact's googleplus id"
+    },
+    {
+      "name": "hs_gps_error",
+      "label": "GPS Error",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Specifies any errors that may have occurred while geocoding a contact."
+    },
+    {
+      "name": "hs_gps_latitude",
+      "label": "Latitudes",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's latitude"
+    },
+    {
+      "name": "hs_gps_longitude",
+      "label": "Longitudes",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's longitude"
+    },
+    {
+      "name": "hs_has_active_subscription",
+      "label": "Contact has an active subscription",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The rollup property value is 1 when the contact has an active Subscription or 0 otherwise."
+    },
+    {
+      "name": "hs_inferred_language_codes",
+      "label": "Inferred Language Codes",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Inferred languages based on location.  ISO 639-1"
+    },
+    {
+      "name": "hs_intent_paid_up_to_date",
+      "label": "Intent paid up to date",
+      "type": "date",
+      "groupName": "contactinformation",
+      "description": "The date up until this object has had intent monitoring paid for. Only set and updated if intent monitoring is enabled for this object."
+    },
+    {
+      "name": "hs_intent_signals_enabled",
+      "label": "Intent Signals active",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Indicates whether intent signal tracking is currently active for this record"
+    },
+    {
+      "name": "hs_ip_timezone",
+      "label": "IP Timezone",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The timezone reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "hs_is_contact",
+      "label": "Is a contact",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Is a contact, has not been deleted and is not a visitor"
+    },
+    {
+      "name": "hs_is_enriched",
+      "label": "Has been enriched",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Indicates whether this object has ever had enriched properties written to it."
+    },
+    {
+      "name": "hs_is_unworked",
+      "label": "Contact unworked",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Contact has not been assigned or has not been engaged after last owner assignment/re-assignment"
+    },
+    {
+      "name": "hs_job_change_detected_date",
+      "label": "Job change detected date",
+      "type": "date",
+      "groupName": "emailinformation",
+      "description": "Date contact confirmed no longer employed at current company"
+    },
+    {
+      "name": "hs_journey_stage",
+      "label": "Journey Stage",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Track the status of a contact through a customer journey. It can be set through journeys, manually on a per contact basis, and through other tools."
+    },
+    {
+      "name": "hs_language",
+      "label": "Preferred language",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Set your contact's preferred language for communications. This property can be changed from an import, form, or integration."
+    },
+    {
+      "name": "hs_last_metered_enrichment_timestamp",
+      "label": "Last Metered Enrichment Timestamp",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The timestamp of the most recent enrichment to this object via Breeze Intelligence"
+    },
+    {
+      "name": "hs_last_sales_activity_date",
+      "label": "last sales activity date old",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date of the last sales activity with the contact. This property is set automatically by HubSpot. Note: This field is only updated for contacts with an owner."
+    },
+    {
+      "name": "hs_last_sales_activity_timestamp",
+      "label": "Last Engagement Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time a contact engaged with your site or a form, document, meetings link, or tracked email. This doesn't include marketing emails or emails to multiple contacts."
+    },
+    {
+      "name": "hs_last_sales_activity_type",
+      "label": "Last Engagement Type",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The type of the last engagement a contact performed. This doesn't include marketing emails or emails to multiple contacts."
+    },
+    {
+      "name": "hs_last_sms_send_date",
+      "label": "Last Sms Send Date",
+      "type": "datetime",
+      "groupName": "smsinformation",
+      "description": "This stores the date of the last SMS sent"
+    },
+    {
+      "name": "hs_last_sms_send_name",
+      "label": "Last SMS Send Name",
+      "type": "string",
+      "groupName": "smsinformation",
+      "description": "Name of the last SMS sent to the contact"
+    },
+    {
+      "name": "hs_lastmodifieddate",
+      "label": "Object last modified date/time",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "Most recent timestamp of any property update for this contact. This includes HubSpot internal properties, which can be visible or hidden. This property is updated automatically."
+    },
+    {
+      "name": "hs_latest_disqualified_lead_date",
+      "label": "Latest Disqualified Lead Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The most recent time at which an associated lead currently in a disqualified stage was moved to that stage"
+    },
+    {
+      "name": "hs_latest_meeting_activity",
+      "label": "Latest meeting activity",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date of the most recent meeting (past or upcoming) logged for, scheduled with, or booked by this contact."
+    },
+    {
+      "name": "hs_latest_open_lead_date",
+      "label": "Latest Open Lead Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The most recent time an associated open lead was moved to a NEW or IN_PROGRESS state"
+    },
+    {
+      "name": "hs_latest_qualified_lead_date",
+      "label": "Latest Qualified Lead Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The most recent time at which an associated lead currently in a qualified stage was moved to that stage"
+    },
+    {
+      "name": "hs_latest_sequence_ended_date",
+      "label": "Last sequence ended date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last sequence ended date."
+    },
+    {
+      "name": "hs_latest_sequence_enrolled",
+      "label": "Last sequence enrolled",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The last sequence enrolled."
+    },
+    {
+      "name": "hs_latest_sequence_enrolled_date",
+      "label": "Last sequence enrolled date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last sequence enrolled date."
+    },
+    {
+      "name": "hs_latest_sequence_finished_date",
+      "label": "Last sequence finished date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last sequence finished date."
+    },
+    {
+      "name": "hs_latest_sequence_unenrolled_date",
+      "label": "Last sequence unenrolled date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last sequence unenrolled date."
+    },
+    {
+      "name": "hs_latest_source",
+      "label": "Latest Traffic Source",
+      "type": "enumeration",
+      "groupName": "analyticsinformation",
+      "description": "The source of the latest session for a contact"
+    },
+    {
+      "name": "hs_latest_source_data_1",
+      "label": "Latest Traffic Source Drill-Down 1",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "Additional information about the latest source for the last session the contact used to find your website. Set automatically."
+    },
+    {
+      "name": "hs_latest_source_data_2",
+      "label": "Latest Traffic Source Drill-Down 2",
+      "type": "string",
+      "groupName": "analyticsinformation",
+      "description": "Additional information about the source for the last session the contact used to find your website. Set automatically."
+    },
+    {
+      "name": "hs_latest_source_timestamp",
+      "label": "Latest Traffic Source Date",
+      "type": "datetime",
+      "groupName": "analyticsinformation",
+      "description": "The time of the latest session for a contact"
+    },
+    {
+      "name": "hs_latest_subscription_create_date",
+      "label": "Latest subscription create date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The create date of the latest subscription by the contact."
+    },
+    {
+      "name": "hs_latitude",
+      "label": "Latitude",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "A contact's latitude"
+    },
+    {
+      "name": "hs_lead_status",
+      "label": "Lead Status",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The contact's sales, prospecting or outreach status"
+    },
+    {
+      "name": "hs_legal_basis",
+      "label": "Legal basis for processing contact's data",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Legal basis for processing contact's data; 'Not applicable' will exempt the contact from GDPR protections"
+    },
+    {
+      "name": "hs_linkedin_ad_clicked",
+      "label": "Clicked LinkedIn Ad",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "hs_linkedin_url",
+      "label": "LinkedIn URL",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "The URL of the contact's LinkedIn page."
+    },
+    {
+      "name": "hs_linkedinid",
+      "label": "Linkedin ID",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "A contact's linkedin id"
+    },
+    {
+      "name": "hs_live_enrichment_deadline",
+      "label": "Live enrichment deadline",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "Deadline for freshly sourced enrichment data to be applied and cause a credit metering"
+    },
+    {
+      "name": "hs_longitude",
+      "label": "Longitude",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "A contact's longitude"
+    },
+    {
+      "name": "hs_marketable_reason_id",
+      "label": "Marketing contact status source name",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": "The ID of the activity that set the contact as a marketing contact"
+    },
+    {
+      "name": "hs_marketable_reason_type",
+      "label": "Marketing contact status source type",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "The type of the activity that set the contact as a marketing contact"
+    },
+    {
+      "name": "hs_marketable_status",
+      "label": "Marketing contact status",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "The marketing status of a contact"
+    },
+    {
+      "name": "hs_marketable_until_renewal",
+      "label": "Marketing contact until next update",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Specifies if this contact will be set as non-marketing on renewal"
+    },
+    {
+      "name": "hs_membership_has_accessed_private_content",
+      "label": "Member has accessed private content",
+      "type": "number",
+      "groupName": "contactscripted",
+      "description": "1 if a member has accessed any private content, 0 or null if not"
+    },
+    {
+      "name": "hs_membership_last_private_content_access_date",
+      "label": "Membership last private content access date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last date a contact accessed private content"
+    },
+    {
+      "name": "hs_merged_object_ids",
+      "label": "Merged Contact IDs",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The list of Contact record IDs that have been merged into this Contact. This value is set automatically by HubSpot."
+    },
+    {
+      "name": "hs_messaging_engagement_score",
+      "label": "messaging_engagement_score",
+      "type": "number",
+      "groupName": "emailinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_mobile_sdk_push_tokens",
+      "label": "Mobile Sdk Push Tokens",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "This property is used to capture the push notification token for use on the LiveChat mobile sdk. We intend to use this property to store a list of push tokens (as they refresh) on the CONTACT object."
+    },
+    {
+      "name": "hs_notes_last_activity",
+      "label": "Last Activity",
+      "type": "object_coordinates",
+      "groupName": "contactinformation",
+      "description": "The coordinates of the last activity for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "hs_notes_next_activity",
+      "label": "Next Activity",
+      "type": "object_coordinates",
+      "groupName": "contactinformation",
+      "description": "The coordinates of the next upcoming activity for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "hs_notes_next_activity_type",
+      "label": "Next Activity Type",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The type of the next upcoming activity for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "hs_object_id",
+      "label": "Record ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The unique ID for this record. This value is set automatically by HubSpot."
+    },
+    {
+      "name": "hs_object_source",
+      "label": "Record creation source",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Raw internal PropertySource present in the RequestMeta when this record was created."
+    },
+    {
+      "name": "hs_object_source_detail_1",
+      "label": "Record source detail 1",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "First level of detail on how this record was created."
+    },
+    {
+      "name": "hs_object_source_detail_2",
+      "label": "Record source detail 2",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Second level of detail on how this record was created."
+    },
+    {
+      "name": "hs_object_source_detail_3",
+      "label": "Record source detail 3",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Third level of detail on how this record was created."
+    },
+    {
+      "name": "hs_object_source_id",
+      "label": "Record creation source ID",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Raw internal sourceId present in the RequestMeta when this record was created."
+    },
+    {
+      "name": "hs_object_source_label",
+      "label": "Record source",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "How this record was created."
+    },
+    {
+      "name": "hs_object_source_user_id",
+      "label": "Record creation source user ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "Raw internal userId present in the RequestMeta when this record was created."
+    },
+    {
+      "name": "hs_owning_teams",
+      "label": "Owning Teams",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The teams that are attributed to this record."
+    },
+    {
+      "name": "hs_persona",
+      "label": "Persona",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "A contact's persona"
+    },
+    {
+      "name": "hs_pinned_engagement_id",
+      "label": "Pinned engagement ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The object ID of the current pinned engagement. This will only be shown if there is already an association to the engagement."
+    },
+    {
+      "name": "hs_pipeline",
+      "label": "Pipeline",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The pipeline with which this contact is currently associated"
+    },
+    {
+      "name": "hs_predictivecontactscore",
+      "label": "Predictive Lead Score",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "A score calculated by HubSpot that represents a contact's likelihood to become a customer"
+    },
+    {
+      "name": "hs_predictivecontactscore_v2",
+      "label": "Likelihood to close",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The probability that a contact will become a customer within the next 90 days. This score is based on standard contact properties and behavior."
+    },
+    {
+      "name": "hs_predictivecontactscorebucket",
+      "label": "Lead Rating",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The rating of this contact based on their predictive lead score"
+    },
+    {
+      "name": "hs_predictivescoringtier",
+      "label": "Contact priority",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "A ranking system of contacts evenly assigned into four tiers. Contacts in tier one are more likely to become customers than contacts in tier four."
+    },
+    {
+      "name": "hs_prospecting_agent_actively_enrolled_count",
+      "label": "Prospecting Agent Actively Enrolled Count",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of active prospecting agent enrollments this contact has. This should be either 0 or 1"
+    },
+    {
+      "name": "hs_prospecting_agent_last_enrolled",
+      "label": "Prospecting Agent Last Enrolled",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time the Prospecting Agent enrolled this contact"
+    },
+    {
+      "name": "hs_prospecting_agent_total_enrolled_count",
+      "label": "Prospecting Agent Total Enrolled Count",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_quarantined_emails",
+      "label": "Quarantined Emails",
+      "type": "string",
+      "groupName": "emailinformation",
+      "description": "Lists all emails associated with this contact that have been quarantined, with a source and reason."
+    },
+    {
+      "name": "hs_read_only",
+      "label": "Read only object",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Determines whether a record can be edited by a user."
+    },
+    {
+      "name": "hs_recent_closed_order_date",
+      "label": "Recent Closed Order Date",
+      "type": "datetime",
+      "groupName": "order_information",
+      "description": "Date last order was closed. Set automatically."
+    },
+    {
+      "name": "hs_registered_member",
+      "label": "Registered member",
+      "type": "number",
+      "groupName": "contactscripted",
+      "description": "Whether or not a contact is registered"
+    },
+    {
+      "name": "hs_registration_method",
+      "label": "Registration Method",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The method used for registration"
+    },
+    {
+      "name": "hs_returning_to_office_detected_date",
+      "label": "Returning to office detected date",
+      "type": "date",
+      "groupName": "emailinformation",
+      "description": "Date detected from email that contact will return to the office"
+    },
+    {
+      "name": "hs_role",
+      "label": "Employment Role",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Job role"
+    },
+    {
+      "name": "hs_sa_first_engagement_date",
+      "label": "Date of first engagement",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date the current contact owner first engaged with the contact."
+    },
+    {
+      "name": "hs_sa_first_engagement_descr",
+      "label": "Description of first engagement",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "A description of the current contact owner's first engagement with the contact."
+    },
+    {
+      "name": "hs_sa_first_engagement_object_type",
+      "label": "Type of first engagement",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The object type of the current contact owner's first engagement with the contact."
+    },
+    {
+      "name": "hs_sales_email_last_clicked",
+      "label": "Recent Sales Email Clicked Date",
+      "type": "datetime",
+      "groupName": "mkt_|_analytics",
+      "description": "The last time a tracked sales email was clicked by this user"
+    },
+    {
+      "name": "hs_sales_email_last_opened",
+      "label": "Recent Sales Email Opened Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time a tracked sales email was opened by this contact. This property does not update for emails that were sent to more than one contact."
+    },
+    {
+      "name": "hs_sales_email_last_replied",
+      "label": "Recent Sales Email Replied Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time a tracked sales email to this contact was replied to. This is set automatically by HubSpot."
+    },
+    {
+      "name": "hs_searchable_calculated_international_mobile_number",
+      "label": "Calculated Mobile Number with country code",
+      "type": "phone_number",
+      "groupName": "contactinformation",
+      "description": "Mobile number with country code"
+    },
+    {
+      "name": "hs_searchable_calculated_international_phone_number",
+      "label": "Calculated Phone Number with country code",
+      "type": "phone_number",
+      "groupName": "contactinformation",
+      "description": "Phone number with country code"
+    },
+    {
+      "name": "hs_searchable_calculated_mobile_number",
+      "label": "Calculated Mobile Number without country code",
+      "type": "phone_number",
+      "groupName": "contactinformation",
+      "description": "Mobile number without country code"
+    },
+    {
+      "name": "hs_searchable_calculated_phone_number",
+      "label": "Calculated Phone Number without country code",
+      "type": "phone_number",
+      "groupName": "contactinformation",
+      "description": "Phone number without country code"
+    },
+    {
+      "name": "hs_seniority",
+      "label": "Employment Seniority",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Job Seniority"
+    },
+    {
+      "name": "hs_sequences_actively_enrolled_count",
+      "label": "Number of sequences actively enrolled",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of sequences actively enrolled."
+    },
+    {
+      "name": "hs_sequences_enrolled_count",
+      "label": "Number of sequences enrolled",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of sequences enrolled."
+    },
+    {
+      "name": "hs_sequences_is_enrolled",
+      "label": "Currently in Sequence",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "A yes/no field that indicates whether the contact is currently in a Sequence."
+    },
+    {
+      "name": "hs_shared_team_ids",
+      "label": "Shared teams",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Additional teams whose users can access the Contact based on their permissions. This can be set manually or through Workflows or APIs."
+    },
+    {
+      "name": "hs_shared_user_ids",
+      "label": "Shared users",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Additional users that can access the Contact based on their permissions. This can be set manually or through Workflows and APIs."
+    },
+    {
+      "name": "hs_social_facebook_clicks",
+      "label": "Facebook Clicks",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "The number clicks on links shared on Facebook"
+    },
+    {
+      "name": "hs_social_google_plus_clicks",
+      "label": "Google Plus Clicks",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "The number clicks on links shared on Google Plus"
+    },
+    {
+      "name": "hs_social_last_engagement",
+      "label": "Most Recent Social Click",
+      "type": "datetime",
+      "groupName": "socialmediainformation",
+      "description": "The date of the most recent click on a published social message. This is set automatically by HubSpot for each contact."
+    },
+    {
+      "name": "hs_social_linkedin_clicks",
+      "label": "LinkedIn Clicks",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "The number clicks on links shared on LinkedIn"
+    },
+    {
+      "name": "hs_social_num_broadcast_clicks",
+      "label": "Broadcast Clicks",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "The number of clicks on published social messages. This is set automatically by HubSpot for each contact."
+    },
+    {
+      "name": "hs_social_twitter_clicks",
+      "label": "Twitter Clicks",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "The number of times a contact clicked on links you shared on Twitter through HubSpot. This is set automatically by HubSpot and can be used for segmentation."
+    },
+    {
+      "name": "hs_source_object_id",
+      "label": "Source Object ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The ID of the object from which the data was migrated. This is set automatically during portal data migration."
+    },
+    {
+      "name": "hs_source_portal_id",
+      "label": "Source Portal ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The ID of the portal from which the data was migrated. This is set automatically during portal data migration."
+    },
+    {
+      "name": "hs_state_code",
+      "label": "State/Region Code",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's state or region code."
+    },
+    {
+      "name": "hs_sub_role",
+      "label": "Employment Sub Role",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Job sub role"
+    },
+    {
+      "name": "hs_support_workflows_april_2021",
+      "label": "HS Workflows Remediation April 2021",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "HubSpot Support property that stores workflows this record may have been enrolled in unexpectedly in April 2021"
+    },
+    {
+      "name": "hs_testpurge",
+      "label": "testpurge",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "testing purge"
+    },
+    {
+      "name": "hs_testrollback",
+      "label": "testrollback",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "testing rollback"
+    },
+    {
+      "name": "hs_time_between_contact_creation_and_deal_close",
+      "label": "Time between contact creation and deal close",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_time_between_contact_creation_and_deal_creation",
+      "label": "Time between contact creation and deal creation",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "hs_time_in_238101571",
+      "label": "Time in 'Cliente Ativo - Contrato Suspenso (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "order_information",
+      "description": "The total time in seconds spent by the contact in the 'Cliente Ativo - Contrato Suspenso' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_in_238371973",
+      "label": "Time in 'Cliente Inativo - Inadimplente (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "order_information",
+      "description": "The total time in seconds spent by the contact in the 'Cliente Inativo - Inadimplente' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_in_43688110",
+      "label": "Time in 'Logger (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The total time in seconds spent by the contact in the 'Logger' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_in_85999939",
+      "label": "Time in 'Onboarding (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The total time in seconds spent by the contact in the 'Onboarding' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_in_86009407",
+      "label": "Time in 'Cliente Inativo (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The total time in seconds spent by the contact in the 'Cliente Inativo' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_in_86031774",
+      "label": "Time in 'Cliente Ativo (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The total time in seconds spent by the contact in the 'Cliente Ativo' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_in_86032658",
+      "label": "Time in 'Demonstração (Pipeline da fase do ciclo de vida)'",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The total time in seconds spent by the contact in the 'Demonstração' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_time_to_first_engagement",
+      "label": "Lead response time",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The time it took the current owner to perform a qualifying action on the contact. Qualifying actions include sending an email, calling, using chat, recording a meeting outcome, or marking a task as in progress or completed."
+    },
+    {
+      "name": "hs_time_to_move_from_lead_to_customer",
+      "label": "Time to move from lead to customer",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": " How long it takes for a contact to move from the HubSpot lead stage to the HubSpot customer stage."
+    },
+    {
+      "name": "hs_time_to_move_from_marketingqualifiedlead_to_customer",
+      "label": "Time to move from marketing qualified lead to customer",
+      "type": "number",
+      "groupName": "mkt_|_analytics",
+      "description": " How long it takes for a contact to move from the HubSpot marketing qualified lead stage to the HubSpot customer stage."
+    },
+    {
+      "name": "hs_time_to_move_from_opportunity_to_customer",
+      "label": "Time to move from opportunity to customer",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": " How long it takes for a contact to move from the HubSpot opportunity stage to the HubSpot customer stage."
+    },
+    {
+      "name": "hs_time_to_move_from_salesqualifiedlead_to_customer",
+      "label": "Time to move from sales qualified lead to customer",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": " How long it takes for a contact to move from the HubSpot sales qualified lead stage to the HubSpot customer stage."
+    },
+    {
+      "name": "hs_time_to_move_from_subscriber_to_customer",
+      "label": "Time to move from subscriber to customer",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": " How long it takes for a contact to move from the HubSpot subscriber stage to the HubSpot customer stage."
+    },
+    {
+      "name": "hs_timezone",
+      "label": "Time Zone",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The contact’s time zone. This can be set automatically by HubSpot based on other contact properties. It can also be set manually for each contact."
+    },
+    {
+      "name": "hs_twitterid",
+      "label": "Twitter ID",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "A contact's twitter id"
+    },
+    {
+      "name": "hs_unique_creation_key",
+      "label": "Unique creation key",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Unique property used for idempotent creates"
+    },
+    {
+      "name": "hs_updated_by_user_id",
+      "label": "Updated by user ID",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The user who last updated this record. This value is set automatically by HubSpot."
+    },
+    {
+      "name": "hs_user_ids_of_all_notification_followers",
+      "label": "User IDs of all notification followers",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The user IDs of all users that have clicked follow within the object to opt-in to getting follow notifications"
+    },
+    {
+      "name": "hs_user_ids_of_all_notification_unfollowers",
+      "label": "User IDs of all notification unfollowers",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The user IDs of all object owners that have clicked unfollow within the object to opt-out of getting follow notifications"
+    },
+    {
+      "name": "hs_user_ids_of_all_owners",
+      "label": "User IDs of all owners",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The user IDs of all owners of this record."
+    },
+    {
+      "name": "hs_v2_date_entered_customer",
+      "label": "Date entered \"Novo Cliente (Pipeline da fase do ciclo de vida)\"",
+      "type": "datetime",
+      "groupName": "contactlcs",
+      "description": "The date and time when the contact entered the 'Novo Cliente' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_v2_date_entered_lead",
+      "label": "Date entered \"Lead (Pipeline da fase do ciclo de vida)\"",
+      "type": "datetime",
+      "groupName": "contactlcs",
+      "description": "The date and time when the contact entered the 'Lead' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_v2_date_entered_marketingqualifiedlead",
+      "label": "Date entered \"Lead qualificado para marketing (Pipeline da fase do ciclo de vida)\"",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "The date and time when the contact entered the 'Lead qualificado para marketing' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_v2_date_entered_opportunity",
+      "label": "Date entered \"Oportunidade (Pipeline da fase do ciclo de vida)\"",
+      "type": "datetime",
+      "groupName": "contactlcs",
+      "description": "The date and time when the contact entered the 'Oportunidade' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_v2_date_entered_salesqualifiedlead",
+      "label": "Date entered \"Lead qualificado para venda (Pipeline da fase do ciclo de vida)\"",
+      "type": "datetime",
+      "groupName": "contactlcs",
+      "description": "The date and time when the contact entered the 'Lead qualificado para venda' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_v2_date_entered_subscriber",
+      "label": "Date entered \"Assinante (Pipeline da fase do ciclo de vida)\"",
+      "type": "datetime",
+      "groupName": "contactlcs",
+      "description": "The date and time when the contact entered the 'Assinante' stage, 'Pipeline da fase do ciclo de vida' pipeline"
+    },
+    {
+      "name": "hs_was_imported",
+      "label": "Performed in an import",
+      "type": "bool",
+      "groupName": "contactinformation",
+      "description": "Object is part of an import"
+    },
+    {
+      "name": "hs_whatsapp_phone_number",
+      "label": "WhatsApp Phone Number",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The phone number associated with the contact’s WhatsApp account."
+    },
+    {
+      "name": "hubspot_owner_assigneddate",
+      "label": "Owner assigned date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The most recent timestamp of when an owner was assigned to this record. This value is set automatically by HubSpot."
+    },
+    {
+      "name": "hubspot_owner_id",
+      "label": "Contact owner",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The owner of a contact. This can be any HubSpot user or Salesforce integration user, and can be set manually or via Workflows."
+    },
+    {
+      "name": "hubspot_team_id",
+      "label": "HubSpot Team",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The team of the owner of a contact."
+    },
+    {
+      "name": "hubspotscore",
+      "label": "HubSpot Score",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number that shows qualification of contacts to sales readiness. It can be set in HubSpot's Lead Scoring app."
+    },
+    {
+      "name": "ic__bu_do_sdr_solicitante",
+      "label": "[IC] BU do SDR solicitante",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Identifica qual a BU do SDR que está solicitando novos negócios a equipe de Lead Generation;"
+    },
+    {
+      "name": "ic__quantidade_de_deals_solicitados_por_sdr_para_lgen",
+      "label": "[IC] Quantidade de Deals Solicitados por SDR para LGen",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Utilizada na automação de Lead Generation que define quantos deals atribui ao SDR que solicita uma nova leva;"
+    },
+    {
+      "name": "id_do_indicador_logpartner",
+      "label": "ID LogPartner (EXCLUIR)",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "Para o projeto do Logpartner precisaremos criar um ID único para identificar o indicador dentro do HUB. A proposta aqui foi usar os 8 Dígitos iniciais do CPF/CNPJ do Indicador. "
+    },
+    {
+      "name": "id_logpartner",
+      "label": "ID do Indicador LogPartner ",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "Para o projeto do Logpartner precisaremos criar um ID único para identificar o indicador dentro do HUB. A proposta aqui foi usar os 8 Dígitos iniciais do CPF/CNPJ do Indicador. "
+    },
+    {
+      "name": "idioma",
+      "label": "Idioma",
+      "type": "string",
+      "groupName": "lead_ads",
+      "description": "Lead Ad Properties"
+    },
+    {
+      "name": "indicacao_time_suporte_sales_",
+      "label": "Indicação time Suporte>Sales",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": "Registra que o cliente levantou a mão via Inbound/Indicação via Chat pelo time do Suporte"
+    },
+    {
+      "name": "industry",
+      "label": "Industry",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The industry a contact is in"
+    },
+    {
+      "name": "industry_en",
+      "label": "MKT | Segment | English",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Propriedade exclusiva para uso das operações Internacionais."
+    },
+    {
+      "name": "informacoes_pendentes_de_negocio",
+      "label": "Informações pendentes de negócio",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "ip_city",
+      "label": "IP City",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The city reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "ip_country",
+      "label": "IP Country",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The country reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "ip_country_code",
+      "label": "IP Country Code",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The country code reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "ip_latlon",
+      "label": "IP Latitude & Longitude",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "ip_state",
+      "label": "IP State/Region",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The state or region reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "ip_state_code",
+      "label": "IP State Code/Region Code",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The state code or region code reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "ip_zipcode",
+      "label": "IP Zipcode",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The zipcode reported by a contact's IP address. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "job_function",
+      "label": "Job function",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's job function. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "jobtitle",
+      "label": "Job Title",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's job title"
+    },
+    {
+      "name": "kloutscoregeneral",
+      "label": "Klout Score",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "A contact's Klout score, a measure of Internet influence"
+    },
+    {
+      "name": "last_form_submitted__ic_",
+      "label": "Last form submitted [IC]",
+      "type": "date",
+      "groupName": "revops",
+      "description": "Data mais recente em que o contato preencheu um formulário"
+    },
+    {
+      "name": "last_phone_update__ic_",
+      "label": "Last Phone update [IC]",
+      "type": "date",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "lastmodifieddate",
+      "label": "Last Modified Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date any property on this contact was modified"
+    },
+    {
+      "name": "lastname",
+      "label": "Last Name",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's last name"
+    },
+    {
+      "name": "ldr_estrategia",
+      "label": "[LDR] Estratégia ",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Campo criado para taggear safras de deals originados de campanhas."
+    },
+    {
+      "name": "lifecyclestage",
+      "label": "Lifecycle Stage",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The qualification of contacts to sales readiness. It can be set through imports, forms, workflows, and manually on a per contact basis."
+    },
+    {
+      "name": "limite_de_pontuacao_de_adequacao_12_08_2025",
+      "label": "MKT | Pontuação | Qualidade do contato",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "link_cupom_50__ctf25",
+      "label": "Link Cupom 50% CTF25",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "link_do_linkedin",
+      "label": "Link do LinkedIn",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Adicione o link do linkedIn da persona que encontrar para facilitar a conexão"
+    },
+    {
+      "name": "link_para_resgate_100__gratuito",
+      "label": "Link para resgate 100% gratuito",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "linkedin_profile_link",
+      "label": "MKT | LinkedIn profile URL",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": "Lead Ad Properties"
+    },
+    {
+      "name": "linkedinbio",
+      "label": "LinkedIn Bio",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "A contact's LinkedIn bio"
+    },
+    {
+      "name": "linkedinconnections",
+      "label": "LinkedIn Connections",
+      "type": "number",
+      "groupName": "socialmediainformation",
+      "description": "How many LinkedIn connections they have"
+    },
+    {
+      "name": "log_embaixadores_",
+      "label": "Log Embaixadores?",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "logger_ativo_",
+      "label": "Logger ativo?",
+      "type": "string",
+      "groupName": "people_ops",
+      "description": "Propriedade que indica se o Logger é um funcionário ativo ou não na empresa. Essa é uma propriedade exclusiva para o RH."
+    },
+    {
+      "name": "marital_status",
+      "label": "Marital Status",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's marital status. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "mensagem_",
+      "label": "Mensagem:",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "message",
+      "label": "Message",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A default property to be used for any message or comments a contact may want to leave on a form."
+    },
+    {
+      "name": "military_status",
+      "label": "Military status",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's military status. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "mkt_business_unit",
+      "label": "MKT | Business Unit",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_campanha",
+      "label": "MKT | Campanha",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_canal",
+      "label": "MKT | Canal",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_em_negociacao",
+      "label": "MKT | Em negociação",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_estrategia",
+      "label": "MKT | Estratégia",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_idioma",
+      "label": "MKT | Language",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_influence_date",
+      "label": "MKT | Influence date",
+      "type": "date",
+      "groupName": "mkt_|_analytics",
+      "description": "Data em que ocorreu a influência"
+    },
+    {
+      "name": "mkt_influence_type",
+      "label": "MKT | Influence type",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Propriedade para indicar qual é o tipo de influência deste contato"
+    },
+    {
+      "name": "mkt_lifecycle_stage",
+      "label": "MKT | LifeCycle Stage",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_logos_casos_uso",
+      "label": "MKT | Casos de uso LogOS",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Propriedade para indicar o caso de uso, apenas para o produto \"LogOS\""
+    },
+    {
+      "name": "mkt_produto_de_intencao",
+      "label": "MKT | Produto de intenção",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_spreadchat_atendente",
+      "label": "MKT | SpreadChat atendente",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_spreadchat_coordenacao",
+      "label": "MKT | SpreadChat coordenação",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_spreadchat_observation",
+      "label": "MKT | SpreadChat observação",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_touch_date",
+      "label": "MKT | Touch date",
+      "type": "date",
+      "groupName": "mkt_|_analytics",
+      "description": "Data do touch que o contato teve"
+    },
+    {
+      "name": "mkt_touch_type",
+      "label": "MKT | Touch type",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Tipo de touch que o contato teve"
+    },
+    {
+      "name": "mkt_trafego",
+      "label": "MKT | Tráfego",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mkt_trafego_agrupado",
+      "label": "MKT | Tráfego (agrupado)",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "mobilephone",
+      "label": "Mobile Phone Number",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's mobile phone number"
+    },
+    {
+      "name": "n000_etapa_assinante",
+      "label": "000 Etapa Assinante",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para indicar em qual momento da jornada ele está para configurar a Fase do Ciclo de vida"
+    },
+    {
+      "name": "n0_00_lead",
+      "label": "0.00 Lead",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para indicar se o contato é um Lead"
+    },
+    {
+      "name": "n0__etapa_mql",
+      "label": "0. Etapa MQL",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n1__etapa_sql",
+      "label": "1. Etapa SQL",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n2__etapa_demonstracao",
+      "label": "2. Etapa Demonstração",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n3__etapa_oportunidade",
+      "label": "3. Etapa Oportunidade",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n4__etapa_novo_cliente",
+      "label": "4. Etapa Novo Cliente",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n5__etapa_onboard",
+      "label": "5. Etapa Onboard",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n6__etapa_cliente_ativo",
+      "label": "6. Etapa Cliente Ativo",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "n7__etapa_cliente_inativo",
+      "label": "7. Etapa Cliente Inativo",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": "Propriedade provisória para definição da Fase do Ciclo de Vida do Lead, com opção de \"Sim\" e \"Não\". "
+    },
+    {
+      "name": "ncm_mais_usada",
+      "label": "NCM mais usada",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Propriedade de campo aberto para coletar as NCMs mais usadas  por nossos leads. Recomendamos o uso dessa propriedade para coletar informações, por ser um campo aberto. Se for usar para segmentar listas, favor usar uma propriedade de NCM de campo fechado."
+    },
+    {
+      "name": "new_ou_expansao___provisorio_",
+      "label": "New ou Expansão? (provisório)",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "nome_da_empresa_decisor",
+      "label": "PRD | Nome da empresa decisor",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Não mexer, propriedade de produto (falar com Erika ou Cleber)"
+    },
+    {
+      "name": "nome_fantasia",
+      "label": "[Contato] Nome Fantasia",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Nome da empresa que aparece nos emails da cadência."
+    },
+    {
+      "name": "notes_last_contacted",
+      "label": "Last Contacted",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time a call, email, or meeting was logged for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "notes_last_updated",
+      "label": "Last Activity Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The last time a note, call, email, meeting, or task was logged for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "notes_next_activity_date",
+      "label": "Next Activity Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date of the next upcoming activity for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "nps_created_at",
+      "label": "NPS Response Date",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "NPS Response Date"
+    },
+    {
+      "name": "nps_score",
+      "label": "Net Promoter Score (NPS)",
+      "type": "number",
+      "groupName": "revops",
+      "description": "Net Promoter Score (NPS)"
+    },
+    {
+      "name": "nps_text",
+      "label": "NPS Feedback",
+      "type": "string",
+      "groupName": "revops",
+      "description": "NPS Feedback"
+    },
+    {
+      "name": "num_associated_deals",
+      "label": "Number of Associated Deals",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of deals associated with this contact. This is set automatically by HubSpot."
+    },
+    {
+      "name": "num_contacted_notes",
+      "label": "Number of times contacted",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of times a call, email, or meeting was logged for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "num_conversion_events",
+      "label": "Number of Form Submissions",
+      "type": "number",
+      "groupName": "conversioninformation",
+      "description": "The number of forms this contact has submitted"
+    },
+    {
+      "name": "num_notes",
+      "label": "Number of Sales Activities",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The number of sales activities for a contact. This is set automatically by HubSpot based on user actions in the contact record."
+    },
+    {
+      "name": "num_unique_conversion_events",
+      "label": "Number of Unique Forms Submitted",
+      "type": "number",
+      "groupName": "conversioninformation",
+      "description": "The number of different forms this contact has submitted"
+    },
+    {
+      "name": "numemployees",
+      "label": "Number of Employees",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "The number of company employees"
+    },
+    {
+      "name": "o_que_procura_",
+      "label": "Agenciamento de Carga - O que procura?",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Agente de carga"
+    },
+    {
+      "name": "o_que_voce_busca_como_despachante_",
+      "label": "Despacho - O que você procura?",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "ob__realizou_onboarding___cs",
+      "label": "[OB] Realizou onboarding?",
+      "type": "enumeration",
+      "groupName": "client_success",
+      "description": "Integração Client Success"
+    },
+    {
+      "name": "ob_reenviar_csat",
+      "label": "[OB] Reenviar CSAT",
+      "type": "enumeration",
+      "groupName": "client_success",
+      "description": "Campo integrado com a Client Success para acionar o gatilho de Reenvio do CSAT"
+    },
+    {
+      "name": "objetivo__beneficios_encontrados_com_a_utilizacao_dos_dados",
+      "label": "Objetivo/ Benefícios encontrados com a utilização dos dados",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "ops___ativa_no_pipeline___ctt___teste_",
+      "label": "OPS | Ativa no pipeline? (ctt) (teste)",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Identifica se um contato participa de uma empresa que possui algum negócio aberto no momento, em todos os pipelines. Preenchida pelo workflow \"MKT | Empresa ativa no pipeline\""
+    },
+    {
+      "name": "origem_do_contato",
+      "label": "Origem do contato",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Origem do cadastro do contato ex. Plataforma"
+    },
+    {
+      "name": "owneremail",
+      "label": "HubSpot Owner Email (legacy)",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A legacy property used to identify the email address of the owner of the contact. This property is no longer in use."
+    },
+    {
+      "name": "ownername",
+      "label": "HubSpot Owner Name (legacy)",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A legacy property used to identify the name of the owner of the contact. This property is no longer in use."
+    },
+    {
+      "name": "pas_regio_",
+      "label": "País/ Região ",
+      "type": "string",
+      "groupName": "lead_ads",
+      "description": "Lead Ad Properties"
+    },
+    {
+      "name": "persona_agendada",
+      "label": "Persona agendada",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "phone",
+      "label": "Phone Number",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's primary phone number"
+    },
+    {
+      "name": "photo",
+      "label": "Photo",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "Social Media photo"
+    },
+    {
+      "name": "pontuacao_de_adequacao_12_08_2025",
+      "label": "MKT | Pontuação | Qualidade do contato",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "pops_turma_de_ingles",
+      "label": "[POps] Turma de Inglês",
+      "type": "enumeration",
+      "groupName": "people_ops",
+      "description": "Propriedade exclusiva para o uso do time de People Ops da LogComex para separar os Loggers que estão ativos na turma de inglês. "
+    },
+    {
+      "name": "porte_da_empresa_onde_voce_atua_",
+      "label": "Porte da empresa onde você atua:",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "prd___cantact_details_pt",
+      "label": "PRD | Cantact Details PT",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "prd___solicitacao_logmanager",
+      "label": "PRD | Solicitação LogManager",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Esta propriedade é preenchida pela plataforma, para identificar os contatos que solicitaram a compra do LogManager, sendo primeira ou upsell;\nQualquer mudança nessa propriedade acarretará em problemas na abertura e direcionamento de negócios, e também, bugs no preenchimento de valor interno da plataforma;\nComunicar Rafael Anaya e/ou Luan Alencar."
+    },
+    {
+      "name": "produto_de_inteno",
+      "label": "Produto de Intenção",
+      "type": "string",
+      "groupName": "lead_ads",
+      "description": "Lead Ad Properties"
+    },
+    {
+      "name": "prop_temp_tag",
+      "label": "Prop Temp Tag ",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "quais_sistemas_ou_ferramentas_sua_empresa_utiliza_para_gerenciar_as_operacoes_de_comercio_exterior_",
+      "label": "Quais sistemas ou ferramentas sua empresa utiliza para gerenciar as operações de comércio exterior?",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "qualificacao_de_inteligencia_comercial",
+      "label": "Qualificação de Inteligencia Comercial",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "quantidade_de_embarques",
+      "label": "Quantidade de embarques",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "recent_conversion_date",
+      "label": "Recent Conversion Date",
+      "type": "datetime",
+      "groupName": "conversioninformation",
+      "description": "The date this contact last submitted a form"
+    },
+    {
+      "name": "recent_conversion_event_name",
+      "label": "Recent Conversion",
+      "type": "string",
+      "groupName": "conversioninformation",
+      "description": "The last form this contact submitted"
+    },
+    {
+      "name": "recent_deal_amount",
+      "label": "Recent Deal Amount",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The amount of the last closed won deal associated with a contact. This is set automatically by HubSpot based on information from the Deals object."
+    },
+    {
+      "name": "recent_deal_close_date",
+      "label": "Recent Deal Close Date",
+      "type": "datetime",
+      "groupName": "contactinformation",
+      "description": "The date that the last deal associated with a contact was won. This is automatically set by HubSpot based on information from the Deals object."
+    },
+    {
+      "name": "registered",
+      "label": "Prod - Registered",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": ""
+    },
+    {
+      "name": "relationship_status",
+      "label": "Relationship Status",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's relationship status. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "responsavel_pela_oportunidade__exclusivo_intermodal_",
+      "label": "Responsável pela oportunidade (exclusivo intermodal)",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Propriedade com o objetivo exclusivo de identificar quem é o responsável pelo contato ou oportunidade em andamento coletada durante a Intermodal 2023"
+    },
+    {
+      "name": "resposta_csat",
+      "label": "Resposta CSAT",
+      "type": "string",
+      "groupName": "client_success",
+      "description": "Resposta CSAT"
+    },
+    {
+      "name": "sales__canal_de_aquisicao",
+      "label": "Canal de aquisição (Provisório)",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "sales__feedback_do_contato",
+      "label": "[Sales] Feedback do Contato",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "salutation",
+      "label": "Salutation",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The title used to address a contact"
+    },
+    {
+      "name": "school",
+      "label": "School",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's school. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "segmentacao_do_importador_",
+      "label": "Segmentação do importador",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "segmento_de_atuacao_",
+      "label": "MKT | Segmento",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Segmento de atuação:"
+    },
+    {
+      "name": "selecione_um_plano_adicional",
+      "label": "PRD | Selecione um plano adicional",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Adicional de 10 dossiês por R$ 135,00"
+    },
+    {
+      "name": "seniority",
+      "label": "Seniority",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's seniority. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "sentimento_csat",
+      "label": "Sentimento CSAT",
+      "type": "enumeration",
+      "groupName": "client_success",
+      "description": "Informa qual o sentimento da pesquisa de CSAT - Client Success"
+    },
+    {
+      "name": "setor",
+      "label": "MKT | SpreadChat Setor",
+      "type": "enumeration",
+      "groupName": "mkt_|_analytics",
+      "description": "Propriedade exclusiva para uso das campanhas de WhatsApp dentro da HubSpot. Essa propriedade indicará para qual equipe comercial deverá ser enviado os contatos da campanha de WhatsApp."
+    },
+    {
+      "name": "squad_cs",
+      "label": "Squad CS",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "start_date",
+      "label": "Start date",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's start date. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "state",
+      "label": "State/Region",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's state of residence. This might be set via import, form, or integration."
+    },
+    {
+      "name": "status_da_empresa",
+      "label": "Status da Empresa",
+      "type": "enumeration",
+      "groupName": "conversioninformation",
+      "description": "Identifica em qual tipo de pipeline a empresa do contato está, ou não."
+    },
+    {
+      "name": "status_ravena",
+      "label": "Status Ravena",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "sua_empresa_ja_utiliza_solucoes_de_ia_ou_automacao_em_algum_processo_de_comercio_exterior_",
+      "label": "Sua empresa já utiliza soluções de IA ou automação em algum processo de comércio exterior?",
+      "type": "enumeration",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "surveymonkeyeventlastupdated",
+      "label": "SurveyMonkey Event Last Updated",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "This field is meaningless on its own, and is solely used for triggering dynamic list updates when SurveyMonkey information is updated"
+    },
+    {
+      "name": "tag_ops___usuarios",
+      "label": "TAG OPS - USUÁRIOS",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "telefone_ravena_classificado__revops_",
+      "label": "Telefone Ravena Classificado [RevOps]",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": ""
+    },
+    {
+      "name": "timing_budget",
+      "label": "Timing/budget",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "tipo_de_contato",
+      "label": "Tipo de Contato",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Selecione como financeiro, caso queria q esse contato seja enviado para integração como contato financeiro."
+    },
+    {
+      "name": "total_revenue",
+      "label": "Total Revenue",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "The sum from all closed won deal revenue associated with a contact. This is automatically set by HubSpot and can be used for segmentation and reporting."
+    },
+    {
+      "name": "twitterbio",
+      "label": "Twitter Bio",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "The contact's Twitter bio. This is set by HubSpot using the contact's email address."
+    },
+    {
+      "name": "twitterhandle",
+      "label": "Twitter Username",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's Twitter handle."
+    },
+    {
+      "name": "twitterprofilephoto",
+      "label": "Twitter Profile Photo",
+      "type": "string",
+      "groupName": "socialmediainformation",
+      "description": "The contact's Twitter profile photo. This is set by HubSpot using the contact's email address."
+    },
+    {
+      "name": "ultima_mensagem_disparada",
+      "label": "Última Mensagem Disparada",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "Última mensagem que foi disparada por um agente dentro do Flex"
+    },
+    {
+      "name": "user__executivo_de_vendas",
+      "label": "[USER] Executivo de Vendas",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Propriedade para indicar qual Executivo de Vendas está atribuído a esse contato, de acordo com os deals associados a ele no momento."
+    },
+    {
+      "name": "user__executivo_de_vendas_expansao",
+      "label": "[USER] Executivo de Vendas Expansão",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Propriedade para indicar qual Executivo de Vendas Expansão está atribuído a esse contato, de acordo com os deals associados a ele no momento."
+    },
+    {
+      "name": "user__implementador",
+      "label": "[USER] Implementador",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Copia da propriedade de negócio [USER] Implementador"
+    },
+    {
+      "name": "user__inteligencia_comercial",
+      "label": "[USER] Inteligência Comercial",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Propriedade para indicar quem de Inteligência Comercial está atribuído a esse contato, de acordo com os deals associados a ele no momento."
+    },
+    {
+      "name": "user__sdr",
+      "label": "[USER] SDR",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "Propriedade para indicar qual pré-vendedor está atribuído a esse contato, de acordo com os deals associados a ele no momento."
+    },
+    {
+      "name": "utiliza_alguma_ferramenta_similar_a_nossa_solucao__sim__qual_",
+      "label": "Utiliza alguma ferramenta similar a nossa solução? Sim, qual?",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "utilizam_ferramentas_de_inteligencia_de_comercio_exterior__sim__qual__nao",
+      "label": "Utilizam ferramentas de inteligência de comércio exterior? Sim, qual? não",
+      "type": "string",
+      "groupName": "revops",
+      "description": ""
+    },
+    {
+      "name": "utm_campaign",
+      "label": "MKT | UTM Campaign",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "utm_content",
+      "label": "MKT | UTM Content",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "utm_medium",
+      "label": "MKT | UTM Medium",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "utm_source",
+      "label": "MKT | UTM Source",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "utm_term",
+      "label": "MKT | UTM Term",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "views_buscador_de_ncm",
+      "label": "Views Buscador de NCM",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "Visitas às páginas do Consulta de NCM\n"
+    },
+    {
+      "name": "vips",
+      "label": "VIPs",
+      "type": "enumeration",
+      "groupName": "contactinformation",
+      "description": "VIPs inscrição"
+    },
+    {
+      "name": "visitas_ao_blog",
+      "label": "Visitas ao blog",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "Número de visualizações de textos do blog"
+    },
+    {
+      "name": "webinareventlastupdated",
+      "label": "Webinar Event Last Updated",
+      "type": "number",
+      "groupName": "contactinformation",
+      "description": "This field is meaningless on its own, and is solely used for triggering dynamic list updates when webinar information is updated"
+    },
+    {
+      "name": "website",
+      "label": "Website URL",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's company website"
+    },
+    {
+      "name": "website_url__ic___provisorio_",
+      "label": "Website URL [IC] (provisório)",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Link do site da empresa associada ao negócio"
+    },
+    {
+      "name": "whastapp",
+      "label": "WhastApp",
+      "type": "string",
+      "groupName": "lead_ads",
+      "description": "Lead Ad Properties"
+    },
+    {
+      "name": "whathub_last_message_out",
+      "label": "Message sent from HubSpot UI",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Full WhatsApp message sent from the HubSpot UI"
+    },
+    {
+      "name": "whathub_last_message_out_agent",
+      "label": "Email of the agent that of the agent involved in the last WhatsApp message sent from the HubSpot UI",
+      "type": "string",
+      "groupName": "revops",
+      "description": "Email of the agent that sent the last message from the HubSpot UI. It does not include messages sent from the phone or WhatsApp Web"
+    },
+    {
+      "name": "whathub_last_message_out_date",
+      "label": "Date of the last WhatsApp message sent from the HubSpot UI",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "Date of the last message sent to a contact from the HubSpot UI. It does not include messages sent from the phone or WhatsApp Web"
+    },
+    {
+      "name": "whathub_last_message_synced_date",
+      "label": "Date of the last WhatsApp conversation synced",
+      "type": "datetime",
+      "groupName": "revops",
+      "description": "Date of the last time the sync process run and found new messages for this contact. This includes both incoming and outgoing messages"
+    },
+    {
+      "name": "whathub_last_message_synced_full",
+      "label": "Full JSON payload of the last WhatsApp conversation synced",
+      "type": "string",
+      "groupName": "revops",
+      "description": "All data of the event recorded the last time the sync process run and found new messages for this contact. This includes both incoming and outgoing messages"
+    },
+    {
+      "name": "whatsapp_api",
+      "label": "Whatsapp API",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "whatsapp_error_spread_chat",
+      "label": "Erro disparo whatsapp",
+      "type": "string",
+      "groupName": "mkt_|_analytics",
+      "description": ""
+    },
+    {
+      "name": "work_email",
+      "label": "Work email",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "A contact's work email. This property is required for the Facebook Ads Integration. This property will be automatically synced via the Lead Ads tool"
+    },
+    {
+      "name": "zip",
+      "label": "Postal Code",
+      "type": "string",
+      "groupName": "contactinformation",
+      "description": "The contact's zip code. This might be set via import, form, or integration."
+    }
+  ],
+  "data_properties": [
+    "email",
+    "lastmodifieddate",
+    "lastname",
+    "hs_object_id",
+    "createdate",
+    "firstname"
+  ],
+  "total_schema": 549,
+  "total_with_data": 6
+}

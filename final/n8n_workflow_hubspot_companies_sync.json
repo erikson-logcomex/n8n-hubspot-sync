@@ -1,0 +1,272 @@
+{
+  "name": "HubSpot → PostgreSQL - Sincronização Empresas (Companies)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "id": "f8d4c5e7-abc1-4def-9876-543210fedcba",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COALESCE(MAX(lastmodifieddate), '1970-01-01'::timestamp) as last_sync_timestamp FROM companies WHERE sync_status = 'active'"
+      },
+      "id": "12345678-1234-5678-9abc-def012345678",
+      "name": "PostgreSQL - Buscar Último Sync",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 300],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Calcular filtro de data para busca incremental\nconst lastSync = $json.last_sync_timestamp;\nconst lastSyncDate = new Date(lastSync);\nlastSyncDate.setMinutes(lastSyncDate.getMinutes() - 5); // Buffer de 5 min\nconst filterTimestamp = Math.floor(lastSyncDate.getTime());\n\nconsole.log(`[COMPANIES SYNC] Buscando empresas modificadas após: ${lastSyncDate.toISOString()}`);\n\nreturn [{\n  json: {\n    lastmodifieddate_filter: filterTimestamp,\n    lastmodifieddate_iso: lastSyncDate.toISOString()\n  }\n}];"
+      },
+      "id": "23456789-2345-6789-abcd-ef0123456789",
+      "name": "Calcular Filtro de Data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 100,
+        "filters": {
+          "filterGroupsUi": {
+            "filterGroupsValues": [
+              {
+                "filtersUi": {
+                  "filterValues": [
+                    {
+                      "propertyName": "lastmodifieddate",
+                      "operator": "GT",
+                      "value": "={{ $json.lastmodifieddate_filter }}"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "additionalFields": {
+          "properties": [
+            "name",
+            "domain",
+            "website",
+            "phone",
+            "city",
+            "state",
+            "country",
+            "zip",
+            "address",
+            "industry",
+            "numberofemployees",
+            "annualrevenue",
+            "description",
+            "lifecyclestage",
+            "hubspot_owner_id",
+            "hs_lead_source",
+            "hs_original_source",
+            "hs_original_source_data_1",
+            "hs_original_source_data_2",
+            "hs_analytics_source",
+            "hs_analytics_source_data_1",
+            "hs_analytics_source_data_2",
+            "createdate",
+            "lastmodifieddate",
+            "closedate"
+          ]
+        }
+      },
+      "id": "34567890-3456-7890-bcde-f01234567890",
+      "name": "HubSpot - Buscar Empresas",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2,
+      "position": [900, 300],
+      "credentials": {
+        "hubspotApi": {
+          "id": "seu_hubspot_credential_id",
+          "name": "HubSpot API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.length }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "45678901-4567-8901-cdef-012345678901",
+      "name": "IF - Tem Empresas Novas?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Gerar SQL dinâmico para UPSERT de empresas\nconst items = $input.all();\nconst queries = [];\n\nfunction escapeSQL(value) {\n  if (value === null || value === undefined) return 'NULL';\n  if (typeof value === 'number') return value;\n  if (typeof value === 'boolean') return value;\n  if (typeof value === 'string') {\n    // Trunca strings muito longas e escapa caracteres especiais\n    const truncated = value.length > 1000 ? value.substring(0, 1000) : value;\n    return `'${truncated.replace(/'/g, \"''\")}'`;\n  }\n  return `'${String(value).replace(/'/g, \"''\")}'`;\n}\n\nfunction parseNumber(value) {\n  if (!value || value === '') return null;\n  const num = parseFloat(value);\n  return isNaN(num) ? null : num;\n}\n\nfunction parseInteger(value) {\n  if (!value || value === '') return null;\n  const num = parseInt(value);\n  return isNaN(num) ? null : num;\n}\n\nfor (const item of items) {\n  const company = item.json;\n  const props = company.properties || {};\n  \n  // Tratamento de dados específicos para empresas\n  const name = props.name || 'Empresa sem nome';\n  const domain = props.domain || null;\n  const website = props.website || null;\n  const phone = props.phone || null;\n  const city = props.city || null;\n  const state = props.state || null;\n  const country = props.country || null;\n  const zip = props.zip || null;\n  const address = props.address || null;\n  const industry = props.industry || null;\n  const numberofemployees = parseInteger(props.numberofemployees);\n  const annualrevenue = parseNumber(props.annualrevenue);\n  const description = props.description || null;\n  const lifecyclestage = props.lifecyclestage || 'lead';\n  const hubspot_owner_id = parseInteger(props.hubspot_owner_id);\n  const hs_lead_source = props.hs_lead_source || null;\n  const hs_original_source = props.hs_original_source || null;\n  const hs_original_source_data_1 = props.hs_original_source_data_1 || null;\n  const hs_original_source_data_2 = props.hs_original_source_data_2 || null;\n  const hs_analytics_source = props.hs_analytics_source || null;\n  const hs_analytics_source_data_1 = props.hs_analytics_source_data_1 || null;\n  const hs_analytics_source_data_2 = props.hs_analytics_source_data_2 || null;\n  \n  // Tratamento de datas\n  const createdate = props.createdate ? new Date(props.createdate).toISOString() : new Date().toISOString();\n  const lastmodifieddate = props.lastmodifieddate ? new Date(props.lastmodifieddate).toISOString() : new Date().toISOString();\n  const closedate = props.closedate ? new Date(props.closedate).toISOString() : null;\n  \n  const sql = `\n    INSERT INTO companies (\n      id, hs_object_id, name, domain, website, phone, city, state, country, zip, address,\n      industry, numberofemployees, annualrevenue, description, lifecyclestage, hubspot_owner_id,\n      hs_lead_source, hs_original_source, hs_original_source_data_1, hs_original_source_data_2,\n      hs_analytics_source, hs_analytics_source_data_1, hs_analytics_source_data_2,\n      createdate, lastmodifieddate, closedate, last_sync_date, sync_status, hubspot_raw_data\n    ) VALUES (\n      ${escapeSQL(company.id)},\n      ${escapeSQL(company.id)},\n      ${escapeSQL(name)},\n      ${escapeSQL(domain)},\n      ${escapeSQL(website)},\n      ${escapeSQL(phone)},\n      ${escapeSQL(city)},\n      ${escapeSQL(state)},\n      ${escapeSQL(country)},\n      ${escapeSQL(zip)},\n      ${escapeSQL(address)},\n      ${escapeSQL(industry)},\n      ${numberofemployees || 'NULL'},\n      ${annualrevenue || 'NULL'},\n      ${escapeSQL(description)},\n      ${escapeSQL(lifecyclestage)},\n      ${hubspot_owner_id || 'NULL'},\n      ${escapeSQL(hs_lead_source)},\n      ${escapeSQL(hs_original_source)},\n      ${escapeSQL(hs_original_source_data_1)},\n      ${escapeSQL(hs_original_source_data_2)},\n      ${escapeSQL(hs_analytics_source)},\n      ${escapeSQL(hs_analytics_source_data_1)},\n      ${escapeSQL(hs_analytics_source_data_2)},\n      '${createdate}',\n      '${lastmodifieddate}',\n      ${closedate ? `'${closedate}'` : 'NULL'},\n      NOW(),\n      'active',\n      ${escapeSQL(JSON.stringify(company))}\n    )\n    ON CONFLICT (id) DO UPDATE SET\n      name = EXCLUDED.name,\n      domain = EXCLUDED.domain,\n      website = EXCLUDED.website,\n      phone = EXCLUDED.phone,\n      city = EXCLUDED.city,\n      state = EXCLUDED.state,\n      country = EXCLUDED.country,\n      zip = EXCLUDED.zip,\n      address = EXCLUDED.address,\n      industry = EXCLUDED.industry,\n      numberofemployees = EXCLUDED.numberofemployees,\n      annualrevenue = EXCLUDED.annualrevenue,\n      description = EXCLUDED.description,\n      lifecyclestage = EXCLUDED.lifecyclestage,\n      hubspot_owner_id = EXCLUDED.hubspot_owner_id,\n      hs_lead_source = EXCLUDED.hs_lead_source,\n      hs_original_source = EXCLUDED.hs_original_source,\n      hs_original_source_data_1 = EXCLUDED.hs_original_source_data_1,\n      hs_original_source_data_2 = EXCLUDED.hs_original_source_data_2,\n      hs_analytics_source = EXCLUDED.hs_analytics_source,\n      hs_analytics_source_data_1 = EXCLUDED.hs_analytics_source_data_1,\n      hs_analytics_source_data_2 = EXCLUDED.hs_analytics_source_data_2,\n      lastmodifieddate = EXCLUDED.lastmodifieddate,\n      closedate = EXCLUDED.closedate,\n      last_sync_date = NOW(),\n      hubspot_raw_data = EXCLUDED.hubspot_raw_data;\n  `;\n  \n  queries.push({ json: { query: sql.trim() } });\n}\n\nconsole.log(`[COMPANIES SYNC] Gerando ${queries.length} queries SQL para empresas`);\nreturn queries;"
+      },
+      "id": "56789012-5678-9012-def0-123456789012",
+      "name": "Gerar SQL Dinâmico",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.query }}"
+      },
+      "id": "67890123-6789-0123-ef01-234567890123",
+      "name": "PostgreSQL - Execute SQL",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [1560, 200],
+      "credentials": {
+        "postgres": {
+          "id": "seu_postgres_credential_id",
+          "name": "PostgreSQL Logcomex"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log de resultado da sincronização de empresas\nconst items = $input.all();\nconst successCount = items.length;\nconst timestamp = new Date().toISOString();\n\nconsole.log(`[COMPANIES SYNC] ${successCount} empresas sincronizadas via SQL`);\n\nreturn [{\n  json: {\n    sync_type: 'companies_sql',\n    timestamp: timestamp,\n    companies_processed: successCount,\n    status: 'success'\n  }\n}];"
+      },
+      "id": "78901234-7890-1234-f012-345678901234",
+      "name": "Log Sucesso",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1780, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Log quando não há empresas para sincronizar\nconst timestamp = new Date().toISOString();\nconsole.log(`[COMPANIES SYNC] Nenhuma empresa modificada encontrada`);\n\nreturn [{\n  json: {\n    sync_type: 'companies_sql',\n    timestamp: timestamp,\n    companies_processed: 0,\n    status: 'no_changes'\n  }\n}];"
+      },
+      "id": "89012345-8901-2345-0123-456789012345",
+      "name": "Log Sem Mudanças",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 400]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Buscar Último Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Buscar Último Sync": {
+      "main": [
+        [
+          {
+            "node": "Calcular Filtro de Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular Filtro de Data": {
+      "main": [
+        [
+          {
+            "node": "HubSpot - Buscar Empresas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot - Buscar Empresas": {
+      "main": [
+        [
+          {
+            "node": "IF - Tem Empresas Novas?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Tem Empresas Novas?": {
+      "main": [
+        [
+          {
+            "node": "Gerar SQL Dinâmico",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Sem Mudanças",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar SQL Dinâmico": {
+      "main": [
+        [
+          {
+            "node": "PostgreSQL - Execute SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PostgreSQL - Execute SQL": {
+      "main": [
+        [
+          {
+            "node": "Log Sucesso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": ["hubspot", "postgresql", "sync", "companies"],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-27T10:00:00.000Z",
+  "versionId": "1"
+}

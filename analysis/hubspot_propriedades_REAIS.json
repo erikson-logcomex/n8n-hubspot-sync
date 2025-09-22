@@ -1,0 +1,216 @@
+{
+  "total_contatos_analisados": 50,
+  "propriedades_com_dados": 18,
+  "detalhes_propriedades": {
+    "company": {
+      "total_preenchidos": 50,
+      "percentual": 100.0,
+      "valores_unicos": 50,
+      "amostras": [
+        "egdcomissaria.com.br",
+        "oxen cargo",
+        "RIO LOPES TRANSPORTES",
+        "COOPERCARGA S/A",
+        "SATEL DESPACHOS E SERVICOS ADUANEIROS TECNICOS LTDA"
+      ]
+    },
+    "createdate": {
+      "total_preenchidos": 50,
+      "percentual": 100.0,
+      "valores_unicos": 30,
+      "amostras": [
+        "2019-03-09T19:18:27.534Z",
+        "2019-03-09T19:18:27.642Z",
+        "2019-03-09T19:18:27.540Z",
+        "2019-03-09T19:18:26.898Z",
+        "2019-03-09T19:18:27.526Z"
+      ]
+    },
+    "firstname": {
+      "total_preenchidos": 50,
+      "percentual": 100.0,
+      "valores_unicos": 49,
+      "amostras": [
+        "Milton",
+        "Christiano",
+        "Valéria",
+        "Indiamara",
+        "Helenilton"
+      ]
+    },
+    "hs_object_id": {
+      "total_preenchidos": 50,
+      "percentual": 100.0,
+      "valores_unicos": 50,
+      "amostras": [
+        "31676",
+        "31873",
+        "31672",
+        "31886",
+        "32256"
+      ]
+    },
+    "lastmodifieddate": {
+      "total_preenchidos": 50,
+      "percentual": 100.0,
+      "valores_unicos": 50,
+      "amostras": [
+        "2025-08-15T20:42:55.754Z",
+        "2025-08-25T12:57:41.809Z",
+        "2025-08-12T19:01:00.426Z",
+        "2025-08-25T12:03:57.884Z",
+        "2025-08-12T19:00:58.642Z"
+      ]
+    },
+    "lifecyclestage": {
+      "total_preenchidos": 50,
+      "percentual": 100.0,
+      "valores_unicos": 7,
+      "amostras": [
+        "86009407",
+        "86031774",
+        "salesqualifiedlead",
+        "opportunity",
+        "marketingqualifiedlead"
+      ]
+    },
+    "phone": {
+      "total_preenchidos": 49,
+      "percentual": 98.0,
+      "valores_unicos": 40,
+      "amostras": [
+        "+555137178200",
+        "+0",
+        "+5513981440196",
+        "+558134651017",
+        "+5519991877859"
+      ]
+    },
+    "website": {
+      "total_preenchidos": 46,
+      "percentual": 92.0,
+      "valores_unicos": 46,
+      "amostras": [
+        "http://gac.com",
+        "http://terramlt.com.br",
+        "http://hevile.com.br",
+        "http://southcargo.com",
+        "http://brxcargo.com"
+      ]
+    },
+    "codigo_do_voucher": {
+      "total_preenchidos": 40,
+      "percentual": 80.0,
+      "valores_unicos": 18,
+      "amostras": [
+        "LASILVA100",
+        "CONDE100",
+        "JPMARTINS100",
+        "SANDIM100",
+        "CAPELARI100"
+      ]
+    },
+    "email": {
+      "total_preenchidos": 40,
+      "percentual": 80.0,
+      "valores_unicos": 40,
+      "amostras": [
+        "douglas.felipe@renault.com",
+        "daniel.souza@samsung.com",
+        "thiago.luz@gac.com",
+        "luiz.cid@affinitylog.com.br",
+        "denise.alves@nunofracht.com.br"
+      ]
+    },
+    "jobtitle": {
+      "total_preenchidos": 38,
+      "percentual": 76.0,
+      "valores_unicos": 18,
+      "amostras": [
+        "Socio",
+        "Sócio",
+        "Analista/Assistente de Importação",
+        "Sales Manager at GAC Brasil",
+        "Supervisor de Logistica"
+      ]
+    },
+    "lastname": {
+      "total_preenchidos": 21,
+      "percentual": 42.0,
+      "valores_unicos": 21,
+      "amostras": [
+        "W Campos",
+        "Santiago",
+        "Aurelio",
+        "Luz",
+        "Alves"
+      ]
+    },
+    "mobilephone": {
+      "total_preenchidos": 19,
+      "percentual": 38.0,
+      "valores_unicos": 19,
+      "amostras": [
+        "+551932178580",
+        "+5511947044571",
+        "+554799822748",
+        "+555130722200",
+        "+5531999095891"
+      ]
+    },
+    "city": {
+      "total_preenchidos": 10,
+      "percentual": 20.0,
+      "valores_unicos": 8,
+      "amostras": [
+        "Itajaí",
+        "Santos",
+        "Campinas",
+        "São Paulo",
+        "Blumenau"
+      ]
+    },
+    "country": {
+      "total_preenchidos": 9,
+      "percentual": 18.0,
+      "valores_unicos": 2,
+      "amostras": [
+        "Brasil",
+        "Brazil"
+      ]
+    },
+    "state": {
+      "total_preenchidos": 8,
+      "percentual": 16.0,
+      "valores_unicos": 5,
+      "amostras": [
+        "SP",
+        "Sao Paulo",
+        "Rio Grande do Sul",
+        "Santa Catarina",
+        "Rio de Janeiro"
+      ]
+    },
+    "address": {
+      "total_preenchidos": 4,
+      "percentual": 8.0,
+      "valores_unicos": 4,
+      "amostras": [
+        "Rua Doutor Bacelar 368 cj. 31-33",
+        "Av das Americas 3301, Bloco 5 - Sala 305 Barra da Tijuca",
+        "Rod. Pres. Dutra Km 214",
+        "Rua João Felipe Xavier da Silva 384"
+      ]
+    },
+    "zip": {
+      "total_preenchidos": 3,
+      "percentual": 6.0,
+      "valores_unicos": 3,
+      "amostras": [
+        "07178-580",
+        "22631-003",
+        "13030-680"
+      ]
+    }
+  }
+}

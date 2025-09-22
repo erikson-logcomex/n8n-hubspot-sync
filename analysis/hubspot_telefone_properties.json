@@ -1,0 +1,158 @@
+[
+  {
+    "name": "celular1_gerador_de_personas",
+    "label": "Celular1 Gerador de Personas",
+    "type": "string",
+    "description": ""
+  },
+  {
+    "name": "celular2_gerador_de_personas",
+    "label": "Celular2 Gerador de Personas",
+    "type": "string",
+    "description": ""
+  },
+  {
+    "name": "contato_por_whatsapp",
+    "label": "Contato por WhatsApp",
+    "type": "enumeration",
+    "description": "Contato aceita ser contatado por WhatsApp"
+  },
+  {
+    "name": "criado_whatsapp",
+    "label": "Contato criado pelo whatsapp",
+    "type": "enumeration",
+    "description": ""
+  },
+  {
+    "name": "govcs_i_phone_number",
+    "label": "[GovCs-I] Phone Number",
+    "type": "string",
+    "description": "Propriedade adaptada para a integração do número de telefone para o software da Twillio sem precisar ajustar no campo Phone do contato (padrão da HubSpot)"
+  },
+  {
+    "name": "hs_calculated_mobile_number",
+    "label": "Calculated Mobile Number in International Format",
+    "type": "string",
+    "description": "Mobile number in international format"
+  },
+  {
+    "name": "hs_calculated_phone_number",
+    "label": "Calculated Phone Number in International Format",
+    "type": "string",
+    "description": "Phone number in international format"
+  },
+  {
+    "name": "hs_calculated_phone_number_area_code",
+    "label": "Calculated Phone Number Area Code",
+    "type": "string",
+    "description": "Area Code of the calculated phone number"
+  },
+  {
+    "name": "hs_calculated_phone_number_country_code",
+    "label": "Calculated Phone Number Country Code",
+    "type": "string",
+    "description": "Country code of the calculated phone number"
+  },
+  {
+    "name": "hs_calculated_phone_number_region_code",
+    "label": "Calculated Phone Number Region",
+    "type": "string",
+    "description": "ISO2 Country code for the derived phone number"
+  },
+  {
+    "name": "hs_mobile_sdk_push_tokens",
+    "label": "Mobile Sdk Push Tokens",
+    "type": "string",
+    "description": "This property is used to capture the push notification token for use on the LiveChat mobile sdk. We intend to use this property to store a list of push tokens (as they refresh) on the CONTACT object."
+  },
+  {
+    "name": "hs_searchable_calculated_international_mobile_number",
+    "label": "Calculated Mobile Number with country code",
+    "type": "phone_number",
+    "description": "Mobile number with country code"
+  },
+  {
+    "name": "hs_searchable_calculated_international_phone_number",
+    "label": "Calculated Phone Number with country code",
+    "type": "phone_number",
+    "description": "Phone number with country code"
+  },
+  {
+    "name": "hs_searchable_calculated_mobile_number",
+    "label": "Calculated Mobile Number without country code",
+    "type": "phone_number",
+    "description": "Mobile number without country code"
+  },
+  {
+    "name": "hs_searchable_calculated_phone_number",
+    "label": "Calculated Phone Number without country code",
+    "type": "phone_number",
+    "description": "Phone number without country code"
+  },
+  {
+    "name": "hs_whatsapp_phone_number",
+    "label": "WhatsApp Phone Number",
+    "type": "string",
+    "description": "The phone number associated with the contact’s WhatsApp account."
+  },
+  {
+    "name": "last_phone_update__ic_",
+    "label": "Last Phone update [IC]",
+    "type": "date",
+    "description": ""
+  },
+  {
+    "name": "mobilephone",
+    "label": "Mobile Phone Number",
+    "type": "string",
+    "description": "A contact's mobile phone number"
+  },
+  {
+    "name": "phone",
+    "label": "Phone Number",
+    "type": "string",
+    "description": "A contact's primary phone number"
+  },
+  {
+    "name": "telefone_ravena_classificado__revops_",
+    "label": "Telefone Ravena Classificado [RevOps]",
+    "type": "string",
+    "description": ""
+  },
+  {
+    "name": "whathub_last_message_out_agent",
+    "label": "Email of the agent that of the agent involved in the last WhatsApp message sent from the HubSpot UI",
+    "type": "string",
+    "description": "Email of the agent that sent the last message from the HubSpot UI. It does not include messages sent from the phone or WhatsApp Web"
+  },
+  {
+    "name": "whathub_last_message_out_date",
+    "label": "Date of the last WhatsApp message sent from the HubSpot UI",
+    "type": "datetime",
+    "description": "Date of the last message sent to a contact from the HubSpot UI. It does not include messages sent from the phone or WhatsApp Web"
+  },
+  {
+    "name": "whathub_last_message_synced_date",
+    "label": "Date of the last WhatsApp conversation synced",
+    "type": "datetime",
+    "description": "Date of the last time the sync process run and found new messages for this contact. This includes both incoming and outgoing messages"
+  },
+  {
+    "name": "whathub_last_message_synced_full",
+    "label": "Full JSON payload of the last WhatsApp conversation synced",
+    "type": "string",
+    "description": "All data of the event recorded the last time the sync process run and found new messages for this contact. This includes both incoming and outgoing messages"
+  },
+  {
+    "name": "whatsapp_api",
+    "label": "Whatsapp API",
+    "type": "string",
+    "description": ""
+  },
+  {
+    "name": "whatsapp_error_spread_chat",
+    "label": "Erro disparo whatsapp",
+    "type": "string",
+    "description": ""
+  }
+]
