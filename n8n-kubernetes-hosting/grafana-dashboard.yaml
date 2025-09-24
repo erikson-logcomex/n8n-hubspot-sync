@@ -1,0 +1,114 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard
+  namespace: n8n
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-dashboard.json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "n8n Performance Dashboard",
+        "tags": ["n8n", "kubernetes"],
+        "style": "dark",
+        "timezone": "browser",
+        "panels": [
+          {
+            "id": 1,
+            "title": "Workflow Executions",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "rate(n8n_workflow_executions_total[5m])",
+                "legendFormat": "Executions/sec"
+              }
+            ],
+            "yAxes": [
+              {
+                "label": "Executions/sec"
+              }
+            ],
+            "xAxes": [
+              {
+                "type": "time"
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "id": 2,
+            "title": "CPU Usage",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "rate(container_cpu_usage_seconds_total{pod=~\"n8n-.*\"}[5m]) * 100",
+                "legendFormat": "CPU %"
+              }
+            ],
+            "yAxes": [
+              {
+                "label": "CPU %",
+                "max": 100
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 0
+            }
+          },
+          {
+            "id": 3,
+            "title": "Memory Usage",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "container_memory_usage_bytes{pod=~\"n8n-.*\"} / 1024 / 1024",
+                "legendFormat": "Memory MB"
+              }
+            ],
+            "yAxes": [
+              {
+                "label": "Memory MB"
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 8
+            }
+          },
+          {
+            "id": 4,
+            "title": "Pod Status",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "kube_pod_status_ready{pod=~\"n8n-.*\"}",
+                "legendFormat": "Ready Pods"
+              }
+            ],
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 8
+            }
+          }
+        ],
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "refresh": "30s"
+      }
+    }

@@ -1,0 +1,104 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: n8n-backup
+  namespace: n8n
+spec:
+  schedule: "0 2 * * *"  # Diário às 2h da manhã
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+          containers:
+          - name: backup
+            image: postgres:17
+            securityContext:
+              allowPrivilegeEscalation: false
+              runAsNonRoot: true
+              runAsUser: 1000
+              capabilities:
+                drop:
+                  - ALL
+              seccompProfile:
+                type: RuntimeDefault
+            command:
+            - /bin/bash
+            - -c
+            - |
+              echo "🚀 Iniciando backup do n8n em $(date)"
+              
+              # Backup com timestamp e compressão (otimizado)
+              pg_dump -h $PG_HOST -U $PG_USER -d $PG_DATABASE \
+                --verbose \
+                --no-owner \
+                --no-privileges \
+                --format=custom \
+                --compress=9 \
+                --file=/backup/n8n-$(date +%Y%m%d_%H%M%S).dump
+              
+              # Verificar se o backup foi criado
+              if [ -f /backup/n8n-$(date +%Y%m%d_%H%M%S).dump ]; then
+                echo "✅ Backup criado com sucesso: n8n-$(date +%Y%m%d_%H%M%S).dump"
+                
+                # Verificar integridade do backup
+                pg_restore --list /backup/n8n-$(date +%Y%m%d_%H%M%S).dump > /dev/null
+                if [ $? -eq 0 ]; then
+                  echo "✅ Backup validado com sucesso"
+                else
+                  echo "❌ ERRO: Backup corrompido!"
+                  exit 1
+                fi
+              else
+                echo "❌ ERRO: Backup não foi criado!"
+                exit 1
+              fi
+              
+              # Limpar backups antigos (manter 30 dias)
+              find /backup -name "n8n-*.dump" -mtime +30 -delete
+              echo "🧹 Backups antigos removidos (mantidos últimos 30 dias)"
+              
+              # Listar backups atuais
+              echo "📋 Backups atuais:"
+              ls -lah /backup/n8n-*.dump 2>/dev/null || echo "Nenhum backup encontrado"
+              
+              echo "✅ Backup do n8n concluído com sucesso em $(date)"
+            env:
+            - name: PG_HOST
+              value: "172.23.64.3"
+            - name: PG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_NON_ROOT_USER
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_NON_ROOT_PASSWORD
+            - name: PG_DATABASE
+              value: "n8n-postgres-db"
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_NON_ROOT_PASSWORD
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+              limits:
+                cpu: 500m
+                memory: 512Mi
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: n8n-backup-claim
+          restartPolicy: OnFailure

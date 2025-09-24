@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: prometheus-ssl-cert
+  namespace: monitoring
+spec:
+  domains:
+  - prometheus-logcomex.34-8-101-220.nip.io

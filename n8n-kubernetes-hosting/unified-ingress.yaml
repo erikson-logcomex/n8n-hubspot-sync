@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: unified-ingress
+  namespace: n8n
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.global-static-ip-name: n8n-ip
+    ingress.gcp.kubernetes.io/pre-shared-cert: n8n-ssl-cert
+    kubernetes.io/ingress.allow-http: "true"
+spec:
+  rules:
+  # n8n
+  - host: n8n-logcomex.34-8-101-220.nip.io
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: n8n
+            port:
+              number: 80
+  # Prometheus
+  - host: prometheus-logcomex.34-8-101-220.nip.io
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: prometheus-external
+            port:
+              number: 9090
+  # Grafana
+  - host: grafana-logcomex.34-8-101-220.nip.io
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: grafana-external
+            port:
+              number: 3000
