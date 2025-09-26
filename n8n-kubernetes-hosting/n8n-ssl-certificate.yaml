@@ -1,8 +1,0 @@
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: n8n-ssl-cert
-  namespace: n8n
-spec:
-  domains:
-    - n8n-logcomex.34-8-101-220.nip.io

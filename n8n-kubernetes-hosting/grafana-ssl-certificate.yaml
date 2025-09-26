@@ -1,8 +1,0 @@
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: grafana-ssl-cert
-  namespace: monitoring
-spec:
-  domains:
-  - grafana-logcomex.34-8-101-220.nip.io

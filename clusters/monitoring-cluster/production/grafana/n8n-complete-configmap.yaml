@@ -1,0 +1,346 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-complete-dashboard
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-complete.json: |
+    {
+      "id": 1,
+      "uid": "n8n-monitoring-complete",
+      "title": "Monitoramento N8N - Logcomex (Completo)",
+      "tags": ["n8n", "monitoring", "logcomex", "complete"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "Workflows Ativos",
+          "gridPos": {"x": 0, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_active_workflow_count{job=\"n8n-cluster\"}", "legendFormat": "Workflows"}
+          ]
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Versão N8N",
+          "gridPos": {"x": 4, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {}
+          },
+          "targets": [
+            {"expr": "n8n_version_info{job=\"n8n-cluster\"}", "legendFormat": "v{{version}}"}
+          ]
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Função da Instância",
+          "gridPos": {"x": 8, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {}
+          },
+          "targets": [
+            {"expr": "n8n_instance_role_leader{job=\"n8n-cluster\"}", "legendFormat": "Leader: {{value}}"}
+          ]
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "Tempo de Atividade",
+          "gridPos": {"x": 12, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "dtdurations"}
+          },
+          "targets": [
+            {"expr": "time() - n8n_process_start_time_seconds{job=\"n8n-cluster\"}", "legendFormat": "Ativo há {{value}}"}
+          ]
+        },
+        {
+          "id": 5,
+          "type": "stat",
+          "title": "Arquivos Abertos",
+          "gridPos": {"x": 16, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_process_open_fds{job=\"n8n-cluster\"}", "legendFormat": "Abertos: {{value}}"},
+            {"expr": "n8n_process_max_fds{job=\"n8n-cluster\"}", "legendFormat": "Máximo: {{value}}"}
+          ]
+        },
+        {
+          "id": 6,
+          "type": "stat",
+          "title": "Recursos Ativos",
+          "gridPos": {"x": 20, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources_total{job=\"n8n-cluster\"}", "legendFormat": "Total: {{value}}"},
+            {"expr": "n8n_nodejs_active_handles_total{job=\"n8n-cluster\"}", "legendFormat": "Handles: {{value}}"}
+          ]
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "Uso de CPU - Cluster vs Workers",
+          "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_process_cpu_seconds_total{job=\"n8n-cluster\"}[5m]) * 100", "legendFormat": "CPU Cluster"},
+            {"expr": "rate(n8n_process_cpu_user_seconds_total{job=\"n8n-cluster\"}[5m]) * 100", "legendFormat": "CPU Usuário Cluster"},
+            {"expr": "rate(n8n_process_cpu_system_seconds_total{job=\"n8n-cluster\"}[5m]) * 100", "legendFormat": "CPU Sistema Cluster"},
+            {"expr": "rate(n8n_process_cpu_seconds_total{job=\"n8n-workers\"}[5m]) * 100", "legendFormat": "CPU Workers"},
+            {"expr": "rate(n8n_process_cpu_user_seconds_total{job=\"n8n-workers\"}[5m]) * 100", "legendFormat": "CPU Usuário Workers"},
+            {"expr": "rate(n8n_process_cpu_system_seconds_total{job=\"n8n-workers\"}[5m]) * 100", "legendFormat": "CPU Sistema Workers"}
+          ]
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "Uso de Memória - Cluster vs Workers",
+          "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_process_resident_memory_bytes{job=\"n8n-cluster\"}", "legendFormat": "RSS Cluster"},
+            {"expr": "n8n_nodejs_heap_size_used_bytes{job=\"n8n-cluster\"}", "legendFormat": "Heap Usado Cluster"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes{job=\"n8n-cluster\"}", "legendFormat": "Heap Total Cluster"},
+            {"expr": "n8n_process_resident_memory_bytes{job=\"n8n-workers\"}", "legendFormat": "RSS Workers"},
+            {"expr": "n8n_nodejs_heap_size_used_bytes{job=\"n8n-workers\"}", "legendFormat": "Heap Usado Workers"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes{job=\"n8n-workers\"}", "legendFormat": "Heap Total Workers"}
+          ]
+        },
+        {
+          "id": 9,
+          "type": "gauge",
+          "title": "Utilização de Memória - Cluster",
+          "gridPos": {"x": 0, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0, "text": "Baixo"},
+                  {"color": "yellow", "value": 70, "text": "Médio"},
+                  {"color": "red", "value": 90, "text": "Alto"}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "(n8n_nodejs_heap_size_used_bytes{job=\"n8n-cluster\"} / n8n_nodejs_heap_size_total_bytes{job=\"n8n-cluster\"}) * 100", "legendFormat": "Heap % Cluster"}
+          ]
+        },
+        {
+          "id": 10,
+          "type": "gauge",
+          "title": "Utilização de Memória - Workers",
+          "gridPos": {"x": 6, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0, "text": "Baixo"},
+                  {"color": "yellow", "value": 70, "text": "Médio"},
+                  {"color": "red", "value": 90, "text": "Alto"}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "(n8n_nodejs_heap_size_used_bytes{job=\"n8n-workers\"} / n8n_nodejs_heap_size_total_bytes{job=\"n8n-workers\"}) * 100", "legendFormat": "Heap % Workers"}
+          ]
+        },
+        {
+          "id": 11,
+          "type": "bargauge",
+          "title": "Recursos Ativos por Tipo - Cluster",
+          "gridPos": {"x": 12, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-cluster\",type=\"Timeout\"}", "legendFormat": "Timeouts"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-cluster\",type=\"TCPSocketWrap\"}", "legendFormat": "TCP Sockets"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-cluster\",type=\"TCPServerWrap\"}", "legendFormat": "TCP Servers"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-cluster\",type=\"PipeWrap\"}", "legendFormat": "Pipes"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-cluster\",type=\"ProcessWrap\"}", "legendFormat": "Processos"}
+          ]
+        },
+        {
+          "id": 12,
+          "type": "bargauge",
+          "title": "Recursos Ativos por Tipo - Workers",
+          "gridPos": {"x": 18, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-workers\",type=\"Timeout\"}", "legendFormat": "Timeouts"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-workers\",type=\"TCPSocketWrap\"}", "legendFormat": "TCP Sockets"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-workers\",type=\"TCPServerWrap\"}", "legendFormat": "TCP Servers"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-workers\",type=\"PipeWrap\"}", "legendFormat": "Pipes"},
+            {"expr": "n8n_nodejs_active_resources{job=\"n8n-workers\",type=\"ProcessWrap\"}", "legendFormat": "Processos"}
+          ]
+        },
+        {
+          "id": 13,
+          "type": "timeseries",
+          "title": "Performance do Event Loop - Cluster vs Workers",
+          "gridPos": {"x": 0, "y": 18, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms", "min": 0}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds{job=\"n8n-cluster\"} * 1000", "legendFormat": "Latência Cluster (p50)"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds{job=\"n8n-cluster\"} * 1000", "legendFormat": "Latência Cluster (p90)"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds{job=\"n8n-cluster\"} * 1000", "legendFormat": "Latência Cluster (p99)"},
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds{job=\"n8n-workers\"} * 1000", "legendFormat": "Latência Workers (p50)"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds{job=\"n8n-workers\"} * 1000", "legendFormat": "Latência Workers (p90)"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds{job=\"n8n-workers\"} * 1000", "legendFormat": "Latência Workers (p99)"}
+          ]
+        },
+        {
+          "id": 14,
+          "type": "timeseries",
+          "title": "Limpeza de Memória (Garbage Collection)",
+          "gridPos": {"x": 12, "y": 18, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n-cluster\",kind=\"minor\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-cluster\",kind=\"minor\"}[5m]) * 1000", "legendFormat": "GC Minor Cluster"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n-cluster\",kind=\"major\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-cluster\",kind=\"major\"}[5m]) * 1000", "legendFormat": "GC Major Cluster"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n-cluster\",kind=\"incremental\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-cluster\",kind=\"incremental\"}[5m]) * 1000", "legendFormat": "GC Incremental Cluster"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n-workers\",kind=\"minor\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-workers\",kind=\"minor\"}[5m]) * 1000", "legendFormat": "GC Minor Workers"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n-workers\",kind=\"major\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-workers\",kind=\"major\"}[5m]) * 1000", "legendFormat": "GC Major Workers"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n-workers\",kind=\"incremental\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-workers\",kind=\"incremental\"}[5m]) * 1000", "legendFormat": "GC Incremental Workers"}
+          ]
+        },
+        {
+          "id": 15,
+          "type": "piechart",
+          "title": "Distribuição da Memória Heap - Cluster",
+          "gridPos": {"x": 0, "y": 26, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-cluster\",space=\"old\"}", "legendFormat": "Memória Antiga"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-cluster\",space=\"new\"}", "legendFormat": "Memória Nova"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-cluster\",space=\"code\"}", "legendFormat": "Código"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-cluster\",space=\"large_object\"}", "legendFormat": "Objetos Grandes"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-cluster\",space=\"trusted\"}", "legendFormat": "Memória Confiável"}
+          ]
+        },
+        {
+          "id": 16,
+          "type": "piechart",
+          "title": "Distribuição da Memória Heap - Workers",
+          "gridPos": {"x": 12, "y": 26, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-workers\",space=\"old\"}", "legendFormat": "Memória Antiga"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-workers\",space=\"new\"}", "legendFormat": "Memória Nova"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-workers\",space=\"code\"}", "legendFormat": "Código"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-workers\",space=\"large_object\"}", "legendFormat": "Objetos Grandes"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{job=\"n8n-workers\",space=\"trusted\"}", "legendFormat": "Memória Confiável"}
+          ]
+        },
+        {
+          "id": 17,
+          "type": "timeseries",
+          "title": "Memória Externa - Cluster vs Workers",
+          "gridPos": {"x": 0, "y": 34, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_external_memory_bytes{job=\"n8n-cluster\"}", "legendFormat": "Memória Externa Cluster"},
+            {"expr": "n8n_nodejs_external_memory_bytes{job=\"n8n-workers\"}", "legendFormat": "Memória Externa Workers"}
+          ]
+        },
+        {
+          "id": 18,
+          "type": "table",
+          "title": "Comparação Detalhada Cluster vs Workers",
+          "gridPos": {"x": 12, "y": 34, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources_total{job=\"n8n-cluster\"}", "legendFormat": "Recursos Total Cluster"},
+            {"expr": "n8n_nodejs_active_resources_total{job=\"n8n-workers\"}", "legendFormat": "Recursos Total Workers"},
+            {"expr": "n8n_nodejs_active_handles_total{job=\"n8n-cluster\"}", "legendFormat": "Handles Total Cluster"},
+            {"expr": "n8n_nodejs_active_handles_total{job=\"n8n-workers\"}", "legendFormat": "Handles Total Workers"},
+            {"expr": "n8n_process_open_fds{job=\"n8n-cluster\"}", "legendFormat": "Arquivos Abertos Cluster"},
+            {"expr": "n8n_process_open_fds{job=\"n8n-workers\"}", "legendFormat": "Arquivos Abertos Workers"},
+            {"expr": "n8n_process_max_fds{job=\"n8n-cluster\"}", "legendFormat": "Máximo Arquivos Cluster"},
+            {"expr": "n8n_process_max_fds{job=\"n8n-workers\"}", "legendFormat": "Máximo Arquivos Workers"}
+          ]
+        },
+        {
+          "id": 19,
+          "type": "heatmap",
+          "title": "Distribuição de Latência do Event Loop",
+          "gridPos": {"x": 0, "y": 42, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "histogram_quantile(0.50, sum(rate(n8n_nodejs_eventloop_lag_p50_seconds_bucket{job=\"n8n-cluster\"}[5m])) by (le)) * 1000", "legendFormat": "p50 Cluster"},
+            {"expr": "histogram_quantile(0.90, sum(rate(n8n_nodejs_eventloop_lag_p90_seconds_bucket{job=\"n8n-cluster\"}[5m])) by (le)) * 1000", "legendFormat": "p90 Cluster"},
+            {"expr": "histogram_quantile(0.99, sum(rate(n8n_nodejs_eventloop_lag_p99_seconds_bucket{job=\"n8n-cluster\"}[5m])) by (le)) * 1000", "legendFormat": "p99 Cluster"}
+          ]
+        },
+        {
+          "id": 20,
+          "type": "timeseries",
+          "title": "Taxa de Garbage Collection por Segundo",
+          "gridPos": {"x": 12, "y": 42, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ops"}
+          },
+          "targets": [
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-cluster\",kind=\"minor\"}[5m])", "legendFormat": "GC Minor/sec Cluster"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-cluster\",kind=\"major\"}[5m])", "legendFormat": "GC Major/sec Cluster"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-cluster\",kind=\"incremental\"}[5m])", "legendFormat": "GC Incremental/sec Cluster"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-workers\",kind=\"minor\"}[5m])", "legendFormat": "GC Minor/sec Workers"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-workers\",kind=\"major\"}[5m])", "legendFormat": "GC Major/sec Workers"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n-workers\",kind=\"incremental\"}[5m])", "legendFormat": "GC Incremental/sec Workers"}
+          ]
+        }
+      ]
+    }
+
+

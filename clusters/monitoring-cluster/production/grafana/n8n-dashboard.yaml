@@ -1,0 +1,148 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-dashboard.json: |
+    {
+      "id": null,
+      "title": "N8N Performance Dashboard",
+        "tags": ["n8n", "performance"],
+        "style": "dark",
+        "timezone": "browser",
+        "panels": [
+          {
+            "id": 1,
+            "title": "N8N CPU Usage",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "n8n_process_cpu_seconds_total",
+                "legendFormat": "CPU Usage"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "percent",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "id": 2,
+            "title": "N8N Memory Usage",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "n8n_process_resident_memory_bytes",
+                "legendFormat": "Memory Usage"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "bytes",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 0
+            }
+          },
+          {
+            "id": 3,
+            "title": "N8N Workflow Executions",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "rate(n8n_workflow_executions_total[5m])",
+                "legendFormat": "Executions/sec"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "short",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 24,
+              "x": 0,
+              "y": 8
+            }
+          },
+          {
+            "id": 4,
+            "title": "N8N Active Workflows",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "n8n_active_workflows",
+                "legendFormat": "Active Workflows"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "short",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 0,
+              "y": 16
+            }
+          },
+          {
+            "id": 5,
+            "title": "N8N Queue Size",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "n8n_queue_size",
+                "legendFormat": "Queue Size"
+              }
+            ],
+            "fieldConfig": {
+              "defaults": {
+                "unit": "short",
+                "color": {
+                  "mode": "palette-classic"
+                }
+              }
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 12,
+              "x": 12,
+              "y": 16
+            }
+          }
+        ],
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "refresh": "30s"
+      }

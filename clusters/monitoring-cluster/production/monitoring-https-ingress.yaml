@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monitoring-https-ingress
+  namespace: monitoring-new
+  finalizers:
+  - networking.gke.io/ingress-finalizer-V2
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.global-static-ip-name: monitoring-new-ip
+    networking.gke.io/managed-certificates: monitoring-ssl-cert
+    kubernetes.io/ingress.allow-http: "true"
+spec:
+  rules:
+  - host: prometheus-logcomex.35-198-21-170.nip.io
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: prometheus
+            port:
+              number: 9090
+  - host: grafana-logcomex.34-95-167-174.nip.io
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000

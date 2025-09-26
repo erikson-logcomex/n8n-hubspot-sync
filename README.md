@@ -1,244 +1,237 @@
-# 🚀 **n8n HubSpot Sync - Projeto Completo**
+# 🚀 ECOSSISTEMA LOGCOMEX - KUBERNETES
+
+## 📋 **VISÃO GERAL**
+Sistema completo de automação, análise e monitoramento baseado em Kubernetes no Google Cloud Platform.
+
+## 🏗️ **ARQUITETURA DO ECOSSISTEMA**
+
+```
+🌐 ECOSSISTEMA LOGCOMEX
+├── n8n-cluster (Automação)
+│   ├── n8n (workflows)
+│   ├── Redis (queue)
+│   └── PostgreSQL (dados)
+├── metabase-cluster (Análise)
+│   └── Metabase (dashboards)
+└── monitoring-cluster (Observabilidade)
+    ├── Prometheus (métricas)
+    ├── Grafana (visualização)
+    └── AlertManager (alertas)
+```
 
 ## 📁 **ESTRUTURA DO PROJETO**
 
 ```
-n8n/
-├── 📊 analysis/                    # Análises técnicas e relatórios
-│   ├── ANALISE_FINAL_DNS_REDIS_22_09_2025.md  # Análise problema Redis
-│   ├── analise_amostra_*.json                  # Análises de amostras (2K, 10K contatos)
-│   ├── analise_completa_5000_*.json            # Análise completa 5K contatos
-│   ├── todas_propriedades_*.json               # Todas propriedades HubSpot
-│   ├── hubspot_analysis_report_*.json          # Relatórios de análise
-│   ├── hubspot_propriedades_REAIS.json         # Propriedades com dados reais
-│   ├── hubspot_propriedades_importantes.txt    # Propriedades mais importantes
-│   └── hubspot_telefone_properties.json        # Análise específica telefones
-├── 📚 docs/                        # Documentação completa
-│   ├── CHANGELOG.md
-│   ├── DOCUMENTACAO_IMPLEMENTACAO_N8N_GKE.md
-│   ├── DOCUMENTACAO_TECNICA_WORKFLOW.md
-│   ├── RESOLUCAO_FINAL_22_09_2025.md
-│   ├── STATUS_RECOVERY_22_09_2025.md
-│   └── [outra documentação...]
-├── 🔧 scripts/                     # Scripts Python e PowerShell
-│   ├── deploy-fixed.ps1            # Deploy n8n com correções
-│   ├── health-check.ps1            # Verificação de saúde
-│   ├── primeira_carga_*.py         # Scripts de primeira carga
-│   ├── analise_*.py                # Scripts de análise
-│   └── [outros scripts...]
-├── ⚙️ n8n-kubernetes-hosting/      # Configurações Kubernetes
-│   ├── n8n-config-consolidated.yaml
-│   ├── n8n-deployment.yaml
-│   ├── n8n-worker-deployment.yaml
-│   ├── redis-service-patch.yaml
-│   └── [outras configurações...]
-├── 🗄️ database/                    # Tabelas SQL do PostgreSQL
-│   ├── hubspot_contacts_table_PADRAO_CORRETO.sql
-│   ├── hubspot_companies_table.sql
-│   └── monitoring_table.sql
-├── ⚙️ workflows/                   # Workflows n8n
-│   ├── n8n_workflow_hubspot_contacts_SQL_FINAL.json
-│   ├── n8n_workflow_hubspot_companies_sync.json
-│   ├── n8n_workflow_hubspot_sync_PADRAO_CORRETO.json
-│   ├── contacts_sync_final.json
-│   └── contacts_sync_incremental_with_delay.json
-├── 📦 archive/                     # Arquivos antigos e versões
-│   ├── hubspot_contacts_table_*.sql    # Versões antigas tabelas contatos
-│   ├── n8n_workflow_hubspot_*.json     # Workflows antigos/versões
-│   └── quick_hubspot_*.py              # Scripts de teste antigos
-├── 📝 logs/                        # Logs de execução
-│   └── primeira_carga_otimizada_*.log  # Logs de primeira carga
-├── 🗂️ temp/                        # Arquivos temporários
-│   ├── fix_field_sizes.sql             # Correções de campos
-│   ├── fix_table_not_null.sql          # Correções de NOT NULL
-│   └── workflow_contacts_sql_*.json    # Workflows em desenvolvimento
-├── .env                           # Variáveis de ambiente (HubSpot + PostgreSQL)
-├── authorized-networks.json       # Configuração de rede (IPs autorizados)
-├── requirements.txt               # Dependências Python
-└── .cursorignore                  # Arquivos ignorados pelo Cursor
+📦 PROJETO
+├── clusters/
+│   ├── n8n-cluster/
+│   │   ├── production/          # Configurações de produção
+│   │   └── staging/             # Configurações de staging
+│   ├── metabase-cluster/
+│   │   └── production/          # Configurações do Metabase
+│   └── monitoring-cluster/
+│       ├── production/          # Monitoramento de produção
+│       └── staging/            # Monitoramento de staging
+├── docs/                        # Documentação técnica
+├── scripts/                     # Scripts de automação
+└── README.md                   # Este arquivo
 ```
 
-## 🎯 **COMPONENTES PRINCIPAIS**
+## 🎯 **CLUSTERS**
 
-### **🔧 Scripts de Automação**
-- `scripts/primeira_carga_hubspot_final.py` - **Primeira carga otimizada**
-- `scripts/primeira_carga_hubspot_otimizada.py` - Versão otimizada
-- `scripts/analise_completa_549_propriedades.py` - Análise completa HubSpot
-- `scripts/deploy-fixed.ps1` - **Deploy n8n com correções**
-- `scripts/health-check.ps1` - **Verificação de saúde do cluster**
+### **1. N8N-CLUSTER** 🤖
+**Função:** Automação de workflows e integrações
+- **n8n**: Plataforma de automação
+- **Redis**: Queue de processamento
+- **PostgreSQL**: Banco de dados principal
+- **URL**: `https://n8n-logcomex.34-8-101-220.nip.io`
 
-### **⚙️ Configurações Kubernetes**
-- `n8n-kubernetes-hosting/n8n-config-consolidated.yaml` - **Configuração completa**
-- `n8n-kubernetes-hosting/n8n-deployment.yaml` - Deployment principal
-- `n8n-kubernetes-hosting/n8n-worker-deployment.yaml` - Workers
-- `n8n-kubernetes-hosting/redis-service-patch.yaml` - Patch Redis
-- `n8n-kubernetes-hosting/n8n-ingress.yaml` - Configuração de entrada
-- `n8n-kubernetes-hosting/n8n-ssl-certificate.yaml` - Certificados SSL
-- `n8n-kubernetes-hosting/storage.yaml` - Configuração de armazenamento
+### **2. METABASE-CLUSTER** 📊
+**Função:** Análise de dados e dashboards
+- **Metabase**: Plataforma de BI
+- **PostgreSQL**: Banco de dados analítico
+- **URL**: `https://metabase-logcomex.34-8-101-220.nip.io`
 
-### **🗄️ Tabelas de Banco de Dados**
-- `database/hubspot_contacts_table_PADRAO_CORRETO.sql` - **Tabela de contatos**
-- `database/hubspot_companies_table.sql` - **Tabela de empresas**
-- `database/monitoring_table.sql` - **Tabela de monitoramento**
+### **3. MONITORING-CLUSTER** 📈
+**Função:** Observabilidade e monitoramento
+- **Prometheus**: Coleta de métricas
+- **Grafana**: Visualização e dashboards
+- **AlertManager**: Gerenciamento de alertas
+- **URLs**: 
+  - Prometheus: `https://prometheus-logcomex.34-39-161-97.nip.io`
+  - Grafana: `https://grafana-logcomex.34-39-178-152.nip.io`
 
-### **⚙️ Workflows n8n**
-- `workflows/n8n_workflow_hubspot_contacts_SQL_FINAL.json` - **Workflow contatos**
-- `workflows/n8n_workflow_hubspot_companies_sync.json` - **Workflow empresas**
-- `workflows/contacts_sync_final.json` - **Workflow contatos final**
-- `workflows/contacts_sync_incremental_with_delay.json` - **Workflow incremental**
+## 🚀 **DEPLOYMENT**
 
-### **📚 Documentação Técnica**
-- `docs/DOCUMENTACAO_TECNICA_WORKFLOW.md` - **Documentação técnica**
-- `docs/RESOLUCAO_FINAL_22_09_2025.md` - **Resolução de problemas**
-- `docs/CHANGELOG.md` - **Histórico de mudanças**
-- `docs/STATUS_RECOVERY_22_09_2025.md` - Status do recovery
+### **N8N-CLUSTER**
+```bash
+# Aplicar configurações de produção
+kubectl apply -f clusters/n8n-cluster/production/
 
-### **📊 Análises e Relatórios**
-- `analysis/ANALISE_FINAL_DNS_REDIS_22_09_2025.md` - **Análise problema Redis**
-- `analysis/analise_completa_5000_*.json` - **Análise completa 5K contatos**
-- `analysis/hubspot_propriedades_REAIS.json` - **Propriedades com dados reais**
-- `analysis/hubspot_propriedades_importantes.txt` - **Propriedades mais importantes**
-- `analysis/analise_amostra_*.json` - **Análises de amostras (2K, 10K contatos)**
-
-### **📦 Arquivos de Arquivo**
-- `archive/hubspot_contacts_table_*.sql` - **Versões antigas tabelas contatos**
-- `archive/n8n_workflow_hubspot_*.json` - **Workflows antigos/versões**
-- `archive/quick_hubspot_*.py` - **Scripts de teste antigos**
-
-### **📝 Logs e Monitoramento**
-- `logs/primeira_carga_otimizada_*.log` - **Logs de primeira carga**
-
-### **🗂️ Arquivos Temporários**
-- `temp/fix_field_sizes.sql` - **Correções de campos**
-- `temp/fix_table_not_null.sql` - **Correções de NOT NULL**
-- `temp/workflow_contacts_sql_*.json` - **Workflows em desenvolvimento**
-
-### **⚙️ Configurações de Sistema**
-- `.env` - **Variáveis de ambiente (HubSpot + PostgreSQL)**
-- `authorized-networks.json` - **Configuração de rede (IPs autorizados)**
-- `requirements.txt` - **Dependências Python**
-- `.cursorignore` - **Arquivos ignorados pelo Cursor**
-
-## 🚀 **COMO USAR**
-
-### **1. Configuração do Banco de Dados**
-```powershell
-cd database
-# Execute as tabelas SQL no PostgreSQL
-psql -h your_host -U your_user -d your_database -f hubspot_contacts_table_PADRAO_CORRETO.sql
-psql -h your_host -U your_user -d your_database -f hubspot_companies_table.sql
+# Verificar status
+kubectl get pods -n n8n
+kubectl get ingress -n n8n
 ```
 
-### **2. Primeira Carga de Dados**
-```powershell
-cd scripts
-python primeira_carga_hubspot_final.py
+### **METABASE-CLUSTER**
+```bash
+# Aplicar configurações
+kubectl apply -f clusters/metabase-cluster/production/
+
+# Verificar status
+kubectl get pods -n metabase
+kubectl get ingress -n metabase
 ```
 
-### **3. Deploy do Cluster n8n**
-```powershell
-cd n8n-kubernetes-hosting
-kubectl apply -f n8n-config-consolidated.yaml
+### **MONITORING-CLUSTER**
+```bash
+# Aplicar configurações
+kubectl apply -f clusters/monitoring-cluster/production/
+
+# Verificar status
+kubectl get pods -n monitoring-new
+kubectl get ingress -n monitoring-new
 ```
 
-### **4. Importar Workflows n8n**
-```powershell
-# Importe os workflows JSON no n8n
-# workflows/n8n_workflow_hubspot_contacts_SQL_FINAL.json
-# workflows/n8n_workflow_hubspot_companies_sync.json
+## 🔐 **SEGURANÇA**
+
+### **Implementado:**
+- ✅ Security Contexts (non-root)
+- ✅ Network Policies
+- ✅ Pod Security Standards
+- ✅ RBAC (Role-Based Access Control)
+- ✅ TLS/SSL (HTTPS)
+- ✅ Secrets Management
+
+### **Configurações:**
+- **Usuários não-root**: Todos os pods
+- **Capabilities**: Drop ALL
+- **Seccomp**: RuntimeDefault
+- **Network**: Isolamento por namespace
+
+## 📊 **MONITORAMENTO**
+
+### **Métricas Coletadas:**
+- **n8n**: Workflow executions, CPU, Memory, Pod status
+- **Metabase**: Requests, CPU, Memory, Pod status
+- **Infraestrutura**: Node status, Cluster resources, Pod count
+
+### **Dashboards:**
+- **n8n Overview**: Métricas de automação
+- **Metabase Overview**: Métricas de análise
+- **Infrastructure Overview**: Métricas de cluster
+
+### **Alertas:**
+- **Pod Down**: Notificação imediata
+- **High CPU**: > 80% por 5 minutos
+- **High Memory**: > 90% por 5 minutos
+- **Disk Space**: < 10% disponível
+
+## 🔄 **BACKUP E RECOVERY**
+
+### **Backup Automatizado:**
+- **PostgreSQL**: Backup diário às 2h UTC
+- **Retenção**: 30 dias
+- **Formato**: Custom dump (otimizado)
+- **Validação**: Integridade verificada
+
+### **Recovery:**
+```bash
+# Restaurar backup
+kubectl exec -it postgres-pod -- pg_restore -d n8n-postgres-db /backup/n8n-YYYYMMDD_HHMMSS.dump
 ```
 
-### **5. Verificação de Saúde**
-```powershell
-cd scripts
-.\health-check.ps1
+## 🛠️ **MANUTENÇÃO**
+
+### **Comandos Úteis:**
+```bash
+# Status geral
+kubectl get pods --all-namespaces
+
+# Logs
+kubectl logs -f deployment/n8n -n n8n
+
+# Port-forward para debug
+kubectl port-forward service/grafana 3000:3000 -n monitoring
+
+# Backup manual
+kubectl create job backup-manual --from=cronjob/n8n-backup -n n8n
 ```
 
-## 📊 **FUNCIONALIDADES**
+### **Troubleshooting:**
+```bash
+# Verificar conectividade
+kubectl exec -it n8n-pod -- curl http://redis-master:6379
 
-### **🔄 Sincronização HubSpot**
-- **Contatos**: Sincronização incremental com PostgreSQL
-- **Empresas**: Sincronização incremental com PostgreSQL
-- **Workflows n8n**: Automação completa de sincronização
-- **Monitoramento**: Logs e métricas de performance
+# Verificar métricas
+kubectl exec -it n8n-pod -- curl http://localhost:5678/metrics
 
-### **📈 Análises de Dados**
-- **Análise de Propriedades**: Identificação das propriedades mais importantes
-- **Amostras Estatísticas**: Análises de 2K, 5K e 10K contatos
-- **Relatórios de Performance**: Velocidade de sincronização e qualidade dos dados
-- **Propriedades Reais**: Mapeamento de propriedades com dados válidos
-- **Análise de Telefones**: Validação específica de dados de contato
+# Verificar ingress
+kubectl describe ingress n8n-ingress -n n8n
+```
 
-### **⚙️ Infraestrutura**
-- **Kubernetes**: Cluster GKE com alta disponibilidade
-- **PostgreSQL**: Banco de dados externo
-- **Redis**: Queue/broker para n8n
-- **SSL**: Certificados automáticos
+## 📈 **PERFORMANCE**
 
-## ✅ **STATUS ATUAL**
+### **Recursos Atuais:**
+- **n8n**: 2 CPU, 4GB RAM
+- **Redis**: 1 CPU, 2GB RAM
+- **PostgreSQL**: 2 CPU, 4GB RAM
+- **Prometheus**: 1 CPU, 2GB RAM
+- **Grafana**: 0.5 CPU, 1GB RAM
 
-- ✅ **Sistema 100% funcional**
-- ✅ **Redis via DNS** (resiliente)
-- ✅ **PostgreSQL conectado**
-- ✅ **24 workflows ativos**
-- ✅ **Sincronização automática** HubSpot → PostgreSQL
-- ✅ **Resiliência a mudanças de IP**
+### **Otimizações:**
+- **HPA**: Auto-scaling baseado em CPU/Memory
+- **PDB**: Pod Disruption Budget
+- **Resource Limits**: Prevenção de resource starvation
 
-## 🛡️ **CORREÇÕES APLICADAS (22/09/2025)**
+## 🔗 **ACESSOS**
 
-1. **Redis DNS**: `redis-master.n8n.svc.cluster.local` (resiliente)
-2. **PostgreSQL**: `DB_TYPE=postgresdb` (conecta corretamente)
-3. **Replicas**: 1 (evita Multi-Attach)
-4. **targetPort**: 6379 (conectividade DNS)
+### **Produção:**
+- **n8n**: `https://n8n-logcomex.34-8-101-220.nip.io`
+- **Metabase**: `https://metabase.34.13.117.77.nip.io`
+- **Prometheus**: `https://prometheus-logcomex.34-39-161-97.nip.io`
+- **Grafana**: `https://grafana-logcomex.34-39-178-152.nip.io`
 
-## 📈 **MÉTRICAS DE PERFORMANCE**
+### **Credenciais:**
+- **n8n**: Configurado via setup inicial
+- **Metabase**: Configurado via setup inicial
+- **Grafana**: `admin` / `admin123` (alterar em produção)
 
-- **Execuções**: 11.841 (últimos 7 dias)
-- **Taxa de falha**: 0.3%
-- **Workflows ativos**: 24
-- **Tempo de sincronização**: ~5 minutos
+## 📚 **DOCUMENTAÇÃO**
 
-## 🔍 **INSIGHTS DAS ANÁLISES**
+### **Técnica:**
+- [Análise de Performance](docs/PERFORMANCE_ANALYSIS_22_09_2025.md)
+- [Melhores Práticas](docs/N8N_KUBERNETES_BEST_PRACTICES_ANALYSIS.md)
+- [Análise de Custos](docs/COST_ANALYSIS_IMPROVEMENTS.md)
 
-### **Propriedades Mais Importantes (100 contatos analisados)**
-- **createdate**: 100% preenchido
-- **firstname**: 100% preenchido  
-- **hs_object_id**: 100% preenchido
-- **lastmodifieddate**: 100% preenchido
-- **email**: 82% preenchido
-- **lastname**: 43% preenchido
+### **Implementação:**
+- [Guia de Deploy](clusters/n8n-cluster/production/README.md)
+- [Configuração de Monitoramento](clusters/monitoring-cluster/production/README.md)
 
-### **Performance de Análise**
-- **Velocidade**: 2.961 contatos/minuto (amostra 10K)
-- **Tempo total**: 3.38 minutos (amostra 10K)
-- **Propriedades analisadas**: 35 por contato
-- **Dados válidos**: 18 propriedades com dados reais
+## 🚨 **SUPORTE**
 
-### **Qualidade dos Dados**
-- **Contatos únicos**: 50 empresas diferentes
-- **Dados de contato**: Validação de telefones e emails
-- **Consistência**: Análise de integridade dos dados
+### **Contatos:**
+- **Equipe DevOps**: [Slack Channel]
+- **Documentação**: [Confluence]
+- **Issues**: [GitHub Issues]
 
-## 🔧 **CONFIGURAÇÕES DE SISTEMA**
-
-### **🌐 Rede e Acesso**
-- **IPs Autorizados**: 6 redes configuradas (VPN, escritórios, n8n, Cloud Run)
-- **HubSpot Token**: Configurado no arquivo `.env` (não versionado)
-- **PostgreSQL**: Configurado no arquivo `.env` (não versionado)
-
-### **📦 Dependências Python**
-- **requests**: 2.31.0 (API HubSpot)
-- **python-dotenv**: 1.0.0 (variáveis de ambiente)
-- **psycopg2-binary**: 2.9.7 (conexão PostgreSQL)
-
-### **🗂️ Estrutura de Desenvolvimento**
-- **Archive**: 12 arquivos antigos (tabelas, workflows, scripts)
-- **Temp**: 10 arquivos temporários (correções, workflows em dev)
-- **Logs**: 3 logs de primeira carga otimizada
-- **Analysis**: 11 arquivos de análise e relatórios
+### **Escalação:**
+1. **Nível 1**: Equipe DevOps
+2. **Nível 2**: Arquitetos de Solução
+3. **Nível 3**: Google Cloud Support
 
 ---
 
-**Última atualização**: 22/09/2025  
-**Status**: ✅ **ORGANIZADO E FUNCIONAL**  
-**Próxima manutenção**: Transparente (DNS resiliente)
+## 📝 **CHANGELOG**
+
+### **v1.0.0** - 24/09/2025
+- ✅ Reorganização completa do projeto
+- ✅ Separação de clusters
+- ✅ Monitoramento unificado
+- ✅ Segurança implementada
+- ✅ Backup automatizado
+- ✅ Documentação completa
+
+---
+
+**🎯 Objetivo:** Sistema robusto, escalável e seguro para automação e análise de dados da Logcomex.
