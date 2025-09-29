@@ -1,0 +1,408 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard-enhanced
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-dashboard-enhanced.json: |
+    {
+      "id": null,
+      "uid": "n8n-enhanced",
+      "title": "N8N Enhanced Monitoring Dashboard",
+      "tags": ["n8n", "monitoring", "performance"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "N8N Status",
+          "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "red", "value": 0},
+                  {"color": "green", "value": 1}
+                ]
+              },
+              "unit": "none"
+            }
+          },
+          "targets": [
+            {
+              "expr": "up{job=\"n8n-cluster\"}",
+              "legendFormat": "N8N Status"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Active Workflows",
+          "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "unit": "none"
+            }
+          },
+          "targets": [
+            {
+              "expr": "n8n_active_workflow_count",
+              "legendFormat": "Active Workflows"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Queue Size",
+          "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "unit": "none"
+            }
+          },
+          "targets": [
+            {
+              "expr": "n8n_queue_size",
+              "legendFormat": "Queue Size"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "Workflow Executions (5m)",
+          "gridPos": {"x": 18, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "unit": "ops"
+            }
+          },
+          "targets": [
+            {
+              "expr": "rate(n8n_workflow_executions_total[5m])",
+              "legendFormat": "Executions/sec"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "CPU Usage",
+          "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": {"mode": "none", "group": "A"},
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "scaleDistribution": {"type": "linear"},
+                "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+                "thresholdsStyle": {"mode": "off"}
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 80}
+                ]
+              },
+              "unit": "percent"
+            }
+          },
+          "targets": [
+            {
+              "expr": "rate(n8n_process_cpu_seconds_total[5m]) * 100",
+              "legendFormat": "CPU Usage %",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "Memory Usage",
+          "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": {"mode": "none", "group": "A"},
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "scaleDistribution": {"type": "linear"},
+                "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+                "thresholdsStyle": {"mode": "off"}
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "red", "value": 80}
+                ]
+              },
+              "unit": "bytes"
+            }
+          },
+          "targets": [
+            {
+              "expr": "n8n_process_resident_memory_bytes",
+              "legendFormat": "RSS Memory",
+              "refId": "A"
+            },
+            {
+              "expr": "n8n_nodejs_heap_size_used_bytes",
+              "legendFormat": "Heap Used",
+              "refId": "B"
+            },
+            {
+              "expr": "n8n_nodejs_heap_size_total_bytes",
+              "legendFormat": "Heap Total",
+              "refId": "C"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "Event Loop Lag",
+          "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": {"mode": "none", "group": "A"},
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "scaleDistribution": {"type": "linear"},
+                "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+                "thresholdsStyle": {"mode": "off"}
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "yellow", "value": 0.1},
+                  {"color": "red", "value": 0.5}
+                ]
+              },
+              "unit": "s"
+            }
+          },
+          "targets": [
+            {
+              "expr": "n8n_nodejs_eventloop_lag_p50_seconds",
+              "legendFormat": "p50",
+              "refId": "A"
+            },
+            {
+              "expr": "n8n_nodejs_eventloop_lag_p90_seconds",
+              "legendFormat": "p90",
+              "refId": "B"
+            },
+            {
+              "expr": "n8n_nodejs_eventloop_lag_p99_seconds",
+              "legendFormat": "p99",
+              "refId": "C"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "Garbage Collection",
+          "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": {"mode": "none", "group": "A"},
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "scaleDistribution": {"type": "linear"},
+                "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+                "thresholdsStyle": {"mode": "off"}
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null},
+                  {"color": "yellow", "value": 0.1},
+                  {"color": "red", "value": 0.5}
+                ]
+              },
+              "unit": "s"
+            }
+          },
+          "targets": [
+            {
+              "expr": "rate(n8n_nodejs_gc_duration_seconds_sum[5m]) / rate(n8n_nodejs_gc_duration_seconds_count[5m])",
+              "legendFormat": "GC Duration (avg)",
+              "refId": "A"
+            },
+            {
+              "expr": "rate(n8n_nodejs_gc_duration_seconds_count[5m])",
+              "legendFormat": "GC Count/sec",
+              "refId": "B"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "type": "timeseries",
+          "title": "Workflow Executions Rate",
+          "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": {"mode": "none", "group": "A"},
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "scaleDistribution": {"type": "linear"},
+                "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+                "thresholdsStyle": {"mode": "off"}
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null}
+                ]
+              },
+              "unit": "ops"
+            }
+          },
+          "targets": [
+            {
+              "expr": "rate(n8n_workflow_executions_total[5m])",
+              "legendFormat": "Executions/sec",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "type": "timeseries",
+          "title": "Node.js Process Metrics",
+          "gridPos": {"x": 12, "y": 20, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "palette-classic"},
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": {"mode": "none", "group": "A"},
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "scaleDistribution": {"type": "linear"},
+                "hideFrom": {"legend": false, "tooltip": false, "viz": false},
+                "thresholdsStyle": {"mode": "off"}
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {"color": "green", "value": null}
+                ]
+              },
+              "unit": "none"
+            }
+          },
+          "targets": [
+            {
+              "expr": "n8n_nodejs_version_info",
+              "legendFormat": "Node.js Version",
+              "refId": "A"
+            },
+            {
+              "expr": "n8n_nodejs_heap_size_total_bytes",
+              "legendFormat": "Heap Total",
+              "refId": "B"
+            },
+            {
+              "expr": "n8n_nodejs_heap_size_used_bytes",
+              "legendFormat": "Heap Used",
+              "refId": "C"
+            }
+          ]
+        }
+      ]
+    }

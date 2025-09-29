@@ -1,0 +1,164 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n-worker
+  namespace: n8n
+  labels:
+    service: n8n-worker
+spec:
+  replicas: 3  # Mantido em 3 réplicas
+  selector:
+    matchLabels:
+      service: n8n-worker
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        service: n8n-worker
+    spec:
+      containers:
+      - name: worker
+        image: docker.n8n.io/n8nio/n8n:1.107.3
+        command: ["n8n"]
+        args: ["worker"]
+        env:
+        - name: DB_TYPE
+          value: postgresdb
+        - name: N8N_METRICS
+          value: "true"
+        - name: N8N_METRICS_PREFIX
+          value: n8n_
+        - name: N8N_METRICS_ENDPOINT
+          value: /metrics
+        - name: DB_POSTGRESDB_HOST
+          value: 172.23.64.3
+        - name: DB_POSTGRESDB_PORT
+          value: "5432"
+        - name: DB_POSTGRESDB_DATABASE
+          value: n8n-postgres-db
+        - name: DB_POSTGRESDB_USER
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_NON_ROOT_USER
+              name: postgres-secret
+        - name: DB_POSTGRESDB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_NON_ROOT_PASSWORD
+              name: postgres-secret
+        - name: DB_POSTGRESDB_CONNECTION_TIMEOUT
+          value: "120000"
+        - name: DB_POSTGRESDB_POOL_SIZE
+          value: "2"
+        - name: DB_POSTGRESDB_IDLE_CONNECTION_TIMEOUT
+          value: "60000"
+        - name: N8N_PROTOCOL
+          value: https
+        - name: N8N_HOST
+          value: n8n-logcomex.34-8-101-220.nip.io
+        - name: N8N_SECURE_COOKIE
+          value: "true"
+        - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+          value: "true"
+        - name: N8N_TRUSTED_PROXIES
+          value: redis-master.n8n.svc.cluster.local
+        - name: EXECUTIONS_MODE
+          value: queue
+        - name: QUEUE_BULL_REDIS_HOST
+          value: redis-master.n8n.svc.cluster.local
+        - name: QUEUE_BULL_REDIS_PORT
+          value: "6379"
+        - name: N8N_RUNNERS_ENABLED
+          value: "true"
+        - name: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
+          value: "true"
+        - name: N8N_ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              key: N8N_ENCRYPTION_KEY
+              name: n8n-encryption
+        - name: N8N_EXECUTIONS_MODE
+          value: queue
+        - name: QUEUE_BULL_REDIS_DB
+          value: "0"
+        - name: N8N_REDIS_HOST
+          value: redis-master.n8n.svc.cluster.local
+        - name: N8N_REDIS_PORT
+          value: "6379"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PASSWORD
+              name: redis-auth
+        - name: N8N_REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PASSWORD
+              name: redis-auth
+        - name: QUEUE_BULL_REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PASSWORD
+              name: redis-auth
+        - name: N8N_WEBHOOK_URL
+          value: https://n8n-logcomex.34-8-101-220.nip.io
+        - name: N8N_EDITOR_BASE_URL
+          value: https://n8n-logcomex.34-8-101-220.nip.io
+        - name: N8N_PORT
+          value: "5678"
+        - name: WEBHOOK_URL
+          value: https://n8n-logcomex.34-8-101-220.nip.io
+        - name: N8N_PUSH_BACKEND
+          value: websocket
+        - name: N8N_LISTEN_ADDRESS
+          value: 0.0.0.0
+        - name: N8N_PUSH_BACKEND_WEBSOCKET_HEARTBEAT_INTERVAL
+          value: "30000"
+        resources:
+          requests:
+            cpu: 800m      # 0.8 vCPU por réplica
+            memory: 3Gi    # 3GB por réplica
+          limits:
+            cpu: 800m      # 0.8 vCPU por réplica
+            memory: 3Gi    # 3GB por réplica
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 5678
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 20
+          timeoutSeconds: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 5678
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+          capabilities:
+            drop: ["ALL"]
+          seccompProfile:
+            type: RuntimeDefault
+        # Workers não precisam de volume persistente
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
+
+

@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-overview.json: |
+    {
+      "id": 1,
+      "uid": "n8n-overview",
+      "title": "N8N Overview",
+      "tags": ["n8n", "monitoring"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 2,
+      "panels": [
+        {
+          "type": "graph",
+          "title": "CPU Usage (User/System/Total)",
+          "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "cores",
+              "min": 0,
+              "max": 1
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_process_cpu_user_seconds_total[5m])", "legendFormat": "User CPU"},
+            {"expr": "rate(n8n_process_cpu_system_seconds_total[5m])", "legendFormat": "System CPU"},
+            {"expr": "rate(n8n_process_cpu_seconds_total[5m])", "legendFormat": "Total CPU"}
+          ]
+        },
+        {
+          "type": "graph",
+          "title": "Resident Memory (RSS)",
+          "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "bytes"}
+          },
+          "targets": [
+            {"expr": "n8n_process_resident_memory_bytes", "legendFormat": "RSS"}
+          ]
+        },
+        {
+          "type": "graph",
+          "title": "Heap Memory (Used vs Total)",
+          "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "bytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_size_used_bytes", "legendFormat": "Heap Used"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes", "legendFormat": "Heap Total"}
+          ]
+        },
+        {
+          "type": "graph",
+          "title": "Event Loop Lag (p50/p90/p99)",
+          "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "s", "min": 0, "max": 2}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds", "legendFormat": "p50"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds", "legendFormat": "p90"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds", "legendFormat": "p99"}
+          ]
+        },
+        {
+          "type": "stat",
+          "title": "Active Workflows",
+          "gridPos": {"x": 0, "y": 16, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "none"}
+          },
+          "targets": [
+            {"expr": "n8n_active_workflow_count"}
+          ]
+        },
+        {
+          "type": "graph",
+          "title": "GC Duration (avg seconds)",
+          "gridPos": {"x": 6, "y": 16, "w": 18, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "s"}
+          },
+          "targets": [
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum[5m]) / rate(n8n_nodejs_gc_duration_seconds_count[5m])", "legendFormat": "GC avg"}
+          ]
+        }
+      ]
+    }

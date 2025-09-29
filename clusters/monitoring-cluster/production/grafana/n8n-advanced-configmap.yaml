@@ -1,0 +1,325 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-advanced-dashboard
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-monitoring-avancado.json: |
+    {
+      "id": 1,
+      "uid": "n8n-monitoring-avancado",
+      "title": "Monitoramento Avançado N8N - Logcomex",
+      "tags": ["n8n", "monitoring", "logcomex", "avancado"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "Status do Sistema",
+          "gridPos": {"x": 0, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "red", "value": 0, "text": "OFFLINE"},
+                  {"color": "green", "value": 1, "text": "ONLINE"}
+                ]
+              },
+              "mappings": [
+                {"type": "value", "value": "0", "text": "OFFLINE"},
+                {"type": "value", "value": "1", "text": "ONLINE"}
+              ]
+            }
+          },
+          "targets": [
+            {"expr": "up{job=\"n8n-cluster\"}", "legendFormat": "Status"}
+          ]
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Workflows Ativos",
+          "gridPos": {"x": 4, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_active_workflow_count", "legendFormat": "Workflows"}
+          ]
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Função da Instância",
+          "gridPos": {"x": 8, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"type": "value", "value": "0", "text": "WORKER"},
+                {"type": "value", "value": "1", "text": "LEADER"}
+              ]
+            }
+          },
+          "targets": [
+            {"expr": "n8n_instance_role_leader", "legendFormat": "Função"}
+          ]
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "Versão N8N",
+          "gridPos": {"x": 12, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_version_info", "legendFormat": "v{{version}}"}
+          ]
+        },
+        {
+          "id": 5,
+          "type": "stat",
+          "title": "Tempo de Atividade",
+          "gridPos": {"x": 16, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "dtdurations"}
+          },
+          "targets": [
+            {"expr": "time() - n8n_process_start_time_seconds", "legendFormat": "Ativo há {{value}}"}
+          ]
+        },
+        {
+          "id": 6,
+          "type": "stat",
+          "title": "Arquivos Abertos",
+          "gridPos": {"x": 20, "y": 0, "w": 4, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_process_open_fds", "legendFormat": "Abertos: {{value}}"},
+            {"expr": "n8n_process_max_fds", "legendFormat": "Máximo: {{value}}"}
+          ]
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "Uso de CPU - Timeline",
+          "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_process_cpu_seconds_total[5m]) * 100", "legendFormat": "CPU Total"},
+            {"expr": "rate(n8n_process_cpu_user_seconds_total[5m]) * 100", "legendFormat": "CPU Usuário"},
+            {"expr": "rate(n8n_process_cpu_system_seconds_total[5m]) * 100", "legendFormat": "CPU Sistema"}
+          ]
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "Uso de Memória - Timeline",
+          "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_process_resident_memory_bytes", "legendFormat": "Memória Física (RSS)"},
+            {"expr": "n8n_nodejs_heap_size_used_bytes", "legendFormat": "Heap Usado"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes", "legendFormat": "Heap Total"}
+          ]
+        },
+        {
+          "id": 9,
+          "type": "gauge",
+          "title": "Utilização de Memória",
+          "gridPos": {"x": 0, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0, "text": "Baixo"},
+                  {"color": "yellow", "value": 70, "text": "Médio"},
+                  {"color": "red", "value": 90, "text": "Alto"}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "(n8n_nodejs_heap_size_used_bytes / n8n_nodejs_heap_size_total_bytes) * 100", "legendFormat": "Heap %"}
+          ]
+        },
+        {
+          "id": 10,
+          "type": "gauge",
+          "title": "Utilização de CPU",
+          "gridPos": {"x": 6, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0, "text": "Baixo"},
+                  {"color": "yellow", "value": 70, "text": "Médio"},
+                  {"color": "red", "value": 90, "text": "Alto"}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_process_cpu_seconds_total[5m]) * 100", "legendFormat": "CPU %"}
+          ]
+        },
+        {
+          "id": 11,
+          "type": "bargauge",
+          "title": "Recursos Ativos",
+          "gridPos": {"x": 12, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources_total", "legendFormat": "Total"},
+            {"expr": "n8n_nodejs_active_handles_total", "legendFormat": "Handles"}
+          ]
+        },
+        {
+          "id": 12,
+          "type": "bargauge",
+          "title": "Arquivos Abertos vs Máximo",
+          "gridPos": {"x": 18, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_process_open_fds", "legendFormat": "Abertos"},
+            {"expr": "n8n_process_max_fds", "legendFormat": "Máximo"}
+          ]
+        },
+        {
+          "id": 13,
+          "type": "heatmap",
+          "title": "Distribuição de Latência do Event Loop",
+          "gridPos": {"x": 0, "y": 18, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_seconds * 1000", "legendFormat": "Latência (ms)"}
+          ]
+        },
+        {
+          "id": 14,
+          "type": "timeseries",
+          "title": "Performance do Event Loop",
+          "gridPos": {"x": 12, "y": 18, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms", "min": 0}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds * 1000", "legendFormat": "Latência p50"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds * 1000", "legendFormat": "Latência p90"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds * 1000", "legendFormat": "Latência p99"},
+            {"expr": "n8n_nodejs_eventloop_lag_mean_seconds * 1000", "legendFormat": "Latência Média"}
+          ]
+        },
+        {
+          "id": 15,
+          "type": "timeseries",
+          "title": "Garbage Collection",
+          "gridPos": {"x": 0, "y": 26, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum[5m]) / rate(n8n_nodejs_gc_duration_seconds_count[5m]) * 1000", "legendFormat": "Duração GC"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count[5m])", "legendFormat": "GC por Segundo"}
+          ]
+        },
+        {
+          "id": 16,
+          "type": "piechart",
+          "title": "Distribuição do Heap por Espaço",
+          "gridPos": {"x": 12, "y": 26, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes", "legendFormat": "{{space}} Usado"}
+          ]
+        },
+        {
+          "id": 17,
+          "type": "table",
+          "title": "Resumo de Recursos Ativos",
+          "gridPos": {"x": 0, "y": 34, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources", "legendFormat": "{{type}}"},
+            {"expr": "n8n_nodejs_active_handles", "legendFormat": "{{type}}"}
+          ]
+        },
+        {
+          "id": 18,
+          "type": "table",
+          "title": "Estatísticas do Heap",
+          "gridPos": {"x": 12, "y": 34, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes", "legendFormat": "{{space}} Usado"},
+            {"expr": "n8n_nodejs_heap_space_size_total_bytes", "legendFormat": "{{space}} Total"},
+            {"expr": "n8n_nodejs_heap_space_size_available_bytes", "legendFormat": "{{space}} Disponível"}
+          ]
+        },
+        {
+          "id": 19,
+          "type": "timeseries",
+          "title": "Memória Externa",
+          "gridPos": {"x": 0, "y": 42, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_external_memory_bytes", "legendFormat": "Memória Externa"}
+          ]
+        },
+        {
+          "id": 20,
+          "type": "timeseries",
+          "title": "Recursos Ativos do Node.js",
+          "gridPos": {"x": 12, "y": 42, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_active_resources", "legendFormat": "{{type}}"},
+            {"expr": "n8n_nodejs_active_resources_total", "legendFormat": "Total"}
+          ]
+        }
+      ]
+    }
+
+
