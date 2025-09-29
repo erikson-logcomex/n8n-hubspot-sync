@@ -1,0 +1,140 @@
+# Redis Deployment - Otimizado para e2-standard-4
+# Plano: 1 réplica, 200m CPU, 500Mi RAM
+# Node Selector: pool-cpu4 (e2-standard-4)
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app.kubernetes.io/component: master
+    app.kubernetes.io/instance: redis
+    app.kubernetes.io/name: redis
+  name: redis-master
+  namespace: n8n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: master
+      app.kubernetes.io/instance: redis
+      app.kubernetes.io/name: redis
+  serviceName: redis-master
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: master
+        app.kubernetes.io/instance: redis
+        app.kubernetes.io/name: redis
+    spec:
+      # Node Selector para e2-standard-4
+      nodeSelector:
+        cloud.google.com/gke-nodepool: pool-cpu4
+      containers:
+        - name: redis
+          image: redis:7.2-alpine
+          command:
+            - redis-server
+            - /etc/redis/redis.conf
+            - --requirepass
+            - $(REDIS_PASSWORD)
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: REDIS_PASSWORD
+                  name: redis-auth
+          ports:
+            - containerPort: 6379
+              name: tcp-redis
+              protocol: TCP
+          
+          # Recursos otimizados conforme plano
+          resources:
+            requests:
+              cpu: 200m      # 0.2 vCPU
+              memory: 500Mi  # 500Mi RAM
+            limits:
+              cpu: 500m      # Limite de 0.5 vCPU
+              memory: 1Gi    # Limite de 1GB RAM
+          
+          # Health checks
+          livenessProbe:
+            exec:
+              command:
+                - redis-cli
+                - ping
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          
+          readinessProbe:
+            exec:
+              command:
+                - redis-cli
+                - ping
+            initialDelaySeconds: 5
+            timeoutSeconds: 3
+            periodSeconds: 5
+            failureThreshold: 3
+          
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+            - mountPath: /etc/redis
+              name: redis-config
+      
+      volumes:
+        - name: redis-config
+          configMap:
+            name: redis-config
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: standard-rwo
+
+---
+# Redis ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+  namespace: n8n
+data:
+  redis.conf: |
+    # Redis configuration optimized for n8n
+    bind 0.0.0.0
+    port 6379
+    timeout 0
+    tcp-keepalive 300
+    tcp-backlog 511
+    
+    # Memory management
+    maxmemory 800mb
+    maxmemory-policy allkeys-lru
+    
+    # Persistence
+    save 900 1
+    save 300 10
+    save 60 10000
+    
+    # Logging
+    loglevel notice
+    logfile ""
+    
+    # Performance
+    hz 10
+    dynamic-hz yes
+    
+    # Security
+    protected-mode no
+    
+    # Network
+    tcp-nodelay yes
+    tcp-keepalive 300

@@ -1,0 +1,159 @@
+# n8n Worker Deployment - Otimizado para e2-standard-4
+# Plano: 3 réplicas, 800m CPU, 3GB RAM cada
+# Node Selector: pool-cpu4 (e2-standard-4)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: n8n-worker
+  name: n8n-worker
+  namespace: n8n
+spec:
+  replicas: 3  # 3 réplicas conforme plano
+  selector:
+    matchLabels:
+      app: n8n-worker
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: n8n-worker
+    spec:
+      # Node Selector para e2-standard-4
+      nodeSelector:
+        cloud.google.com/gke-nodepool: pool-cpu4
+      containers:
+        - args:
+            - worker
+          command:
+            - n8n
+          env:
+            # PostgreSQL Configuration
+            - name: DB_TYPE
+              value: postgresdb
+            - name: DB_POSTGRESDB_HOST
+              value: 172.23.64.3
+            - name: DB_POSTGRESDB_PORT
+              value: "5432"
+            - name: DB_POSTGRESDB_DATABASE
+              value: n8n-postgres-db
+            - name: DB_POSTGRESDB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_NON_ROOT_USER
+                  name: postgres-secret
+            - name: DB_POSTGRESDB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: POSTGRES_NON_ROOT_PASSWORD
+                  name: postgres-secret
+            - name: DB_POSTGRESDB_CONNECTION_TIMEOUT
+              value: "120000"
+            - name: DB_POSTGRESDB_POOL_SIZE
+              value: "2"
+            - name: DB_POSTGRESDB_IDLE_CONNECTION_TIMEOUT
+              value: "60000"
+            
+            # Redis Configuration (via DNS)
+            - name: N8N_REDIS_HOST
+              value: redis-master.n8n.svc.cluster.local
+            - name: N8N_REDIS_PORT
+              value: "6379"
+            - name: N8N_REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: REDIS_PASSWORD
+                  name: redis-auth
+            - name: QUEUE_BULL_REDIS_HOST
+              value: redis-master.n8n.svc.cluster.local
+            - name: QUEUE_BULL_REDIS_PORT
+              value: "6379"
+            - name: QUEUE_BULL_REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: REDIS_PASSWORD
+                  name: redis-auth
+            - name: QUEUE_BULL_REDIS_DB
+              value: "0"
+            
+            # n8n Configuration
+            - name: N8N_PROTOCOL
+              value: https
+            - name: N8N_HOST
+              value: n8n-logcomex.34-8-101-220.nip.io
+            - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+              value: "true"
+            
+            # Worker Configuration
+            - name: N8N_RUNNERS_ENABLED
+              value: "true"
+            - name: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
+              value: "true"
+            - name: EXECUTIONS_MODE
+              value: queue
+            - name: N8N_EXECUTION_TIMEOUT
+              value: "7200"
+            - name: N8N_EXECUTE_IN_PROCESS
+              value: "false"
+            
+            # Data Management
+            - name: EXECUTIONS_DATA_PRUNE
+              value: "true"
+            - name: EXECUTIONS_DATA_MAX_AGE
+              value: "1"
+            
+            # Security
+            - name: N8N_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: N8N_ENCRYPTION_KEY
+                  name: n8n-encryption
+            
+            # Webhooks
+            - name: N8N_WEBHOOK_URL
+              value: https://n8n-logcomex.34-8-101-220.nip.io
+            - name: N8N_EDITOR_BASE_URL
+              value: https://n8n-logcomex.34-8-101-220.nip.io
+            - name: WEBHOOK_URL
+              value: https://n8n-logcomex.34-8-101-220.nip.io
+            
+            # Network
+            - name: N8N_LISTEN_ADDRESS
+              value: 0.0.0.0
+            - name: N8N_PUSH_BACKEND
+              value: websocket
+            - name: N8N_PUSH_BACKEND_WEBSOCKET_HEARTBEAT_INTERVAL
+              value: "30000"
+            
+            # Node.js Optimization (3GB heap)
+            - name: NODE_OPTIONS
+              value: --max-old-space-size=3072 --expose-gc
+            - name: NODE_ENV
+              value: production
+            - name: V8_FORCE_GC
+              value: "1"
+          
+          image: docker.n8n.io/n8nio/n8n:1.107.3
+          name: worker
+          
+          # Recursos otimizados conforme plano
+          resources:
+            requests:
+              cpu: 800m      # 0.8 vCPU por réplica
+              memory: 3Gi    # 3GB RAM por réplica
+            limits:
+              cpu: 1000m     # Limite de 1 vCPU
+              memory: 3Gi    # Limite de 3GB RAM
+      
+      volumes:
+        - name: n8n-secret
+          secret:
+            secretName: n8n-secret
+        - name: postgres-secret
+          secret:
+            secretName: postgres-secret
