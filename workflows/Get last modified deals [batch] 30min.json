@@ -1,0 +1,286 @@
+{
+  "name": "Get last modified deals [batch] 30min",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "216ac925-a6d2-488a-a221-bc34ca5f9e93",
+              "leftValue": "={{ $json.total }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "e9eb07e1-0422-480e-b4ba-f6e5942b055b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ $json.query }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1040,
+        -96
+      ],
+      "id": "30ddd4b1-38b3-4d64-9130-3fcb452b8bdf",
+      "name": "Execute a SQL query",
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1248,
+        -96
+      ],
+      "id": "fb55d6b4-d9e2-44ad-b567-c73a86f89ab6",
+      "name": "Wait",
+      "webhookId": "f774e716-8761-444e-ad67-7807a3381401"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hubapi.com/crm/v3/objects/deals/search",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"limit\": 50,\n  \"sorts\": [{ \"propertyName\": \"hs_lastmodifieddate\", \"direction\": \"ASCENDING\" }],\n  \"properties\": [\n    \"hs_object_id\",\"dealname\",\"pipeline\",\"dealstage\",\"tipo_de_receita\",\n    \"empresa_internacional\",\"tipo_de_negociacao\",\"produto_principal\",\"ramo_de_atuacao__do_negocio_\",\n    \"amount_in_home_currency\",\"valor_de_implementacao__us__\",\"valor_ganho\",\"valor_de_implementacao\",\n    \"canal_de_aquisicao\",\"hubspot_owner_id\",\"criado_por_\",\"pr_vendedor\",\"analista_comercial\",\n    \"user__account_manager\",\"createdate\",\"data_de_entrada_na_etapa_distribuicao__vendas_nmrr_\",\n    \"data_de_prospect\",\"etapa__data_de_tentando_contato\",\"data_de_qualificacao\",\"data_de_agendamento\",\n    \"fase__data_de_no_show\",\"data_de_demonstracao\",\"data_de_onboarding___trial\",\"data_de_proposta\",\n    \"etapa__data_de_entrada_em_fechamento\",\"sales__data_de_faturamento\",\"closedate\",\n    \"notes_next_activity_date\",\"data_prevista_reuniao\",\"notes_last_updated\",\"hs_lastmodifieddate\",\n    \"faturamento_anual__ic_\",\"fob_anual__ic_\",\"sales__sal__sales_accepted_lead_\",\"status_de_agendamento\",\n    \"ultima_etapa_antes_do_perdido\",\"ops__id_negocio_de_origem\",\"presales__temperatura_v2\",\n    \"temperatura_do_deal\",\"macro_segmento___oficial\",\"etapa__data_do_reagendamento\",\"deal_cycle\",\n    \"coordenador\",\"motivo_de_perda__n1_\",\"campanha\",\"fin__erro_de_dados_para_faturamento_\",\"tag_ops\",\n    \"closed_lost_reason\",\"motivo_de_perda__n2_\",\"sales__a_empresa_estava_no_timing_para_uma_contratacao\",\n    \"sales__a_reuniao_foi_realizada_com_uma_persona_adequada\",\n    \"sales__a_qualificacao__snippet__esta_preenchida_e_de_forma_clara\",\n    \"sales__a_dor_mapeada_pelo_pre_vendedor\",\"score_de_credito___categoria\",\n    \"sales__percentual_de_desconto__clonado_\",\n    \"sales__tem_uma_pessoa_ou_time_dedicado_para_analise_de_dados_\",\n    \"sales__usa_dados_para_as_tomadas_de_decisoes_na_empresa_\",\n    \"closed_won_reason\",\"produto_intencao\",\"produto_do_agendamento\",\"sales__produtos_apresentados_na_demo\",\n    \"bu__business_unit\",\"sales__business_unit\",\"sales__business_unit_de_intencao\",\n    \"sales__business_unit_do_agendamento\",\"sales__business_unit_da_demonstracao\",\n    \"sales__quais_as_principais_dores_e_impacto_de_nao_resolver_\",\n    \"como_esse_lead_foi_aquecido_para_chegar_no_agendamento__primeiro_contato_do_lead_foi_por_\",\n    \"sales__principal_meio_de_comunicacao_utilizado_para_realizar_o_agendamento\",\n    \"o_decisor_participou_da_reuniao_\",\"sales____de_chance_de_fechamento_\",\"sales__feedback_do_produto\",\n    \"sales__quando_pretende_ter_essa_dor_resolvida\",\"amount\",\n    \"sales__budget___existe_orcamento_mapeado_para_sanar_essa_dor_\",\n    \"sales__processo_de_adesao__proximos_passos__pessoas_a_serem_envolvidas\",\n    \"sales__proximos_passos\",\"motivo_de_ganho\"\n  ],\n  \"filterGroups\": [{\n    \"filters\": [\n      { \"propertyName\": \"hs_lastmodifieddate\", \"operator\": \"GTE\", \"value\": \"{{ String($json.MaxModified ?? $json.max_hs_lastmodified_ms) }}\" },\n      { \"propertyName\": \"pipeline\", \"operator\": \"IN\", \"values\": [\"6810518\",\"4007305\"] }\n    ]\n  }]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "1b568565-0860-4d44-999a-4da0a7bbea00",
+      "name": "Get Deals",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "34E5enEDNK8bk4JA",
+          "name": "key to hubspot"
+        },
+        "httpHeaderAuth": {
+          "id": "FWQfLXovDI1f1hRP",
+          "name": "Header Auth account 2"
+        },
+        "hubspotAppToken": {
+          "id": "YwRTwETOCgfX3IpP",
+          "name": "HubSpot App Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const table = 'public.deals';\n\n// pega os resultados do HubSpot\nconst results = $input.first()?.json?.results ?? [];\nif (!results.length) return [{ json: { query: '-- vazio', rows: 0 } }];\n\n// array de objetos \"properties\" para mandar como JSON\nconst payload = results.map(r => r.properties || {});\n\n// mapeamento InternalName -> { col, type } (text|num|ts)\nconst map = {\n  hs_object_id:                                      { col: 'hs_object_id', type: 'text' },\n  dealname:                                          { col: 'dealname', type: 'text' },\n  pipeline:                                          { col: 'pipeline', type: 'text' },\n  dealstage:                                         { col: 'dealstage', type: 'text' },\n  tipo_de_receita:                                   { col: 'tipo_de_receita', type: 'text' },\n  empresa_internacional:                             { col: 'empresa_internacional', type: 'text' },\n  tipo_de_negociacao:                                { col: 'tipo_de_negociacao', type: 'text' },\n  produto_principal:                                 { col: 'produto_principal', type: 'text' },\n  ramo_de_atuacao__do_negocio_:                      { col: 'ramo_de_atuacao_do_negocio', type: 'text' },\n  amount_in_home_currency:                           { col: 'amount_in_home_currency', type: 'num' },\n  valor_de_implementacao__us__:                      { col: 'valor_de_implementacao_us', type: 'num' },\n  valor_ganho:                                       { col: 'valor_ganho', type: 'num' },\n  valor_de_implementacao:                            { col: 'valor_de_implementacao', type: 'num' },\n  canal_de_aquisicao:                                { col: 'canal_de_aquisicao', type: 'text' },\n  hubspot_owner_id:                                  { col: 'hubspot_owner_id', type: 'text' },\n  criado_por_:                                       { col: 'criado_por', type: 'text' },\n  pr_vendedor:                                       { col: 'pr_vendedor', type: 'text' },\n  analista_comercial:                                { col: 'analista_comercial', type: 'text' },\n  user__account_manager:                             { col: 'user_account_manager', type: 'text' },\n  createdate:                                        { col: 'createdate', type: 'ts' },\n  data_de_entrada_na_etapa_distribuicao__vendas_nmrr_: { col: 'data_de_entrada_na_etapa_distribuicao_vendas_nmrr', type: 'ts' },\n  data_de_prospect:                                  { col: 'data_de_prospect', type: 'ts' },\n  etapa__data_de_tentando_contato:                   { col: 'etapa_data_de_tentando_contato', type: 'ts' },\n  data_de_qualificacao:                              { col: 'data_de_qualificacao', type: 'ts' },\n  data_de_agendamento:                               { col: 'data_de_agendamento', type: 'ts' },\n  fase__data_de_no_show:                             { col: 'fase_data_de_no_show', type: 'ts' },\n  data_de_demonstracao:                              { col: 'data_de_demonstracao', type: 'ts' },\n  data_de_onboarding___trial:                        { col: 'data_de_onboarding_trial', type: 'ts' },\n  data_de_proposta:                                  { col: 'data_de_proposta', type: 'ts' },\n  etapa__data_de_entrada_em_fechamento:              { col: 'etapa_data_de_entrada_em_fechamento', type: 'ts' },\n  sales__data_de_faturamento:                        { col: 'sales_data_de_faturamento', type: 'ts' },\n  closedate:                                         { col: 'closedate', type: 'ts' },\n  notes_next_activity_date:                          { col: 'notes_next_activity_date', type: 'ts' },\n  data_prevista_reuniao:                             { col: 'data_prevista_reuniao', type: 'ts' },\n  notes_last_updated:                                { col: 'notes_last_updated', type: 'ts' },\n  hs_lastmodifieddate:                               { col: 'hs_lastmodifieddate', type: 'ts' },\n  faturamento_anual__ic_:                            { col: 'faturamento_anual_ic', type: 'text' },\n  fob_anual__ic_:                                    { col: 'fob_anual_ic', type: 'text' },\n  sales__sal__sales_accepted_lead_:                  { col: 'sales_sal_sales_accepted_lead', type: 'text' },\n  status_de_agendamento:                             { col: 'status_de_agendamento', type: 'text' },\n  ultima_etapa_antes_do_perdido:                     { col: 'ultima_etapa_antes_do_perdido', type: 'text' },\n  ops__id_negocio_de_origem:                         { col: 'ops_id_negocio_de_origem', type: 'text' },\n  presales__temperatura_v2:                          { col: 'presales_temperatura_v2', type: 'text' },\n  temperatura_do_deal:                               { col: 'temperatura_do_deal', type: 'text' },\n  macro_segmento___oficial:                          { col: 'macro_segmento_oficial', type: 'text' },\n  etapa__data_do_reagendamento:                      { col: 'etapa_data_do_reagendamento', type: 'ts' },\n  deal_cycle:                                        { col: 'deal_cycle', type: 'text' },\n  coordenador:                                       { col: 'coordenador', type: 'text' },\n  motivo_de_perda__n1_:                              { col: 'motivo_de_perda_n1', type: 'text' },\n  campanha:                                          { col: 'campanha', type: 'text' },\n  fin__erro_de_dados_para_faturamento_:              { col: 'fin_erro_de_dados_para_faturamento', type: 'text' },\n  tag_ops:                                           { col: 'tag_ops', type: 'text' },\n  closed_lost_reason:                                { col: 'closed_lost_reason', type: 'text' },\n  motivo_de_perda__n2_:                              { col: 'motivo_de_perda_n2', type: 'text' },\n  sales__a_empresa_estava_no_timing_para_uma_contratacao: { col: 'sales_a_empresa_estava_no_timing_para_uma_contratacao', type: 'text' },\n  sales__a_reuniao_foi_realizada_com_uma_persona_adequada: { col: 'sales_a_reuniao_foi_realizada_com_uma_persona_adequada', type: 'text' },\n  sales__a_qualificacao__snippet__esta_preenchida_e_de_forma_clara: { col: 'sales_a_qualificacao_snippet_esta_preenchida_e_de_forma_clara', type: 'text' },\n  sales__a_dor_mapeada_pelo_pre_vendedor:           { col: 'sales_a_dor_mapeada_pelo_pre_vendedor', type: 'text' },\n  score_de_credito___categoria:                      { col: 'score_de_credito_categoria', type: 'text' },\n  sales__percentual_de_desconto__clonado_:           { col: 'sales_percentual_de_desconto_clonado', type: 'text' },\n  sales__tem_uma_pessoa_ou_time_dedicado_para_analise_de_dados_: { col: 'sales_tem_uma_pessoa_ou_time_dedicado_para_analise_de_dados', type: 'text' },\n  sales__usa_dados_para_as_tomadas_de_decisoes_na_empresa_: { col: 'sales_usa_dados_para_as_tomadas_de_decisoes_na_empresa', type: 'text' },\n  closed_won_reason:                                 { col: 'closed_won_reason', type: 'text' },\n  produto_intencao:                                  { col: 'produto_intencao', type: 'text' },\n  produto_do_agendamento:                            { col: 'produto_do_agendamento', type: 'text' },\n  sales__produtos_apresentados_na_demo:              { col: 'sales_produtos_apresentados_na_demo', type: 'text' },\n  bu__business_unit:                                 { col: 'bu_business_unit', type: 'text' },\n  sales__business_unit:                              { col: 'sales_business_unit', type: 'text' },\n  sales__business_unit_de_intencao:                  { col: 'sales_business_unit_de_intencao', type: 'text' },\n  sales__business_unit_do_agendamento:               { col: 'sales_business_unit_do_agendamento', type: 'text' },\n  sales__business_unit_da_demonstracao:              { col: 'sales_business_unit_da_demonstracao', type: 'text' },\n  sales__quais_as_principais_dores_e_impacto_de_nao_resolver_: { col: 'sales_quais_as_principais_dores_e_impacto_de_nao_resolver', type: 'text' },\n  como_esse_lead_foi_aquecido_para_chegar_no_agendamento__primeiro_contato_do_lead_foi_por_: { col: 'como_esse_lead_foi_aquecido_para_chegar_no_agendamento_primeiro', type: 'text' },\n  sales__principal_meio_de_comunicacao_utilizado_para_realizar_o_agendamento: { col: 'sales_principal_meio_de_comunicacao_utilizado_para_realizar_o_a', type: 'text' },\n  o_decisor_participou_da_reuniao_:                  { col: 'o_decisor_participou_da_reuniao', type: 'text' },\n  sales____de_chance_de_fechamento_:                 { col: 'sales_de_chance_de_fechamento', type: 'text' },\n  sales__feedback_do_produto:                        { col: 'sales_feedback_do_produto', type: 'text' },\n  sales__quando_pretende_ter_essa_dor_resolvida:     { col: 'sales_quando_pretende_ter_essa_dor_resolvida', type: 'text' },\n  amount:                                            { col: 'amount', type: 'num' },\n  sales__budget___existe_orcamento_mapeado_para_sanar_essa_dor_: { col: 'sales_budget_existe_orcamento_mapeado_para_sanar_essa_dor', type: 'text' },\n  sales__processo_de_adesao__proximos_passos__pessoas_a_serem_envolvidas: { col: 'sales_processo_de_adesao_proximos_passos_pessoas_a_serem_envolv', type: 'text' },\n  sales__proximos_passos:                            { col: 'sales_proximos_passos', type: 'text' },\n  motivo_de_ganho:                                   { col: 'motivo_de_ganho', type: 'text' }\n};\n\n// colunas alvo + json\nconst cols = Object.values(map).map(m => m.col).concat('json');\nconst quotedCols = cols.map(c => `\"${c}\"`).join(', ');\n\n// expressões SELECT conforme tipo (lendo do JSON p)\nconst selectExprs = Object.entries(map).map(([internal, spec]) => {\n  if (spec.type === 'num') return `NULLIF(p->>'${internal}', '')::numeric`;\n  if (spec.type === 'ts')  return `NULLIF(p->>'${internal}', '')::timestamp`;\n  return `NULLIF(p->>'${internal}', '')`;\n});\nselectExprs.push('p'); // json\n\n// SET para o upsert (não atualiza a PK)\nconst updateSet = cols\n  .filter(c => c !== 'hs_object_id')\n  .map(c => `\"${c}\" = EXCLUDED.\"${c}\"`)\n  .join(', ');\n\n// JSON payload, usando dollar-quote para evitar escapar aspas\nconst json = JSON.stringify(payload);\n\nconst query = `\nWITH src AS (\n  SELECT $json$${json}$json$::jsonb AS j\n),\nrows AS (\n  SELECT jsonb_array_elements(j) AS p FROM src\n),\nins AS (\n  INSERT INTO ${table} (${quotedCols})\n  SELECT\n    ${selectExprs.join(',\\n    ')}\n  FROM rows\n  ON CONFLICT (hs_object_id) DO UPDATE SET\n    ${updateSet}\n  RETURNING 1\n)\nSELECT COUNT(*) AS upserted FROM ins;\n`;\n\nreturn [{ json: { query, rows: results.length } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        -96
+      ],
+      "id": "b17ad28f-d8fd-4fbc-96be-bd9cf68bd8f5",
+      "name": "Create Query"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "109df12f-d500-4d9b-8e6e-7a5b2341070e",
+              "name": "MaxModified",
+              "value": "={{ Math.max(0, ...(($node[\"Get Deals\"].json.results || [])\n  .map(r => Date.parse(r?.properties?.hs_lastmodifieddate ?? ''))\n  .filter(Number.isFinite))) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1456,
+        -96
+      ],
+      "id": "974c8bd0-9507-4f65-856d-1850d42bcc9d",
+      "name": "SetMaxId"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COALESCE(\n  (EXTRACT(EPOCH FROM (MAX(hs_lastmodifieddate) AT TIME ZONE 'UTC')) * 1000)::bigint,\n  0\n) AS max_hs_lastmodified_ms\nFROM public.deals;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        96,
+        0
+      ],
+      "id": "9e9cf42b-4839-4ce1-bff3-e22824db1410",
+      "name": "Get max ModifiedDate",
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -96,
+        0
+      ],
+      "id": "d6d395b4-3e3e-4851-8a06-3168fd411b36",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create Query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "SetMaxId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Deals": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Query": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetMaxId": {
+      "main": [
+        [
+          {
+            "node": "Get Deals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get max ModifiedDate": {
+      "main": [
+        [
+          {
+            "node": "Get Deals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get max ModifiedDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bf0b5f66-db0f-447f-852e-476364bcc7f8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "009bf82dd862644b5fef7326744195bc66d4211f55bbcc41b7a18866c52b1415"
+  },
+  "id": "EkvVZZKAx9oOT4wq",
+  "tags": []
+}
