@@ -1,0 +1,171 @@
+{
+  "name": "n8n Data Collector Grafana (Fixed)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "value": 5
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Cron Trigger (5min)",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [144, 144]
+    },
+    {
+      "parameters": {
+        "url": "https://n8n-logcomex.34-8-101-220.nip.io/api/v1/workflows",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "active",
+              "value": "true"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-workflows",
+      "name": "Get Workflows",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [384, 144],
+      "credentials": {
+        "n8nApi": {
+          "id": "RAYlVI4xKLRSfinf",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://n8n-logcomex.34-8-101-220.nip.io/api/v1/executions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "n8nApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "includeData",
+              "value": "false"
+            },
+            {
+              "name": "limit",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-executions",
+      "name": "Get Executions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [624, 144],
+      "credentials": {
+        "n8nApi": {
+          "id": "RAYlVI4xKLRSfinf",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "// Processar execuções com mapeamento de workflows\nconst workflowsData = $input.first().json;\nconst executionsData = $input.last().json;\n\n// Debug: Log dos dados recebidos\nconsole.log('Workflows data:', JSON.stringify(workflowsData, null, 2));\nconsole.log('Executions data:', JSON.stringify(executionsData, null, 2));\n\n// Criar mapa de workflows por ID\nconst workflowMap = {};\nif (workflowsData.data && Array.isArray(workflowsData.data)) {\n  for (const workflow of workflowsData.data) {\n    workflowMap[workflow.id] = {\n      name: workflow.name,\n      active: workflow.active\n    };\n  }\n}\n\nconsole.log('Workflow map:', workflowMap);\n\n// Processar execuções (filtrar últimas 5 minutos)\nconst executions = executionsData.data || [];\nconst fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);\nconst recentExecutions = executions.filter(exec => {\n  const execDate = new Date(exec.startedAt || exec.createdAt);\n  return execDate >= fiveMinutesAgo;\n});\n\nconsole.log('Recent executions count:', recentExecutions.length);\n\nconst metrics = [];\nconst workflowStats = {};\n\nfor (const execution of recentExecutions) {\n  const workflowId = execution.workflowId;\n  const workflowInfo = workflowMap[workflowId] || { name: `workflow-${workflowId}`, active: false };\n  const workflowName = workflowInfo.name.replace(/[^a-zA-Z0-9_-]/g, '_');\n  const status = execution.status;\n  \n  // Calcular duração manualmente se não existir\n  let duration = 0;\n  if (execution.duration) {\n    duration = execution.duration;\n  } else if (execution.startedAt && execution.stoppedAt) {\n    const start = new Date(execution.startedAt);\n    const stop = new Date(execution.stoppedAt);\n    duration = stop.getTime() - start.getTime();\n  }\n  \n  console.log(`Execution ${execution.id}: workflow=${workflowId}, status=${status}, duration=${duration}ms`);\n  \n  if (!workflowStats[workflowId]) {\n    workflowStats[workflowId] = {\n      name: workflowName,\n      total: 0,\n      success: 0,\n      error: 0,\n      totalDuration: 0,\n      durations: []\n    };\n  }\n  \n  workflowStats[workflowId].total++;\n  workflowStats[workflowId].totalDuration += duration;\n  if (duration > 0) {\n    workflowStats[workflowId].durations.push(duration);\n  }\n  \n  if (status === 'success') {\n    workflowStats[workflowId].success++;\n  } else {\n    workflowStats[workflowId].error++;\n  }\n}\n\nconsole.log('Workflow stats:', workflowStats);\n\n// Criar métricas no formato Prometheus\nfor (const [workflowId, stats] of Object.entries(workflowStats)) {\n  // Métricas de execução\n  metrics.push({\n    metric: 'n8n_execution_total',\n    labels: {\n      workflow_id: workflowId,\n      workflow_name: stats.name,\n      status: 'success'\n    },\n    value: stats.success\n  });\n  \n  metrics.push({\n    metric: 'n8n_execution_total',\n    labels: {\n      workflow_id: workflowId,\n      workflow_name: stats.name,\n      status: 'error'\n    },\n    value: stats.error\n  });\n  \n  // Métricas de duração (média)\n  if (stats.total > 0) {\n    const avgDuration = stats.totalDuration / stats.total;\n    metrics.push({\n      metric: 'n8n_execution_duration_seconds',\n      labels: {\n        workflow_id: workflowId,\n        workflow_name: stats.name\n      },\n      value: avgDuration / 1000 // Converter ms para segundos\n    });\n    \n    // P95 e P99 latência\n    const sortedDurations = stats.durations.sort((a, b) => a - b);\n    const p95Index = Math.ceil(sortedDurations.length * 0.95) - 1;\n    const p99Index = Math.ceil(sortedDurations.length * 0.99) - 1;\n    \n    if (p95Index >= 0) {\n      metrics.push({\n        metric: 'n8n_execution_duration_p95_seconds',\n        labels: {\n          workflow_id: workflowId,\n          workflow_name: stats.name\n        },\n        value: sortedDurations[p95Index] / 1000\n      });\n    }\n    \n    if (p99Index >= 0) {\n      metrics.push({\n        metric: 'n8n_execution_duration_p99_seconds',\n        labels: {\n          workflow_id: workflowId,\n          workflow_name: stats.name\n        },\n        value: sortedDurations[p99Index] / 1000\n      });\n    }\n  }\n  \n  // Taxa de sucesso\n  if (stats.total > 0) {\n    const successRate = (stats.success / stats.total) * 100;\n    metrics.push({\n      metric: 'n8n_execution_success_rate',\n      labels: {\n        workflow_id: workflowId,\n        workflow_name: stats.name\n      },\n      value: successRate\n    });\n  }\n  \n  // Throughput (execuções por minuto)\n  const throughput = (stats.total / 5) * 60; // 5 minutos de coleta\n  metrics.push({\n    metric: 'n8n_execution_throughput_per_minute',\n    labels: {\n      workflow_id: workflowId,\n      workflow_name: stats.name\n    },\n    value: throughput\n  });\n}\n\n// Adicionar métricas globais\nconst totalExecutions = Object.values(workflowStats).reduce((sum, stats) => sum + stats.total, 0);\nconst totalSuccess = Object.values(workflowStats).reduce((sum, stats) => sum + stats.success, 0);\nconst totalError = Object.values(workflowStats).reduce((sum, stats) => sum + stats.error, 0);\n\nmetrics.push({\n  metric: 'n8n_total_executions',\n  labels: {},\n  value: totalExecutions\n});\n\nmetrics.push({\n  metric: 'n8n_total_success',\n  labels: {},\n  value: totalSuccess\n});\n\nmetrics.push({\n  metric: 'n8n_total_errors',\n  labels: {},\n  value: totalError\n});\n\nif (totalExecutions > 0) {\n  const globalSuccessRate = (totalSuccess / totalExecutions) * 100;\n  metrics.push({\n    metric: 'n8n_global_success_rate',\n    labels: {},\n    value: globalSuccessRate\n  });\n  \n  const globalThroughput = (totalExecutions / 5) * 60;\n  metrics.push({\n    metric: 'n8n_global_throughput_per_minute',\n    labels: {},\n    value: globalThroughput\n  });\n}\n\nreturn metrics.map(m => ({ json: m }));"
+      },
+      "id": "process-metrics",
+      "name": "Process Metrics (Enhanced)",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [864, 144]
+    },
+    {
+      "parameters": {
+        "url": "http://pushgateway-service.monitoring-new.svc.cluster.local:9091/metrics/job/n8n-metrics",
+        "sendBody": true,
+        "bodyContentType": "raw",
+        "body": "={{ $json.metric }}{workflow_id=\"{{ $json.labels.workflow_id }}\",workflow_name=\"{{ $json.labels.workflow_name }}\",status=\"{{ $json.labels.status }}\"} {{ $json.value }}\n",
+        "options": {
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "timeout": 5000
+        }
+      },
+      "id": "send-to-pushgateway",
+      "name": "Send to Push Gateway",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1104, 144]
+    }
+  ],
+  "connections": {
+    "Cron Trigger (5min)": {
+      "main": [
+        [
+          {
+            "node": "Get Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflows": {
+      "main": [
+        [
+          {
+            "node": "Get Executions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Executions (Last 5min)": {
+      "main": [
+        [
+          {
+            "node": "Process Metrics (Enhanced)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Metrics (Enhanced)": {
+      "main": [
+        [
+          {
+            "node": "Send to Push Gateway",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "n8n-data-collector-grafana-fixed",
+  "tags": []
+}

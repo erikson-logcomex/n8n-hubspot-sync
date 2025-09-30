@@ -1,0 +1,600 @@
+{
+  "name": "Get last modified contacts [batch 20min]",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT hs_internal_name, column_db, data_type, sync_enabled FROM public.hubspot_properties WHERE hs_object = 'contacts' AND sync_enabled = true ORDER BY hs_internal_name",
+        "options": {}
+      },
+      "id": "a29ddcce-db61-436a-8e8e-57948b7e02b4",
+      "name": "Get HubSpot Properties",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        -2896,
+        -144
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Construir lista de propriedades para o HubSpot\nconst properties = [];\nconst dataTypeMapping = {\n  'text': 'string',\n  'ts': 'datetime',\n  'num': 'number',\n  'bool': 'boolean'\n};\n\nfor (const item of $input.all()) {\n  const property = item.json.hs_internal_name;\n  const dataType = item.json.data_type;\n  \n  // Mapear tipos de dados do banco para HubSpot\n  const hubspotType = dataTypeMapping[dataType] || 'string';\n  \n  properties.push(property);\n}\n\n// Adicionar propriedades obrigatórias\nconst requiredProperties = ['hs_object_id', 'lastmodifieddate'];\nfor (const prop of requiredProperties) {\n  if (!properties.includes(prop)) {\n    properties.push(prop);\n  }\n}\n\nreturn {\n  properties: properties,\n  propertiesList: properties.join(','),\n  propertiesArray: properties,\n  totalProperties: properties.length\n};"
+      },
+      "id": "d6668eb6-e289-4fe0-a811-755f3671e8d4",
+      "name": "Build Properties List",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2672,
+        -144
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hubapi.com/crm/v3/objects/contacts/search",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "hubspotAppToken",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"limit\": 100,\n  \"sorts\": [{ \"propertyName\": \"lastmodifieddate\", \"direction\": \"ASCENDING\" }],\n  \"properties\": {{ JSON.stringify($('Build Properties List').last().json.propertiesArray) }},\n  \"filterGroups\": [{\n    \"filters\": [\n      { \"propertyName\": \"lastmodifieddate\", \"operator\": \"GTE\", \"value\": \"{{ String( $json.last_sync_date ? Math.floor(new Date($json.last_sync_date).getTime() * 1) : '' ) }}\" }\n    ]\n  }]\n}\n",
+        "options": {}
+      },
+      "id": "972c6b49-1a65-4d25-bb1d-c2f3cab1de37",
+      "name": "HubSpot Search Contacts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2224,
+        -224
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "YwRTwETOCgfX3IpP",
+          "name": "HubSpot App Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT max(lastmodifieddate) as last_sync_date FROM public.contacts",
+        "options": {}
+      },
+      "id": "6426c9d1-3bc2-4232-9d13-788bec26f059",
+      "name": "Get Last Sync",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        -2448,
+        -144
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Processar resposta do HubSpot e preparar dados para inserção\nconst contacts = [];\nconst properties = $('Build Properties List').last().json.properties;\n\n// O HubSpot retorna um objeto com 'total' e 'results'\nconst hubspotResponse = $input.last().json;\nconst contactResults = hubspotResponse.results || [];\n\nfor (const contact of contactResults) {\n  const processedContact = {\n    hs_object_id: contact.id,\n    lastmodifieddate: contact.properties.lastmodifieddate\n  };\n  \n  // Mapear todas as propriedades dinamicamente\n  for (const prop of properties) {\n    const value = contact.properties[prop];\n    \n    // Converter tipos de dados conforme necessário\n    if (prop === 'createdate' || prop === 'lastmodifieddate' || prop === 'notes_last_contacted') {\n      processedContact[prop] = value ? new Date(value).toISOString() : null;\n    } else if (prop === 'hubspot_owner_id') {\n      processedContact[prop] = value ? parseInt(value) : null;\n    } else {\n      processedContact[prop] = value || null;\n    }\n  }\n  \n  // Adicionar campos de sistema\n  processedContact.created_at = new Date().toISOString();\n  processedContact.updated_at = new Date().toISOString();\n  processedContact.sync_status = 'active';\n  processedContact.hubspot_raw_data = JSON.stringify(contact);\n  \n  contacts.push(processedContact);\n}\n\nreturn contacts.map(contact => ({ json: contact }));"
+      },
+      "id": "45a479e6-b559-4069-8b41-fd272024b263",
+      "name": "Process Contacts Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2000,
+        -224
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT DISTINCT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'contacts'",
+        "options": {}
+      },
+      "id": "a5805177-9d82-4ec1-b6c5-fc3f4148a48a",
+      "name": "Check Table Columns",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        -1552,
+        -224
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Verificar se todas as colunas necessárias existem\nconst existingColumns = $('Check Table Columns').all().map(item => item.json.column_name);\nconst requiredColumns = $('Build Properties List').last().json.properties;\n\nconst missingColumns = [];\nconst columnDefinitions = [];\n\n// Buscar definições das colunas faltantes\nfor (const prop of requiredColumns) {\n  if (!existingColumns.includes(prop)) {\n    missingColumns.push(prop);\n    \n    // Buscar definição da coluna na tabela hubspot_properties\n    const propertyDef = $('Get HubSpot Properties').all().find(item => item.json.hs_internal_name === prop);\n    \n    if (propertyDef) {\n      const dataType = propertyDef.json.data_type;\n      let sqlType = 'VARCHAR(500)';\n      \n      // Mapear tipos de dados\n      switch (dataType) {\n        case 'ts':\n          sqlType = 'TIMESTAMP';\n          break;\n        case 'num':\n          sqlType = 'INTEGER';\n          break;\n        case 'bool':\n          sqlType = 'BOOLEAN';\n          break;\n        case 'text':\n        default:\n          sqlType = 'VARCHAR(500)';\n          break;\n      }\n      \n      columnDefinitions.push({\n        column_name: prop,\n        sql_type: sqlType,\n        data_type: dataType\n      });\n    }\n  }\n}\n\nreturn {\n  missing_columns: missingColumns,\n  column_definitions: columnDefinitions,\n  has_missing_columns: missingColumns.length > 0,\n  total_missing: missingColumns.length\n};"
+      },
+      "id": "e5a26b5c-d5a6-4129-a02b-b94e72bc86e3",
+      "name": "Validate Columns",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1328,
+        -224
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "condition-1",
+              "leftValue": "={{ $json.has_missing_columns }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equal"
+              }
+            },
+            {
+              "id": "b8195995-b8db-4c4e-9364-bcb15abe51d2",
+              "leftValue": "={{ $json.total_missing }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7332b08a-0929-4255-8962-9082f89f6010",
+      "name": "Check Missing Columns",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -1104,
+        -224
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Gerar comandos SQL para criar colunas faltantes\nconst columnDefinitions = $json.column_definitions;\nconst sqlCommands = [];\n\nfor (const col of columnDefinitions) {\n  const sql = `ALTER TABLE public.contacts ADD COLUMN IF NOT EXISTS ${col.column_name} ${col.sql_type};`;\n  sqlCommands.push(sql);\n}\n\nreturn sqlCommands.map(sql => ({ json: { sql_command: sql } }));"
+      },
+      "id": "4d33df27-8cba-4a10-a8c7-ee64f6f3116f",
+      "name": "Generate SQL Commands",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        -288
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.sql_command }}",
+        "options": {}
+      },
+      "id": "142dd5d6-1a40-46e0-ab1d-2387ca6f4b9b",
+      "name": "Create Missing Columns",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        -656,
+        -288
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar dados para upsert em lote usando propriedades do banco\nconst contacts = $('Aggregate').last().json.data;\n\n// Buscar propriedades do nó \"Build Properties List\" (que vem do banco)\nconst propertiesData = $('Build Properties List').last().json;\nconst properties = propertiesData.propertiesArray;\n\n// Remover hs_object_id do array properties se existir (evitar duplicata)\nconst cleanProperties = properties.filter(prop => prop !== 'hs_object_id');\n\n// Construir query de upsert em lote\nconst columns = ['hs_object_id', ...cleanProperties, 'created_at', 'updated_at', 'sync_status', 'hubspot_raw_data'];\n\n// Construir VALUES para múltiplos registros\nconst valuesClauses = [];\n\nfor (const contact of contacts) {\n  const contactData = contact;\n  const contactValues = [];\n  \n  for (const col of columns) {\n    const value = contactData[col];\n    contactValues.push(value !== undefined ? value : null);\n  }\n  \n  // Criar valores diretos com tratamento correto de tipos\n  const valuesString = contactValues.map((val, index) => {\n    if (val === null) return 'NULL';\n    \n    // hs_object_id deve ser integer\n    if (columns[index] === 'hs_object_id') {\n      return parseInt(val) || 0;\n    }\n    \n    // Strings com escape correto\n    if (typeof val === 'string') {\n      return `'${val.replace(/'/g, \"''\")}'`;\n    }\n    \n    // Datas\n    if (val instanceof Date) {\n      return `'${val.toISOString()}'`;\n    }\n    \n    // Números\n    if (typeof val === 'number') {\n      return val;\n    }\n    \n    return val;\n  }).join(', ');\n  \n  valuesClauses.push(`(${valuesString})`);\n}\n\n// Construir query final\nconst updateSet = cleanProperties.map(prop => `${prop} = EXCLUDED.${prop}`).join(', ');\nconst updateSetFull = `${updateSet}, updated_at = EXCLUDED.updated_at, sync_status = EXCLUDED.sync_status, hubspot_raw_data = EXCLUDED.hubspot_raw_data`;\n\nconst upsertQuery = `\n  INSERT INTO public.contacts (${columns.join(', ')})\n  VALUES ${valuesClauses.join(', ')}\n  ON CONFLICT (hs_object_id)\n  DO UPDATE SET ${updateSetFull}\n`;\n\nreturn [{\n  json: {\n    query: upsertQuery,\n    totalContacts: contacts.length,\n    propertiesUsed: cleanProperties,\n    totalProperties: cleanProperties.length\n  }\n}];"
+      },
+      "id": "e52321ce-8ba6-47ae-9569-c866fb47aa84",
+      "name": "Prepare Upsert Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -432,
+        -224
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ $json.query }}",
+        "options": {}
+      },
+      "id": "b0502dc0-2d7e-494a-a90e-7559dace1369",
+      "name": "Upsert Contacts",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        -208,
+        -224
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.sync_status\n(object_type, sync_start_time, status, created_at, updated_at, columns_created)\nVALUES\n('contacts', NOW(), 'completed', NOW(), NOW(), {{ $('Check Missing Columns').last().json.total_missing || 0 }})\n  \n  ",
+        "options": {}
+      },
+      "id": "8854bb84-6547-4a12-8f8c-2031879cd561",
+      "name": "Update Sync Status",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        576,
+        -240
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "tNfNIsNQktRTNMfJ",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "1856d2c9-7f4d-42c0-a2f8-12459f986d8c",
+      "name": "Wait Before Next Batch",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        656,
+        -48
+      ],
+      "webhookId": "0b1087d2-1139-4d7c-8725-d79368bd6f66"
+    },
+    {
+      "parameters": {
+        "content": "## 🎉 Sincronização de Contatos Concluída!\n\n**📊 Estatísticas:**\n- **Contatos processados:** {{ $json.total_contacts_processed }}\n- **Propriedades sincronizadas:** {{ $json.properties_synced }}\n- **Colunas criadas:** {{ $json.missing_columns_created }}\n- **Timestamp:** {{ $json.sync_timestamp }}\n- **Próximo batch:** {{ $json.has_more_data ? 'Sim' : 'Não' }}\n\n**🔄 Status:** Sincronização concluída com sucesso!",
+        "height": 288,
+        "width": 512
+      },
+      "id": "fcc1cf2c-8497-43d9-9a23-dc737336d3a5",
+      "name": "Success Notification",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1264,
+        -704
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1776,
+        -224
+      ],
+      "id": "b25e77a0-5716-417a-afe7-f24fe04f6fd1",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16e159a9-0e48-4953-aec9-c155a6daea8d",
+              "leftValue": "={{ $('HubSpot Search Contacts').last().json.total }}",
+              "rightValue": 200,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "954b7329-ed91-41a7-9a2d-fd8db2b87c16",
+              "leftValue": "={{ parseInt($runIndex) }}",
+              "rightValue": "=30",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        -224
+      ],
+      "id": "9214d482-f328-4573-b373-5c3223c855a0",
+      "name": "Check More Data"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -3120,
+        -144
+      ],
+      "id": "d1e552a6-8313-45b0-83b0-1aa61fd5a56d",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get HubSpot Properties": {
+      "main": [
+        [
+          {
+            "node": "Build Properties List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Properties List": {
+      "main": [
+        [
+          {
+            "node": "Get Last Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Last Sync": {
+      "main": [
+        [
+          {
+            "node": "HubSpot Search Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot Search Contacts": {
+      "main": [
+        [
+          {
+            "node": "Process Contacts Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Contacts Data": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Table Columns": {
+      "main": [
+        [
+          {
+            "node": "Validate Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Columns": {
+      "main": [
+        [
+          {
+            "node": "Check Missing Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Missing Columns": {
+      "main": [
+        [
+          {
+            "node": "Generate SQL Commands",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Upsert Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate SQL Commands": {
+      "main": [
+        [
+          {
+            "node": "Create Missing Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Missing Columns": {
+      "main": [
+        [
+          {
+            "node": "Prepare Upsert Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Upsert Data": {
+      "main": [
+        [
+          {
+            "node": "Upsert Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Contacts": {
+      "main": [
+        [
+          {
+            "node": "Check More Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Sync Status": {
+      "main": [
+        []
+      ]
+    },
+    "Wait Before Next Batch": {
+      "main": [
+        [
+          {
+            "node": "Get Last Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Check Table Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check More Data": {
+      "main": [
+        [
+          {
+            "node": "Wait Before Next Batch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Sync Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get HubSpot Properties",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "275cefb1-675c-4125-8feb-63c1d5775581",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "009bf82dd862644b5fef7326744195bc66d4211f55bbcc41b7a18866c52b1415"
+  },
+  "id": "egWL3bsVvXh4KYmr",
+  "tags": [
+    {
+      "createdAt": "2025-09-29T14:42:42.003Z",
+      "updatedAt": "2025-09-29T14:42:42.003Z",
+      "id": "VYMiMJMXGFtJjYv6",
+      "name": "HubSpot Sync"
+    },
+    {
+      "createdAt": "2025-09-29T14:42:42.003Z",
+      "updatedAt": "2025-09-29T14:42:42.003Z",
+      "id": "sCCRVw95GNVqkuWc",
+      "name": "Contacts"
+    }
+  ]
+}
