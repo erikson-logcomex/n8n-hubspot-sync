@@ -23,15 +23,10 @@ Sistema completo de automação, análise e monitoramento baseado em Kubernetes 
 
 ```
 📦 PROJETO
-├── clusters/
-│   ├── n8n-cluster/
-│   │   ├── production/          # Configurações de produção
-│   │   └── staging/             # Configurações de staging
-│   ├── metabase-cluster/
-│   │   └── production/          # Configurações do Metabase
-│   └── monitoring-cluster/
-│       ├── production/          # Monitoramento de produção
-│       └── staging/            # Monitoramento de staging
+├── n8n-deployment.yaml          # Deploy principal N8N (3 replicas, 350m CPU, 1228Mi RAM)
+├── n8n-worker-deployment.yaml   # Deploy workers N8N (3 replicas, 450m CPU, 1843Mi RAM)
+├── prometheus-config.yaml       # Configuração Prometheus com Push Gateway
+├── workflows/                   # Workflows N8N exportados
 ├── docs/                        # Documentação técnica
 ├── scripts/                     # Scripts de automação
 └── README.md                   # Este arquivo
@@ -41,10 +36,17 @@ Sistema completo de automação, análise e monitoramento baseado em Kubernetes 
 
 ### **1. N8N-CLUSTER** 🤖
 **Função:** Automação de workflows e integrações
-- **n8n**: Plataforma de automação
+- **n8n**: Plataforma de automação (3 replicas, 350m CPU, 1228Mi RAM)
+- **n8n-workers**: Processamento de workflows (3 replicas, 450m CPU, 1843Mi RAM)
 - **Redis**: Queue de processamento
 - **PostgreSQL**: Banco de dados principal
 - **URL**: `https://n8n-logcomex.34-8-101-220.nip.io`
+
+#### **📊 Configuração de Recursos Otimizada:**
+- **Total CPU**: 3.1 CPU (de 3.92 disponíveis) - 79% utilização
+- **Total Memory**: 10.5Gi (de 13.59 disponíveis) - 77% utilização
+- **Margem de segurança**: 21% CPU + 23% memória
+- **Requests = Limits**: Otimizado para instância fixa e2-standard-4
 
 ### **2. METABASE-CLUSTER** 📊
 **Função:** Análise de dados e dashboards
