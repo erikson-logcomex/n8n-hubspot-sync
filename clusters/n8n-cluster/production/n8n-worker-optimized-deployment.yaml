@@ -4,36 +4,99 @@ metadata:
   name: n8n-worker
   namespace: n8n
   labels:
-    service: n8n-worker
+    app: n8n-worker
 spec:
-  replicas: 3  # Mantido em 3 réplicas
+  replicas: 3
   selector:
     matchLabels:
-      service: n8n-worker
+      app: n8n-worker
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
-        service: n8n-worker
+        app: n8n-worker
     spec:
       containers:
       - name: worker
-        image: docker.n8n.io/n8nio/n8n:1.107.3
+        image: docker.n8n.io/n8nio/n8n:1.123.9
+        imagePullPolicy: IfNotPresent
         command: ["n8n"]
         args: ["worker"]
         env:
-        - name: DB_TYPE
-          value: postgresdb
         - name: N8N_METRICS
           value: "true"
         - name: N8N_METRICS_PREFIX
           value: n8n_
         - name: N8N_METRICS_ENDPOINT
           value: /metrics
+        - name: N8N_METRICS_INCLUDE_DEFAULT_METRICS
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_QUEUE_METRICS
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_WORKFLOW_ID_LABEL
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_WORKFLOW_NAME_LABEL
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_NODE_TYPE_LABEL
+          value: "false"
+        - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+          value: "true"
+        - name: N8N_RUNNERS_ENABLED
+          value: "true"
+        - name: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
+          value: "true"
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PASSWORD
+              name: redis-auth
+        - name: NODE_OPTIONS
+          value: --max-old-space-size=3072 --expose-gc
+        - name: NODE_ENV
+          value: production
+        - name: V8_FORCE_GC
+          value: "1"
+        - name: N8N_EXECUTION_TIMEOUT
+          value: "7200"
+        - name: N8N_EXECUTE_IN_PROCESS
+          value: "false"
+        - name: EXECUTIONS_DATA_PRUNE
+          value: "true"
+        - name: EXECUTIONS_DATA_MAX_AGE
+          value: "1"
+        - name: EXECUTIONS_MODE
+          value: queue
+        - name: QUEUE_BULL_REDIS_HOST
+          value: redis-master.n8n.svc.cluster.local
+        - name: QUEUE_BULL_REDIS_PORT
+          value: "6379"
+        - name: QUEUE_BULL_REDIS_DB
+          value: "0"
+        - name: QUEUE_BULL_REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PASSWORD
+              name: redis-auth
+        - name: N8N_REDIS_HOST
+          value: redis-master.n8n.svc.cluster.local
+        - name: N8N_REDIS_PORT
+          value: "6379"
+        - name: N8N_REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: REDIS_PASSWORD
+              name: redis-auth
+        - name: N8N_ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              key: N8N_ENCRYPTION_KEY
+              name: n8n-encryption
+        - name: DB_TYPE
+          value: postgresdb
         - name: DB_POSTGRESDB_HOST
           value: 172.23.64.3
         - name: DB_POSTGRESDB_PORT
@@ -51,65 +114,31 @@ spec:
               key: POSTGRES_NON_ROOT_PASSWORD
               name: postgres-secret
         - name: DB_POSTGRESDB_CONNECTION_TIMEOUT
-          value: "120000"
+          value: "30000"
         - name: DB_POSTGRESDB_POOL_SIZE
-          value: "2"
+          value: "3"
         - name: DB_POSTGRESDB_IDLE_CONNECTION_TIMEOUT
-          value: "60000"
+          value: "300000"
+        - name: N8N_CONCURRENCY
+          value: "3"
+        - name: DB_POSTGRESDB_SSL_ENABLED
+          value: "true"
+        - name: DB_POSTGRESDB_SSL_MODE
+          value: "require"
+        - name: DB_POSTGRESDB_SSL_CA_FILE
+          value: /etc/postgresql/certs/server-ca.pem
+        - name: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+          value: "false"
+        - name: NODE_EXTRA_CA_CERTS
+          value: /etc/postgresql/certs/server-ca.pem
         - name: N8N_PROTOCOL
           value: https
         - name: N8N_HOST
           value: n8n-logcomex.34-8-101-220.nip.io
-        - name: N8N_SECURE_COOKIE
-          value: "true"
-        - name: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
-          value: "true"
-        - name: N8N_TRUSTED_PROXIES
-          value: redis-master.n8n.svc.cluster.local
-        - name: EXECUTIONS_MODE
-          value: queue
-        - name: QUEUE_BULL_REDIS_HOST
-          value: redis-master.n8n.svc.cluster.local
-        - name: QUEUE_BULL_REDIS_PORT
-          value: "6379"
-        - name: N8N_RUNNERS_ENABLED
-          value: "true"
-        - name: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
-          value: "true"
-        - name: N8N_ENCRYPTION_KEY
-          valueFrom:
-            secretKeyRef:
-              key: N8N_ENCRYPTION_KEY
-              name: n8n-encryption
-        - name: N8N_EXECUTIONS_MODE
-          value: queue
-        - name: QUEUE_BULL_REDIS_DB
-          value: "0"
-        - name: N8N_REDIS_HOST
-          value: redis-master.n8n.svc.cluster.local
-        - name: N8N_REDIS_PORT
-          value: "6379"
-        - name: REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: REDIS_PASSWORD
-              name: redis-auth
-        - name: N8N_REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: REDIS_PASSWORD
-              name: redis-auth
-        - name: QUEUE_BULL_REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: REDIS_PASSWORD
-              name: redis-auth
         - name: N8N_WEBHOOK_URL
           value: https://n8n-logcomex.34-8-101-220.nip.io
         - name: N8N_EDITOR_BASE_URL
           value: https://n8n-logcomex.34-8-101-220.nip.io
-        - name: N8N_PORT
-          value: "5678"
         - name: WEBHOOK_URL
           value: https://n8n-logcomex.34-8-101-220.nip.io
         - name: N8N_PUSH_BACKEND
@@ -118,31 +147,20 @@ spec:
           value: 0.0.0.0
         - name: N8N_PUSH_BACKEND_WEBSOCKET_HEARTBEAT_INTERVAL
           value: "30000"
+        - name: N8N_CUSTOM_EXTENSIONS
+          value: /home/node/.n8n/custom
+        ports:
+        - containerPort: 5678
+          protocol: TCP
         resources:
           requests:
-            cpu: 800m      # 0.8 vCPU por réplica
-            memory: 3Gi    # 3GB por réplica
+            cpu: 150m
+            memory: 1200Mi
           limits:
-            cpu: 800m      # 0.8 vCPU por réplica
-            memory: 3Gi    # 3GB por réplica
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 5678
-            scheme: HTTP
-          initialDelaySeconds: 120
-          periodSeconds: 20
-          timeoutSeconds: 1
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: 5678
-            scheme: HTTP
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
+            cpu: 300m
+            memory: 1600Mi
+        # Workers não expõem endpoint /healthz - removendo probes HTTP
+        # O Kubernetes monitora a saúde através do processo em execução
         securityContext:
           allowPrivilegeEscalation: false
           runAsNonRoot: true
@@ -152,7 +170,12 @@ spec:
             drop: ["ALL"]
           seccompProfile:
             type: RuntimeDefault
-        # Workers não precisam de volume persistente
+        volumeMounts:
+        - name: n8n-claim0
+          mountPath: /home/node/.n8n
+        - name: postgres-ssl-cert
+          mountPath: /etc/postgresql/certs
+          readOnly: true
       securityContext:
         fsGroup: 1000
         runAsGroup: 1000
@@ -160,5 +183,23 @@ spec:
         runAsUser: 1000
         seccompProfile:
           type: RuntimeDefault
+      nodeSelector:
+        cloud.google.com/gke-nodepool: pool-cpu4
+      volumes:
+      - name: n8n-claim0
+        persistentVolumeClaim:
+          claimName: n8n-claim0
+      - name: n8n-secret
+        secret:
+          defaultMode: 420
+          secretName: n8n-secret
+      - name: postgres-secret
+        secret:
+          defaultMode: 420
+          secretName: postgres-secret
+      - name: postgres-ssl-cert
+        configMap:
+          name: postgres-ssl-cert
+          defaultMode: 420
 
 

@@ -6,15 +6,15 @@ metadata:
   labels:
     service: n8n
 spec:
-  replicas: 2  # Aumentado de 1 para 2
+  replicas: 1
   selector:
     matchLabels:
       service: n8n
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
@@ -22,13 +22,20 @@ spec:
     spec:
       containers:
       - name: n8n
-        image: docker.n8n.io/n8nio/n8n:1.107.3
+        image: docker.n8n.io/n8nio/n8n:1.123.9
+        imagePullPolicy: IfNotPresent
         command: ["n8n"]
         args: ["start"]
         ports:
         - containerPort: 5678
           protocol: TCP
         env:
+        - name: NODE_FUNCTION_ALLOW_BUILTIN
+          value: '*'
+        - name: NODE_FUNCTION_ALLOW_EXTERNAL
+          value: '*'
+        - name: N8N_CUSTOM_EXTENSIONS
+          value: /home/node/.n8n/custom
         - name: DB_TYPE
           value: postgresdb
         - name: N8N_METRICS
@@ -37,6 +44,16 @@ spec:
           value: n8n_
         - name: N8N_METRICS_ENDPOINT
           value: /metrics
+        - name: N8N_METRICS_INCLUDE_DEFAULT_METRICS
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_QUEUE_METRICS
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_WORKFLOW_ID_LABEL
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_WORKFLOW_NAME_LABEL
+          value: "true"
+        - name: N8N_METRICS_INCLUDE_NODE_TYPE_LABEL
+          value: "false"
         - name: DB_POSTGRESDB_HOST
           value: 172.23.64.3
         - name: DB_POSTGRESDB_PORT
@@ -54,11 +71,21 @@ spec:
               key: POSTGRES_NON_ROOT_PASSWORD
               name: postgres-secret
         - name: DB_POSTGRESDB_CONNECTION_TIMEOUT
-          value: "120000"
+          value: "30000"
         - name: DB_POSTGRESDB_POOL_SIZE
-          value: "2"
+          value: "15"
         - name: DB_POSTGRESDB_IDLE_CONNECTION_TIMEOUT
-          value: "60000"
+          value: "300000"
+        - name: DB_POSTGRESDB_SSL_ENABLED
+          value: "true"
+        - name: DB_POSTGRESDB_SSL_MODE
+          value: "require"
+        - name: DB_POSTGRESDB_SSL_CA_FILE
+          value: /etc/postgresql/certs/server-ca.pem
+        - name: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+          value: "false"
+        - name: NODE_EXTRA_CA_CERTS
+          value: /etc/postgresql/certs/server-ca.pem
         - name: N8N_PROTOCOL
           value: https
         - name: N8N_HOST
@@ -121,13 +148,17 @@ spec:
           value: 0.0.0.0
         - name: N8N_PUSH_BACKEND_WEBSOCKET_HEARTBEAT_INTERVAL
           value: "30000"
+        - name: N8N_CACHE_TTL
+          value: "3600"
+        - name: N8N_CACHE_MAX_SIZE
+          value: "100"
         resources:
           requests:
-            cpu: 250m      # 0.25 vCPU por réplica
-            memory: 512Mi  # 512MB por réplica
+            cpu: 600m
+            memory: 1200Mi
           limits:
-            cpu: 250m      # 0.25 vCPU por réplica
-            memory: 512Mi  # 512MB por réplica
+            cpu: 800m
+            memory: 1500Mi
         livenessProbe:
           httpGet:
             path: /healthz
@@ -158,6 +189,12 @@ spec:
         volumeMounts:
         - name: n8n-claim0
           mountPath: /home/node/.n8n
+        - name: postgres-secret
+          mountPath: /home/node/.n8n/postgres
+          readOnly: true
+        - name: postgres-ssl-cert
+          mountPath: /etc/postgresql/certs
+          readOnly: true
       initContainers:
       - name: volume-permissions
         image: busybox:1.36
@@ -187,17 +224,19 @@ spec:
         runAsUser: 1000
         seccompProfile:
           type: RuntimeDefault
+      nodeSelector:
+        cloud.google.com/gke-nodepool: pool-cpu4
       volumes:
       - name: n8n-claim0
         persistentVolumeClaim:
           claimName: n8n-claim0
-      - name: n8n-secret
-        secret:
-          defaultMode: 420
-          secretName: n8n-secret
       - name: postgres-secret
         secret:
           defaultMode: 420
           secretName: postgres-secret
+      - name: postgres-ssl-cert
+        configMap:
+          name: postgres-ssl-cert
+          defaultMode: 420
 
 
