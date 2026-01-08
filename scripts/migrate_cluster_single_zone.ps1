@@ -75,3 +75,4 @@ Write-Host "4. Deletar cluster antigo (após confirmação)" -ForegroundColor Wh
 
 Write-Host "`n📊 Migração preparada em $(Get-Date)" -ForegroundColor Cyan
 
+

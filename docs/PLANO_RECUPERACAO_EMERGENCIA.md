@@ -138,3 +138,4 @@ kubectl apply -f backup_monitoring_20250925_134946/pvcs.yaml
 **Status:** Aguardando execução do plano de recuperação  
 **Próximo passo:** Criar node pool de emergência
 
+

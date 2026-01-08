@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: n8n-resource-quota
+  namespace: n8n
+spec:
+  hard:
+    requests.cpu: "2"
+    requests.memory: 4Gi
+    limits.cpu: "4"  
+    limits.memory: 8Gi
+    persistentvolumeclaims: "5"
+    pods: "10"
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: n8n-limit-range
+  namespace: n8n
+spec:
+  limits:
+  - default:
+      cpu: 500m
+      memory: 1Gi
+    defaultRequest:
+      cpu: 100m
+      memory: 256Mi
+    type: Container

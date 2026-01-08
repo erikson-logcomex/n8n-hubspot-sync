@@ -1,21 +1,21 @@
-# 🚀 ECOSSISTEMA LOGCOMEX - KUBERNETES
+# 🚀 LOGCOMEX SALES DATA PLATFORM (LSDP)
 
 ## 📋 **VISÃO GERAL**
-Sistema completo de automação, análise e monitoramento baseado em Kubernetes no Google Cloud Platform.
+Plataforma de dados comerciais em tempo real, baseada em Kubernetes no Google Cloud Platform, que espelha dados do HubSpot para PostgreSQL, eliminando limitações de API e fornecendo dashboards comerciais atualizados.
 
-## 🏗️ **ARQUITETURA DO ECOSSISTEMA**
+## 🏗️ **ARQUITETURA DO LSDP**
 
 ```
-🌐 ECOSSISTEMA LOGCOMEX
-├── n8n-cluster (Automação)
-│   ├── n8n (workflows)
-│   ├── Redis (queue)
-│   └── PostgreSQL (dados)
-├── metabase-cluster (Análise)
-│   └── Metabase (dashboards)
-└── monitoring-cluster (Observabilidade)
-    ├── Prometheus (métricas)
-    ├── Grafana (visualização)
+🌐 LOGCOMEX SALES DATA PLATFORM (LSDP)
+├── n8n-cluster (Sincronização de Dados)
+│   ├── n8n (25 workflows ativos)
+│   ├── Redis (queue de processamento)
+│   └── PostgreSQL (dados comerciais)
+├── metabase-cluster (Dashboards Comerciais)
+│   └── Metabase (análise de vendas)
+└── monitoring-cluster (Monitoramento Técnico)
+    ├── Prometheus (métricas de infra)
+    ├── Grafana (monitoramento)
     └── AlertManager (alertas)
 ```
 
@@ -23,23 +23,52 @@ Sistema completo de automação, análise e monitoramento baseado em Kubernetes 
 
 ```
 📦 PROJETO
+<<<<<<< Updated upstream
 ├── n8n-deployment.yaml          # Deploy principal N8N (3 replicas, 350m CPU, 1228Mi RAM)
 ├── n8n-worker-deployment.yaml   # Deploy workers N8N (3 replicas, 450m CPU, 1843Mi RAM)
 ├── prometheus-config.yaml       # Configuração Prometheus com Push Gateway
 ├── workflows/                   # Workflows N8N exportados
 ├── docs/                        # Documentação técnica
 ├── scripts/                     # Scripts de automação
+=======
+├── clusters/                    # ✅ Configurações Kubernetes (sincronizadas com GCP)
+│   ├── n8n-cluster/
+│   │   ├── production/          # ✅ Configurações de produção (sincronizado)
+│   │   └── staging/             # Configurações de staging
+│   ├── metabase-cluster/
+│   │   ├── production/          # ✅ Configurações do Metabase (sincronizado)
+│   │   └── staging/
+│   └── monitoring-cluster/
+│       ├── production/          # Monitoramento de produção
+│       └── staging/
+├── workflows/                   # ✅ 25 workflows do n8n (espelho exato)
+├── docs/                        # ✅ Documentação técnica completa
+├── scripts/                     # ✅ Scripts de automação e organização
+│   ├── organize-project.ps1    # 🆕 Organização e limpeza do projeto
+│   └── sync-with-gcp.ps1        # 🆕 Sincronização com GCP
+├── exports/                     # Backups e exports do GCP
+├── archive/                     # Arquivos arquivados
+├── config/                      # Configurações gerais
+├── certs/                       # Certificados SSL
+>>>>>>> Stashed changes
 └── README.md                   # Este arquivo
 ```
+
+**📋 Documentação de Estrutura:** [docs/ESTRUTURA_PROJETO.md](docs/ESTRUTURA_PROJETO.md)
 
 ## 🎯 **CLUSTERS**
 
 ### **1. N8N-CLUSTER** 🤖
+<<<<<<< Updated upstream
 **Função:** Automação de workflows e integrações
 - **n8n**: Plataforma de automação (3 replicas, 350m CPU, 1228Mi RAM)
 - **n8n-workers**: Processamento de workflows (3 replicas, 450m CPU, 1843Mi RAM)
+=======
+**Função:** Sincronização de dados comerciais HubSpot → PostgreSQL
+- **n8n**: 25 workflows de sincronização
+>>>>>>> Stashed changes
 - **Redis**: Queue de processamento
-- **PostgreSQL**: Banco de dados principal
+- **PostgreSQL**: Dados comerciais espelhados
 - **URL**: `https://n8n-logcomex.34-8-101-220.nip.io`
 
 #### **📊 Configuração de Recursos Otimizada:**
@@ -49,21 +78,34 @@ Sistema completo de automação, análise e monitoramento baseado em Kubernetes 
 - **Requests = Limits**: Otimizado para instância fixa e2-standard-4
 
 ### **2. METABASE-CLUSTER** 📊
-**Função:** Análise de dados e dashboards
-- **Metabase**: Plataforma de BI
-- **PostgreSQL**: Banco de dados analítico
-- **URL**: `https://metabase-logcomex.34-8-101-220.nip.io`
+**Função:** Dashboards comerciais e análise de vendas
+- **Metabase**: Dashboards de vendas em tempo real
+- **PostgreSQL**: Dados comerciais para análise
+- **URL**: `https://metabase.34.13.117.77.nip.io`
 
-### **3. MONITORING-CLUSTER** 📈
-**Função:** Observabilidade e monitoramento
-- **Prometheus**: Coleta de métricas
-- **Grafana**: Visualização e dashboards
-- **AlertManager**: Gerenciamento de alertas
+### **3. MONITORING-CLUSTER-OPTIMIZED** 📈
+**Função:** Monitoramento técnico da infraestrutura
+- **Prometheus**: Coleta de métricas de sistema
+- **Grafana**: Monitoramento de performance
+- **AlertManager**: Alertas de infraestrutura
 - **URLs**: 
-  - Prometheus: `https://prometheus-logcomex.34-39-161-97.nip.io`
-  - Grafana: `https://grafana-logcomex.34-39-178-152.nip.io`
+  - Prometheus: `https://prometheus-logcomex.35-186-250-84.nip.io`
+  - Grafana: `https://grafana-logcomex.34-8-167-169.nip.io`
 
 ## 🚀 **DEPLOYMENT**
+
+### **🔄 Sincronização com GCP**
+
+Antes de fazer deploy, sincronize os arquivos locais com o estado atual do GCP:
+
+```powershell
+# Sincronizar todos os clusters
+.\scripts\sync-with-gcp.ps1 -Cluster all
+
+# Sincronizar apenas um cluster específico
+.\scripts\sync-with-gcp.ps1 -Cluster n8n
+.\scripts\sync-with-gcp.ps1 -Cluster metabase
+```
 
 ### **N8N-CLUSTER**
 ```bash
@@ -117,10 +159,11 @@ kubectl get ingress -n monitoring-new
 - **n8n**: Workflow executions, CPU, Memory, Pod status
 - **Metabase**: Requests, CPU, Memory, Pod status
 - **Infraestrutura**: Node status, Cluster resources, Pod count
+- **Dados Comerciais**: Contatos sincronizados, Deals processados, Empresas atualizadas
 
 ### **Dashboards:**
-- **n8n Overview**: Métricas de automação
-- **Metabase Overview**: Métricas de análise
+- **n8n Overview**: Métricas de sincronização
+- **Metabase Overview**: Dashboards comerciais
 - **Infrastructure Overview**: Métricas de cluster
 
 ### **Alertas:**
@@ -128,6 +171,36 @@ kubectl get ingress -n monitoring-new
 - **High CPU**: > 80% por 5 minutos
 - **High Memory**: > 90% por 5 minutos
 - **Disk Space**: < 10% disponível
+
+## 🔄 **SINCRONIZAÇÃO DE DADOS COMERCIAIS**
+
+### **Espelho Perfeito:**
+- **Total de workflows**: 25 workflows
+- **Sincronização**: 100% com n8n em produção
+- **Categorias**:
+  - 🔄 Sincronização HubSpot (8 workflows)
+    - **Contatos**: 300k+ registros (nome, email, cargo, classificação Ravenna)
+    - **Empresas**: Dados corporativos (CNPJ, CNAE, score de crédito, faturamento)
+    - **Deals**: Pipeline completo (timeline, qualificação, valores)
+    - **Line Items**: Produtos e serviços (preços, margens, SKUs)
+    - **Owners**: Equipe comercial e responsabilidades
+  - 🔗 Associações (7 workflows) - Relacionamentos empresa-contato-deal
+  - 📦 Deals Realtime (3 workflows) - Atualização em tempo real
+  - 📊 Análise (2 workflows) - Score de crédito e métricas
+  - 📦 Itens de Linha (2 workflows) - Produtos e serviços
+  - 🔧 Diversos (3 workflows) - Utilitários e configurações
+
+### **Sincronização de Dados:**
+```bash
+# Listar workflows de sincronização
+kubectl exec -n n8n deployment/n8n -- n8n list:workflow
+
+# Baixar workflow específico
+kubectl exec -n n8n deployment/n8n -- n8n export:workflow --id=WORKFLOW_ID
+
+# Verificar dados sincronizados
+kubectl exec -n n8n deployment/n8n -- psql -h postgres-host -U user -d database -c "SELECT COUNT(*) FROM contacts;"
+```
 
 ## 🔄 **BACKUP E RECOVERY**
 
@@ -175,11 +248,11 @@ kubectl describe ingress n8n-ingress -n n8n
 ## 📈 **PERFORMANCE**
 
 ### **Recursos Atuais:**
-- **n8n**: 2 CPU, 4GB RAM
-- **Redis**: 1 CPU, 2GB RAM
-- **PostgreSQL**: 2 CPU, 4GB RAM
-- **Prometheus**: 1 CPU, 2GB RAM
-- **Grafana**: 0.5 CPU, 1GB RAM
+- **n8n**: 2 CPU, 4GB RAM (2 pods + 3 workers)
+- **Redis**: 1 CPU, 2GB RAM (StatefulSet)
+- **PostgreSQL**: Externo (Cloud SQL)
+- **Prometheus**: 1 CPU, 2GB RAM (2 nós)
+- **Grafana**: 0.5 CPU, 1GB RAM (2 nós)
 
 ### **Otimizações:**
 - **HPA**: Auto-scaling baseado em CPU/Memory
@@ -191,8 +264,8 @@ kubectl describe ingress n8n-ingress -n n8n
 ### **Produção:**
 - **n8n**: `https://n8n-logcomex.34-8-101-220.nip.io`
 - **Metabase**: `https://metabase.34.13.117.77.nip.io`
-- **Prometheus**: `https://prometheus-logcomex.34-39-161-97.nip.io`
-- **Grafana**: `https://grafana-logcomex.34-39-178-152.nip.io`
+- **Prometheus**: `https://prometheus-logcomex.35-186-250-84.nip.io`
+- **Grafana**: `https://grafana-logcomex.34-8-167-169.nip.io`
 
 ### **Credenciais:**
 - **n8n**: Configurado via setup inicial
@@ -201,14 +274,28 @@ kubectl describe ingress n8n-ingress -n n8n
 
 ## 📚 **DOCUMENTAÇÃO**
 
-### **Técnica:**
+### **📁 Estrutura e Organização:**
+- [Estrutura do Projeto](docs/ESTRUTURA_PROJETO.md) - 🆕 Organização completa do projeto
+- [Arquitetura Executiva](docs/ARQUITETURA_EXECUTIVA_ECOSSISTEMA.md) - Visão geral da arquitetura
+
+### **🔐 Segurança e SSL:**
+- [Guia de Implementação SSL](docs/GUIA_IMPLEMENTACAO_SSL_POSTGRES.md)
+- [Implementação SSL n8n](docs/SOLUCAO_SSL_CREDENCIAIS_N8N.md)
+- [Implementação SSL Evolution API](docs/IMPLEMENTACAO_SSL_EVOLUTION_API.md)
+- [Implementação SSL Metabase](docs/IMPLEMENTACAO_SSL_METABASE.md)
+- [Análise de Segurança](docs/ANALISE_SEGURANCA_PONTOS_CRITICOS.md)
+
+### **📊 Técnica:**
 - [Análise de Performance](docs/PERFORMANCE_ANALYSIS_22_09_2025.md)
 - [Melhores Práticas](docs/N8N_KUBERNETES_BEST_PRACTICES_ANALYSIS.md)
 - [Análise de Custos](docs/COST_ANALYSIS_IMPROVEMENTS.md)
+- [Espelho Perfeito de Workflows](docs/ESPELHO_PERFEITO_WORKFLOWS.md)
+- [Dashboards do Metabase](docs/METABASE_DASHBOARDS.md)
 
-### **Implementação:**
-- [Guia de Deploy](clusters/n8n-cluster/production/README.md)
+### **🚀 Implementação:**
+- [Guia de Deploy n8n](clusters/n8n-cluster/production/README.md)
 - [Configuração de Monitoramento](clusters/monitoring-cluster/production/README.md)
+- [Sincronização com GCP](docs/SINCRONIZACAO_COMPLETA_GCP.md)
 
 ## 🚨 **SUPORTE**
 
@@ -226,6 +313,24 @@ kubectl describe ingress n8n-ingress -n n8n
 
 ## 📝 **CHANGELOG**
 
+### **v2.1.0** - 01/12/2025 🆕
+- ✅ **Organização completa do projeto**
+- ✅ Scripts de sincronização com GCP (`sync-with-gcp.ps1`)
+- ✅ Scripts de organização e limpeza (`organize-project.ps1`)
+- ✅ Documentação de estrutura do projeto (`ESTRUTURA_PROJETO.md`)
+- ✅ README atualizado com informações de sincronização
+- ✅ SSL implementado em todos os clusters (n8n, Evolution API, Metabase)
+- ✅ Arquivos duplicados e temporários removidos/arquivados
+- ✅ Estrutura de pastas 100% organizada
+
+### **v2.0.0** - 30/09/2025
+- ✅ Limpeza profunda do projeto
+- ✅ Espelho perfeito de workflows (25 workflows)
+- ✅ Remoção de arquivos obsoletos
+- ✅ Organização de estrutura de pastas
+- ✅ Sincronização com estado real dos clusters
+- ✅ Documentação atualizada
+
 ### **v1.0.0** - 24/09/2025
 - ✅ Reorganização completa do projeto
 - ✅ Separação de clusters
@@ -236,4 +341,34 @@ kubectl describe ingress n8n-ingress -n n8n
 
 ---
 
-**🎯 Objetivo:** Sistema robusto, escalável e seguro para automação e análise de dados da Logcomex.
+## 🎯 **ESTADO ATUAL DO PROJETO**
+
+### **✅ Organização Completa (01/12/2025):**
+- **✅ Projeto sincronizado**: Arquivos locais refletem estado atual do GCP
+- **✅ Estrutura organizada**: Pastas limpas e lógicas
+- **✅ Scripts de automação**: Organização e sincronização automatizadas
+- **✅ Documentação consolidada**: 49 documentos organizados
+- **✅ SSL implementado**: n8n, Evolution API e Metabase com SSL
+
+### **📊 Estatísticas:**
+- **Clusters**: 3 clusters (n8n, metabase, monitoring)
+- **Workflows sincronizados**: 25 workflows (espelho perfeito)
+- **Scripts ativos**: 38 scripts organizados
+- **Documentação**: 49 documentos técnicos
+- **Deployments**: 6 deployments principais
+
+### **🔄 Sincronização:**
+- **n8n-cluster**: ✅ Sincronizado (n8n, n8n-worker, evolution-api)
+- **metabase-cluster**: ✅ Sincronizado (metabase-app)
+- **monitoring-cluster**: ✅ Configurado (prometheus, grafana)
+- **SSL**: ✅ Implementado em todos os clusters
+
+### **🧹 Limpeza:**
+- **Arquivos temporários**: Removidos
+- **Arquivos duplicados**: Arquivados
+- **Backups antigos**: Mantidos apenas 3 mais recentes
+- **Estrutura**: 100% organizada
+
+---
+
+**🎯 Objetivo:** Plataforma robusta, escalável e segura para dados comerciais em tempo real, eliminando limitações de API e fornecendo dashboards comerciais atualizados para o time de vendas da Logcomex.

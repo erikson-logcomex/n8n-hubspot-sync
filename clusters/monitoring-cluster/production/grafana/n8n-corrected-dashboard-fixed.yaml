@@ -1,0 +1,149 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard-fixed
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-fixed.json: |
+    {
+      "id": 1,
+      "uid": "n8n-fixed",
+      "title": "N8N Monitoramento - CORRIGIDO",
+      "tags": ["n8n", "monitoring", "corrected"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "Status do Sistema",
+          "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "red", "value": 0, "text": "OFFLINE"},
+                  {"color": "green", "value": 1, "text": "ONLINE"}
+                ]
+              },
+              "mappings": [
+                {"type": "value", "value": "0", "text": "OFFLINE"},
+                {"type": "value", "value": "1", "text": "ONLINE"}
+              ]
+            }
+          },
+          "targets": [
+            {"expr": "up{job=\"n8n\"}", "legendFormat": "Status", "refId": "A"}
+          ]
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Workflows Ativos",
+          "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_active_workflow_count{job=\"n8n\"}", "legendFormat": "Workflows", "refId": "A"}
+          ]
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Função da Instância",
+          "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "mappings": [
+                {"type": "value", "value": "0", "text": "WORKER"},
+                {"type": "value", "value": "1", "text": "LEADER"}
+              ]
+            }
+          },
+          "targets": [
+            {"expr": "n8n_instance_role_leader{job=\"n8n\"}", "legendFormat": "Role", "refId": "A"}
+          ]
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "Versão N8N",
+          "gridPos": {"x": 18, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {}
+          },
+          "targets": [
+            {"expr": "n8n_version_info{job=\"n8n\"}", "legendFormat": "Versão", "refId": "A"}
+          ]
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "Uso de CPU (Processo Node.js)",
+          "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_process_cpu_seconds_total{job=\"n8n\"}[5m]) * 100", "legendFormat": "CPU Total", "refId": "A"},
+            {"expr": "rate(n8n_process_cpu_user_seconds_total{job=\"n8n\"}[5m]) * 100", "legendFormat": "CPU Usuário", "refId": "B"},
+            {"expr": "rate(n8n_process_cpu_system_seconds_total{job=\"n8n\"}[5m]) * 100", "legendFormat": "CPU Sistema", "refId": "C"}
+          ]
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "Uso de Memória",
+          "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_process_resident_memory_bytes{job=\"n8n\"}", "legendFormat": "Memória Física (RSS)", "refId": "A"},
+            {"expr": "n8n_nodejs_heap_size_used_bytes{job=\"n8n\"}", "legendFormat": "Heap Usado", "refId": "B"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes{job=\"n8n\"}", "legendFormat": "Heap Total", "refId": "C"}
+          ]
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "Performance do Event Loop",
+          "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds{job=\"n8n\"} * 1000", "legendFormat": "P50", "refId": "A"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds{job=\"n8n\"} * 1000", "legendFormat": "P90", "refId": "B"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds{job=\"n8n\"} * 1000", "legendFormat": "P99", "refId": "C"}
+          ]
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "Garbage Collection",
+          "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{job=\"n8n\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n\"}[5m]) * 1000", "legendFormat": "Duração Média", "refId": "A"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_count{job=\"n8n\"}[5m])", "legendFormat": "Frequência", "refId": "B"}
+          ]
+        }
+      ]
+    }

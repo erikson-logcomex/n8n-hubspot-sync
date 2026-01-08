@@ -55,3 +55,4 @@ Write-Host "   - Verificar se os dados do Prometheus estão sendo coletados" -Fo
 
 Write-Host "`n📊 Teste concluído em $(Get-Date)" -ForegroundColor Cyan
 
+

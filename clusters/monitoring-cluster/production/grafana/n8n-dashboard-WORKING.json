@@ -1,0 +1,374 @@
+{
+  "id": 2,
+  "uid": "n8n-production-complete",
+  "title": "🚀 N8N Production Complete - WORKING",
+  "tags": ["n8n", "production", "containers", "kubernetes", "complete"],
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "📊 N8N Application Health & Status",
+      "gridPos": {"x": 0, "y": 0, "w": 24, "h": 1}
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "🔄 Workflows Ativos",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 0, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "steps": [
+              {"color": "red", "value": 0},
+              {"color": "yellow", "value": 20},
+              {"color": "green", "value": 25}
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "n8n_active_workflow_count",
+          "legendFormat": "Workflows",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "⚡ Jobs Ativos",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 3, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "steps": [
+              {"color": "green", "value": 0},
+              {"color": "yellow", "value": 5},
+              {"color": "red", "value": 20}
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_active",
+          "legendFormat": "Ativos",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "⏳ Jobs Esperando",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 6, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "steps": [
+              {"color": "green", "value": 0},
+              {"color": "yellow", "value": 10},
+              {"color": "red", "value": 50}
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_waiting",
+          "legendFormat": "Esperando",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "✅ Jobs Completados",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 9, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {"mode": "value"}
+        }
+      },
+      "targets": [
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_completed",
+          "legendFormat": "Completados",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "❌ Jobs Falharam",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 12, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "steps": [
+              {"color": "green", "value": 0},
+              {"color": "yellow", "value": 5},
+              {"color": "red", "value": 20}
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_failed",
+          "legendFormat": "Falhas",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "🔧 Versão N8N",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 15, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {}
+      },
+      "targets": [
+        {
+          "expr": "n8n_version_info",
+          "legendFormat": "v{{version}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "stat",
+      "title": "🖥️ Sistema Online",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 18, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "steps": [
+              {"color": "red", "value": 0},
+              {"color": "green", "value": 1}
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "up{job=\"n8n\"}",
+          "legendFormat": "Status",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "stat",
+      "title": "⏱️ Uptime",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 21, "y": 1, "w": 3, "h": 4},
+      "fieldConfig": {
+        "defaults": {"unit": "dtdurations"}
+      },
+      "targets": [
+        {
+          "expr": "time() - n8n_process_start_time_seconds",
+          "legendFormat": "Tempo Ativo",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "timeseries",
+      "title": "📈 Throughput de Jobs (por minuto)",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 0, "y": 5, "w": 12, "h": 8},
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {"mode": "palette-classic"}
+        }
+      },
+      "targets": [
+        {
+          "expr": "rate(n8n_scaling_mode_queue_jobs_completed[1m]) * 60",
+          "legendFormat": "✅ Completados/min",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        },
+        {
+          "expr": "rate(n8n_scaling_mode_queue_jobs_failed[1m]) * 60",
+          "legendFormat": "❌ Falhas/min",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_active",
+          "legendFormat": "🔄 Ativos Agora",
+          "refId": "C",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_waiting",
+          "legendFormat": "⏳ Esperando Agora",
+          "refId": "D",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "piechart",
+      "title": "🎯 Status Jobs (Última Hora)",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"x": 12, "y": 5, "w": 12, "h": 8},
+      "fieldConfig": {
+        "defaults": {"unit": "short"}
+      },
+      "targets": [
+        {
+          "expr": "increase(n8n_scaling_mode_queue_jobs_completed[1h])",
+          "legendFormat": "✅ Completados",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        },
+        {
+          "expr": "increase(n8n_scaling_mode_queue_jobs_failed[1h])",
+          "legendFormat": "❌ Falharam",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_active",
+          "legendFormat": "🔄 Executando",
+          "refId": "C",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_waiting",
+          "legendFormat": "⏳ Na Fila",
+          "refId": "D",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          }
+        }
+      ]
+    }
+  ]
+}

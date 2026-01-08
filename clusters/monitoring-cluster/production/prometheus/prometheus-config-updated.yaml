@@ -15,27 +15,20 @@ data:
       static_configs:
       - targets: ['localhost:9090']
     
-    # n8n Cluster Monitoring (External)
-    - job_name: 'n8n-cluster'
+    # n8n Monitoring (Single Job - Corrected)
+    - job_name: 'n8n'
       static_configs:
-      - targets: ['n8n-logcomex.34-8-101-220.nip.io']  # n8n-cluster domain
+      - targets: ['n8n-logcomex.34-8-101-220.nip.io']
       metrics_path: '/metrics'
       scrape_interval: 15s
       scheme: https
       scrape_timeout: 10s
       tls_config:
         insecure_skip_verify: true
-    
-    # n8n Workers Monitoring
-    - job_name: 'n8n-workers'
-      static_configs:
-      - targets: ['n8n-logcomex.34-8-101-220.nip.io']  # n8n-cluster domain
-      metrics_path: '/metrics'
-      scrape_interval: 15s
-      scheme: https
-      scrape_timeout: 10s
-      tls_config:
-        insecure_skip_verify: true
+      relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'n8n-main'
     
     # Kubernetes Cluster Monitoring
     - job_name: 'kubernetes-pods'

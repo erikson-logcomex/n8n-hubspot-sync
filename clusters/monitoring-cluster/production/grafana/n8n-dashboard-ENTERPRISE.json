@@ -1,0 +1,633 @@
+{
+  "id": null,
+  "uid": "n8n-enterprise-dashboard",
+  "title": "🚀 N8N Enterprise Dashboard - Superior",
+  "description": "Dashboard avançado do N8N com todas as funcionalidades enterprise do Grafana",
+  "tags": ["n8n", "enterprise", "monitoring", "production", "advanced"],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "graphTooltip": 2,
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": ["5s", "10s", "30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "instance",
+        "type": "query",
+        "label": "N8N Instance",
+        "query": "label_values(n8n_active_workflow_count, instance)",
+        "refresh": 1,
+        "includeAll": true,
+        "allValue": ".*",
+        "multi": true,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        }
+      },
+      {
+        "name": "refresh_rate",
+        "type": "custom",
+        "label": "Auto Refresh",
+        "options": [
+          {"text": "5s", "value": "5s"},
+          {"text": "10s", "value": "10s"},
+          {"text": "30s", "value": "30s"},
+          {"text": "1m", "value": "1m"}
+        ],
+        "current": {"text": "10s", "value": "10s"}
+      }
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "name": "N8N Events",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "enable": true,
+        "expr": "changes(n8n_process_start_time_seconds[1h])",
+        "iconColor": "red",
+        "textFormat": "N8N Restart"
+      }
+    ]
+  },
+  "refresh": "$refresh_rate",
+  "schemaVersion": 38,
+  "version": 2,
+  "links": [
+    {
+      "title": "N8N Web Interface",
+      "url": "https://n8n-logcomex.example.com",
+      "type": "link",
+      "icon": "external link"
+    }
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "title": "🎯 Health Overview",
+      "type": "row",
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+      "collapsed": false
+    },
+    {
+      "id": 2,
+      "title": "🔄 Workflows Ativos",
+      "type": "gauge",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 6, "x": 0, "y": 1},
+      "targets": [
+        {
+          "expr": "n8n_active_workflow_count{instance=~\"$instance\"}",
+          "refId": "A",
+          "instant": true,
+          "legendFormat": "Active Workflows"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 8},
+              {"color": "red", "value": 15}
+            ]
+          },
+          "unit": "short",
+          "min": 0,
+          "max": 20
+        }
+      },
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "text": {
+          "valueSize": 60
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "⚡ Queue Performance",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 6, "x": 6, "y": 1},
+      "targets": [
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_active{instance=~\"$instance\"}",
+          "refId": "A",
+          "legendFormat": "Active"
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_waiting{instance=~\"$instance\"}",
+          "refId": "B", 
+          "legendFormat": "Waiting"
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_failed{instance=~\"$instance\"}",
+          "refId": "C",
+          "legendFormat": "Failed"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "gradient-gauge",
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 5},
+              {"color": "red", "value": 20}
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "Failed"},
+            "properties": [
+              {
+                "id": "color",
+                "value": {"mode": "fixed", "fixedColor": "red"}
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "orientation": "vertical",
+        "textMode": "value_and_name",
+        "colorMode": "background_solid",
+        "graphMode": "area",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 4,
+      "title": "📊 Success Rate",
+      "type": "piechart",
+      "datasource": {
+        "type": "prometheus", 
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 6, "x": 12, "y": 1},
+      "targets": [
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_completed{instance=~\"$instance\"}",
+          "refId": "A",
+          "legendFormat": "✅ Completed"
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_failed{instance=~\"$instance\"}",
+          "refId": "B",
+          "legendFormat": "❌ Failed"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "vis": false
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "✅ Completed"},
+            "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "green"}}]
+          },
+          {
+            "matcher": {"id": "byName", "options": "❌ Failed"},
+            "properties": [{"id": "color", "value": {"mode": "fixed", "fixedColor": "red"}}]
+          }
+        ]
+      },
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "pieType": "donut",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "legend": {
+          "displayMode": "visible",
+          "placement": "right",
+          "values": ["value", "percent"]
+        },
+        "displayLabels": ["name", "percent"]
+      }
+    },
+    {
+      "id": 5,
+      "title": "⏰ System Uptime",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 6, "x": 18, "y": 1},
+      "targets": [
+        {
+          "expr": "time() - n8n_process_start_time_seconds{instance=~\"$instance\"}",
+          "refId": "A",
+          "legendFormat": "Uptime"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "unit": "dtdurations",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "yellow", "value": 3600},
+              {"color": "green", "value": 86400}
+            ]
+          }
+        }
+      },
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "textMode": "value_and_name",
+        "colorMode": "background_solid",
+        "graphMode": "area",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 6,
+      "title": "📈 Performance Analytics",
+      "type": "row",
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 9},
+      "collapsed": false
+    },
+    {
+      "id": 7,
+      "title": "🚀 Jobs Throughput Timeline",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 10, "w": 12, "x": 0, "y": 10},
+      "targets": [
+        {
+          "expr": "rate(n8n_scaling_mode_queue_jobs_completed{instance=~\"$instance\"}[5m]) * 60",
+          "refId": "A",
+          "legendFormat": "✅ Completed/min"
+        },
+        {
+          "expr": "rate(n8n_scaling_mode_queue_jobs_failed{instance=~\"$instance\"}[5m]) * 60",
+          "refId": "B",
+          "legendFormat": "❌ Failed/min"
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_active{instance=~\"$instance\"}",
+          "refId": "C",
+          "legendFormat": "⚡ Active Jobs"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "showPoints": "auto",
+            "pointSize": 5,
+            "stacking": {"mode": "none", "group": "A"},
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "scaleDistribution": {"type": "linear"},
+            "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+            "thresholdsStyle": {"mode": "off"}
+          },
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 80}
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byRegexp", "options": "/Failed.*/"}, 
+            "properties": [
+              {"id": "color", "value": {"mode": "fixed", "fixedColor": "red"}},
+              {"id": "custom.fillBelowTo", "value": "✅ Completed/min"}
+            ]
+          }
+        ]
+      },
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "desc"},
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom", 
+          "values": ["value", "min", "max", "mean"]
+        }
+      }
+    },
+    {
+      "id": 8,
+      "title": "💾 Memory & CPU Heatmap",
+      "type": "heatmap",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 10, "w": 12, "x": 12, "y": 10},
+      "targets": [
+        {
+          "expr": "n8n_process_resident_memory_bytes{instance=~\"$instance\"} / 1024 / 1024",
+          "refId": "A",
+          "legendFormat": "Memory MB"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {"legend": false, "tooltip": false, "vis": false}
+          }
+        }
+      },
+      "options": {
+        "calculate": true,
+        "yAxis": {"unit": "short"},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "mode": "spectrum",
+          "scheme": "Spectral",
+          "steps": 128
+        },
+        "exemplars": {"color": "rgba(255,0,255,0.7)"}
+      }
+    },
+    {
+      "id": 9,
+      "title": "🔍 Detailed Metrics",
+      "type": "row", 
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 20},
+      "collapsed": false
+    },
+    {
+      "id": 10,
+      "title": "📋 N8N Metrics Table",
+      "type": "table",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 21},
+      "targets": [
+        {
+          "expr": "n8n_active_workflow_count{instance=~\"$instance\"}",
+          "refId": "A",
+          "instant": true,
+          "legendFormat": "Active Workflows"
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_completed{instance=~\"$instance\"}",
+          "refId": "B",
+          "instant": true,
+          "legendFormat": "Total Completed"
+        },
+        {
+          "expr": "n8n_scaling_mode_queue_jobs_failed{instance=~\"$instance\"}",
+          "refId": "C", 
+          "instant": true,
+          "legendFormat": "Total Failed"
+        },
+        {
+          "expr": "n8n_process_resident_memory_bytes{instance=~\"$instance\"} / 1024 / 1024",
+          "refId": "D",
+          "instant": true,
+          "legendFormat": "Memory (MB)"
+        },
+        {
+          "expr": "rate(n8n_process_cpu_user_seconds_total{instance=~\"$instance\"}[5m]) * 100",
+          "refId": "E",
+          "instant": true,
+          "legendFormat": "CPU %"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "center",
+            "displayMode": "color-background-solid",
+            "inspect": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 50},
+              {"color": "red", "value": 80}
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "Memory (MB)"},
+            "properties": [{"id": "unit", "value": "decbytes"}]
+          },
+          {
+            "matcher": {"id": "byName", "options": "CPU %"}, 
+            "properties": [{"id": "unit", "value": "percent"}]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true
+      }
+    },
+    {
+      "id": 11,
+      "title": "🔬 Advanced Node.js Metrics",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 29},
+      "targets": [
+        {
+          "expr": "n8n_nodejs_eventloop_lag_mean_seconds{instance=~\"$instance\"} * 1000",
+          "refId": "A",
+          "legendFormat": "EventLoop Lag (ms)"
+        },
+        {
+          "expr": "n8n_nodejs_active_handles{instance=~\"$instance\"}",
+          "refId": "B",
+          "legendFormat": "Active Handles"
+        },
+        {
+          "expr": "n8n_nodejs_active_requests{instance=~\"$instance\"}",
+          "refId": "C",
+          "legendFormat": "Active Requests"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "fillOpacity": 15,
+            "gradientMode": "hue",
+            "showPoints": "never",
+            "pointSize": 5,
+            "stacking": {"mode": "none", "group": "A"},
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "scaleDistribution": {"type": "linear"},
+            "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+            "thresholdsStyle": {"mode": "off"}
+          },
+          "unit": "short"
+        }
+      },
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "desc"},
+        "legend": {"displayMode": "visible", "placement": "bottom"}
+      }
+    },
+    {
+      "id": 12,
+      "title": "💡 Memory Deep Dive", 
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 29},
+      "targets": [
+        {
+          "expr": "n8n_nodejs_heap_size_used_bytes{instance=~\"$instance\"}",
+          "refId": "A", 
+          "legendFormat": "Heap Used"
+        },
+        {
+          "expr": "n8n_nodejs_heap_size_total_bytes{instance=~\"$instance\"}",
+          "refId": "B",
+          "legendFormat": "Heap Total"
+        },
+        {
+          "expr": "n8n_nodejs_external_memory_bytes{instance=~\"$instance\"}",
+          "refId": "C",
+          "legendFormat": "External Memory"
+        },
+        {
+          "expr": "n8n_process_resident_memory_bytes{instance=~\"$instance\"}",
+          "refId": "D",
+          "legendFormat": "Resident Memory"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth", 
+            "lineWidth": 2,
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "showPoints": "never",
+            "pointSize": 5,
+            "stacking": {"mode": "none", "group": "A"},
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "scaleDistribution": {"type": "linear"},
+            "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+            "thresholdsStyle": {"mode": "line"},
+            "spanNulls": false
+          },
+          "unit": "decbytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 500000000},
+              {"color": "red", "value": 1000000000}
+            ]
+          }
+        }
+      },
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "desc"},
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "values": ["value", "max"]
+        }
+      }
+    }
+  ]
+}

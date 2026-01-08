@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "n8n-simples",
+    "title": "N8N Dashboard SIMPLES",
+    "tags": ["n8n"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Workflows Ativos",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "n8n_active_workflow_count",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Jobs Completados",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "n8n_scaling_mode_queue_jobs_completed",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Memória Usada",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "n8n_process_resident_memory_bytes",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 8}
+      }
+    ],
+    "time": {"from": "now-6h", "to": "now"},
+    "refresh": "30s"
+  }
+}

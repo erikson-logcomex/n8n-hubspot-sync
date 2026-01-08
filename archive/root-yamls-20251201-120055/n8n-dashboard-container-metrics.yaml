@@ -1,0 +1,192 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard-container-metrics
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-container-metrics.json: |
+    {
+      "id": 1,
+      "uid": "n8n-container-metrics",
+      "title": "N8N Monitoramento - Métricas de Container",
+      "tags": ["n8n", "monitoring", "container", "real"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "Status do Sistema",
+          "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "red", "value": 0},
+                  {"color": "green", "value": 1}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "up{instance=\"n8n-main\"}", "legendFormat": "Status", "refId": "A"}
+          ]
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Workflows Ativos",
+          "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "n8n_active_workflow_count{instance=\"n8n-main\"}", "legendFormat": "Workflows", "refId": "A"}
+          ]
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Versão N8N",
+          "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {}
+          },
+          "targets": [
+            {"expr": "n8n_version_info{instance=\"n8n-main\"}", "legendFormat": "v{{version}}", "refId": "A"}
+          ]
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "Tempo de Atividade",
+          "gridPos": {"x": 18, "y": 0, "w": 6, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "dtdurations"}
+          },
+          "targets": [
+            {"expr": "time() - n8n_process_start_time_seconds{instance=\"n8n-main\"}", "legendFormat": "Ativo há {{value}}", "refId": "A"}
+          ]
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "Uso de CPU - Container (Real)",
+          "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 25,
+              "color": {"mode": "palette-classic"}
+            }
+          },
+          "targets": [
+            {"expr": "(rate(n8n_process_cpu_seconds_total{instance=\"n8n-main\"}[5m]) * 100) * 0.25", "legendFormat": "CPU Container (Limitado a 25%)", "refId": "A"}
+          ]
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "Uso de Memória - Container",
+          "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes", "min": 0, "max": 536870912}
+          },
+          "targets": [
+            {"expr": "n8n_process_resident_memory_bytes{instance=\"n8n-main\"}", "legendFormat": "RSS (Limitado a 512Mi)", "refId": "A"},
+            {"expr": "n8n_nodejs_heap_size_used_bytes{instance=\"n8n-main\"}", "legendFormat": "Heap Usado", "refId": "B"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes{instance=\"n8n-main\"}", "legendFormat": "Heap Total", "refId": "C"}
+          ]
+        },
+        {
+          "id": 7,
+          "type": "gauge",
+          "title": "Utilização de Memória Heap",
+          "gridPos": {"x": 0, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0},
+                  {"color": "yellow", "value": 70},
+                  {"color": "red", "value": 90}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "(n8n_nodejs_heap_size_used_bytes{instance=\"n8n-main\"} / n8n_nodejs_heap_size_total_bytes{instance=\"n8n-main\"}) * 100", "legendFormat": "Heap %", "refId": "A"}
+          ]
+        },
+        {
+          "id": 8,
+          "type": "stat",
+          "title": "Limites de Recursos",
+          "gridPos": {"x": 6, "y": 12, "w": 6, "h": 6},
+          "fieldConfig": {
+            "defaults": {}
+          },
+          "targets": [
+            {"expr": "250", "legendFormat": "CPU Limit: 250m (25%)", "refId": "A"},
+            {"expr": "536870912", "legendFormat": "Memory Limit: 512Mi", "refId": "B"}
+          ]
+        },
+        {
+          "id": 9,
+          "type": "timeseries",
+          "title": "Performance do Event Loop",
+          "gridPos": {"x": 12, "y": 12, "w": 12, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds{instance=\"n8n-main\"} * 1000", "legendFormat": "P50", "refId": "A"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds{instance=\"n8n-main\"} * 1000", "legendFormat": "P90", "refId": "B"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds{instance=\"n8n-main\"} * 1000", "legendFormat": "P99", "refId": "C"}
+          ]
+        },
+        {
+          "id": 10,
+          "type": "timeseries",
+          "title": "Garbage Collection",
+          "gridPos": {"x": 0, "y": 18, "w": 12, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "ms"}
+          },
+          "targets": [
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{instance=\"n8n-main\",kind=\"minor\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{instance=\"n8n-main\",kind=\"minor\"}[5m]) * 1000", "legendFormat": "GC Minor", "refId": "A"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{instance=\"n8n-main\",kind=\"major\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{instance=\"n8n-main\",kind=\"major\"}[5m]) * 1000", "legendFormat": "GC Major", "refId": "B"},
+            {"expr": "rate(n8n_nodejs_gc_duration_seconds_sum{instance=\"n8n-main\",kind=\"incremental\"}[5m]) / rate(n8n_nodejs_gc_duration_seconds_count{instance=\"n8n-main\",kind=\"incremental\"}[5m]) * 1000", "legendFormat": "GC Incremental", "refId": "C"}
+          ]
+        },
+        {
+          "id": 11,
+          "type": "piechart",
+          "title": "Distribuição da Memória Heap",
+          "gridPos": {"x": 12, "y": 18, "w": 12, "h": 6},
+          "fieldConfig": {
+            "defaults": {"unit": "decbytes"}
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{instance=\"n8n-main\",space=\"old\"}", "legendFormat": "Old", "refId": "A"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{instance=\"n8n-main\",space=\"new\"}", "legendFormat": "New", "refId": "B"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{instance=\"n8n-main\",space=\"code\"}", "legendFormat": "Code", "refId": "C"},
+            {"expr": "n8n_nodejs_heap_space_size_used_bytes{instance=\"n8n-main\",space=\"large_object\"}", "legendFormat": "Large Object", "refId": "D"}
+          ]
+        }
+      ]
+    }
+

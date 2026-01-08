@@ -215,3 +215,4 @@ spec:
 
 **Conclusão:** O cluster de monitoring apresenta uma oportunidade clara de otimização de custos com baixo risco. A redução para 2 nós pode gerar uma economia de $291,24 USD/ano mantendo a funcionalidade e estabilidade necessárias.
 
+

@@ -1,0 +1,506 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-dashboard-correto
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-dashboard.json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "N8N Production Dashboard",
+        "tags": ["n8n", "monitoring", "production"],
+        "timezone": "browser",
+        "refresh": "30s",
+        "schemaVersion": 38,
+        "version": 1,
+        "panels": [
+          {
+            "id": 1,
+            "title": "🔄 Workflows Ativos",
+            "type": "stat",
+            "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "green", "value": null},
+                    {"color": "yellow", "value": 5},
+                    {"color": "red", "value": 15}
+                  ]
+                },
+                "unit": "short"
+              }
+            },
+            "options": {
+              "reduceOptions": {
+                "values": false,
+                "calcs": ["lastNotNull"],
+                "fields": ""
+              },
+              "orientation": "auto",
+              "text": {},
+              "textMode": "auto",
+              "colorMode": "value",
+              "graphMode": "area",
+              "justifyMode": "auto"
+            },
+            "targets": [
+              {
+                "expr": "n8n_active_workflow_count",
+                "refId": "A",
+                "legendFormat": "Workflows Ativos"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "title": "⚡ Jobs na Fila",
+            "type": "stat",
+            "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "green", "value": null},
+                    {"color": "yellow", "value": 10},
+                    {"color": "red", "value": 50}
+                  ]
+                },
+                "unit": "short"
+              }
+            },
+            "options": {
+              "reduceOptions": {
+                "values": false,
+                "calcs": ["lastNotNull"],
+                "fields": ""
+              },
+              "orientation": "auto",
+              "text": {},
+              "textMode": "auto",
+              "colorMode": "value",
+              "graphMode": "area",
+              "justifyMode": "auto"
+            },
+            "targets": [
+              {
+                "expr": "n8n_scaling_mode_queue_jobs_waiting",
+                "refId": "A",
+                "legendFormat": "Jobs Aguardando"
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "title": "🔥 Jobs Ativos",
+            "type": "stat",
+            "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "thresholds": {
+                  "steps": [
+                    {"color": "green", "value": null},
+                    {"color": "yellow", "value": 5},
+                    {"color": "red", "value": 20}
+                  ]
+                },
+                "unit": "short"
+              }
+            },
+            "options": {
+              "reduceOptions": {
+                "values": false,
+                "calcs": ["lastNotNull"],
+                "fields": ""
+              },
+              "orientation": "auto",
+              "text": {},
+              "textMode": "auto",
+              "colorMode": "value",
+              "graphMode": "area",
+              "justifyMode": "auto"
+            },
+            "targets": [
+              {
+                "expr": "n8n_scaling_mode_queue_jobs_active",
+                "refId": "A",
+                "legendFormat": "Jobs Processando"
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "title": "📊 Uptime N8N",
+            "type": "stat",
+            "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "value"
+                },
+                "unit": "s"
+              }
+            },
+            "options": {
+              "reduceOptions": {
+                "values": false,
+                "calcs": ["lastNotNull"],
+                "fields": ""
+              },
+              "orientation": "auto",
+              "text": {},
+              "textMode": "auto",
+              "colorMode": "value",
+              "graphMode": "area",
+              "justifyMode": "auto"
+            },
+            "targets": [
+              {
+                "expr": "time() - n8n_process_start_time_seconds",
+                "refId": "A",
+                "legendFormat": "Uptime"
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "title": "🚀 Throughput de Jobs (por minuto)",
+            "type": "timeseries",
+            "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "vis": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 2,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "short"
+              }
+            },
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "visible",
+                "placement": "bottom"
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "expr": "rate(n8n_scaling_mode_queue_jobs_completed[5m]) * 60",
+                "refId": "A",
+                "legendFormat": "Jobs Completados/min"
+              },
+              {
+                "expr": "rate(n8n_scaling_mode_queue_jobs_failed[5m]) * 60",
+                "refId": "B",
+                "legendFormat": "Jobs Falharam/min"
+              }
+            ]
+          },
+          {
+            "id": 6,
+            "title": "💾 Uso de Memória N8N",
+            "type": "timeseries",
+            "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "vis": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 2,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "bytes"
+              }
+            },
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "visible",
+                "placement": "bottom"
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "expr": "n8n_process_resident_memory_bytes",
+                "refId": "A",
+                "legendFormat": "Memória Residente"
+              },
+              {
+                "expr": "n8n_nodejs_heap_size_used_bytes",
+                "refId": "B",
+                "legendFormat": "Heap Node.js"
+              }
+            ]
+          },
+          {
+            "id": 7,
+            "title": "⚙️ CPU Usage N8N Process",
+            "type": "timeseries",
+            "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "vis": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 2,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    }
+                  ]
+                },
+                "unit": "percent"
+              }
+            },
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "visible",
+                "placement": "bottom"
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "expr": "rate(n8n_process_cpu_user_seconds_total[5m]) * 100",
+                "refId": "A",
+                "legendFormat": "CPU User %"
+              },
+              {
+                "expr": "rate(n8n_process_cpu_system_seconds_total[5m]) * 100",
+                "refId": "B",
+                "legendFormat": "CPU System %"
+              }
+            ]
+          },
+          {
+            "id": 8,
+            "title": "🔄 Event Loop Lag",
+            "type": "timeseries",
+            "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16},
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 10,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "vis": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 2,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "never",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 0.1
+                    },
+                    {
+                      "color": "red",
+                      "value": 0.5
+                    }
+                  ]
+                },
+                "unit": "s"
+              }
+            },
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "visible",
+                "placement": "bottom"
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "targets": [
+              {
+                "expr": "n8n_nodejs_eventloop_lag_seconds",
+                "refId": "A",
+                "legendFormat": "Event Loop Lag"
+              },
+              {
+                "expr": "n8n_nodejs_eventloop_lag_mean_seconds",
+                "refId": "B",
+                "legendFormat": "Lag Médio"
+              }
+            ]
+          }
+        ],
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "timepicker": {},
+        "templating": {
+          "list": []
+        },
+        "annotations": {
+          "list": []
+        },
+        "links": [],
+        "gnetId": null,
+        "iteration": null,
+        "snapshot": {
+          "originalUrl": ""
+        }
+      },
+      "folderId": null,
+      "overwrite": true
+    }

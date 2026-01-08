@@ -30,7 +30,7 @@ data:
             "defaults": {"unit": "short"}
           },
           "targets": [
-            {"expr": "n8n_active_workflow_count{job=\"n8n-cluster\"}", "legendFormat": "Workflows"}
+            {"expr": "n8n_active_workflow_count{job=\"n8n\"}", "legendFormat": "Workflows"}
           ]
         },
         {
@@ -42,7 +42,7 @@ data:
             "defaults": {}
           },
           "targets": [
-            {"expr": "n8n_version_info{job=\"n8n-cluster\"}", "legendFormat": "v{{version}}"}
+            {"expr": "n8n_version_info{job=\"n8n\"}", "legendFormat": "v{{version}}"}
           ]
         },
         {
@@ -54,7 +54,7 @@ data:
             "defaults": {}
           },
           "targets": [
-            {"expr": "n8n_instance_role_leader{job=\"n8n-cluster\"}", "legendFormat": "Leader: {{value}}"}
+            {"expr": "n8n_instance_role_leader{job=\"n8n\"}", "legendFormat": "Leader: {{value}}"}
           ]
         },
         {
@@ -98,7 +98,7 @@ data:
         {
           "id": 7,
           "type": "timeseries",
-          "title": "Uso de CPU - Cluster vs Workers",
+          "title": "Uso de CPU",
           "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
           "fieldConfig": {
             "defaults": {
@@ -108,12 +108,9 @@ data:
             }
           },
           "targets": [
-            {"expr": "rate(n8n_process_cpu_seconds_total{job=\"n8n-cluster\"}[5m]) * 100", "legendFormat": "CPU Cluster"},
-            {"expr": "rate(n8n_process_cpu_user_seconds_total{job=\"n8n-cluster\"}[5m]) * 100", "legendFormat": "CPU Usuário Cluster"},
-            {"expr": "rate(n8n_process_cpu_system_seconds_total{job=\"n8n-cluster\"}[5m]) * 100", "legendFormat": "CPU Sistema Cluster"},
-            {"expr": "rate(n8n_process_cpu_seconds_total{job=\"n8n-workers\"}[5m]) * 100", "legendFormat": "CPU Workers"},
-            {"expr": "rate(n8n_process_cpu_user_seconds_total{job=\"n8n-workers\"}[5m]) * 100", "legendFormat": "CPU Usuário Workers"},
-            {"expr": "rate(n8n_process_cpu_system_seconds_total{job=\"n8n-workers\"}[5m]) * 100", "legendFormat": "CPU Sistema Workers"}
+        {"expr": "rate(n8n_process_cpu_seconds_total{job=\"n8n\"}[5m]) * 100", "legendFormat": "CPU Total"},
+        {"expr": "rate(n8n_process_cpu_user_seconds_total{job=\"n8n\"}[5m]) * 100", "legendFormat": "CPU Usuário"},
+        {"expr": "rate(n8n_process_cpu_system_seconds_total{job=\"n8n\"}[5m]) * 100", "legendFormat": "CPU Sistema"}
           ]
         },
         {

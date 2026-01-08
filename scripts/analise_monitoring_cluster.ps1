@@ -5,9 +5,9 @@ Write-Host "🔍 ANÁLISE DO MONITORING CLUSTER" -ForegroundColor Cyan
 Write-Host "=================================" -ForegroundColor Cyan
 
 # Configurações do cluster
-$clusterName = "monitoring-cluster"
-$region = "southamerica-east1"
-$nodeCount = 3
+$clusterName = "monitoring-cluster-optimized"
+$region = "southamerica-east1-a"
+$nodeCount = 2
 $machineType = "e2-small"
 $diskSize = 100
 $diskType = "pd-balanced"
@@ -41,16 +41,14 @@ Write-Host "• Custo mensal estimado: $${monthlyCost:F2} USD"
 # Análise de uso atual (baseado nos dados coletados)
 $currentUsage = @{
     CPU = @{
-        Node1 = 97  # m
-        Node2 = 86  # m
-        Node3 = 59  # m
-        Total = 242 # m
+        Node1 = 2   # m (Prometheus)
+        Node2 = 3   # m (Grafana)
+        Total = 5   # m
     }
     Memory = @{
-        Node1 = 979  # Mi
-        Node2 = 840  # Mi
-        Node3 = 803  # Mi
-        Total = 2622 # Mi
+        Node1 = 8   # Mi (Prometheus)
+        Node2 = 35  # Mi (Grafana)
+        Total = 43  # Mi
     }
 }
 
@@ -86,18 +84,18 @@ if ($memoryUsagePercent -lt 30) {
 
 # Problemas identificados
 Write-Host "`n🚨 PROBLEMAS IDENTIFICADOS:" -ForegroundColor Red
-Write-Host "• PVCs em estado Pending (grafana-storage, prometheus-storage)"
-Write-Host "• Grafana e Prometheus sem resource requests/limits definidos"
-Write-Host "• Uso de CPU muito baixo ($($cpuUsagePercent.ToString('F1'))%) - desperdício de recursos"
-Write-Host "• Cluster com 3 nós para apenas 2 aplicações principais"
+Write-Host "• Uso de CPU extremamente baixo ($($cpuUsagePercent.ToString('F1'))%) - desperdício de recursos"
+Write-Host "• Uso de memória muito baixo ($($memoryUsagePercent.ToString('F1'))%) - recursos subutilizados"
+Write-Host "• Cluster com 2 nós para apenas 2 aplicações principais"
+Write-Host "• HPA configurado mas não sendo utilizado efetivamente"
 
 # Recomendações de otimização
 Write-Host "`n💡 RECOMENDAÇÕES DE OTIMIZAÇÃO:" -ForegroundColor Green
 
 Write-Host "`n1. REDUÇÃO DE NÓS:" -ForegroundColor Cyan
-Write-Host "   • Reduzir de 3 para 2 nós (economia de ~33%)"
-Write-Host "   • Custo mensal: $${monthlyCost:F2} → $${($monthlyCost * 2/3):F2} USD"
-Write-Host "   • Economia mensal: $${($monthlyCost * 1/3):F2} USD"
+Write-Host "   • Reduzir de 2 para 1 nó (economia de ~50%)"
+Write-Host "   • Custo mensal: $${monthlyCost:F2} → $${($monthlyCost * 1/2):F2} USD"
+Write-Host "   • Economia mensal: $${($monthlyCost * 1/2):F2} USD"
 
 Write-Host "`n2. OTIMIZAÇÃO DE RECURSOS:" -ForegroundColor Cyan
 Write-Host "   • Definir resource requests/limits para Grafana e Prometheus"

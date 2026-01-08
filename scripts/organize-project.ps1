@@ -1,94 +1,226 @@
-# Script de Organização - Projeto n8n
-# Data: 22/09/2025
-# Organiza arquivos após correções aplicadas
+# Script de Organização e Limpeza do Projeto n8n
+# Objetivo: Sincronizar projeto local com GCP e organizar estrutura
 
-Write-Host "🗂️ Organizando projeto n8n..." -ForegroundColor Green
+param(
+    [switch]$DryRun = $false,
+    [switch]$ExportGCP = $true
+)
 
-# 1. Mover arquivos de análise para pasta analysis
-Write-Host "📊 Organizando análises..." -ForegroundColor Yellow
-if (!(Test-Path "analysis")) { New-Item -ItemType Directory -Name "analysis" }
-Move-Item "ANALISE_CAUSAS_RAIZ_22_09_2025.md" "analysis/" -Force
-Move-Item "ANALISE_FINAL_DNS_REDIS_22_09_2025.md" "analysis/" -Force
+$ErrorActionPreference = "Stop"
+$projectRoot = $PSScriptRoot + "\.."
 
-# 2. Mover documentação para pasta docs
-Write-Host "📚 Organizando documentação..." -ForegroundColor Yellow
-if (!(Test-Path "docs")) { New-Item -ItemType Directory -Name "docs" }
-Move-Item "DOCUMENTACAO_IMPLEMENTACAO_N8N_GKE.md" "docs/" -Force
-Move-Item "STATUS_RECOVERY_22_09_2025.md" "docs/" -Force
-Move-Item "RESOLUCAO_FINAL_22_09_2025.md" "docs/" -Force
+Write-Host "`n🧹 ORGANIZAÇÃO DO PROJETO N8N" -ForegroundColor Cyan
+Write-Host "================================`n" -ForegroundColor Cyan
 
-# 3. Mover resumos para pasta reports
-Write-Host "📋 Organizando relatórios..." -ForegroundColor Yellow
-if (!(Test-Path "reports")) { New-Item -ItemType Directory -Name "reports" }
-Move-Item "RESUMO_SLACK_TEAM.md" "reports/" -Force
+# ============================================
+# 1. EXPORTAR CONFIGURAÇÕES ATUAIS DO GCP
+# ============================================
+if ($ExportGCP) {
+    Write-Host "📥 Exportando configurações do GCP..." -ForegroundColor Yellow
+    
+    $exportDir = "$projectRoot\exports\gcp-current-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+    New-Item -ItemType Directory -Path $exportDir -Force | Out-Null
+    
+    # Exportar n8n-cluster
+    Write-Host "  → Exportando n8n-cluster..." -ForegroundColor Gray
+    $n8nDir = "$exportDir\n8n-cluster"
+    New-Item -ItemType Directory -Path $n8nDir -Force | Out-Null
+    
+    try {
+        kubectl config use-context gke_datatoopenai_southamerica-east1-a_n8n-cluster 2>&1 | Out-Null
+        kubectl get deployment n8n -n n8n -o yaml > "$n8nDir\n8n-deployment.yaml" 2>&1
+        kubectl get deployment n8n-worker -n n8n -o yaml > "$n8nDir\n8n-worker-deployment.yaml" 2>&1
+        kubectl get deployment evolution-api -n n8n -o yaml > "$n8nDir\evolution-api-deployment.yaml" 2>&1
+        kubectl get configmap postgres-ssl-cert -n n8n -o yaml > "$n8nDir\postgres-ssl-cert-configmap.yaml" 2>&1
+        kubectl get secret postgres-secret -n n8n -o yaml > "$n8nDir\postgres-secret.yaml" 2>&1
+        kubectl get secret evolution-api -n n8n -o yaml > "$n8nDir\evolution-api-secret.yaml" 2>&1
+        kubectl get service n8n -n n8n -o yaml > "$n8nDir\n8n-service.yaml" 2>&1
+        kubectl get ingress n8n-ingress -n n8n -o yaml > "$n8nDir\n8n-ingress.yaml" 2>&1
+    } catch {
+        Write-Host "    ⚠️  Erro ao exportar n8n-cluster: $_" -ForegroundColor Yellow
+    }
+    
+    # Exportar metabase-cluster
+    Write-Host "  → Exportando metabase-cluster..." -ForegroundColor Gray
+    $metabaseDir = "$exportDir\metabase-cluster"
+    New-Item -ItemType Directory -Path $metabaseDir -Force | Out-Null
+    
+    try {
+        kubectl config use-context gke_datatoopenai_southamerica-east1-metabase-cluster 2>&1 | Out-Null
+        kubectl get deployment metabase-app -n metabase -o yaml > "$metabaseDir\metabase-deployment.yaml" 2>&1
+        kubectl get configmap postgres-ssl-cert -n metabase -o yaml > "$metabaseDir\postgres-ssl-cert-configmap.yaml" 2>&1
+        kubectl get service metabase-svc -n metabase -o yaml > "$metabaseDir\metabase-service.yaml" 2>&1
+        kubectl get ingress metabase-ing -n metabase -o yaml > "$metabaseDir\metabase-ingress.yaml" 2>&1
+    } catch {
+        Write-Host "    ⚠️  Erro ao exportar metabase-cluster: $_" -ForegroundColor Yellow
+    }
+    
+    Write-Host "  ✅ Exportação concluída: $exportDir" -ForegroundColor Green
+}
 
-# 4. Mover scripts para pasta scripts
-Write-Host "🔧 Organizando scripts..." -ForegroundColor Yellow
-if (!(Test-Path "scripts")) { New-Item -ItemType Directory -Name "scripts" }
-Move-Item "n8n-kubernetes-hosting/deploy-fixed.ps1" "scripts/" -Force
-Move-Item "n8n-kubernetes-hosting/health-check.ps1" "scripts/" -Force
+# ============================================
+# 2. IDENTIFICAR ARQUIVOS PARA LIMPEZA
+# ============================================
+Write-Host "`n🔍 Identificando arquivos para limpeza..." -ForegroundColor Yellow
 
-# 5. Criar arquivo de índice
-Write-Host "📑 Criando índice..." -ForegroundColor Yellow
-$indexContent = @"
-# 📋 ÍNDICE DO PROJETO n8n
+$filesToRemove = @()
+$filesToArchive = @()
 
-## 🗂️ ESTRUTURA ORGANIZADA
+# Arquivos temporários
+$filesToRemove += Get-ChildItem -Path $projectRoot -Filter "temp*.yaml" -Recurse -ErrorAction SilentlyContinue
+$filesToRemove += Get-ChildItem -Path $projectRoot -Filter "*temp*.yaml" -Recurse -ErrorAction SilentlyContinue
+$filesToRemove += Get-ChildItem -Path $projectRoot -Filter "*current*.yaml" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "*current*" -and $_.Name -notlike "*gcp*" }
 
-### 📊 Análises
-- analysis/ANALISE_CAUSAS_RAIZ_22_09_2025.md - Análise das causas do problema
-- analysis/ANALISE_FINAL_DNS_REDIS_22_09_2025.md - Análise final do DNS Redis
+# Backups antigos (manter apenas os 3 mais recentes)
+$backupDirs = Get-ChildItem -Path "$projectRoot\exports" -Directory -ErrorAction SilentlyContinue | 
+    Where-Object { $_.Name -like "backup-*" -or $_.Name -like "gcp-current-*" } |
+    Sort-Object LastWriteTime -Descending | Select-Object -Skip 3
+$filesToArchive += $backupDirs
 
-### 📚 Documentação
-- docs/DOCUMENTACAO_IMPLEMENTACAO_N8N_GKE.md - Documentação de implementação
-- docs/STATUS_RECOVERY_22_09_2025.md - Status do processo de recovery
-- docs/RESOLUCAO_FINAL_22_09_2025.md - Resolução final completa
+# Arquivos duplicados (manter apenas os principais)
+$duplicatePatterns = @(
+    @{ Pattern = "*deployment-gcp.yaml"; Keep = "*deployment.yaml" },
+    @{ Pattern = "*deployment-current.yaml"; Keep = "*deployment.yaml" },
+    @{ Pattern = "*configmaps-gcp.yaml"; Keep = "*configmaps.yaml" },
+    @{ Pattern = "*configmaps-current.yaml"; Keep = "*configmaps.yaml" },
+    @{ Pattern = "*secrets-gcp.yaml"; Keep = "*secrets.yaml" },
+    @{ Pattern = "*secrets-current.yaml"; Keep = "*secrets.yaml" }
+)
 
-### 📋 Relatórios
-- reports/RESUMO_SLACK_TEAM.md - Resumo para o time (Slack)
+foreach ($pattern in $duplicatePatterns) {
+    $duplicates = Get-ChildItem -Path "$projectRoot\clusters" -Filter $pattern.Pattern -Recurse -ErrorAction SilentlyContinue
+    $filesToArchive += $duplicates
+}
 
-### 🔧 Scripts
-- scripts/deploy-fixed.ps1 - Script de deploy com correções
-- scripts/health-check.ps1 - Script de verificação de saúde
+# Arquivos na raiz que devem estar em pastas
+$rootFiles = Get-ChildItem -Path $projectRoot -File -ErrorAction SilentlyContinue | 
+    Where-Object { 
+        $_.Extension -in @(".yaml", ".yml", ".json") -and 
+        $_.Name -notlike "README.md" -and 
+        $_.Name -notlike "*.gitignore" -and
+        $_.Name -notlike "*.cursorignore" -and
+        $_.Name -notlike "requirements.txt" -and
+        $_.Name -notlike "env.example"
+    }
+$filesToArchive += $rootFiles
 
-### ⚙️ Configurações Kubernetes
-- n8n-kubernetes-hosting/n8n-deployment.yaml - Deployment principal (corrigido)
-- n8n-kubernetes-hosting/n8n-worker-deployment.yaml - Workers (corrigido)
-- n8n-kubernetes-hosting/redis-service-patch.yaml - Patch do serviço Redis
-- n8n-kubernetes-hosting/n8n-config-consolidated.yaml - Configuração consolidada
+# Pasta temp_ssl_kubernetes (backup antigo)
+if (Test-Path "$projectRoot\temp_ssl_kubernetes") {
+    $filesToArchive += Get-Item "$projectRoot\temp_ssl_kubernetes"
+}
 
-## 🚀 COMO USAR
+# Pasta temp (arquivos temporários)
+if (Test-Path "$projectRoot\temp") {
+    $tempFiles = Get-ChildItem -Path "$projectRoot\temp" -Recurse -ErrorAction SilentlyContinue
+    $filesToArchive += $tempFiles
+}
 
-### Deploy Rápido
-```powershell
-cd n8n-kubernetes-hosting
-kubectl apply -f n8n-config-consolidated.yaml
-```
+Write-Host "  📋 Arquivos identificados:" -ForegroundColor Gray
+Write-Host "     - Para remover: $($filesToRemove.Count)" -ForegroundColor White
+Write-Host "     - Para arquivar: $($filesToArchive.Count)" -ForegroundColor White
 
-### Verificação de Saúde
-```powershell
-cd scripts
-.\health-check.ps1
-```
+# ============================================
+# 3. EXECUTAR LIMPEZA
+# ============================================
+if (-not $DryRun) {
+    Write-Host "`n🗑️  Executando limpeza..." -ForegroundColor Yellow
+    
+    # Criar pasta archive
+    $archiveDir = "$projectRoot\archive\$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+    New-Item -ItemType Directory -Path $archiveDir -Force | Out-Null
+    
+    # Mover arquivos para archive
+    foreach ($item in $filesToArchive) {
+        if ($item) {
+            try {
+                $destPath = "$archiveDir\$($item.Name)"
+                if (Test-Path $destPath) {
+                    $destPath = "$archiveDir\$($item.BaseName)_$($item.LastWriteTime.ToString('yyyyMMddHHmmss'))$($item.Extension)"
+                }
+                Move-Item -Path $item.FullName -Destination $destPath -Force -ErrorAction SilentlyContinue
+                Write-Host "  📦 Arquivado: $($item.Name)" -ForegroundColor Gray
+            } catch {
+                Write-Host "  ⚠️  Erro ao arquivar $($item.Name): $_" -ForegroundColor Yellow
+            }
+        }
+    }
+    
+    # Remover arquivos temporários
+    foreach ($item in $filesToRemove) {
+        if ($item) {
+            try {
+                Remove-Item -Path $item.FullName -Force -ErrorAction SilentlyContinue
+                Write-Host "  🗑️  Removido: $($item.Name)" -ForegroundColor Gray
+            } catch {
+                Write-Host "  ⚠️  Erro ao remover $($item.Name): $_" -ForegroundColor Yellow
+            }
+        }
+    }
+    
+    Write-Host "  ✅ Limpeza concluída" -ForegroundColor Green
+    Write-Host "  📦 Arquivos arquivados em: $archiveDir" -ForegroundColor Cyan
+} else {
+    Write-Host "`n🔍 DRY RUN - Nenhuma alteração foi feita" -ForegroundColor Yellow
+    Write-Host "  Use sem -DryRun para executar a limpeza" -ForegroundColor Gray
+}
 
-## 📊 STATUS ATUAL
-- ✅ Sistema 100% funcional
-- ✅ Redis via DNS (resiliente)
-- ✅ PostgreSQL conectado
-- ✅ 24 workflows ativos
-- ✅ Resiliência a mudanças de IP
+# ============================================
+# 4. ORGANIZAR ESTRUTURA
+# ============================================
+Write-Host "`n📁 Organizando estrutura de pastas..." -ForegroundColor Yellow
 
----
-*Organizado em: 22/09/2025*
-"@
+# Garantir estrutura padrão
+$requiredDirs = @(
+    "$projectRoot\clusters\n8n-cluster\production",
+    "$projectRoot\clusters\n8n-cluster\staging",
+    "$projectRoot\clusters\metabase-cluster\production",
+    "$projectRoot\clusters\metabase-cluster\staging",
+    "$projectRoot\clusters\monitoring-cluster\production",
+    "$projectRoot\clusters\monitoring-cluster\staging",
+    "$projectRoot\docs",
+    "$projectRoot\scripts",
+    "$projectRoot\workflows",
+    "$projectRoot\config",
+    "$projectRoot\exports",
+    "$projectRoot\archive",
+    "$projectRoot\certs"
+)
 
-$indexContent | Out-File -FilePath "INDEX.md" -Encoding UTF8
+foreach ($dir in $requiredDirs) {
+    if (-not (Test-Path $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+        Write-Host "  ✅ Criado: $dir" -ForegroundColor Gray
+    }
+}
 
-Write-Host "✅ Projeto organizado com sucesso!" -ForegroundColor Green
-Write-Host "📁 Estrutura criada:" -ForegroundColor Cyan
-Write-Host "  - analysis/ (análises)" -ForegroundColor White
-Write-Host "  - docs/ (documentação)" -ForegroundColor White
-Write-Host "  - reports/ (relatórios)" -ForegroundColor White
-Write-Host "  - scripts/ (scripts)" -ForegroundColor White
-Write-Host "  - n8n-kubernetes-hosting/ (configurações K8s)" -ForegroundColor White
-Write-Host "  - INDEX.md (índice do projeto)" -ForegroundColor White
+Write-Host "  ✅ Estrutura organizada" -ForegroundColor Green
+
+# ============================================
+# 5. RESUMO
+# ============================================
+Write-Host "`n📊 RESUMO DA ORGANIZAÇÃO" -ForegroundColor Cyan
+Write-Host "========================`n" -ForegroundColor Cyan
+
+Write-Host "✅ Ações realizadas:" -ForegroundColor Green
+if ($ExportGCP) {
+    Write-Host "   ✓ Configurações do GCP exportadas" -ForegroundColor White
+}
+if (-not $DryRun) {
+    Write-Host "   ✓ $($filesToRemove.Count) arquivos removidos" -ForegroundColor White
+    Write-Host "   ✓ $($filesToArchive.Count) arquivos arquivados" -ForegroundColor White
+    Write-Host "   ✓ Estrutura de pastas organizada" -ForegroundColor White
+} else {
+    Write-Host "   ⚠️  Modo Dry Run - Nenhuma alteração foi feita" -ForegroundColor Yellow
+}
+
+Write-Host "`n📋 Próximos passos:" -ForegroundColor Cyan
+Write-Host "   1. Revisar arquivos exportados do GCP" -ForegroundColor White
+Write-Host "   2. Sincronizar YAMLs locais com GCP" -ForegroundColor White
+Write-Host "   3. Consolidar documentação duplicada" -ForegroundColor White
+Write-Host "   4. Atualizar README principal" -ForegroundColor White
+
+Write-Host "`n✅ Organização concluída!`n" -ForegroundColor Green
+
+
+
+

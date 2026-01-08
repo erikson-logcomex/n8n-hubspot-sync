@@ -1,0 +1,293 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: n8n-production-complete-dashboard
+  namespace: monitoring-new
+  labels:
+    grafana_dashboard: "1"
+data:
+  n8n-production-complete.json: |
+    {
+      "id": 2,
+      "uid": "n8n-production-complete",
+      "title": "🚀 N8N Production Complete - App + Containers + Kubernetes",
+      "tags": ["n8n", "production", "containers", "kubernetes", "complete"],
+      "timezone": "browser",
+      "schemaVersion": 36,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "row",
+          "title": "📊 N8N Application Health & Status",
+          "gridPos": {"x": 0, "y": 0, "w": 24, "h": 1}
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "🔄 Workflows Ativos",
+          "gridPos": {"x": 0, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "red", "value": 0},
+                  {"color": "yellow", "value": 20},
+                  {"color": "green", "value": 25}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "n8n_active_workflow_count", "legendFormat": "Workflows"}
+          ]
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "⚡ Jobs Ativos",
+          "gridPos": {"x": 3, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0},
+                  {"color": "yellow", "value": 5},
+                  {"color": "red", "value": 20}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "n8n_scaling_mode_queue_jobs_active", "legendFormat": "Ativos", "refId": "A", "format": "time_series"}
+          ]
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "⏳ Jobs Esperando",
+          "gridPos": {"x": 6, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0},
+                  {"color": "yellow", "value": 10},
+                  {"color": "red", "value": 50}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "n8n_scaling_mode_queue_jobs_waiting", "legendFormat": "Esperando", "refId": "A", "format": "time_series"}
+          ]
+        },
+        {
+          "id": 5,
+          "type": "stat",
+          "title": "✅ Jobs Completados",
+          "gridPos": {"x": 9, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "color": {"mode": "value"},
+              "mappings": [{"type": "special", "options": {"pattern": "*"}, "text": "✅"}]
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_scaling_mode_queue_jobs_completed[5m])", "legendFormat": "Completados/min", "refId": "A", "format": "time_series"}
+          ]
+        },
+        {
+          "id": 6,
+          "type": "stat",
+          "title": "❌ Jobs Falharam",
+          "gridPos": {"x": 12, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "green", "value": 0},
+                  {"color": "yellow", "value": 5},
+                  {"color": "red", "value": 20}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_scaling_mode_queue_jobs_failed[5m])", "legendFormat": "Falhas/min", "refId": "A", "format": "time_series"}
+          ]
+        },
+        {
+          "id": 7,
+          "type": "stat",
+          "title": "🔧 Versão N8N",
+          "gridPos": {"x": 15, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {}
+          },
+          "targets": [
+            {"expr": "n8n_version_info", "legendFormat": "v{{version}}"}
+          ]
+        },
+        {
+          "id": 8,
+          "type": "stat",
+          "title": "🖥️ Sistema Online",
+          "gridPos": {"x": 18, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {
+              "color": {"mode": "thresholds"},
+              "thresholds": {
+                "steps": [
+                  {"color": "red", "value": 0},
+                  {"color": "green", "value": 1}
+                ]
+              }
+            }
+          },
+          "targets": [
+            {"expr": "up{job=\"n8n\"}", "legendFormat": "Status"}
+          ]
+        },
+        {
+          "id": 9,
+          "type": "stat",
+          "title": "⏱️ Uptime",
+          "gridPos": {"x": 21, "y": 1, "w": 3, "h": 4},
+          "fieldConfig": {
+            "defaults": {"unit": "dtdurations"}
+          },
+          "targets": [
+            {"expr": "time() - n8n_process_start_time_seconds", "legendFormat": "Tempo Ativo"}
+          ]
+        },
+        {
+          "id": 10,
+          "type": "timeseries",
+          "title": "📈 Throughput de Jobs (por minuto)",
+          "gridPos": {"x": 0, "y": 5, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "color": {"mode": "palette-classic"}
+            }
+          },
+          "targets": [
+            {"expr": "rate(n8n_scaling_mode_queue_jobs_completed[1m]) * 60", "legendFormat": "✅ Completados/min"},
+            {"expr": "rate(n8n_scaling_mode_queue_jobs_failed[1m]) * 60", "legendFormat": "❌ Falhas/min"},
+            {"expr": "n8n_scaling_mode_queue_jobs_active", "legendFormat": "🔄 Ativos Agora"},
+            {"expr": "n8n_scaling_mode_queue_jobs_waiting", "legendFormat": "⏳ Esperando Agora"}
+          ]
+        },
+        {
+          "id": 11,
+          "type": "piechart",
+          "title": "🎯 Status Jobs (Última Hora)",
+          "gridPos": {"x": 12, "y": 5, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {"unit": "short"}
+          },
+          "targets": [
+            {"expr": "increase(n8n_scaling_mode_queue_jobs_completed[1h])", "legendFormat": "✅ Completados"},
+            {"expr": "increase(n8n_scaling_mode_queue_jobs_failed[1h])", "legendFormat": "❌ Falharam"},
+            {"expr": "n8n_scaling_mode_queue_jobs_active", "legendFormat": "🔄 Executando"},
+            {"expr": "n8n_scaling_mode_queue_jobs_waiting", "legendFormat": "⏳ Na Fila"}
+          ]
+        },
+        {
+          "id": 12,
+          "type": "row",
+          "title": "🐳 Container & Pod Monitoring",
+          "gridPos": {"x": 0, "y": 13, "w": 24, "h": 1}
+        },
+        {
+          "id": 13,
+          "type": "timeseries",
+          "title": "🔥 CPU Usage - N8N Pods",
+          "gridPos": {"x": 0, "y": 14, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent",
+              "min": 0,
+              "max": 100,
+              "color": {"mode": "palette-classic"}
+            }
+          },
+          "targets": [
+            {"expr": "rate(container_cpu_usage_seconds_total{namespace=\"n8n\", pod=~\"n8n-.*\", container!=\"POD\", container!=\"\"}[5m]) * 100", "legendFormat": "{{pod}} CPU %"},
+            {"expr": "rate(container_cpu_usage_seconds_total{namespace=\"n8n\", pod=~\"n8n-worker-.*\", container!=\"POD\", container!=\"\"}[5m]) * 100", "legendFormat": "{{pod}} CPU %"}
+          ]
+        },
+        {
+          "id": 14,
+          "type": "timeseries",
+          "title": "💾 Memory Usage - N8N Pods",
+          "gridPos": {"x": 12, "y": 14, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "decbytes",
+              "color": {"mode": "palette-classic"}
+            }
+          },
+          "targets": [
+            {"expr": "container_memory_usage_bytes{namespace=\"n8n\", pod=~\"n8n-.*\", container!=\"POD\", container!=\"\"}", "legendFormat": "{{pod}} Memory"},
+            {"expr": "container_memory_usage_bytes{namespace=\"n8n\", pod=~\"n8n-worker-.*\", container!=\"POD\", container!=\"\"}", "legendFormat": "{{pod}} Memory"}
+          ]
+        },
+        {
+          "id": 15,
+          "type": "row",
+          "title": "⚡ N8N Application Performance",
+          "gridPos": {"x": 0, "y": 22, "w": 24, "h": 1}
+        },
+        {
+          "id": 16,
+          "type": "timeseries",
+          "title": "🧠 Memory Heap Usage",
+          "gridPos": {"x": 0, "y": 23, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "decbytes",
+              "color": {"mode": "palette-classic"}
+            }
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_heap_size_used_bytes", "legendFormat": "Heap Usado"},
+            {"expr": "n8n_nodejs_heap_size_total_bytes", "legendFormat": "Heap Total"},
+            {"expr": "n8n_nodejs_external_memory_bytes", "legendFormat": "Memória Externa"}
+          ]
+        },
+        {
+          "id": 17,
+          "type": "timeseries",
+          "title": "⚡ Event Loop Performance",
+          "gridPos": {"x": 12, "y": 23, "w": 12, "h": 8},
+          "fieldConfig": {
+            "defaults": {
+              "unit": "ms",
+              "color": {"mode": "palette-classic"}
+            }
+          },
+          "targets": [
+            {"expr": "n8n_nodejs_eventloop_lag_p50_seconds * 1000", "legendFormat": "P50 (Mediana)"},
+            {"expr": "n8n_nodejs_eventloop_lag_p90_seconds * 1000", "legendFormat": "P90"},
+            {"expr": "n8n_nodejs_eventloop_lag_p99_seconds * 1000", "legendFormat": "P99"},
+            {"expr": "n8n_nodejs_eventloop_lag_max_seconds * 1000", "legendFormat": "Máximo"}
+          ]
+        }
+      ]
+    }
